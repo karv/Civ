@@ -1,0 +1,33 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Civ/EdificioRAW.cs">
+    <Files>
+      <File FileName="Civ/Program.cs" Line="13" Column="23" />
+      <File FileName="Civ/Civilización.cs" Line="1" Column="1" />
+      <File FileName="Civ/Ciudad.cs" Line="210" Column="4" />
+      <File FileName="Civ/Recurso.cs" Line="1" Column="1" />
+      <File FileName="../Dropbox/VB/ListaExtras/ClassMain.cs" Line="1" Column="1" />
+      <File FileName="Civ/EdificioRAW.cs" Line="57" Column="70" />
+      <File FileName="Civ/TrabajoRAW.cs" Line="73" Column="3" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Civ" expanded="True">
+            <Node name="Ciudad.cs" selected="True" />
+          </Node>
+          <Node name="ListaExtras" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True">
+          <Node name="Civ" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
