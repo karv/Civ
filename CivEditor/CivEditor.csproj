@@ -46,11 +46,11 @@
       <Project>{D0DA2F97-634B-4693-A73B-0C2241BA0C4C}</Project>
       <Name>CivLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Dropbox\VB\ListaExtras\ListaExtras.csproj">
+    <ProjectReference Include="..\ListaExtras\ListaExtras.csproj">
       <Project>{B9F315AE-47F8-4629-83FC-3B4D70087083}</Project>
       <Name>ListaExtras</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Dropbox\Proyectos\Store\Store\Store\Store.csproj">
+    <ProjectReference Include="..\Store\Store\Store\Store.csproj">
       <Project>{B5651422-0901-4E7F-976A-A4F7893267CA}</Project>
       <Name>Store</Name>
     </ProjectReference>

@@ -1,21 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CivEditor/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../Dropbox/Proyectos/Store/Store/Store/Store.cs">
     <Files>
-      <File FileName="../Dropbox/Proyectos/Store/Store/Store/Store.cs" Line="1" Column="1" />
       <File FileName="CivLibrary/Ciudad.cs" Line="1" Column="1" />
       <File FileName="CivEditor/Program.cs" Line="81" Column="4" />
-      <File FileName="CivLibrary/Extras.cs" Line="32" Column="22" />
-      <File FileName="CivLibrary/Ciencia.cs" Line="36" Column="3" />
-      <File FileName="CivEditor/Data.txt" Line="21" Column="2" />
+      <File FileName="CivLibrary/Extras.cs" Line="1" Column="1" />
+      <File FileName="CivLibrary/Ciencia.cs" Line="1" Column="1" />
+      <File FileName="CivEditor/Data.txt" Line="1" Column="1" />
+      <File FileName="Store/Store/Store/Store.cs" Line="5" Column="2" />
+      <File FileName="Civ/Program.cs" Line="68" Column="25" />
+      <File FileName="../../../../Dropbox/Proyectos/Store/Store/Store/Store.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Civ" expanded="True" />
-          <Node name="CivEditor" expanded="True">
-            <Node name="Program.cs" selected="True" />
-          </Node>
+          <Node name="CivEditor" expanded="True" />
           <Node name="CivLibrary" expanded="True" />
           <Node name="ListaExtras" expanded="True" />
           <Node name="Store" expanded="True" />

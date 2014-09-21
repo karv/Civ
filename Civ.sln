@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civ", "Civ\Civ.csproj", "{5DA8363C-E243-432D-8AC8-36E83102E1AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListaExtras", "..\Dropbox\VB\ListaExtras\ListaExtras.csproj", "{B9F315AE-47F8-4629-83FC-3B4D70087083}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "..\Dropbox\Proyectos\Store\Store\Store\Store.csproj", "{B5651422-0901-4E7F-976A-A4F7893267CA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivLibrary", "CivLibrary\CivLibrary.csproj", "{D0DA2F97-634B-4693-A73B-0C2241BA0C4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivEditor", "CivEditor\CivEditor.csproj", "{7EC46F6D-C474-45A1-8F78-D6CF38BE433A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListaExtras", "ListaExtras\ListaExtras.csproj", "{B9F315AE-47F8-4629-83FC-3B4D70087083}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store\Store\Store.csproj", "{B5651422-0901-4E7F-976A-A4F7893267CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
