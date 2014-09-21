@@ -1,0 +1,21 @@
+recurso
+Ciencia
+recurso
+Alimento
+ciencia
+El fuego
+Ciencia
+10
+\
+ciencia
+Lenguaje
+Ciencia
+10
+\
+ciencia
+El fuego 2
+Ciencia
+12
+El fuego
+Lenguaje
+\
