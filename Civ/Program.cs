@@ -9,7 +9,7 @@ namespace Civ
 		public static void Main (string[] args)
 		{
 			TestClass.DoRead ();
-			Console.WriteLine (g_.Data.Ciencias [0].RecursoReq == g_.Data.Recursos [0]);
+
 			Application.Init ();
 			//MainWindow win = new MainWindow ();
 			//win.Show ();
@@ -69,10 +69,10 @@ namespace Civ
 
 
 			NC.Nombre = "Lenguaje";
-			NC.RecursoReq = Rec;
+			NC.RecursoReq = "Ciencia";
 			NC.CantidadReq = 500;
 
-			Store.Store<Recurso>.Serialize ("text.dat", Rec);
+			//Store.Store<Recurso>.Serialize ("text.dat", Rec);
 			//Store.Store<Recurso>.Save ("text.txt", Rec);
 
 			g_.Data.Recursos.Add (Rec);

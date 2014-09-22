@@ -1,29 +1,24 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../Dropbox/Proyectos/Store/Store/Store/Store.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CivLibrary/Edificio.cs">
     <Files>
-      <File FileName="CivLibrary/Ciudad.cs" Line="1" Column="1" />
-      <File FileName="CivEditor/Program.cs" Line="1" Column="1" />
-      <File FileName="CivLibrary/Extras.cs" Line="1" Column="1" />
-      <File FileName="CivLibrary/Ciencia.cs" Line="1" Column="1" />
-      <File FileName="CivEditor/Data.txt" Line="1" Column="1" />
-      <File FileName="Store/Store/Store/Store.cs" Line="1" Column="1" />
-      <File FileName="Civ/Program.cs" Line="1" Column="1" />
-      <File FileName="../../../../Dropbox/Proyectos/Store/Store/Store/Store.cs" Line="26" Column="4" />
+      <File FileName="Civ/Program.cs" Line="82" Column="6" />
+      <File FileName="CivLibrary/Edificio.cs" Line="20" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Civ" expanded="True" />
-          <Node name="CivEditor" expanded="True" />
-          <Node name="CivLibrary" expanded="True" />
+          <Node name="CivLibrary" expanded="True">
+            <Node name="Edificio.cs" selected="True" />
+          </Node>
           <Node name="ListaExtras" expanded="True" />
-          <Node name="Store" expanded="True" selected="True" />
+          <Node name="Store" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True">
-          <Node name="Civ" selected="True" />
+          <Node name="Store" selected="True" />
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
@@ -33,6 +28,7 @@
           <Value>C._PoblaciónPostProductiva</Value>
           <Value>C.getRealPoblación</Value>
           <Value>C.AlimentoAlmacén</Value>
+          <Value>g_</Value>
         </State>
       </Pad>
     </Pads>
@@ -42,6 +38,7 @@
       <Breakpoint file="/home/edgar/Civ/Civ/Program.cs" line="75" column="1" />
       <Breakpoint file="/home/edgar/Civ/Civ/MainWindow.cs" line="28" column="1" />
       <Breakpoint file="/home/edgar/Civ/CivEditor/Program.cs" line="81" column="4" />
+      <Breakpoint file="/home/edgar/SVN/Civ/Civ/trunk/Civ/Program.cs" line="13" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

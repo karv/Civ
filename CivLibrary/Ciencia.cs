@@ -22,7 +22,7 @@ namespace Civ
 		/// <summary>
 		/// Recurso que se necesita para investigar.
 		/// </summary>
-		public Recurso RecursoReq;
+		public String RecursoReq;
 		/// <summary>
 		/// Cantidad de <see cref="RecursoReq"/> que se necesita para investigar.
 		/// </summary>

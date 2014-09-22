@@ -11,7 +11,7 @@ namespace Civ
 	{
 		public override string ToString ()
 		{
-			return string.Format ("%0: %1//%2//%3", Nombre, getPoblaciónPreProductiva, getPoblaciónProductiva, getPoblaciónPostProductiva);
+			return string.Format ("{0}: {1}//{2}//{3}", Nombre, getPoblaciónPreProductiva, getPoblaciónProductiva, getPoblaciónPostProductiva);
 		}
 
 		public string Nombre;

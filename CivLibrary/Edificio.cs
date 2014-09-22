@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Civ
 {
@@ -24,6 +25,12 @@ namespace Civ
 		bool Civ.IRequerimiento.LoSatisface (Ciudad C){
 			return C.ExisteEdificio(this);
 		}
+
+			// Construcción
+		/// <summary>
+		/// Recursos necesarios para construir.
+		/// </summary>
+		public List<String> ReqRecursos;
 
 	}
 	/// <summary>
