@@ -11,7 +11,7 @@ namespace Store
 {
 
 	[Serializable()]	
-	public class Store<T>
+	public partial class Store<T>
 	{
 		// For use with FileStream, MemoryStream, etc.
 		/// <summary>
@@ -47,8 +47,8 @@ namespace Store
 			using (TextReader stream = new StreamReader(filename))
 				return (T)(new XmlSerializer(typeof(T)).Deserialize(stream));
 		}
-
-		public static void Serialize(string FileName, T mp)
+		[Obsolete()]
+		public static void SerializeOld(string FileName, T mp)
 		{
 			Stream stream = File.Open(FileName, FileMode.Create);
 			BinaryFormatter bformatter = new BinaryFormatter();
@@ -57,8 +57,8 @@ namespace Store
 			bformatter.Serialize(stream, mp);
 			stream.Close();
 		}
-
-		public static T DeSerialize(string FileName)
+		[Obsolete()]
+		public static T DeSerializeOld(string FileName)
 		{
 			T mp;
 			Stream stream = File.Open (FileName, FileMode.Open);
@@ -71,4 +71,3 @@ namespace Store
 		}
 	}
 }
-
