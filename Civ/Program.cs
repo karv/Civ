@@ -101,7 +101,7 @@ namespace Global
 		/// </summary>
 		public static void CargaData ()
 		{
-			Data = Store.Store<g_Data>.DeSerialize (archivo);
+			Data = Store.Store<g_Data>.Deserialize (archivo);
 		}
 
 		public static void GuardaData() 
