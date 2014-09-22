@@ -31,7 +31,7 @@ namespace Civ
 		/// <summary>
 		/// Lista de requerimientos científicos.
 		/// </summary>
-		public System.Collections.Generic.List<Ciencia> ReqCiencia = new System.Collections.Generic.List<Ciencia>();
+		public System.Collections.Generic.List<String> ReqCiencia = new System.Collections.Generic.List<String>();
 
 
 			// IRequerimiento

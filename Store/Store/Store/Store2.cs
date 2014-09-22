@@ -16,10 +16,11 @@ namespace Store
 			System.Xml.Serialization.XmlSerializer writer =
 				new System.Xml.Serialization.XmlSerializer(typeof(T));
 			System.IO.StreamWriter file =
-				new System.IO.StreamWriter(Filename);
+				new System.IO.StreamWriter(Filename, false, Encoding.UTF8);
 
 			writer.Serialize(file, Data);
-			file.Close();
+			file.Flush ();
+			file.Close ();
 		}
 
 		public static T Deserialize (string Filename)

@@ -9,6 +9,7 @@ namespace Civ
 		public static void Main (string[] args)
 		{
 			TestClass.DoRead ();
+			Console.WriteLine (g_.Data.Ciencias [0].RecursoReq == g_.Data.Recursos [0]);
 			Application.Init ();
 			//MainWindow win = new MainWindow ();
 			//win.Show ();
@@ -19,7 +20,8 @@ namespace Civ
 	{
 		public static void DoRead()
 		{
-			g_.Data= Store.Store<g_Data>.Deserialize ("text.dat");
+			g_.Data = new g_Data ();
+			g_.Data= Store.Store<g_Data>.Deserialize ("Data.xml");
 
 		}
 		public static void Do()
@@ -113,6 +115,7 @@ namespace Global
 		{
 			Store.Store<g_Data>.Serialize (archivo, Data);
 		}
+
 	}
 
 }
