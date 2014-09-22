@@ -42,6 +42,7 @@ namespace ListasExtra
             return _Data;
          }
       }
+     //TODO: Agregar explicación
       public V this [T Key]
       {
          get
@@ -125,7 +126,7 @@ namespace ListasExtra
          Suma = OperSuma;
          Nulo = ObjetoNulo;
       }
-
+	// TODO: Explicación
        public System.Collections.Generic.Dictionary<T,V>.KeyCollection Keys
       {
            get
@@ -266,7 +267,8 @@ namespace ListasExtra
       }
 
 
-			//Temporary:
+			// Temporary:
+			// TODO: Hacerlo obsoleto, usar la clase Store. Eliminar la referencia a RunTime.
       public void Guardar(string Archivo)
       {
          //Opens a file and serializes the object into it in binary format.
@@ -279,7 +281,7 @@ namespace ListasExtra
          stream.Close();
       }
    }
-
+	// TODO: explicación
    public class ListaPeso<T> : ListasExtra.ListaPeso<T, Single>
    {
        public ListaPeso()
@@ -315,6 +317,7 @@ namespace ListasExtra
    }
 
    [Serializable()]
+   // TODO: Explicación (De toda la clase)
    public class ObjetoAcotado<T>
    {
       public T CotaSup;
@@ -378,6 +381,7 @@ namespace ListasExtra
       public event EventHandler LlegóMáximo;
    }
 
+	// TODO: Debería hacer obsoleto esto, simplemente usar (x, y) => x < y
    [Serializable()]
    public static class ComparadoresPred
    {
@@ -390,6 +394,7 @@ namespace ListasExtra
          return x < y;
       }
    }
+   // TODO: Obsoleto a este también.
    [Serializable()]
    public static class OperadoresPred
    {
@@ -410,7 +415,7 @@ namespace ListasExtra
          return ret;
       }
    }
-
+	// TODO: ¿Qué diablos es esto?
    [Serializable()]
    public static class ExtDouble
    {
