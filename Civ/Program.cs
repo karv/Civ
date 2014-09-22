@@ -8,7 +8,7 @@ namespace Civ
 	{
 		public static void Main (string[] args)
 		{
-			TestClass.Do ();
+			TestClass.DoRead ();
 			Application.Init ();
 			//MainWindow win = new MainWindow ();
 			//win.Show ();
@@ -17,6 +17,11 @@ namespace Civ
 	}
 	public static class TestClass
 	{
+		public static void DoRead()
+		{
+			g_.Data= Store.Store<g_Data>.Deserialize ("text.dat");
+
+		}
 		public static void Do()
 		{
 			Civilización T = new Civilización ();

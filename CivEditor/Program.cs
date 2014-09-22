@@ -15,6 +15,9 @@ namespace CivEditor
 				Console.WriteLine ("Especifique el archivo a compilar y el archivo salida.");
 				return 1;
 			}
+
+
+
 			doCompile (args [0], args [1]);
 			return 0;
 		}

@@ -22,5 +22,10 @@ namespace Civ
 		{
 			Nombre = nom;
 		}
+
+		public Recurso ()
+		{
+			
+		}
 	}
 }

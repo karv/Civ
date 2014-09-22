@@ -1,14 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Store/Store.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Test/Program.cs">
     <Files>
-      <File FileName="Store/Store.cs" Line="40" Column="1" />
+      <File FileName="Store/Store.cs" Line="61" Column="33" />
+      <File FileName="Store/Store2.cs" Line="12" Column="35" />
+      <File FileName="Test/Program.cs" Line="15" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Store" expanded="True">
-            <Node name="References" selected="True" />
+          <Node name="Store" expanded="True" />
+          <Node name="Test" expanded="True">
+            <Node name="Program.cs" selected="True" />
           </Node>
         </State>
       </Pad>
