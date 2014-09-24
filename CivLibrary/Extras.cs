@@ -28,16 +28,16 @@ namespace Global
 		/// <summary>
 		/// El string del recurso que sirve como alimento en una ciudad.
 		/// </summary>
-		public string RAlimento;
+		public string RecursoAlimento;
 
 		/// <summary>
 		/// El recurso que sirve como alimento en una ciudad.
 		/// </summary>
-		public Civ.Recurso RecursoAlimento
+		public Civ.Recurso RecAlimento
 		{
 			get
 			{
-				return EncuentraRecurso (RAlimento);
+				return EncuentraRecurso (RecursoAlimento);
 
 			}
 		}
