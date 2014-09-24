@@ -1,17 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CivLibrary/Edificio.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Civ/Program.cs">
     <Files>
-      <File FileName="Civ/Program.cs" Line="82" Column="6" />
-      <File FileName="CivLibrary/Edificio.cs" Line="20" Column="4" />
+      <File FileName="Civ/Program.cs" Line="15" Column="18" />
+      <File FileName="ListaExtras/ClassMain.cs" Line="26" Column="23" />
+      <File FileName="CivLibrary/Ciudad.cs" Line="1" Column="1" />
+      <File FileName="CivLibrary/Edificio.cs" Line="9" Column="43" />
+      <File FileName="CivLibrary/Recurso.cs" Line="15" Column="3" />
+      <File FileName="Store/Store/Store/Store2.cs" Line="12" Column="30" />
+      <File FileName="CivLibrary/Extras.cs" Line="40" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Civ" expanded="True" />
-          <Node name="CivLibrary" expanded="True">
-            <Node name="Edificio.cs" selected="True" />
+          <Node name="Civ" expanded="True">
+            <Node name="Program.cs" selected="True" />
           </Node>
+          <Node name="CivLibrary" expanded="True" />
           <Node name="ListaExtras" expanded="True" />
           <Node name="Store" expanded="True" />
         </State>
@@ -38,7 +43,7 @@
       <Breakpoint file="/home/edgar/Civ/Civ/Program.cs" line="75" column="1" />
       <Breakpoint file="/home/edgar/Civ/Civ/MainWindow.cs" line="28" column="1" />
       <Breakpoint file="/home/edgar/Civ/CivEditor/Program.cs" line="81" column="4" />
-      <Breakpoint file="/home/edgar/SVN/Civ/Civ/trunk/Civ/Program.cs" line="13" column="1" />
+      <Breakpoint file="/home/edgar/SVN/Civ/Civ/trunk/Civ/Program.cs" line="88" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

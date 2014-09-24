@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<g_Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Data.xsd">
+  <Ciencias>
+    <Ciencia>
+      <Nombre>Lenguaje</Nombre>
+      <RecursoReq>
+        <Nombre>Ciencia</Nombre>
+      </RecursoReq>
+      <CantidadReq>500</CantidadReq>
+      <ReqCiencia></ReqCiencia>
+    </Ciencia>
+  </Ciencias>
+   <Recursos>
+    <Recurso>
+      <Nombre>Ciencia</Nombre>
+      <Desaparece>true</Desaparece>
+    </Recurso>
+    <Recurso>
+      <Nombre>Alimento</Nombre>
+      <Desaparece>false</Desaparece>
+    </Recurso>
+  </Recursos>
+  <RecursoAlimento>Alimento</RecursoAlimento>
+</g_Data>

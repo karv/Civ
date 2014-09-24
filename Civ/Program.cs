@@ -24,6 +24,7 @@ namespace Civ
 			g_.Data= Store.Store<g_Data>.Deserialize ("Data.xml");
 
 		}
+		[Obsolete]
 		public static void Do()
 		{
 			Civilización T = new Civilización ();
@@ -79,6 +80,8 @@ namespace Civ
 			g_.Data.Recursos.Add (Ciudad.RecursoAlimento);
 			g_.Data.Ciencias.Add (NC);
 
+			g_.Data.RAlimento = "Alimento";
+
 			g_.GuardaData ();
 
 
@@ -95,13 +98,13 @@ namespace Global
 	/// <summary>
 	/// Los objetos globales.
 	/// </summary>
-	[Serializable]
+	[Serializable()]
 	public static class g_
 	{
 		public static g_Data Data = new g_Data();
 		public static g_State State = new g_State();
 
-		private const string archivo = @"Data.xml";
+		private const string archivo = "Data2.xml";
 
 		/// <summary>
 		/// Carga del archivo predeterminado.

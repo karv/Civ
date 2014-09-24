@@ -26,9 +26,21 @@ namespace Global
 		public List<Civ.Recurso> Recursos = new List<Civ.Recurso> ();
 
 		/// <summary>
+		/// El string del recurso que sirve como alimento en una ciudad.
+		/// </summary>
+		public string RAlimento;
+
+		/// <summary>
 		/// El recurso que sirve como alimento en una ciudad.
 		/// </summary>
-		public Civ.Recurso RecursoAlimento;
+		public Civ.Recurso RecursoAlimento
+		{
+			get
+			{
+				return EncuentraRecurso (RAlimento);
+
+			}
+		}
 
 
 		/// <summary>

@@ -9,7 +9,10 @@ namespace Civ
 		{
 			return Nombre;
 		}
-
+		/// <summary>
+		/// Desaparece al final del turno.
+		/// </summary>
+		public bool Desaparece;
 		/// <summary>
 		/// Nombre del recurso.
 		/// </summary>
