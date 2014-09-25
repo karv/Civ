@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <g_Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Data.xsd">
-  <Ciencias>
-    <Ciencia>
-      <Nombre>Lenguaje</Nombre>
-      <RecursoReq>
-        <Nombre>Ciencia</Nombre>
-      </RecursoReq>
-      <CantidadReq>500</CantidadReq>
-      <ReqCiencia></ReqCiencia>
-    </Ciencia>
-  </Ciencias>
    <Recursos>
     <Recurso>
       <Nombre>Ciencia</Nombre>
@@ -21,4 +11,14 @@
     </Recurso>
   </Recursos>
   <RecursoAlimento>Alimento</RecursoAlimento>
+  <Ciencias>
+    <Ciencia>
+      <Nombre>Lenguaje</Nombre>
+      <RecursoReq>
+        <Nombre>Ciencia</Nombre>
+      </RecursoReq>
+      <CantidadReq>500</CantidadReq>
+      <ReqCiencia></ReqCiencia>
+    </Ciencia>
+  </Ciencias>
 </g_Data>

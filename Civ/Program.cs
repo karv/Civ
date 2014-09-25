@@ -11,18 +11,19 @@ namespace Civ
 			TestClass.DoRead ();
 
 			Application.Init ();
+
 			//MainWindow win = new MainWindow ();
 			//win.Show ();
 			Application.Run ();
 		}
 	}
+
 	public static class TestClass
 	{
 		public static void DoRead()
 		{
 			g_.Data = new g_Data ();
 			g_.Data= Store.Store<g_Data>.Deserialize ("Data.xml");
-
 		}
 		[Obsolete]
 		public static void Do()
@@ -80,7 +81,7 @@ namespace Civ
 			g_.Data.Recursos.Add (Ciudad.RecursoAlimento);
 			g_.Data.Ciencias.Add (NC);
 
-			g_.Data.RAlimento = "Alimento";
+			g_.Data.RecursoAlimento = "Alimento";
 
 			g_.GuardaData ();
 
