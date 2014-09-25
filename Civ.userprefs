@@ -1,42 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Civ/Program.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Civ/Program.cs" Line="15" Column="18" />
-      <File FileName="ListaExtras/ClassMain.cs" Line="26" Column="23" />
-      <File FileName="CivLibrary/Ciudad.cs" Line="1" Column="1" />
-      <File FileName="CivLibrary/Edificio.cs" Line="9" Column="43" />
-      <File FileName="CivLibrary/Recurso.cs" Line="15" Column="3" />
-      <File FileName="Store/Store/Store/Store2.cs" Line="12" Column="30" />
-      <File FileName="CivLibrary/Extras.cs" Line="40" Column="41" />
+      <File FileName="Civ\Program.cs" Line="4" Column="4" />
+      <File FileName="ListaExtras\ClassMain.cs" Line="1" Column="1" />
+      <File FileName="CivLibrary\Ciudad.cs" Line="1" Column="1" />
+      <File FileName="CivLibrary\Edificio.cs" Line="1" Column="1" />
+      <File FileName="CivLibrary\Recurso.cs" Line="1" Column="1" />
+      <File FileName="Store\Store\Store\Store2.cs" Line="1" Column="1" />
+      <File FileName="CivLibrary\Extras.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Civ" expanded="True">
-            <Node name="Program.cs" selected="True" />
-          </Node>
-          <Node name="CivLibrary" expanded="True" />
-          <Node name="ListaExtras" expanded="True" />
-          <Node name="Store" expanded="True" />
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True">
-          <Node name="Store" selected="True" />
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>C._PoblaciónPreProductiva</Value>
-          <Value>C._PoblaciónProductiva</Value>
-          <Value>C._PoblaciónPostProductiva</Value>
-          <Value>C.getRealPoblación</Value>
-          <Value>C.AlimentoAlmacén</Value>
-          <Value>g_</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
