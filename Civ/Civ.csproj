@@ -76,5 +76,9 @@
       <Project>{B5651422-0901-4E7F-976A-A4F7893267CA}</Project>
       <Name>Store</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GtkLinux\GtkLinux.csproj">
+      <Project>{79117EE0-4A61-4E88-BB9E-F29DC9CCBCD6}</Project>
+      <Name>GtkLinux</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

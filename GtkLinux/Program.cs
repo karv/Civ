@@ -20,17 +20,45 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using Gtk;
+using Civ;
+using Global;
 
 namespace GtkLinux
 {
 	class MainClass
-	{
+{
+
+		private static void DoRead()
+		{
+
+			g_.Data = new g_Data ();
+			g_.Data = Store.Store<g_Data>.Deserialize ("Data.xml");
+
+		}
 		public static void Main (string[] args)
 		{
-			Application.Init ();
-			MainWindow win = new MainWindow ();
+			DoRead ();
+
+
+			Civilización C = new Civilización ();
+			Ciudad Cd = new Ciudad ("MyCity", C);
+
+			Cd.PoblaciónProductiva = 10;
+			//g_.Data.RecursoAlimento = "";
+
+
+			//Application.Init ();
+
+			GtkLinux.CivWindow win = new GtkLinux.CivWindow (C);
 			win.Show ();
 			Application.Run ();
+
+			while (true) {
+				C.doTick ();
+				//C.FullTick ();
+				Console.WriteLine (Cd.getPoblaciónPreProductiva + "\t" + Cd.PoblaciónProductiva + "\t" + Cd.getPoblaciónPostProductiva);				                    
+			}
+			//Console.WriteLine ();
 		}
 	}
 }

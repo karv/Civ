@@ -20,15 +20,6 @@ namespace Civ
 
 			//Application.Init ();
 
-			//MainWindow win = new MainWindow ();
-			//win.Show ();
-			//Application.Run ();
-
-			while (true) {
-				C.doTick ();
-				//C.FullTick ();
-				Console.WriteLine (Cd.getPoblaciónPreProductiva + "\t" + Cd.PoblaciónProductiva + "\t" + Cd.getPoblaciónPostProductiva);				                    
-			}
 			//Console.WriteLine ();
 		}
 	}

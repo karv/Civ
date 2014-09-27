@@ -45,7 +45,7 @@ Global
 		{D0DA2F97-634B-4693-A73B-0C2241BA0C4C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Civ\Civ.csproj
+		StartupItem = GtkLinux\GtkLinux.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
