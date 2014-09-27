@@ -25,7 +25,7 @@ public partial class MainWindow: Gtk.Window
 {
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
-		Build ();
+		//Build ();
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -33,4 +33,17 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+
 }
+
+namespace CivGtk
+{
+	public static class GtkMain
+	{
+		public static void Main()
+		{
+		}
+
+	}
+}
+

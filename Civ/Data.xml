@@ -1,5 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <g_Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Data.xsd">
+  <Edificios>
+    <EdificioRAW>
+      <Nombre>Palacio</Nombre>
+      <MaxWorkers>1</MaxWorkers>
+      <Requiere>
+        <Nombre>Lenguaje</Nombre>
+      </Requiere>
+      <ReqRecursos>
+        <ParOfStringSingle>
+          <x>Piedra</x>
+          <y>12</y>
+        </ParOfStringSingle>
+        <ParOfStringSingle>
+          <x>Otro</x>
+          <y>12.34</y>
+        </ParOfStringSingle>
+      </ReqRecursos>
+    </EdificioRAW>
+  </Edificios>  
    <Recursos>
     <Recurso>
       <Nombre>Ciencia</Nombre>
@@ -20,5 +39,5 @@
       <CantidadReq>500</CantidadReq>
       <ReqCiencia></ReqCiencia>
     </Ciencia>
-  </Ciencias>
+  </Ciencias>  
 </g_Data>

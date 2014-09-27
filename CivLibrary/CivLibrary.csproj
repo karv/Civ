@@ -32,7 +32,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ciencia.cs" />
     <Compile Include="Ciudad.cs" />
@@ -41,6 +40,7 @@
     <Compile Include="Extras.cs" />
     <Compile Include="Recurso.cs" />
     <Compile Include="Trabajo.cs" />
+    <Compile Include="Random.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

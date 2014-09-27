@@ -14,6 +14,10 @@ namespace Civ
 		/// </summary>
 		public bool Desaparece;
 		/// <summary>
+		/// ¿El recurso es científico?
+		/// </summary>
+		public bool EsCientífico;
+		/// <summary>
 		/// Nombre del recurso.
 		/// </summary>
 		public string Nombre;

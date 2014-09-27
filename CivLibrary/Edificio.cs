@@ -3,22 +3,18 @@ using System.Collections.Generic;
 
 namespace Civ
 {
+	[Serializable()]
 	/// <summary>
 	/// Representa una clase de edificios. Para sólo lectura.
 	/// </summary>
 	public class EdificioRAW : IRequerimiento
 	{
-		// TODO: Hacer readonly cuando termine el debug
 		public string Nombre;
 		public ulong MaxWorkers;
 
 		public EdificioRAW ()
 		{
 			
-		}
-		public EdificioRAW (string Archivo):base()
-		{
-			//TODO Aquí debería cargar el archivo.
 		}
 
 		// IRequerieminto
@@ -30,7 +26,28 @@ namespace Civ
 		/// <summary>
 		/// Recursos necesarios para construir.
 		/// </summary>
-		public List<String> ReqRecursos;
+		public List<String> Requiere = new List<string>();
+
+			// Requiere
+		/// <summary>
+		/// Lista de nombres de sus IRequerimientos.
+		/// </summary>
+		//public ListasExtra.ListaPeso<string> Requiere = new ListasExtra.ListaPeso<string> ();
+		//public List<string> Requiere = new List<string>();
+		public List<Basic.Par<string, float>> ReqRecursos = new List<Basic.Par<string, float>>();
+
+		// TODO: Mover esta propiedad a la clase que lo necesite.
+
+		/// <summary>
+		/// Devuelve la lista de requerimientos
+		/// </summary>
+		/// <value>El IRequerimiento</value> 
+		public List<IRequerimiento> Reqs ()
+		{
+			// TODO: Que funcione, debería revisar la lista de cada Edificio, Ciencias y los demás IRequerimientos
+			// y convertirlos a su respectivo objeto.
+			return null;
+		}
 
 	}
 	/// <summary>

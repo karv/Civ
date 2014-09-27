@@ -11,7 +11,7 @@ namespace Civ
 	{
 		public override string ToString ()
 		{
-			return string.Format ("{0}: {1}//{2}//{3}", Nombre, getPoblaciónPreProductiva, getPoblaciónProductiva, getPoblaciónPostProductiva);
+			return string.Format ("{0}: {1}//{2}//{3}", Nombre, getPoblaciónPreProductiva, PoblaciónProductiva, getPoblaciónPostProductiva);
 		}
 
 		public string Nombre;
@@ -46,7 +46,11 @@ namespace Civ
 		/// <summary>
 		/// Recurso que será el alimento
 		/// </summary>
-		public static Recurso RecursoAlimento;
+		public static Recurso RecursoAlimento {
+			get {
+				return Global.g_.Data.RecAlimento;
+			}
+		}
 		/// <summary>
 		/// Número de infantes que nacen por (PoblaciónProductiva*Tick) Base.
 		/// </summary>
@@ -97,7 +101,7 @@ namespace Civ
 		/// <value>The get poplación.</value>
 		public ulong getPoblación {
 			get {
-				return getPoblaciónProductiva + getPoblaciónPreProductiva + getPoblaciónPostProductiva;
+				return PoblaciónProductiva + getPoblaciónPreProductiva + getPoblaciónPostProductiva;
 			}
 		}
 
@@ -105,9 +109,12 @@ namespace Civ
 		/// Devuelve la población productiva.
 		/// </summary>
 		/// <value></value>
-		public ulong getPoblaciónProductiva {
+		public ulong PoblaciónProductiva {
 			get {
 				return (ulong)Math.Floor (_PoblaciónProductiva);
+			}
+			set	{
+				_PoblaciónProductiva = value;
 			}
 		}
 
@@ -148,7 +155,7 @@ namespace Civ
 				AlimentoAlmacén = 0;
 				//Promesas de muerte por sector.
 				Crecimiento[0] -= getPoblaciónPreProductiva * pctMuerte;
-				Crecimiento[1] -= getPoblaciónProductiva * pctMuerte;
+				Crecimiento[1] -= PoblaciónProductiva * pctMuerte;
 				Crecimiento[2] -= getPoblaciónPostProductiva * pctMuerte;
 			}
 
@@ -158,15 +165,15 @@ namespace Civ
 			Crecimiento [0] -= Desarrollo;
 			Crecimiento [1] += Desarrollo;
 				//Productivo a viejo
-			float Envejecer = TasaVejezBase * getPoblaciónProductiva;
+			float Envejecer = TasaVejezBase * PoblaciónProductiva;
 			Crecimiento [1] -= Envejecer;
 			Crecimiento [2] += Envejecer;
 				//Nuevos infantes
-			float Natalidad = TasaNatalidadBase * getPoblaciónProductiva;
+			float Natalidad = TasaNatalidadBase * PoblaciónProductiva;
 			Crecimiento [0] += Natalidad;
 				//Mortalidad
 			Crecimiento [0] -= getPoblaciónPreProductiva * TasaMortalidadInfantilBase;
-			Crecimiento [1] -= getPoblaciónProductiva * TasaMortalidadProductivaBase;
+			Crecimiento [1] -= PoblaciónProductiva * TasaMortalidadProductivaBase;
 			Crecimiento [2] -= getPoblaciónPostProductiva * TasaMortalidadVejezBase;
 
 			//Aplicar cambios.
@@ -274,7 +281,7 @@ namespace Civ
 		{
 			get
 			{
-				return getPoblaciónProductiva - getNumTrabajadores;
+				return PoblaciónProductiva - getNumTrabajadores;
 			}
 		}
 	}

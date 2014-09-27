@@ -1,20 +1,35 @@
 using System;
-using Gtk;
+//using Gtk;
 using Global;
 
 namespace Civ
 {
-	class MainClass
+	public class MainClass
 	{
 		public static void Main (string[] args)
 		{
 			TestClass.DoRead ();
 
-			Application.Init ();
+
+			Civilización C = new Civilización ();
+			Ciudad Cd = new Ciudad ("MyCity", C);
+
+			Cd.PoblaciónProductiva = 10;
+			//g_.Data.RecursoAlimento = "";
+
+
+			//Application.Init ();
 
 			//MainWindow win = new MainWindow ();
 			//win.Show ();
-			Application.Run ();
+			//Application.Run ();
+
+			while (true) {
+				C.doTick ();
+				//C.FullTick ();
+				Console.WriteLine (Cd.getPoblaciónPreProductiva + "\t" + Cd.PoblaciónProductiva + "\t" + Cd.getPoblaciónPostProductiva);				                    
+			}
+			//Console.WriteLine ();
 		}
 	}
 
@@ -31,8 +46,6 @@ namespace Civ
 			Civilización T = new Civilización ();
 			Ciudad C = new Ciudad ("Alejandría", T);
 
-
-			Ciudad.RecursoAlimento = new Recurso ("Alimento");
 			C.Almacén [Ciudad.RecursoAlimento] = 100f;
 
 				// Algunos edificios
@@ -86,40 +99,8 @@ namespace Civ
 			g_.GuardaData ();
 
 
-			while (true) {
-				C.FullTick ();
-				Console.WriteLine (C.getPoblaciónPreProductiva + "\t" + C.getPoblaciónProductiva + "\t" + C.getPoblaciónPostProductiva);				                    
-			}
+
 		}
 	}
 }
 
-namespace Global
-{
-	/// <summary>
-	/// Los objetos globales.
-	/// </summary>
-	[Serializable()]
-	public static class g_
-	{
-		public static g_Data Data = new g_Data();
-		public static g_State State = new g_State();
-
-		private const string archivo = "Data2.xml";
-
-		/// <summary>
-		/// Carga del archivo predeterminado.
-		/// </summary>
-		public static void CargaData ()
-		{
-			Data = Store.Store<g_Data>.Deserialize (archivo);
-		}
-
-		public static void GuardaData() 
-		{
-			Store.Store<g_Data>.Serialize (archivo, Data);
-		}
-
-	}
-
-}
