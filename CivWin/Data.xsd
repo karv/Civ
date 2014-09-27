@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="g_Data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Edificios" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="Recursos" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="RecursoAlimento" type="xs:string"  minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="Ciencias" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ciencias">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Ciencia"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ciencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nombre" type="xs:string"/>
+        <xs:element ref="RecursoReq"/>
+        <xs:element name="CantidadReq" type="xs:decimal"/>
+        <xs:element name="ReqCiencia" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecursoReq">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nombre" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Recursos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Recurso" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Recurso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nombre" type="xs:string"/>
+        <xs:element name="Desaparece" type="xs:boolean" minOccurs="0" default="false"/>
+        <xs:element name="EsCientífico" type="xs:boolean" minOccurs="0" default="false"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Edificios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="EdificioRAW " maxOccurs="1" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EdificioRAW">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nombre" type="xs:string"/>
+        <xs:element name="MaxWorkers" type="xs:unsignedLong"/>
+        <xs:element ref="Requiere"/>
+        <xs:element ref="ReqRecursos"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Requiere">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nombre" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReqRecursos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ParOfStringSingle" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParOfStringSingle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="x" type="xs:string"/>
+        <xs:element name="y" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

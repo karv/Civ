@@ -1,0 +1,17 @@
+Civ/Civ/bin/Debug/Civ.vshost.exe
+*.manifest
+Civ/bin/*
+*.exe
+Civ/Civ/bin/*
+Civ/Civ/obj/*
+Civ/obj/*
+Civgtk/*
+CivLibrary/bin/*
+CivLibrary/obj/*
+CivWin/bin/*
+CivWin/obj/*
+ListaExtras/obj/*
+GtkLinux/*
+ListaExtras/bin/*
+Store/Store/Store/bin/*
+Store/Store/Store/obj/*
