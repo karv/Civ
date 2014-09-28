@@ -1,5 +1,7 @@
 using System;
 using ListasExtra;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Civ
 {
@@ -13,14 +15,77 @@ namespace Civ
 		/// Nombre
 		/// </summary>
 		public string Nombre;
+
+        /// <summary>
+        /// Recursos consumidos por trabajador*turno (Base)
+        /// </summary>
+        public List<Basic.Par<string, float>> EntradaStr = new List<Basic.Par<string, float>>();
+        
+        [XmlIgnore()]
 		/// <summary>
 		/// Recursos consumidos por trabajador*turno (Base)
 		/// </summary>
-		public ListaPeso<Recurso> EntradaBase = new ListaPeso<Recurso>();
+		public ListaPeso<Recurso> EntradaBase 
+        {
+            get
+            {
+                ListaPeso<Recurso> ret = new ListaPeso<Recurso>();
+                foreach (var x in EntradaStr)
+                {
+                    ret[Global.g_.Data.EncuentraRecurso(x.x)] = x.y;
+                }
+                return ret;
+            }
+        }
+
+        /// <summary>
+        /// Recursos producidos por trabajador*turno (Base)
+        /// </summary>
+        public List<Basic.Par<string, float>> SalidaStr = new List<Basic.Par<string, float>>();
+
+        [XmlIgnore()]
 		/// <summary>
 		/// Recursos producidos por trabajador*turno (Base)
 		/// </summary>
-		public ListaPeso<Recurso> SalidaBase = new ListaPeso<Recurso>();
+		public ListaPeso<Recurso> SalidaBase
+        {
+            get
+            {
+                ListaPeso<Recurso> ret = new ListaPeso<Recurso>();
+                foreach (var x in SalidaStr)
+                {
+                    ret[Global.g_.Data.EncuentraRecurso(x.x)] = x.y;
+                }
+                return ret;
+            }
+        }
+
+        // Requiere
+        /// <summary>
+        /// IRequerimientos necesarios para construir.
+        /// No se requiere listar al edificio vinculado. Su necesidad es implícita.
+        /// </summary>
+        public List<String> Requiere = new List<string>();
+
+        /// <summary>
+        /// Devuelve la lista de requerimientos
+        /// </summary>
+        /// <value>El IRequerimiento</value> 
+        public List<IRequerimiento> Reqs()
+        {
+            // TODO: Que funcione, debería revisar la lista de cada Edificio, Ciencias y los demás IRequerimientos
+            // y convertirlos a su respectivo objeto. Devolver esa lista.
+            throw new NotImplementedException();
+            //return null;
+        }
+
+        /// <summary>
+        /// EdificioRAW vinculado a este trabajo.
+        /// </summary>
+        public string Edificio;
+
+
+        
 	}
 
 	/// <summary>
@@ -113,7 +178,7 @@ namespace Civ
 		{
 			float PctProd = 1;
 			foreach (var x in RAW.EntradaBase.Keys) {
-				PctProd = Math.Min (PctProd, Almacén [x] / (RAW.EntradaBase [x] * Trabajadores));
+				PctProd = Math.Min (PctProd, Almacén [x] / (RAW.EntradaBase[x] * Trabajadores));
 			}
 
 			// Consumir recursos
@@ -129,4 +194,3 @@ namespace Civ
 		}
 	}
 }
-

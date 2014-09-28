@@ -7,6 +7,7 @@
         <xs:element ref="Recursos" minOccurs="1" maxOccurs="1"/>
         <xs:element name="RecursoAlimento" type="xs:string"  minOccurs="1" maxOccurs="1"/>
         <xs:element ref="Ciencias" minOccurs="1" maxOccurs="1"/>
+		<xs:element ref="Trabajos" minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -53,7 +54,7 @@
   <xs:element name="Edificios">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="EdificioRAW " maxOccurs="1" minOccurs="1"/>
+        <xs:element ref="EdificioRAW" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -62,7 +63,7 @@
       <xs:sequence>
         <xs:element name="Nombre" type="xs:string"/>
         <xs:element name="MaxWorkers" type="xs:unsignedLong"/>
-        <xs:element ref="Requiere"/>
+        <xs:element ref="Requiere" minOccurs="0"/>
         <xs:element ref="ReqRecursos"/>
       </xs:sequence>
     </xs:complexType>
@@ -70,7 +71,7 @@
   <xs:element name="Requiere">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Nombre" type="xs:string"/>
+        <xs:element name="Nombre" type="xs:string" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -89,4 +90,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Trabajos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Trabajo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Trabajo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nombre" type="xs:string"/>
+		    <xs:element ref="EntradaStr" minOccurs ="0" maxOccurs="1" />
+		    <xs:element ref="SalidaStr" minOccurs ="0" maxOccurs="1" />
+		    <xs:element ref="Requiere" minOccurs ="0" maxOccurs="1" />
+        <xs:element name = "Edificio" type = "xs:string" minOccurs ="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>  
+  <xs:element name="EntradaStr">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ParOfStringSingle" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SalidaStr">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ParOfStringSingle" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element> 
 </xs:schema>

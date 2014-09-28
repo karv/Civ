@@ -22,21 +22,19 @@ namespace Civ
 			return C.ExisteEdificio(this);
 		}
 
-			// Construcción
+			// Requiere
 		/// <summary>
-		/// Recursos necesarios para construir.
+		/// IRequerimientos necesarios para construir.
 		/// </summary>
 		public List<String> Requiere = new List<string>();
 
-			// Requiere
+			// Construcción
 		/// <summary>
 		/// Lista de nombres de sus IRequerimientos.
 		/// </summary>
 		//public ListasExtra.ListaPeso<string> Requiere = new ListasExtra.ListaPeso<string> ();
 		//public List<string> Requiere = new List<string>();
 		public List<Basic.Par<string, float>> ReqRecursos = new List<Basic.Par<string, float>>();
-
-		// TODO: Mover esta propiedad a la clase que lo necesite.
 
 		/// <summary>
 		/// Devuelve la lista de requerimientos
@@ -45,8 +43,9 @@ namespace Civ
 		public List<IRequerimiento> Reqs ()
 		{
 			// TODO: Que funcione, debería revisar la lista de cada Edificio, Ciencias y los demás IRequerimientos
-			// y convertirlos a su respectivo objeto.
-			return null;
+			// y convertirlos a su respectivo objeto. Devolver esa lista.
+            throw new NotImplementedException ();
+			//return null;
 		}
 
 	}

@@ -18,8 +18,22 @@
         </ParOfStringSingle>
       </ReqRecursos>
     </EdificioRAW>
-  </Edificios>  
-   <Recursos>
+    <EdificioRAW>
+      <Nombre>Granja</Nombre>
+      <MaxWorkers>100</MaxWorkers>
+      <ReqRecursos>
+        <ParOfStringSingle>
+          <x>Madera</x>
+          <y>10</y>
+        </ParOfStringSingle>
+        <ParOfStringSingle>
+          <x>Alimento</x>
+          <y>5</y>
+        </ParOfStringSingle>
+      </ReqRecursos>
+    </EdificioRAW>
+  </Edificios>
+  <Recursos>
     <Recurso>
       <Nombre>Ciencia</Nombre>
       <Desaparece>true</Desaparece>
@@ -39,5 +53,23 @@
       <CantidadReq>500</CantidadReq>
       <ReqCiencia></ReqCiencia>
     </Ciencia>
-  </Ciencias>  
+  </Ciencias>
+  <Trabajos>
+    <Trabajo>
+      <Nombre>Sembrar Maíz</Nombre>
+      <EntradaStr>
+        <ParOfStringSingle>
+          <x>Alimento</x>
+          <y>0.1</y>
+        </ParOfStringSingle>
+      </EntradaStr>
+      <SalidaStr>
+        <ParOfStringSingle>
+          <x>Alimento</x>
+          <y>1.3</y>
+        </ParOfStringSingle>
+      </SalidaStr>
+      <Edificio>Granja</Edificio>
+    </Trabajo>
+  </Trabajos>
 </g_Data>

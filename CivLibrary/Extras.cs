@@ -168,6 +168,11 @@ namespace Basic
 			x = s;
 			y = t;
 		}
+
+        public override string ToString()
+        {
+            return string.Format("({0}, {1})", x, y);
+        }
 	}
 
 }
