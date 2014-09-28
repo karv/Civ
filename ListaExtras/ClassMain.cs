@@ -42,7 +42,11 @@ namespace ListasExtra
             return _Data;
          }
       }
-     //TODO: Agregar explicación
+       /// <summary>
+       /// Devuelve o establece el valor de este objeto en un valor específico.
+       /// </summary>
+       /// <param name="Key">Valor específico.</param>
+       /// <returns>Devuelve el valor específico de este objeto en una entrada.</returns>
       public V this [T Key]
       {
          get
@@ -126,7 +130,9 @@ namespace ListasExtra
          Suma = OperSuma;
          Nulo = ObjetoNulo;
       }
-	// TODO: Explicación
+       /// <summary>
+       /// Devuelve el soporte de esta instancia.
+       /// </summary>
        public System.Collections.Generic.Dictionary<T,V>.KeyCollection Keys
       {
            get
@@ -265,10 +271,7 @@ namespace ListasExtra
       {
          return Left + -Right;
       }
-
-
-			// Temporary:
-			// TODO: Hacerlo obsoleto, usar la clase Store. Eliminar la referencia a RunTime.
+       
       public void Guardar(string Archivo)
       {
          //Opens a file and serializes the object into it in binary format.
@@ -281,7 +284,10 @@ namespace ListasExtra
          stream.Close();
       }
    }
-	// TODO: explicación
+    /// <summary>
+    /// Representa una función de T a float de soporte finito. hereda la operación suma.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
    public class ListaPeso<T> : ListasExtra.ListaPeso<T, Single>
    {
        public ListaPeso()
@@ -311,119 +317,7 @@ namespace ListasExtra
                }
            }
            return ret;
-
        }
        
-   }
-
-   [Serializable()]
-   // TODO: Explicación (De toda la clase)
-   public class ObjetoAcotado<T>
-   {
-      public T CotaSup;
-      public T CotaInf;
-      private T _Valor;
-      //private Comparer<T> Comparador;
-      private Func <T,T,Boolean> _EsMenor;
-      public Func<T,T,Boolean> EsMenor
-      {
-         get
-         {
-            return _EsMenor;
-         }
-         private set
-         {
-            _EsMenor= value;
-         }
-      }
-
-      public T Valor
-      {
-         get
-         {
-            return _Valor;
-         }
-         set
-         {
-            
-            _Valor= EsMenor(value,CotaSup) ? (EsMenor(value,CotaInf) ? CotaInf: value ):CotaSup;
-            if (_Valor.Equals(CotaInf))
-            {
-               EventHandler Handler = LlegóMínimo;
-               Handler(this, null);
-            }
-            if (_Valor.Equals(CotaSup))
-            {
-               EventHandler Handler = LlegóMáximo;
-               Handler(this, null);
-            }
-         }
-      }
-
-      public ObjetoAcotado(Func<T, T, Boolean> Comparador)
-      {
-         EsMenor = Comparador;   
-      }
-      public ObjetoAcotado(Func<T, T, Boolean> Comparador, T Min, T Max, T Inicial)
-         : this(Comparador)
-      {
-         CotaInf = Min;
-         CotaSup = Max;
-         Valor = Inicial;
-      }
-      public override string ToString()
-      {
-         return Valor.ToString();
-      }
-
-      //Eventos
-      public event EventHandler LlegóMínimo;
-      public event EventHandler LlegóMáximo;
-   }
-
-	// TODO: Debería hacer obsoleto esto, simplemente usar (x, y) => x < y
-   [Serializable()]
-   public static class ComparadoresPred
-   {
-      public static  Boolean EsMenor(Double x, Double y)
-      {
-         return x < y;
-      }
-      public static Boolean EsMenor(Single x, Single y)
-      {
-         return x < y;
-      }
-   }
-   // TODO: Obsoleto a este también.
-   [Serializable()]
-   public static class OperadoresPred
-   {
-      public static Double Suma(Double x, Double y)
-      {
-         return x + y;         
-      }
-      public static long Suma(long x, long y)
-      {
-         return x + y;
-      }
-      public static ObjetoAcotado<Double> Suma(ObjetoAcotado<Double> x, ObjetoAcotado<Double> y)
-      {
-         ObjetoAcotado<Double> ret = new ObjetoAcotado<double>(x.EsMenor);
-         ret.CotaSup = Math.Max(x.CotaSup, y.CotaSup);
-         ret.CotaInf = Math.Min(x.CotaInf, y.CotaInf);
-         ret.Valor = x.Valor + y.Valor;
-         return ret;
-      }
-   }
-	// TODO: ¿Qué diablos es esto?
-   [Serializable()]
-   public static class ExtDouble
-   {
-      public static ListasExtra.ObjetoAcotado<Double> ToAcotado(this Double x)
-      {
-         ObjetoAcotado<Double> ret = new ObjetoAcotado<Double>(ComparadoresPred.EsMenor, Double.MinValue, Double.MaxValue, 0);
-         ret.Valor = x;
-         return ret;
-      }
    }
 }

@@ -176,13 +176,14 @@ namespace Civ
 			Crecimiento [1] -= PoblaciónProductiva * TasaMortalidadProductivaBase;
 			Crecimiento [2] -= getPoblaciónPostProductiva * TasaMortalidadVejezBase;
 
-			//Aplicar cambios.
-			//TODO: Un crecimiento negativo en el sector productivo causaría problemas con los trabajos. Arreglarlo.
+			// Aplicar cambios.
+			// TODO: Un crecimiento negativo en el sector productivo causaría problemas con los trabajos. Arreglarlo.
+            // Agregar una propiedad a los trabajos, que controle su prioridad, los de menor prioridad pierden trabajadores en este caso.
+            // Los de mayor prioridad reclutan trabajadores en descanso. (¿opcional?)
+            
 			_PoblaciónPreProductiva = Math.Max (_PoblaciónPreProductiva + Crecimiento [0], 0);
 			_PoblaciónProductiva = Math.Max (_PoblaciónProductiva + Crecimiento [1], 0);
 			_PoblaciónPostProductiva = Math.Max (_PoblaciónPostProductiva + Crecimiento [2], 0);
-
-			//TODO: Probar el popTick.
 		}
 			// Tick
 		/// <summary>
@@ -209,11 +210,12 @@ namespace Civ
 		/// Almacén de recursos.
 		/// </summary>
 		public ListaPeso<Recurso> Almacén = new ListaPeso<Recurso>();
+
 		/// <summary>
 		/// Devuelve el alimento existente en la ciudad.
 		/// </summary>
 		/// <value>The alimento almacén.</value>
-		float AlimentoAlmacén {
+		public float AlimentoAlmacén {
 			get {
 				return Almacén [RecursoAlimento];
 			}
@@ -243,11 +245,6 @@ namespace Civ
 			}
 			return false;
 		}
-
-//		public void AgregarEdificioExistente(Edificio Edif)
-//		{
-			// TODO
-//		}
 
 		/// <summary>
 		/// Agrega una instancia de edicifio a la ciudad.

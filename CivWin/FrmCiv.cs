@@ -12,7 +12,7 @@ using CivWin;
 
 namespace CivWin
 {
-    public partial class FrmCiv : Form
+    public partial class FrmCiv : Form, IDibujable
     {
         public readonly Civilización Civ;
         /// <summary>
@@ -35,6 +35,15 @@ namespace CivWin
         private void acTurno(object sender, EventArgs e)
         {
             Civ.doTick();
+            foreach (var x in Application.OpenForms)
+            {
+                if (x is IDibujable)
+                {
+                    IDibujable y = (IDibujable)x;
+                    y.Draw();
+                }
+            }
+            Draw();
         }
 
         public void Draw ()

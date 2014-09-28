@@ -55,11 +55,23 @@ namespace Civ
 	/// </summary>
 	public class Edificio
 	{
+        /// <summary>
+        /// Devuelve el nombre del (RAW del) edificio.
+        /// </summary>
+        public string Nombre
+        {
+            get
+            {
+                return RAW.Nombre;
+            }
+
+        }
+
+
 		public override string ToString ()
 		{
 			return CiudadDueño.Nombre + " - " + RAW.Nombre;
 		}
-		// TODO this
 		/// <summary>
 		/// El RAW del edificio.
 		/// </summary>
@@ -99,7 +111,6 @@ namespace Civ
 			}
 		}
 
-		// TODO getFreeWorkers; getFreeWorkers (Tomando en cuenta la ciudad)
 		/// <summary>
 		/// Devuelve el número de trabajadores ocupados en este edificio.
 		/// </summary>

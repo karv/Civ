@@ -31,7 +31,9 @@ namespace CivWin
             Ciudad Cd = new Ciudad("MyCity", C);
 
             Cd.PoblaciónProductiva = 10;
+            Cd.Almacén[Ciudad.RecursoAlimento] = 100;
             //g_.Data.RecursoAlimento = "";
+            Cd.AgregaEdificio(g_.Data.EncuentraEdificio("Palacio"));
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -44,4 +46,9 @@ namespace CivWin
             frm.Show(Owner);
         }
     }
+}
+
+public interface IDibujable
+{
+    void Draw();
 }

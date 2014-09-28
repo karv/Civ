@@ -44,6 +44,22 @@ namespace Global
 			}
 		}
 
+        /// <summary>
+        /// Revisa si existe una edificio con un nombre específico.
+        /// </summary>
+        /// <returns><c>true</c>, si existe un edificio con ese nombre, <c>false</c> otherwise.</returns>
+        /// <param name="NombreRecurso">Nombre del eidficio.</param>
+        public bool ExisteEdificio(string NombreEdificio)
+        {
+            foreach (var x in Edificios)
+            {
+                if (x.Nombre == NombreEdificio)
+                    return true;
+            }
+            return false;
+        }
+
+
 
 		/// <summary>
 		/// Revisa si existe una ciencia con un nombre específico.
@@ -72,6 +88,23 @@ namespace Global
 			}
 			return false;
 		}
+
+        /// <summary>
+        /// Devuelve el edificio con un nombre específico.
+        /// </summary>
+        /// <returns>The recurso.</returns>
+        /// <param name="nombre">Nombre del edificio a buscar.</param>
+        public Civ.EdificioRAW EncuentraEdificio(string nombre)
+        {
+            foreach (var x in Edificios)
+            {
+                if (x.Nombre == nombre)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
 
 		/// <summary>
 		/// Devuelve el recurso con un nombre específico.

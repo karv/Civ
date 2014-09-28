@@ -9,7 +9,6 @@ namespace Civ
 	/// </summary>
 	public class TrabajoRAW
 	{
-		//TODO Hacer todo esto readonly.
 		/// <summary>
 		/// Nombre
 		/// </summary>
