@@ -1,11 +1,31 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<g_Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Data.xsd">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<g_Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Ciencias>
+    <Ciencia>
+      <Nombre>Lenguaje</Nombre>
+      <RecursoReq>Ciencia</RecursoReq>
+      <CantidadReq>0</CantidadReq>
+      <ReqCiencia />
+    </Ciencia>
+  </Ciencias>
+  <Recursos>
+    <Recurso>
+      <Desaparece>true</Desaparece>
+      <EsCientífico>false</EsCientífico>
+      <Nombre>Ciencia</Nombre>
+    </Recurso>
+    <Recurso>
+      <Desaparece>false</Desaparece>
+      <EsCientífico>false</EsCientífico>
+      <Nombre>Alimento</Nombre>
+    </Recurso>
+  </Recursos>
   <Edificios>
     <EdificioRAW>
       <Nombre>Palacio</Nombre>
       <MaxWorkers>1</MaxWorkers>
       <Requiere>
-        <Nombre>Lenguaje</Nombre>
+        <string>Lenguaje</string>
       </Requiere>
       <ReqRecursos>
         <ParOfStringSingle>
@@ -21,6 +41,7 @@
     <EdificioRAW>
       <Nombre>Granja</Nombre>
       <MaxWorkers>100</MaxWorkers>
+      <Requiere />
       <ReqRecursos>
         <ParOfStringSingle>
           <x>Madera</x>
@@ -33,29 +54,8 @@
       </ReqRecursos>
     </EdificioRAW>
   </Edificios>
-  <Recursos>
-    <Recurso>
-      <Nombre>Ciencia</Nombre>
-      <Desaparece>true</Desaparece>
-    </Recurso>
-    <Recurso>
-      <Nombre>Alimento</Nombre>
-      <Desaparece>false</Desaparece>
-    </Recurso>
-  </Recursos>
-  <RecursoAlimento>Alimento</RecursoAlimento>
-  <Ciencias>
-    <Ciencia>
-      <Nombre>Lenguaje</Nombre>
-      <RecursoReq>
-        <Nombre>Ciencia</Nombre>
-      </RecursoReq>
-      <CantidadReq>500</CantidadReq>
-      <ReqCiencia></ReqCiencia>
-    </Ciencia>
-  </Ciencias>
   <Trabajos>
-    <Trabajo>
+    <TrabajoRAW>
       <Nombre>Sembrar Maíz</Nombre>
       <EntradaStr>
         <ParOfStringSingle>
@@ -69,7 +69,11 @@
           <y>1.3</y>
         </ParOfStringSingle>
       </SalidaStr>
+      <Requiere>
+        <string>Lenguaje</string>
+      </Requiere>
       <Edificio>Granja</Edificio>
-    </Trabajo>
+    </TrabajoRAW>
   </Trabajos>
+  <RecursoAlimento>Alimento</RecursoAlimento>
 </g_Data>

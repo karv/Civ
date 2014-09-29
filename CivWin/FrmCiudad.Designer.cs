@@ -28,51 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listTrabajos = new System.Windows.Forms.ListBox();
             this.listRecursos = new System.Windows.Forms.ListBox();
             this.textInfo = new System.Windows.Forms.TextBox();
             this.listEdificios = new System.Windows.Forms.ListBox();
+            this.numTrabajador = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).BeginInit();
             this.SuspendLayout();
+            // 
+            // listTrabajos
+            // 
+            this.listTrabajos.IntegralHeight = false;
+            this.listTrabajos.Location = new System.Drawing.Point(396, 12);
+            this.listTrabajos.Name = "listTrabajos";
+            this.listTrabajos.Size = new System.Drawing.Size(134, 195);
+            this.listTrabajos.TabIndex = 19;
             // 
             // listRecursos
             // 
-            this.listRecursos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.listRecursos.FormattingEnabled = true;
-            this.listRecursos.Location = new System.Drawing.Point(13, 13);
+            this.listRecursos.IntegralHeight = false;
+            this.listRecursos.Location = new System.Drawing.Point(12, 90);
             this.listRecursos.MultiColumn = true;
             this.listRecursos.Name = "listRecursos";
-            this.listRecursos.Size = new System.Drawing.Size(120, 290);
-            this.listRecursos.TabIndex = 0;
+            this.listRecursos.Size = new System.Drawing.Size(378, 142);
+            this.listRecursos.TabIndex = 20;
             // 
             // textInfo
             // 
-            this.textInfo.Location = new System.Drawing.Point(140, 13);
+            this.textInfo.Location = new System.Drawing.Point(12, 12);
             this.textInfo.Multiline = true;
             this.textInfo.Name = "textInfo";
             this.textInfo.ReadOnly = true;
-            this.textInfo.Size = new System.Drawing.Size(182, 118);
-            this.textInfo.TabIndex = 1;
+            this.textInfo.Size = new System.Drawing.Size(186, 72);
+            this.textInfo.TabIndex = 21;
             // 
             // listEdificios
             // 
-            this.listEdificios.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.listEdificios.FormattingEnabled = true;
-            this.listEdificios.Location = new System.Drawing.Point(140, 138);
+            this.listEdificios.IntegralHeight = false;
+            this.listEdificios.Location = new System.Drawing.Point(204, 12);
             this.listEdificios.Name = "listEdificios";
-            this.listEdificios.Size = new System.Drawing.Size(182, 160);
-            this.listEdificios.TabIndex = 2;
+            this.listEdificios.Size = new System.Drawing.Size(186, 72);
+            this.listEdificios.TabIndex = 22;
+            // 
+            // numTrabajador
+            // 
+            this.numTrabajador.Location = new System.Drawing.Point(396, 213);
+            this.numTrabajador.Name = "numTrabajador";
+            this.numTrabajador.Size = new System.Drawing.Size(134, 20);
+            this.numTrabajador.TabIndex = 25;
             // 
             // FrmCiudad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 315);
-            this.Controls.Add(this.listEdificios);
-            this.Controls.Add(this.textInfo);
+            this.ClientSize = new System.Drawing.Size(541, 241);
+            this.Controls.Add(this.numTrabajador);
+            this.Controls.Add(this.listTrabajos);
             this.Controls.Add(this.listRecursos);
+            this.Controls.Add(this.textInfo);
+            this.Controls.Add(this.listEdificios);
             this.Name = "FrmCiudad";
             this.Text = "FrmCiudad";
+            ((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,8 +99,12 @@
 
         #endregion
 
+        private System.Windows.Forms.ListBox listTrabajos;
         private System.Windows.Forms.ListBox listRecursos;
         private System.Windows.Forms.TextBox textInfo;
         private System.Windows.Forms.ListBox listEdificios;
+        private System.Windows.Forms.NumericUpDown numTrabajador;
+
+
     }
 }

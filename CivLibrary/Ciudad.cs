@@ -11,7 +11,7 @@ namespace Civ
 	{
 		public override string ToString ()
 		{
-			return string.Format ("{0}: {1}//{2}//{3}", Nombre, getPoblaciónPreProductiva, PoblaciónProductiva, getPoblaciónPostProductiva);
+            return Nombre;
 		}
 
 		public string Nombre;
@@ -30,6 +30,7 @@ namespace Civ
 				_CivDueño.getCiudades.Add (this);
 			}
 		}
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Civ.Ciudad"/> class.
 		/// </summary>
@@ -51,30 +52,37 @@ namespace Civ
 				return Global.g_.Data.RecAlimento;
 			}
 		}
+
 		/// <summary>
 		/// Número de infantes que nacen por (PoblaciónProductiva*Tick) Base.
 		/// </summary>
 		public static float TasaNatalidadBase = 0.2f;
+
 		/// <summary>
 		/// Probabilidad base de un infante arbitrario de morir en cada tick.
 		/// </summary>
 		public static float TasaMortalidadInfantilBase = 0.01f;
+
 		/// <summary>
 		/// Probabilidad base de un habitante productivo arbitrario de morir en cada tick.
 		/// </summary>
 		public static float TasaMortalidadProductivaBase = 0.02f;
+
 		/// <summary>
 		/// Probabilidad base de un adulto de la tercera edad arbitrario de morir en cada tick.
 		/// </summary>
 		public static float TasaMortalidadVejezBase = 0.1f;
+
 		/// <summary>
 		/// Probabilidad de que un infante se convierta en productivo
 		/// </summary>
 		public static float TasaDesarrolloBase = 0.2f;
+
 		/// <summary>
 		/// Probabilidad de que un Productivo envejezca
 		/// </summary>
 		public static float TasaVejezBase = 0.05f;
+
 		/// <summary>
 		/// Consumo base de alimento por ciudadano.
 		/// </summary>
@@ -95,6 +103,7 @@ namespace Civ
 				return _PoblaciónProductiva + _PoblaciónPreProductiva+ _PoblaciónPostProductiva;
 			}
 		}
+
 		/// <summary>
 		/// Devuelve la población de la ciudad.
 		/// </summary>
@@ -258,7 +267,7 @@ namespace Civ
 			return ret;
 		}
 
-			// Workers
+			// Trabajadores
 		/// <summary>
 		/// Devuelve en número de trabajadores ocupados en algún edificio.
 		/// </summary>
@@ -281,6 +290,52 @@ namespace Civ
 				return PoblaciónProductiva - getNumTrabajadores;
 			}
 		}
+
+        /// <summary>
+        /// Devuelve la lista de trabajos que se pueden realizar en una ciudad.
+        /// </summary>
+        public List<TrabajoRAW> ObtenerListaTrabajos
+        {
+            get
+            {
+                List<TrabajoRAW> ret = new List<TrabajoRAW>();
+                foreach (var x in Global.g_.Data.Trabajos)
+                {
+                    // TODO: Revisar todos los trabajos, hacer función que determine si un trabajo es posible.
+                    List<IRequerimiento> Req = Basic.Covertidor<string, IRequerimiento>.ConvertirLista(x.Requiere, (z => Global.g_.Data.EncuentraRequerimiento(z)));
+                    if (SatisfaceReq(Req) && ExisteEdificio(Global.g_.Data.EncuentraEdificio(x.Nombre))) 
+                    {
+                        ret.Add(x);
+                    }
+                }
+                return ret;
+            }
+        }
+
+        /// <summary>
+        /// Revisa si esta ciudad satisface un Irequerimiento.
+        /// </summary>
+        /// <param name="Req">Un requerimiento</param>
+        /// <returns>Devuelve <c>true</c> si esta ciudad satisface un Irequerimiento. <c>false</c> en caso contrario.</returns>
+        public bool SatisfaceReq(IRequerimiento Req)
+        {
+            return Req.LoSatisface(this);
+        }
+
+        /// <summary>
+        /// Revisa si esta ciudad satisface una lista de requerimientos.
+        /// </summary>
+        /// <param name="Req"></param>
+        /// <returns>Devuelve <c>true</c> si esta ciudad satisface todos los Irequerimiento. <c>false</c> en caso contrario.</returns>
+        public bool SatisfaceReq(List<IRequerimiento> Req)
+        {
+            return Req.TrueForAll(x => x.LoSatisface(this));
+        }
+
+
+
+
+        
 	}
 }
 

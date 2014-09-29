@@ -12,6 +12,10 @@ namespace Civ
 		/// Nombre de la ciencia;
 		/// </summary>
 		public String Nombre;
+        string IRequerimiento.ObtenerId()
+        {
+            return Nombre;
+        }
 
 		public override string ToString ()
 		{

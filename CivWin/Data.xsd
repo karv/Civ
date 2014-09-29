@@ -3,11 +3,11 @@
   <xs:element name="g_Data">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="Edificios" minOccurs="1" maxOccurs="1"/>
-        <xs:element ref="Recursos" minOccurs="1" maxOccurs="1"/>
-        <xs:element name="RecursoAlimento" type="xs:string"  minOccurs="1" maxOccurs="1"/>
         <xs:element ref="Ciencias" minOccurs="1" maxOccurs="1"/>
-		<xs:element ref="Trabajos" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="Recursos" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="Edificios" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="Trabajos" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="RecursoAlimento" type="xs:string"  minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -22,7 +22,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element name="Nombre" type="xs:string"/>
-        <xs:element ref="RecursoReq"/>
+        <xs:element name="RecursoReq" type="xs:string"/>
         <xs:element name="CantidadReq" type="xs:decimal"/>
         <xs:element name="ReqCiencia" type="xs:string"/>
       </xs:sequence>
@@ -45,9 +45,9 @@
   <xs:element name="Recurso">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Nombre" type="xs:string"/>
         <xs:element name="Desaparece" type="xs:boolean" minOccurs="0" default="false"/>
         <xs:element name="EsCientífico" type="xs:boolean" minOccurs="0" default="false"/>
+        <xs:element name="Nombre" type="xs:string"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -71,7 +71,7 @@
   <xs:element name="Requiere">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Nombre" type="xs:string" maxOccurs="unbounded"/>
+        <xs:element name="string" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -93,18 +93,18 @@
   <xs:element name="Trabajos">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="Trabajo"/>
+        <xs:element ref="TrabajoRAW" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Trabajo">
+  <xs:element name="TrabajoRAW">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="Nombre" type="xs:string"/>
 		    <xs:element ref="EntradaStr" minOccurs ="0" maxOccurs="1" />
 		    <xs:element ref="SalidaStr" minOccurs ="0" maxOccurs="1" />
 		    <xs:element ref="Requiere" minOccurs ="0" maxOccurs="1" />
-        <xs:element name = "Edificio" type = "xs:string" minOccurs ="1" maxOccurs="1" />
+        <xs:element name="Edificio" type = "xs:string" minOccurs ="1" maxOccurs="1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>  

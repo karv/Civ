@@ -5,11 +5,11 @@ using System.Xml.Serialization;
 
 namespace Civ
 {
-
+    [Serializable]
 	/// <summary>
 	/// Representa un trabajo en un edificioRAW
-	/// </summary>
-	public class TrabajoRAW
+	/// </summary>	
+    public class TrabajoRAW
 	{
 		/// <summary>
 		/// Nombre
@@ -20,11 +20,11 @@ namespace Civ
         /// Recursos consumidos por trabajador*turno (Base)
         /// </summary>
         public List<Basic.Par<string, float>> EntradaStr = new List<Basic.Par<string, float>>();
-        
+
+        /// <summary>
+        /// Recursos consumidos por trabajador*turno (Base)
+        /// </summary>
         [XmlIgnore()]
-		/// <summary>
-		/// Recursos consumidos por trabajador*turno (Base)
-		/// </summary>
 		public ListaPeso<Recurso> EntradaBase 
         {
             get

@@ -53,6 +53,13 @@ namespace CivWin
             {
                 listEdificios.Items.Add(x.Nombre);
             }
+
+            // Trabajos y trabajadores
+            listTrabajos.Items.Clear();
+            foreach (var x in ciudad.ObtenerListaTrabajos)
+            {
+                listTrabajos.Items.Add(x);
+            }
         }
     }
 }

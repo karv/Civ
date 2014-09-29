@@ -12,6 +12,11 @@ namespace Civ
 		public string Nombre;
 		public ulong MaxWorkers;
 
+        public override string ToString()
+        {
+            return Nombre;
+        }
+
 		public EdificioRAW ()
 		{
 			
@@ -21,6 +26,10 @@ namespace Civ
 		bool Civ.IRequerimiento.LoSatisface (Ciudad C){
 			return C.ExisteEdificio(this);
 		}
+        string Civ.IRequerimiento.ObtenerId()
+        {
+            return Nombre;
+        }
 
 			// Requiere
 		/// <summary>

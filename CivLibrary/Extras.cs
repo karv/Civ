@@ -5,6 +5,11 @@ namespace Civ
 {
 	public interface IRequerimiento
 	{
+        /// <summary>
+        /// Un método que a cada IReqauerimiento le (debe) asocia un único string
+        /// </summary>
+        string ObtenerId();
+
 		/// <summary>
 		/// Si una ciudad satisface este requerimiento.
 		/// </summary>
@@ -24,8 +29,8 @@ namespace Global
 	{
 		public List<Civ.Ciencia> Ciencias = new List<Civ.Ciencia> ();
 		public List<Civ.Recurso> Recursos = new List<Civ.Recurso> ();
-
 		public List<Civ.EdificioRAW> Edificios = new List<Civ.EdificioRAW>();
+        public List<Civ.TrabajoRAW> Trabajos = new List<Civ.TrabajoRAW>();
 
 		/// <summary>
 		/// El string del recurso que sirve como alimento en una ciudad.
@@ -58,8 +63,6 @@ namespace Global
             }
             return false;
         }
-
-
 
 		/// <summary>
 		/// Revisa si existe una ciencia con un nombre específico.
@@ -135,6 +138,34 @@ namespace Global
 			}
 			return null;
 		}
+
+        /// <summary>
+        /// Devuelve el requerimiento con un id específico.
+        /// </summary>
+        /// <returns>IRequerimiento.</returns>
+        /// <param name="Id">Nombre del IRequerimiento a buscar.</param>
+        public Civ.IRequerimiento EncuentraRequerimiento (string Id)
+        {
+            foreach (var x in Reqs)
+            {
+                if (x.ObtenerId() == Id)
+                {
+                    return x;
+                }
+            }
+            return null;            
+        }
+
+        /// <summary>
+        /// Devuelve el trabajo con un nombre específico.
+        /// </summary>
+        /// <returns>TrabajoRAW.</returns>
+        /// <param name="nombre">Nombre del Trabajo a buscar.</param>
+        public Civ.TrabajoRAW EncuentraTrabajo(string nombre)
+        {
+            return Trabajos.Find(x => x.Nombre == nombre);
+        }
+
 		/// <summary>
 		/// Devuelve un arreglo de recursos que son científicos
 		/// </summary>
@@ -143,7 +174,27 @@ namespace Global
 		{
 			return Recursos.FindAll (y => y.EsCientífico).ToArray();
 		}
-	
+
+        [System.Xml.Serialization.XmlIgnore()]
+        /// <summary>
+        /// Devuelve todos los <see cref="Civ.IRequerimiento"/>s.
+        /// </summary>
+        public List<Civ.IRequerimiento> Reqs
+        {
+            get
+            {
+                List<Civ.IRequerimiento> ret = new List<Civ.IRequerimiento>();
+                foreach (Civ.IRequerimiento x in Edificios)
+                {
+                    ret.Add(x);
+                }
+                foreach (Civ.IRequerimiento x in Ciencias)
+                {
+                    ret.Add(x);
+                }
+                return ret;
+            }
+        }
 	}
 
 	/// <summary>
@@ -174,6 +225,27 @@ namespace Basic
             return string.Format("({0}, {1})", x, y);
         }
 	}
+
+
+    public static class Covertidor<S, T>
+    {
+        /// <summary>
+        /// Convierte una lista de objetos S en la equivalente lista de objetos T, mediante un Convertidos
+        /// </summary>
+        /// <param name="Entrada"></param>
+        /// <param name="Conver"></param>
+        /// <returns></returns>
+        public static List<T> ConvertirLista (List<S> Entrada, Func<S,T> Conver)
+        {
+            List<T> ret = new List<T>();
+
+            foreach (S x in Entrada)
+	        {
+                ret.Add (Conver(x));		 
+	        }
+            return ret;
+        }
+    }
 
 }
 

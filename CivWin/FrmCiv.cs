@@ -24,7 +24,6 @@ namespace CivWin
             Civ = C;
             InitializeComponent();
             Draw();
-
         }
 
         /// <summary>
@@ -35,6 +34,8 @@ namespace CivWin
         private void acTurno(object sender, EventArgs e)
         {
             Civ.doTick();
+
+            // Actualizar otros formularios abiertos.
             foreach (var x in Application.OpenForms)
             {
                 if (x is IDibujable)
@@ -43,6 +44,8 @@ namespace CivWin
                     y.Draw();
                 }
             }
+
+            // Actualizar este formulario
             Draw();
         }
 
