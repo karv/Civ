@@ -147,7 +147,7 @@ namespace Civ
 			}
 		}
 
-				//Tick poblacional
+			//Tick poblacional
 		public void PopTick()
 		{
 			//Crecimiento prometido por sector de edad.
@@ -246,6 +246,11 @@ namespace Civ
 			}
 		}
 
+        /// <summary>
+        /// Revisa si existe una clase de edificio en esta ciudad.
+        /// </summary>
+        /// <param name="Edif">La clase de edificio buscada</param>
+        /// <returns><c>true</c> si existe el edificio, <c>false</c> si no.</returns>
 		public bool ExisteEdificio (EdificioRAW Edif)
 		{
 			foreach (var x in Edificios) {
@@ -255,7 +260,38 @@ namespace Civ
 			return false;
 		}
 
-		/// <summary>
+        /// <summary>
+        /// Devuelve el edificio en la ciudad con un nombre específico.
+        /// </summary>
+        /// <param name="Ed">RAW del edificio.</param>
+        /// <returns>La instancia de edificio en la ciudad; si no existe devuelve <c>null</c>.</returns>
+        public Edificio EncuentraInstanciaEdificio(EdificioRAW Ed)
+        {
+            // TODO: Probar
+            foreach (Edificio x in Edificios)
+            {
+                if (x.RAW == Ed)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Devuelve el edificio en la ciudad con un nombre específico.
+        /// </summary>
+        /// <param name="Ed">Nombre del edificio.</param>
+        /// <returns>La instancia de edificio en la ciudad; si no existe devuelve <c>null</c>.</returns>
+        public Edificio EncuentraInstanciaEdificio(string Ed)
+        {
+            if (!Global.g_.Data.ExisteEdificio(Ed)) return null;       //Si no existe el edificio, devuelve nulo
+            EdificioRAW Edif = Global.g_.Data.EncuentraEdificio(Ed);   //La clase de edificio que puede contener este trabajo.
+            return EncuentraInstanciaEdificio(Edif);
+        }
+
+
+        /// <summary>
 		/// Agrega una instancia de edicifio a la ciudad.
 		/// </summary>
 		/// <returns>La instancia de edificio que se agregó.</returns>
@@ -294,7 +330,7 @@ namespace Civ
         /// <summary>
         /// Devuelve la lista de trabajos que se pueden realizar en una ciudad.
         /// </summary>
-        public List<TrabajoRAW> ObtenerListaTrabajos
+        public List<TrabajoRAW> ObtenerListaTrabajosRAW
         {
             get
             {
@@ -303,13 +339,33 @@ namespace Civ
                 {
                     // TODO: Revisar todos los trabajos, hacer función que determine si un trabajo es posible.
                     List<IRequerimiento> Req = Basic.Covertidor<string, IRequerimiento>.ConvertirLista(x.Requiere, (z => Global.g_.Data.EncuentraRequerimiento(z)));
-                    if (SatisfaceReq(Req) && ExisteEdificio(Global.g_.Data.EncuentraEdificio(x.Nombre))) 
+                    if (SatisfaceReq(Req) && ExisteEdificio(Global.g_.Data.EncuentraEdificio(x.Edificio))) 
                     {
                         ret.Add(x);
                     }
                 }
                 return ret;
             }
+        }
+
+        /// <summary>
+        /// Devuelve la lista de trabajos actuales en esta  <see cref="Civ.Ciudad"/>. 
+        /// </summary>
+        public List<Trabajo> ObtenerListaTrabajos
+        {
+            get
+            {
+                List<Trabajo> ret = new List<Trabajo>();
+                foreach (var x in Edificios)
+                {
+                    foreach (var y in x.Trabajos)
+                    {
+                        ret.Add(y);
+                    }
+                }
+                return ret;
+            }
+
         }
 
         /// <summary>
@@ -332,7 +388,41 @@ namespace Civ
             return Req.TrueForAll(x => x.LoSatisface(this));
         }
 
+        /// <summary>
+        /// Devuelve la instancia de trabajo en esta ciudad, si existe. Si no, la crea y la devuelve cuando <c>CrearInstancia</c>.
+        /// </summary>
+        /// <param name="TRAW"></param>
+        /// TrabajoRAW que se busca
+        /// <param name="CrearInstancia">Si no existe tal instancia y <c>CrearInstancia</c>, la crea; si no, tira excepción.</param>
+        /// <returns>Devuelve el trabajo en la ciudad correspondiente a este TrabajoRAW.</returns>
+        public Trabajo EncuentraInstanciaTrabajo (TrabajoRAW TRAW)
+        {
+            // TODO: Probar.
 
+            EdificioRAW Ed = Global.g_.Data.EncuentraEdificio(TRAW.Edificio);   // La clase de edificio que puede contener este trabajo.
+            Edificio Edif = EncuentraInstanciaEdificio(Ed); // La instancia del edificio en esta ciudad.
+            
+            if (Edif == null) return null;    // Devuelve nulo si no existe el edificio donde se trabaja.
+            foreach (Trabajo x in ObtenerListaTrabajos)
+            {
+                if (x.RAW == TRAW) return x;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Devuelve la instancia de trabajo en esta ciudad, si existe. Si no, la crea y la devuelve cuando <c>CrearInstancia</c>.
+        /// </summary>
+        /// <param name="TRAW"></param>
+        /// Nombre del trabajo que se busca.
+        /// <param name="CrearInstancia">Si no existe tal instancia y <c>CrearInstancia</c>, la crea; si no, tira excepción.</param>
+        /// <returns>Devuelve el trabajo en la ciudad con el nombre buscado.</returns>
+        public Trabajo EncuentraInstanciaTrabajo (string TRAW)
+        {
+            TrabajoRAW Tr = Global.g_.Data.EncuentraTrabajo(TRAW);
+            if (Tr == null) return null;
+            return EncuentraInstanciaTrabajo(Tr);
+        }
 
 
         

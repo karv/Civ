@@ -16,6 +16,11 @@ namespace Civ
 		/// </summary>
 		public string Nombre;
 
+        public override string ToString()
+        {
+            return string.Format("{0} @ {1}", Nombre, Edificio);
+        }
+
         /// <summary>
         /// Recursos consumidos por trabajador*turno (Base)
         /// </summary>
@@ -93,6 +98,12 @@ namespace Civ
 	/// </summary>
 	public class Trabajo
 	{
+        public override string ToString()
+        {
+            return string.Format("{0} trabajadores haciendo {1} en {2} de la ciudad {3}", Trabajadores, RAW.Nombre, EdificioBase.Nombre, CiudadDueño.Nombre);
+            return base.ToString();
+        }
+        
 		public Trabajo (TrabajoRAW nRAW, Edificio EBase)
 		{
 			_RAW = nRAW;

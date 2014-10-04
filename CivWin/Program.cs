@@ -41,7 +41,7 @@ namespace CivWin
             T.Requiere.Add("Otra ciencia");
             g_.Data.Trabajos.Add(T);*/
 
-            g_.GuardaData();
+            //g_.GuardaData();
 
             Civilización C = new Civilización();
             C.Nombre = "E:3";

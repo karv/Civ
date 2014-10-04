@@ -43,6 +43,7 @@
             this.listTrabajos.Name = "listTrabajos";
             this.listTrabajos.Size = new System.Drawing.Size(134, 195);
             this.listTrabajos.TabIndex = 19;
+            this.listTrabajos.SelectedIndexChanged += new System.EventHandler(this.listTrabajos_SelectedIndexChanged);
             // 
             // listRecursos
             // 
@@ -78,6 +79,7 @@
             this.numTrabajador.Name = "numTrabajador";
             this.numTrabajador.Size = new System.Drawing.Size(134, 20);
             this.numTrabajador.TabIndex = 25;
+            this.numTrabajador.ValueChanged += new System.EventHandler(this.numTrabajador_ValueChanged);
             // 
             // FrmCiudad
             // 

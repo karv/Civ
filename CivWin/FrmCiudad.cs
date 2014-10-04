@@ -56,10 +56,47 @@ namespace CivWin
 
             // Trabajos y trabajadores
             listTrabajos.Items.Clear();
-            foreach (var x in ciudad.ObtenerListaTrabajos)
+            foreach (var x in ciudad.ObtenerListaTrabajosRAW)
             {
                 listTrabajos.Items.Add(x);
             }
+        }
+
+        /// <summary>
+        /// Devuele el trabajo seleccionado en listTrabajos. Si no existe, lo crea.
+        /// </summary>
+        /// <returns></returns>
+        private Trabajo TrabajoSeleccionado()
+        {
+            TrabajoRAW Selec = (TrabajoRAW)listTrabajos.SelectedItem;
+            Trabajo Sel = ciudad.EncuentraInstanciaTrabajo(Selec);
+            if (Sel == null)    // Si no existen instancia, se crea
+            {
+                Trabajo NTrab = new Trabajo(Selec, ciudad.EncuentraInstanciaEdificio(Selec.Edificio));
+                Sel = NTrab;
+            }            
+            return Sel;
+        }
+        private void listTrabajos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listTrabajos.SelectedItem != null)
+            {
+                Trabajo Sel = TrabajoSeleccionado();
+                numTrabajador.Value = Sel.Trabajadores;
+                numTrabajador.Enabled = true;
+            }
+            else
+            {
+                numTrabajador.Value = 0;
+                numTrabajador.Enabled = false;
+            }
+
+        }
+
+        private void numTrabajador_ValueChanged(object sender, EventArgs e)
+        {
+            Trabajo T = TrabajoSeleccionado();
+            T.Trabajadores = (ulong)numTrabajador.Value;
         }
     }
 }

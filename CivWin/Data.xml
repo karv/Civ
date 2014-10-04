@@ -74,6 +74,16 @@
       </Requiere>
       <Edificio>Granja</Edificio>
     </TrabajoRAW>
+    <TrabajoRAW>
+      <Nombre>Hacerce el pato</Nombre>
+      <SalidaStr>
+        <ParOfStringSingle>
+          <x>Alimento</x>
+          <y>3</y>
+        </ParOfStringSingle>
+      </SalidaStr>
+      <Edificio>Palacio</Edificio>
+    </TrabajoRAW>
   </Trabajos>
   <RecursoAlimento>Alimento</RecursoAlimento>
 </g_Data>
