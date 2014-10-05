@@ -4,14 +4,14 @@
     <Ciencia>
       <Nombre>Lenguaje</Nombre>
       <RecursoReq>Ciencia</RecursoReq>
-      <CantidadReq>0</CantidadReq>
+      <CantidadReq>10</CantidadReq>
       <ReqCiencia />
     </Ciencia>
   </Ciencias>
   <Recursos>
     <Recurso>
       <Desaparece>true</Desaparece>
-      <EsCientífico>false</EsCientífico>
+      <EsCientífico>true</EsCientífico>
       <Nombre>Ciencia</Nombre>
     </Recurso>
     <Recurso>
@@ -85,6 +85,10 @@
         <ParOfStringSingle>
           <x>Alimento</x>
           <y>3</y>
+        </ParOfStringSingle>
+        <ParOfStringSingle>
+          <x>Ciencia</x>
+          <y>1</y>
         </ParOfStringSingle>
       </SalidaStr>
       <Edificio>Palacio</Edificio>

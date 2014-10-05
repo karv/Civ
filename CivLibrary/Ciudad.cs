@@ -211,18 +211,31 @@ namespace Civ
 			foreach (var x in Edificios) {
 				x.Tick ();
 			}
+
             // Construir edificio.
-            EdifConstruyendo.AbsorbeRecursos();
-            if (EdifConstruyendo.EstáCompletado()) EdifConstruyendo.Completar();
+            if (EdifConstruyendo != null)
+            {
+                EdifConstruyendo.AbsorbeRecursos();
+                if (EdifConstruyendo.EstáCompletado()) EdifConstruyendo.Completar();                
+            }
+		}
+
+        /// <summary>
+        /// Destruye los recursos con el flag <c>.desaparecen</c>.
+        /// </summary>
+        public void DestruirRecursosTemporales()
+        {
             // Desaparecen algunos recursos
-            foreach (Recurso x in Almacén.Keys)
+            List<Recurso> Alm = new List<Recurso>(Almacén.Keys);
+            foreach (Recurso x in Alm)
             {
                 if (x.Desaparece)
                 {
                     Almacén[x] = 0;
                 }
             }
-		}
+
+        }
 
 		/// <summary>
 		/// Ejecuta ambos: Tick () y PopTick ().

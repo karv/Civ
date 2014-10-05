@@ -170,15 +170,15 @@ namespace Global
 		/// Devuelve un arreglo de recursos que son científicos
 		/// </summary>
 		/// <returns>The lista recursos científicos.</returns>
-		public Civ.Recurso[] getListaRecursosCientíficos()
+		public Civ.Recurso[] ObtenerRecursosCientíficos()
 		{
 			return Recursos.FindAll (y => y.EsCientífico).ToArray();
 		}
 
-        [System.Xml.Serialization.XmlIgnore()]
         /// <summary>
         /// Devuelve todos los <see cref="Civ.IRequerimiento"/>s.
         /// </summary>
+        [System.Xml.Serialization.XmlIgnore()]
         public List<Civ.IRequerimiento> Reqs
         {
             get
@@ -244,6 +244,33 @@ namespace Basic
                 ret.Add (Conver(x));		 
 	        }
             return ret;
+        }
+    }
+
+    public static class ExtRandom
+    {
+        /// <summary>
+        /// Elije aleatoriamente $a_0, \dots, a_{Partes - 1}$ de tal forma que su suma sea Suma.
+        /// </summary>
+        /// <param name="r">Clase random que se usará</param>
+        /// <param name="Suma">La suma que debe de tener el conjunto.</param>
+        /// <param name="Partes">Valor máximo </param>
+        /// <returns>Devuelve un arreglo pseudoaleatoriamente generado de flotantes cuya suma es 1.</returns>
+        public static float[] Separadores (this Random r, int Partes, float Suma = 1)
+        {
+            List<float> ret = new List<float>();
+            for (int i = 0; i < Partes - 1; i++)
+            {
+                ret.Add((float)r.NextDouble() * Suma);
+            }
+            ret.Sort();
+            ret.Add(Suma);
+
+            for (int i = 0; i < Partes - 1; i++)
+            {
+                ret[i] = ret[i + 1] - ret[i];
+            }
+            return ret.ToArray();
         }
     }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Basic;
 
 namespace Civ
 {
@@ -45,36 +46,82 @@ namespace Civ
 			return C;
 		}
 
+
 			// Ticks
 		public void doTick()
 		{
+            Random r = new Random();
 			foreach (var x in Ciudades) {
 				x.FullTick ();
 			}
 
-				// Las ciencias.
+			// Las ciencias.
 			List<Ciencia> Investigado = new List<Ciencia> ();
-			foreach (var x in Investigando.Keys) {
-				Recurso Rec = Global.g_.Data.EncuentraRecurso (x.RecursoReq);
-				Investigando [x] += ObtenerGlobalRecurso (Rec);
 
-				// Si Tiene lo suficiente para terminar investigación
-				if (Investigando[x] >= x.CantidadReq) {
-					Investigado.Add (x);
-				}
+            foreach (Recurso x in Global.g_.Data.ObtenerRecursosCientíficos())
+            {
+                List<Ciencia> SemiListaCiencias = CienciasAbiertas().FindAll(z => (z.RecursoReq == x.Nombre));  // Lista de ciencias abiertas que usan el recurso x.
+                float[] sep = r.Separadores(SemiListaCiencias.Count, ObtenerGlobalRecurso(x));
 
-				// TODO: Que funcione así: Para cada recurso científico, revisa qué ciencias abiertas lo necesitan, listarlos, y dividir la producción de
-				// tal ciencia, aleatoriamente (con Random.Divide) sobra cada uno de éstas.
+                int i = 0;
+                foreach (var y in SemiListaCiencias)
+                {
+                    // En este momento, se está investigando "y" con el recurso "x".
+                    Investigando[y] += sep[i];
+                    i++;
 
-			}
+                    // Si Tiene lo suficiente para terminar investigación
+                    if (Investigando[y] >= y.CantidadReq) Investigado.Add(y);
+                }
+            }
+
 			foreach (var x in Investigado) {
 				Avances.Add(x);
 				Investigando.Data.Remove (x);
 			}
+
+            // Fase final, desaparecer recursos.
+            foreach (Ciudad x in Ciudades)
+            {
+                x.DestruirRecursosTemporales();
+            }
 		}
+
+
 			// Avances
+        /// <summary>
+        /// Lista de avances de la civilización
+        /// </summary>
 		public List<Ciencia> Avances = new List<Ciencia>();
+
+        /// <summary>
+        /// Ciencias que han sido parcialmente investigadas.
+        /// </summary>
 		public ListasExtra.ListaPeso<Ciencia> Investigando = new ListasExtra.ListaPeso<Ciencia>();
+
+        public List<Ciencia> CienciasAbiertas ()
+        {
+            List<Ciencia> ret = new List<Ciencia>();
+            foreach (Ciencia x in Global.g_.Data.Ciencias)
+            {
+                if (EsCienciaAbierta(x))
+                {
+                    ret.Add(x);
+                }
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// Revisa si una ciencia se puede investigar.
+        /// </summary>
+        /// <param name="C">Una ciencia</param>
+        /// <returns><c>true</c> si la ciencia se puede investigar; <c>false</c> si no.</returns>
+        bool EsCienciaAbierta(Ciencia C)
+        {
+            return !Avances.Contains(C) && C.ReqCiencia.TrueForAll(z => Avances.Exists(w => (w.Nombre == z)));
+        }
+
 
 			// Economía
 		/// <summary>
