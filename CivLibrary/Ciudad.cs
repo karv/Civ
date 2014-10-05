@@ -214,6 +214,14 @@ namespace Civ
             // Construir edificio.
             EdifConstruyendo.AbsorbeRecursos();
             if (EdifConstruyendo.EstáCompletado()) EdifConstruyendo.Completar();
+            // Desaparecen algunos recursos
+            foreach (Recurso x in Almacén.Keys)
+            {
+                if (x.Desaparece)
+                {
+                    Almacén[x] = 0;
+                }
+            }
 		}
 
 		/// <summary>
