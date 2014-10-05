@@ -19,6 +19,11 @@
       <EsCientífico>false</EsCientífico>
       <Nombre>Alimento</Nombre>
     </Recurso>
+    <Recurso>
+      <Desaparece>true</Desaparece>
+      <EsCientífico>false</EsCientífico>
+      <Nombre>Producción</Nombre>
+    </Recurso>
   </Recursos>
   <Edificios>
     <EdificioRAW>
@@ -44,12 +49,12 @@
       <Requiere />
       <ReqRecursos>
         <ParOfStringSingle>
-          <x>Madera</x>
-          <y>10</y>
-        </ParOfStringSingle>
-        <ParOfStringSingle>
           <x>Alimento</x>
           <y>5</y>
+        </ParOfStringSingle>
+        <ParOfStringSingle>
+          <x>Producción</x>
+          <y>50</y>
         </ParOfStringSingle>
       </ReqRecursos>
     </EdificioRAW>
@@ -83,6 +88,16 @@
         </ParOfStringSingle>
       </SalidaStr>
       <Edificio>Palacio</Edificio>
+    </TrabajoRAW>
+    <TrabajoRAW>
+      <Nombre>Producir</Nombre>
+      <SalidaStr>
+        <ParOfStringSingle>
+          <x>Producción</x>
+          <y>10</y>
+        </ParOfStringSingle>
+      </SalidaStr>
+      <Edificio>Palacio</Edificio>      
     </TrabajoRAW>
   </Trabajos>
   <RecursoAlimento>Alimento</RecursoAlimento>

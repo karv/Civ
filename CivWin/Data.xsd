@@ -100,7 +100,7 @@
   <xs:element name="TrabajoRAW">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Nombre" type="xs:string"/>
+        <xs:element name="Nombre" type="xs:string" maxOccurs="1"/>
 		    <xs:element ref="EntradaStr" minOccurs ="0" maxOccurs="1" />
 		    <xs:element ref="SalidaStr" minOccurs ="0" maxOccurs="1" />
 		    <xs:element ref="Requiere" minOccurs ="0" maxOccurs="1" />

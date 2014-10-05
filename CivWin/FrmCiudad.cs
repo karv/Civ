@@ -60,6 +60,15 @@ namespace CivWin
             {
                 listTrabajos.Items.Add(x);
             }
+
+            // El "construyendo".
+            comboConstruir.Items.Clear();
+            foreach (var x in ciudad.Construibles())
+            {
+                comboConstruir.Items.Add(x);
+            }
+            comboConstruir.SelectedItem = ciudad.RAWConstruyendo;
+
         }
 
         /// <summary>
@@ -77,11 +86,14 @@ namespace CivWin
             }            
             return Sel;
         }
+
         private void listTrabajos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listTrabajos.SelectedItem != null)
             {
                 Trabajo Sel = TrabajoSeleccionado();
+                numTrabajador.Minimum = 0;
+                numTrabajador.Maximum = Sel.MaxTrabajadores;
                 numTrabajador.Value = Sel.Trabajadores;
                 numTrabajador.Enabled = true;
             }
@@ -97,6 +109,15 @@ namespace CivWin
         {
             Trabajo T = TrabajoSeleccionado();
             T.Trabajadores = (ulong)numTrabajador.Value;
+            numTrabajador.Value = T.Trabajadores;
+        }
+
+        private void comboConstruir_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboConstruir.SelectedItem != ciudad.RAWConstruyendo)
+            {
+                ciudad.RAWConstruyendo = (EdificioRAW)comboConstruir.SelectedItem;                
+            }
         }
     }
 }

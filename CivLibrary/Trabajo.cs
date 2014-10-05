@@ -182,6 +182,14 @@ namespace Civ
 			}
 		}
 
+        public ulong MaxTrabajadores
+        {
+            get
+            {
+                return EdificioBase.getEspaciosTrabajadoresCiudad + Trabajadores;
+            }
+        }
+
 		/// <summary>
 		/// Ejecuta un tick de tiempo
 		/// </summary>

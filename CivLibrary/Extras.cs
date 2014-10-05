@@ -6,7 +6,7 @@ namespace Civ
 	public interface IRequerimiento
 	{
         /// <summary>
-        /// Un método que a cada IReqauerimiento le (debe) asocia un único string
+        /// Un método que a cada IRequerimiento le (debe) asocia un único string
         /// </summary>
         string ObtenerId();
 

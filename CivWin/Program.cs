@@ -48,7 +48,7 @@ namespace CivWin
             Ciudad Cd = new Ciudad("MyCity", C);
 
             Cd.PoblaciónProductiva = 10;
-            Cd.Almacén[Ciudad.RecursoAlimento] = 100;
+            Cd.Almacén[Ciudad.RecursoAlimento] = 10000;
             //g_.Data.RecursoAlimento = "";
             Cd.AgregaEdificio(g_.Data.EncuentraEdificio("Palacio"));
 

@@ -33,6 +33,7 @@
             this.textInfo = new System.Windows.Forms.TextBox();
             this.listEdificios = new System.Windows.Forms.ListBox();
             this.numTrabajador = new System.Windows.Forms.NumericUpDown();
+            this.comboConstruir = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,17 +76,28 @@
             // 
             // numTrabajador
             // 
+            this.numTrabajador.Enabled = false;
             this.numTrabajador.Location = new System.Drawing.Point(396, 213);
             this.numTrabajador.Name = "numTrabajador";
             this.numTrabajador.Size = new System.Drawing.Size(134, 20);
             this.numTrabajador.TabIndex = 25;
             this.numTrabajador.ValueChanged += new System.EventHandler(this.numTrabajador_ValueChanged);
             // 
+            // comboConstruir
+            // 
+            this.comboConstruir.FormattingEnabled = true;
+            this.comboConstruir.Location = new System.Drawing.Point(13, 239);
+            this.comboConstruir.Name = "comboConstruir";
+            this.comboConstruir.Size = new System.Drawing.Size(155, 21);
+            this.comboConstruir.TabIndex = 26;
+            this.comboConstruir.SelectedIndexChanged += new System.EventHandler(this.comboConstruir_SelectedIndexChanged);
+            // 
             // FrmCiudad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 241);
+            this.ClientSize = new System.Drawing.Size(541, 441);
+            this.Controls.Add(this.comboConstruir);
             this.Controls.Add(this.numTrabajador);
             this.Controls.Add(this.listTrabajos);
             this.Controls.Add(this.listRecursos);
@@ -106,6 +118,7 @@
         private System.Windows.Forms.TextBox textInfo;
         private System.Windows.Forms.ListBox listEdificios;
         private System.Windows.Forms.NumericUpDown numTrabajador;
+        private System.Windows.Forms.ComboBox comboConstruir;
 
 
     }

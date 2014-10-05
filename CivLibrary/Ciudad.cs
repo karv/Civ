@@ -42,6 +42,11 @@ namespace Civ
 			CivDueño = Dueño;
 		}
 
+
+
+
+
+
 			//Población y crecimiento.
 
 		/// <summary>
@@ -88,11 +93,10 @@ namespace Civ
 		/// </summary>
 		public static float ConsumoAlimentoPorCiudadanoBase = 1f;
 
-				//Población
+		        //Población
 		float _PoblaciónProductiva = 10f;
 		float _PoblaciónPreProductiva = 0;
 		float _PoblaciónPostProductiva = 0;
-
 
 		/// <summary>
 		/// Devuelve la población real y total de la ciudad.
@@ -147,8 +151,13 @@ namespace Civ
 			}
 		}
 
-			//Tick poblacional
-		public void PopTick()
+
+
+
+
+
+            // Tick
+        public void PopTick()
 		{
 			//Crecimiento prometido por sector de edad.
 			float[] Crecimiento = new float[3];
@@ -194,7 +203,7 @@ namespace Civ
 			_PoblaciónProductiva = Math.Max (_PoblaciónProductiva + Crecimiento [1], 0);
 			_PoblaciónPostProductiva = Math.Max (_PoblaciónPostProductiva + Crecimiento [2], 0);
 		}
-			// Tick
+
 		/// <summary>
 		/// Da un tick hereditario.
 		/// </summary>
@@ -202,6 +211,9 @@ namespace Civ
 			foreach (var x in Edificios) {
 				x.Tick ();
 			}
+            // Construir edificio.
+            EdifConstruyendo.AbsorbeRecursos();
+            if (EdifConstruyendo.EstáCompletado()) EdifConstruyendo.Completar();
 		}
 
 		/// <summary>
@@ -209,8 +221,8 @@ namespace Civ
 		/// En ese orden.
 		/// </summary>
 		public void FullTick (){
-			Tick ();
-			PopTick ();
+            PopTick();
+            Tick();
 		}
 
 			//Almacén
@@ -233,6 +245,9 @@ namespace Civ
 			}
 
 		}
+
+
+
 
 			//Edificios
 		System.Collections.Generic.List <Edificio> _Edif = new System.Collections.Generic.List<Edificio>();
@@ -290,7 +305,6 @@ namespace Civ
             return EncuentraInstanciaEdificio(Edif);
         }
 
-
         /// <summary>
 		/// Agrega una instancia de edicifio a la ciudad.
 		/// </summary>
@@ -302,6 +316,122 @@ namespace Civ
 
 			return ret;
 		}
+
+        /// <summary>
+        /// Devuelve la lista de edificios contruibles por esta ciudad; los que se pueden hacer yno estpan hechos.
+        /// </summary>
+        /// <returns></returns>
+        public List<EdificioRAW> Construibles()
+        {
+            List<EdificioRAW> ret = new List<EdificioRAW>();
+            foreach (EdificioRAW x in Global.g_.Data.Edificios)
+            {
+                if (!ExisteEdificio(x) && SatisfaceReq(x.Reqs()))
+                {
+                    ret.Add(x);
+                }
+            }
+            return ret;
+        }
+
+                // Edificio en construcción.
+        /// <summary>
+        /// Representa un edificio en construcción.
+        /// </summary>
+        internal class EdificioConstruyendo
+        {
+            public EdificioRAW RAW;
+
+            /// <summary>
+            /// Recursos ya usados en el edificio.
+            /// </summary>
+            public ListaPeso<Recurso> RecursosAcumulados = new ListaPeso<Recurso>();
+
+            /// <summary>
+            /// Devuelve la función de recursos faltantes.
+            /// </summary>
+            public ListaPeso<Recurso> RecursosRestantes
+            {
+                get
+                {
+                    ListaPeso<Recurso> ret = new ListaPeso<Recurso>();
+                    foreach (var x in RAW.ReqRecursos)
+                    {
+                        Recurso r = Global.g_.Data.EncuentraRecurso(x.x);
+                        ret[r] = x.y - RecursosAcumulados[r];
+                    }
+                    return ret;
+                }
+            }
+
+            public Ciudad CiudadDueño;
+
+            /// <summary>
+            /// Crea una instancia.
+            /// </summary>
+            /// <param name="EdifRAW">El RAW de este edificio.</param>
+            /// <param name="C">Ciudad dueño.</param>
+            public EdificioConstruyendo(EdificioRAW EdifRAW, Ciudad C)
+            {
+                RAW = EdifRAW;
+                CiudadDueño = C;
+            }
+
+            /// <summary>
+            /// Absorbe los recursos de la ciudad para su construcción.
+            /// </summary>
+            public void AbsorbeRecursos()
+            {
+                foreach (Recurso x in RecursosRestantes.Keys)
+                {
+                    float abs = Math.Min(RecursosRestantes[x], CiudadDueño.Almacén[x]);
+                    RecursosAcumulados[x] += abs;
+                    CiudadDueño.Almacén[x] -= abs;
+                }
+            }
+
+            /// <summary>
+            /// Revisa si este edificio está completado.
+            /// </summary>
+            /// <returns><c>true</c> si ya no quedan recursos restantes; <c>false</c> en caso contrario.</returns>
+            public bool EstáCompletado()
+            {
+                return RecursosRestantes.Keys.Count == 0;
+            }
+
+            /// <summary>
+            /// Contruye una instancia de su RAW en la ciudad dueño.
+            /// </summary>
+            /// <returns>Devuelve su edificio completado.</returns>
+            public Edificio Completar()
+            {
+                return CiudadDueño.AgregaEdificio(RAW);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve o establece El edificio que se está contruyendo, y su progreso.
+        /// </summary>
+        private EdificioConstruyendo EdifConstruyendo;
+
+        /// <summary>
+        /// Devuelve el RAW del edificio que se está contruyendo.
+        /// </summary>
+        public EdificioRAW RAWConstruyendo
+        {
+            get
+            {
+                return EdifConstruyendo == null ? null : EdifConstruyendo.RAW;
+            }
+            set
+            {
+                // TODO: ¿Qué hacer con los recursos del edificio anterior? ¿Se pierden? (por ahora sí :3)
+                EdifConstruyendo = new EdificioConstruyendo(value, this);
+            }
+        }
+
+
+
 
 			// Trabajadores
 		/// <summary>
@@ -424,7 +554,7 @@ namespace Civ
             return EncuentraInstanciaTrabajo(Tr);
         }
 
-
+        
         
 	}
 }
