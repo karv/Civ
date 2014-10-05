@@ -1,6 +1,0 @@
-<ListOfTask>
-  <Task file="" description="Hacer Los edificios" />
-  <Task file="" description="Hacer los Trabajos" />
-  <Task file="" description="Hacer y unificar los Ticks de ciudad, edificio, trabajo y Civilización; incluyendo el PoopTick de la ciudad." completed="True" />
-  <Task file="" description="Hacer una buena clase para el Almacén de ciudad." priority="Low" />
-</ListOfTask>
