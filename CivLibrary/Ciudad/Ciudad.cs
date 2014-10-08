@@ -14,8 +14,13 @@ namespace Civ
             return Nombre;
 		}
 
+		/// <summary>
+		/// Nombre de la ciudad.
+		/// </summary>
 		public string Nombre;
+
 		Civilización _CivDueño;
+
 		/// <summary>
 		/// Devuelve o establece la civilización a la cual pertecene esta ciudad.
 		/// </summary>
@@ -41,16 +46,6 @@ namespace Civ
 			Nombre = Nom;
 			CivDueño = Dueño;
 		}
-
-
-
-
-
-
-
-
-
-
 	        
 	}
 }
