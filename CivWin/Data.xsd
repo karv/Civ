@@ -14,7 +14,7 @@
   <xs:element name="Ciencias">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="Ciencia"/>
+        <xs:element ref="Ciencia" maxOccurs ="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -24,14 +24,15 @@
         <xs:element name="Nombre" type="xs:string"/>
         <xs:element name="RecursoReq" type="xs:string"/>
         <xs:element name="CantidadReq" type="xs:decimal"/>
-        <xs:element name="ReqCiencia" type="xs:string"/>
+     <!--   <xs:element name="ReqCiencia" type="xs:string"/> -->
+        <xs:element ref="ReqCiencia" minOccurs="1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RecursoReq">
+  <xs:element name="ReqCiencia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Nombre" type="xs:string"/>
+        <xs:element name="string" type="xs:string" minOccurs="0"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
