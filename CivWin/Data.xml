@@ -3,16 +3,181 @@
   <Ciencias>
     <Ciencia>
       <Nombre>Lenguaje</Nombre>
-      <RecursoReq>Ciencia</RecursoReq>
+      <RecursoReq>Social</RecursoReq>
       <CantidadReq>10</CantidadReq>
-      <ReqCiencia />
+      <ReqCiencia>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Vida nómada</Nombre>
+      <RecursoReq>Social</RecursoReq>
+      <CantidadReq>10</CantidadReq>
+      <ReqCiencia></ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Recolleción</Nombre>
+      <RecursoReq>Social</RecursoReq>
+      <CantidadReq>12</CantidadReq>
+      <ReqCiencia>
+        <string>Vida nómada</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Asentamiento de cuevas</Nombre>
+      <RecursoReq>Interacción con entorno</RecursoReq>
+      <CantidadReq>14</CantidadReq>
+      <ReqCiencia>
+        <string>Vida nómada</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Tejeduría</Nombre>
+      <RecursoReq>Social</RecursoReq>
+      <CantidadReq>14</CantidadReq>
+      <ReqCiencia>
+        <string>Recolección</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Alimentación de substistencia</Nombre>
+      <RecursoReq>Interacción con entorno</RecursoReq>
+      <CantidadReq>14</CantidadReq>
+      <ReqCiencia>
+        <string>Recolección</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Control del fuego</Nombre>
+      <RecursoReq>Interacción con entorno</RecursoReq>
+      <CantidadReq>14</CantidadReq>
+      <ReqCiencia>
+        <string>Recolección</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Fitoterapia</Nombre>
+      <RecursoReq>Interacción con entorno</RecursoReq>
+      <CantidadReq>14</CantidadReq>
+      <ReqCiencia>
+        <string>Recolección</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Cooperación</Nombre>
+      <RecursoReq>Social</RecursoReq>
+      <CantidadReq>14</CantidadReq>
+      <ReqCiencia>
+        <string>Recolección</string>
+        <string>Lenguaje</string>        
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Construcción de refugios</Nombre>
+      <RecursoReq>Interacción con entorno</RecursoReq>
+      <CantidadReq>17</CantidadReq>
+      <ReqCiencia>
+        <string>Asentamiento de cuevas</string>
+        <string>Tejeduría</string>
+      </ReqCiencia>      
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Cestrería</Nombre>
+      <RecursoReq>Manufactura</RecursoReq>
+      <CantidadReq>17</CantidadReq>
+      <ReqCiencia>
+        <string>Asentamiento de cuevas</string>
+        <string>Tejeduría</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Caza de resistencia</Nombre>
+      <RecursoReq>Social</RecursoReq>
+      <CantidadReq>17</CantidadReq>
+      <ReqCiencia>
+        <string>Alimentación de substistencia</string>
+        <string>Cooperación</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Fabricación de utecilios</Nombre>
+      <RecursoReq>Manufactura</RecursoReq>
+      <CantidadReq>17</CantidadReq>
+      <ReqCiencia>
+        <string>Alimentación de substistencia</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Coción</Nombre>
+      <RecursoReq>Interacción con entorno</RecursoReq>
+      <CantidadReq>17</CantidadReq>
+      <ReqCiencia>
+        <string>Control del fuego</string>
+      </ReqCiencia>      
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Tradición oral</Nombre>
+      <RecursoReq>Social</RecursoReq>
+      <CantidadReq>17</CantidadReq>
+      <ReqCiencia>
+        <string>Cooperación</string>
+      </ReqCiencia>      
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Trazo de senderos</Nombre>
+      <RecursoReq>Social</RecursoReq>
+      <CantidadReq>20</CantidadReq>
+      <ReqCiencia>
+        <string>Caza de resistencia</string>
+      </ReqCiencia>      
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Trampas</Nombre>
+      <RecursoReq>Manufactura</RecursoReq>
+      <CantidadReq>20</CantidadReq>
+      <ReqCiencia>
+        <string>Trazo de senderos</string>
+        <string>Cestrería</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Percutor duro de piedra</Nombre>
+      <RecursoReq>Arte</RecursoReq>
+      <CantidadReq>20</CantidadReq>
+      <ReqCiencia>
+        <string>Fabricación de utencilios</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Mortero de piedra</Nombre>
+      <RecursoReq>Manufactura</RecursoReq>
+      <CantidadReq>20</CantidadReq>
+      <ReqCiencia>
+        <string>Percutor duro de piedra</string>
+        <string>Fitoterapia</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Música prehistórica</Nombre>
+      <RecursoReq>Arte</RecursoReq>
+      <CantidadReq>20</CantidadReq>
+      <ReqCiencia>
+        <string>Tradición oral</string>
+      </ReqCiencia>
+    </Ciencia>
+    <Ciencia>
+      <Nombre>Danza prehistórica</Nombre>
+      <RecursoReq>Arte</RecursoReq>
+      <CantidadReq>20</CantidadReq>
+      <ReqCiencia>
+        <string>Tradición oral</string>
+      </ReqCiencia>
     </Ciencia>
   </Ciencias>
   <Recursos>
     <Recurso>
       <Desaparece>true</Desaparece>
       <EsCientífico>true</EsCientífico>
-      <Nombre>Ciencia</Nombre>
+      <Nombre>Social</Nombre>
     </Recurso>
     <Recurso>
       <Desaparece>false</Desaparece>
@@ -23,6 +188,21 @@
       <Desaparece>true</Desaparece>
       <EsCientífico>false</EsCientífico>
       <Nombre>Producción</Nombre>
+    </Recurso>
+    <Recurso>
+      <Desaparece>true</Desaparece>
+      <EsCientífico>true</EsCientífico>
+      <Nombre>Interacción con entorno</Nombre>
+    </Recurso>
+    <Recurso>
+      <Desaparece>true</Desaparece>
+      <EsCientífico>true</EsCientífico>
+      <Nombre>Manufactura</Nombre>
+    </Recurso>
+    <Recurso>
+      <Desaparece>true</Desaparece>
+      <EsCientífico>true</EsCientífico>
+      <Nombre>Arte</Nombre>
     </Recurso>
   </Recursos>
   <Edificios>
