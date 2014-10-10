@@ -33,7 +33,7 @@ namespace Civ
         /// <summary>
         /// Requerimientos para crearse.
         /// </summary>
-        public List<IRequerimiento> Reqs;
+        public List<string> Reqs;
 
         /// <summary>
         /// Población productiva que requiere para entrenar.
