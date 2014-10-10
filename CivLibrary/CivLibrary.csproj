@@ -67,14 +67,8 @@
     <Compile Include="Trabajo\Trabajadores.cs" />
     <Compile Include="Trabajo\Tick.cs" />
     <Compile Include="Trabajo\Trabajo.cs" />
+    <Compile Include="Unidad.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Ciudad\" />
-    <Folder Include="Civilización\" />
-    <Folder Include="Edificio\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Global\" />
-    <Folder Include="Trabajo\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
