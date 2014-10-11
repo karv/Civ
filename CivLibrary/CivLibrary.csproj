@@ -67,7 +67,8 @@
     <Compile Include="Trabajo\Trabajadores.cs" />
     <Compile Include="Trabajo\Tick.cs" />
     <Compile Include="Trabajo\Trabajo.cs" />
-    <Compile Include="Unidad.cs" />
+    <Compile Include="Unidad\Unidad.cs" />
+    <Compile Include="Unidad\UnidadRAW.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
