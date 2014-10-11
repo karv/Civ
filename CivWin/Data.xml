@@ -284,5 +284,36 @@
       <Edificio>Palacio</Edificio>      
     </TrabajoRAW>
   </Trabajos>
+  <Unidades>
+    <UnidadRAW>
+      <Nombre>Soldado</Nombre>
+      <Mods>
+        <ParOfStringSingle>
+          <x>Animal</x>
+          <y>0.3</y>
+        </ParOfStringSingle>
+        <ParOfStringSingle>
+          <x>Humano</x>
+          <y>-0.1</y>
+        </ParOfStringSingle>
+      </Mods>
+      <Fuerza>2</Fuerza>
+      <Flags>
+        <string>Unidad a pie</string>
+        <string>Humano</string>
+      </Flags>
+      <Reqs>
+        <ParOfStringSingle>
+          <x>Espada</x>
+          <y>1</y>
+        </ParOfStringSingle>
+        <ParOfStringSingle>
+          <x>Escudo</x>
+          <y>1</y>
+        </ParOfStringSingle>
+      </Reqs>
+      <CostePoblación>1</CostePoblación>
+    </UnidadRAW>
+  </Unidades>
   <RecursoAlimento>Alimento</RecursoAlimento>
 </g_Data>

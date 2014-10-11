@@ -13,6 +13,7 @@ namespace Global
 		public List<Civ.Recurso> Recursos = new List<Civ.Recurso> ();
 		public List<Civ.EdificioRAW> Edificios = new List<Civ.EdificioRAW>();
 		public List<Civ.TrabajoRAW> Trabajos = new List<Civ.TrabajoRAW>();
+        public List<Civ.UnidadRAW> Unidades = new List<Civ.UnidadRAW>();
 
 		/// <summary>
 		/// El string del recurso que sirve como alimento en una ciudad.

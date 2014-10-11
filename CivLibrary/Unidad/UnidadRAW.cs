@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using ListasExtra;
 
 namespace Civ
@@ -17,7 +18,16 @@ namespace Civ
         /// <summary>
         /// Lista de modificadores de combate de la unidad.
         /// </summary>
-        public ListaPeso<string> Mods;
+        public List<Basic.Par<string, float>> Mods;
+        
+        public float Mod (string Entrada)
+        {
+            foreach (var x in Mods)
+            {
+                if (x.x == Entrada) return x.y;
+            }
+            return 0;
+        }
 
         /// <summary>
         /// Fuerza de la unidad.
@@ -33,7 +43,7 @@ namespace Civ
         /// <summary>
         /// Requerimientos para crearse.
         /// </summary>
-        public List<string> Reqs;
+        public List<Basic.Par<string, float>> Reqs;
 
         /// <summary>
         /// Población productiva que requiere para entrenar.

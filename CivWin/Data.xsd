@@ -7,6 +7,7 @@
         <xs:element ref="Recursos" minOccurs="1" maxOccurs="1"/>
         <xs:element ref="Edificios" minOccurs="1" maxOccurs="1"/>
         <xs:element ref="Trabajos" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="Unidades" minOccurs="1" maxOccurs="1"></xs:element>
         <xs:element name="RecursoAlimento" type="xs:string"  minOccurs="1" maxOccurs="1"/>
       </xs:sequence>
     </xs:complexType>
@@ -122,5 +123,55 @@
         <xs:element ref="ParOfStringSingle" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
-  </xs:element> 
+  </xs:element>
+  <xs:element name="Unidades">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UnidadRAW" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nombre" type="xs:string" />
+              <xs:element name="Mods">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="ParOfStringSingle">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="x" type="xs:string" />
+                          <xs:element name="y" type="xs:decimal" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Fuerza" type="xs:unsignedByte" />
+              <xs:element name="Flags">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="string" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Reqs">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="ParOfStringSingle">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="x" type="xs:string" />
+                          <xs:element name="y" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CostePoblación" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
