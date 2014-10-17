@@ -46,5 +46,45 @@ namespace Civ
             get { return _Entrenamiento; }
             set { _Entrenamiento = Math.Max(Math.Min(1, value), 0); }
         }
+
+		/// <summary>
+		/// Devuelve el peso, relativo a Armada, de la unidad.
+		/// </summary>
+		/// <value>The peso.</value>
+		public float Peso {
+			get {
+				return RAW.Peso;
+			}
+		}
+
+		public IPosición Posición;
+
+		Armada _ArmadaPerteneciente;
+		/// <summary>
+		/// Devuelve la armada a la que pertenece esta unidad.
+		/// No se use para cambiar de armada. Siempre es mejor hacerlo desde la clase <c>Armada</c>.
+		/// </summary>
+		/// <value>Si no existe tal armada, devuelve <c>null</c></value>
+		public Armada ArmadaPerteneciente {
+			get {
+				return _ArmadaPerteneciente;
+			}
+			set {
+				if (ArmadaPerteneciente != value) {
+					AbandonaArmada ();
+					_ArmadaPerteneciente = value;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Abandona la armada.
+		/// </summary>
+		public void AbandonaArmada ()
+		{
+			if (ArmadaPerteneciente != null) {
+				ArmadaPerteneciente.QuitarUnidad (this);
+			}
+		}
     }
 }

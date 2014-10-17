@@ -7,7 +7,7 @@ namespace Civ
 	/// <summary>
 	/// Representa una instancia de ciudad.
 	/// </summary>
-	public partial class Ciudad
+	public partial class Ciudad : IPosición
 	{
 		public override string ToString ()
 		{
