@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivGTK", "CivGTK\CivGTK.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivWin", "CivWin\CivWin.csproj", "{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gráficas", "Gráficas\Gráficas.csproj", "{596C48F2-E0F4-4A39-B9AA-1E000763B706}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,16 @@ Global
 		{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}.Release|x86.ActiveCfg = Release|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{596C48F2-E0F4-4A39-B9AA-1E000763B706}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

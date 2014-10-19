@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using Civ;
+using Gráficas;
 
 namespace Global
 {
@@ -7,7 +10,10 @@ namespace Global
 	/// </summary>
 	public class g_State
 	{
-
+        /// <summary>
+        /// La topología del mundo.
+        /// </summary>
+        Gráfica<IPosición> Topología;
 	}
 }
 

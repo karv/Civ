@@ -95,6 +95,10 @@
       <Project>{d0da2f97-634b-4693-a73b-0c2241ba0c4c}</Project>
       <Name>CivLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gráficas\Gráficas.csproj">
+      <Project>{596c48f2-e0f4-4a39-b9aa-1e000763b706}</Project>
+      <Name>Gráficas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ListaExtras\ListaExtras.csproj">
       <Project>{b9f315ae-47f8-4629-83fc-3b4d70087083}</Project>
       <Name>ListaExtras</Name>

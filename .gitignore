@@ -1,4 +1,4 @@
-Civ/Civ/bin/Debug/Civ.vshost.exe
+﻿Civ/Civ/bin/Debug/Civ.vshost.exe
 *.manifest
 Civ/bin/*
 *.exe
@@ -16,4 +16,12 @@ ListaExtras/bin/*
 Store/Store/Store/bin/*
 Store/Store/Store/obj/*
 *.suo
+*.cache
+Gráficas/obj/*.*
+TemporaryGeneratedFile_*.cs
+Gráficas/Gráficas.csproj
+Gráficas/Properties/AssemblyInfo.cs
+Gráficas/obj/Debug/Gráficas.csproj.FileListAbsolute.txt
 Civ.v12.suo
+Gráficas/bin/*
+Gráficas/obj/*

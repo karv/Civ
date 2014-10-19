@@ -95,7 +95,7 @@ namespace ListasExtra
 
 			//Ordenación y máximización
 		/// <summary>
-		/// Obtiene la entrda cuyo valor es máximo.
+		/// Obtiene la entrada cuyo valor es máximo.
 		/// </summary>
 		/// <returns></returns>		
 		public T ObtenerMáximo(Func<V,V,bool> Comparador)

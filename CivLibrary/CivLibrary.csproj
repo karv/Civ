@@ -39,6 +39,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IPosición.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ciencia.cs" />
     <Compile Include="Recurso.cs" />
@@ -67,9 +68,15 @@
     <Compile Include="Trabajo\Trabajadores.cs" />
     <Compile Include="Trabajo\Tick.cs" />
     <Compile Include="Trabajo\Trabajo.cs" />
+    <Compile Include="Unidad\Armada.cs" />
     <Compile Include="Unidad\Unidad.cs" />
     <Compile Include="Unidad\UnidadRAW.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gráficas\Gráficas.csproj">
+      <Project>{596c48f2-e0f4-4a39-b9aa-1e000763b706}</Project>
+      <Name>Gráficas</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup />
 </Project>
