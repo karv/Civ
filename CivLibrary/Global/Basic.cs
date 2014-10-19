@@ -69,7 +69,45 @@ namespace Basic
             }
             return ret.ToArray();
         }
+
+        /// <summary>
+        /// Selecciona pseudoaleatoriamente una sublista de tamaño fijo de una lista dada.
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="n">Número de elementos a seleccionar.</param>
+        /// <param name="Lista">Lista de dónde seleccionar la sublista.</param>
+        /// <returns>Devuelve una lista con los elementos seleccionados.</returns>
+        public static List<object> SeleccionaPeso (this Random r, int n, ListasExtra.ListaPeso<object> Lista)
+        {
+            List<object> ret;
+            float Suma = 0;
+            float rn;
+            if (n == 0) return new List<object>(); else {
+                ret = r.SeleccionaPeso(n - 1, Lista);
+
+                foreach (var x in ret)
+                {
+                    Lista[x] = 0;
+                }
+
+                    // Ahora seleecionar uno.
+                Suma = 0;
+                rn = (float)r.NextDouble() * Lista.SumaTotal();
+
+                foreach (var x in Lista.Keys)
+                {
+                    Suma += Lista[x];
+                    if (Suma >= rn)
+                    {
+                        ret.Add(x);
+                        return ret;
+                    }
+                }
+                return null;
+            }
+        }
     }
+
 
 }
 
