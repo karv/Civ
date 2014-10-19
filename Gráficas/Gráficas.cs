@@ -114,7 +114,7 @@ namespace Gráficas
         /// Agrega un nodo al árbol.
         /// </summary>
         /// <param name="nodo"></param>
-        public Nodo AgregaNodo (T nodo)
+        public void AgregaNodo (T nodo)
         {
             _Nodos.Add(new Nodo(nodo));
         }
