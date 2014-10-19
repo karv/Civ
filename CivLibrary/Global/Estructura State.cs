@@ -13,7 +13,7 @@ namespace Global
         /// <summary>
         /// La topología del mundo.
         /// </summary>
-        Gráfica<IPosición> Topología;
+        public Gráfica<IPosición> Topología;
 	}
 }
 
