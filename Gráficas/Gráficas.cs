@@ -10,34 +10,54 @@ namespace Gráficas
     /// </summary>
     public class Gráfica<T>
     {
+        public ListaPeso<Tuple<T, T>> Vecinos = new ListaPeso<Tuple<T, T>>();
+
         /// <summary>
-        /// Representa un nodo de la gráfica.
+        /// Devuelve la longitud de la ruta.
         /// </summary>
-        public class Nodo
+        public float Longitud (Ruta R)
         {
-            /// <summary>
-            /// El objeto asociado a este nodo.
-            /// </summary>
-            public T Objeto;
+            float ret = 0f;
+            for (int i = 0; i < R.Paso.Count - 1; i++)
+			{
+                ret += this[R.Paso[i], R.Paso[i + 1]];
 
-            /// <summary>
-            /// La vecindad de este nodo.
-            /// </summary>
-            public ListaPeso<Nodo> Vecinos = new ListaPeso<Nodo>();
+			}
+            return ret;
+        }
 
-            public Nodo(T Obj)
+        public bool EsSimétrico = false;
+
+        /// <summary>
+        /// Devuelve la lista de vecinos de x (a todos los que apunta x)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public List<T> Vecino(T x)
+        {
+            List<T> ret = new List<T>();
+            T[] Nods = Nodos;
+            foreach (var y in Nods)
             {
-                Objeto = Obj;
-                Vecinos.Nulo = float.PositiveInfinity;
+                if (!float.IsPositiveInfinity(this[x, y])) ret.Add(y);
             }
+            return ret;
+        }
 
-            public int CantidadVecinos
+        /// <summary>
+        /// Devuelve la lista de antivecinos de x (todos los que apuntan a x)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public List<T> AntiVecino(T x)
+        {
+            List<T> ret = new List<T>();
+            T[] Nods = Nodos;
+            foreach (var y in Nods)
             {
-                get
-                {
-                    return Vecinos.Data.Count;
-                }
+                if (!float.IsPositiveInfinity(this[y, x])) ret.Add(y);
             }
+            return ret;
         }
 
         /// <summary>
@@ -45,7 +65,7 @@ namespace Gráficas
         /// </summary>
         public class Ruta
         {
-            public List<Nodo> Paso;
+            public List<T> Paso;
 
             public static bool operator == (Ruta left, Ruta right)
             {
@@ -61,22 +81,6 @@ namespace Gráficas
             public static bool operator !=(Ruta left, Ruta right)
             {
                 return !(left == right);
-            }
-
-            /// <summary>
-            /// Devuelve la longitud de la ruta.
-            /// </summary>
-            public float Longitud
-            {
-                get
-                {
-                    float ret = 0f;
-                    for (int i = 0; i < Paso.Count - 1; i++)
-			        {
-			            ret += Paso[i].Vecinos[Paso[i+1]];
-			        }
-                    return ret;
-                }
             }
 
             public override bool Equals(object obj)
@@ -95,21 +99,30 @@ namespace Gráficas
             }
         }
         /// <summary>
-        /// Lista de nodos.
-        /// </summary>
-        private List<Nodo> _Nodos = new List<Nodo>();
-
-        /// <summary>
         /// Devuelve un clon de la lista de nodos.
         /// </summary>
-        public Nodo[] Nodos
+        public T[] Nodos
         {
             get
             {
-                return _Nodos.ToArray();
+                List<T> ret = new List<T>();
+                foreach (var x in Vecinos.Keys)
+                {
+                    if (!ret.Contains(x.Item1))
+                    {
+                        ret.Add(x.Item1);
+                    }
+
+                    if (!ret.Contains(x.Item2))
+                    {
+                        ret.Add(x.Item2);
+                    }
+                }
+                return ret.ToArray();
             }
         }
 
+        /*
         /// <summary>
         /// Agrega un nodo al árbol.
         /// </summary>
@@ -120,6 +133,7 @@ namespace Gráficas
             _Nodos.Add(ret);
             return ret;
         }
+         * */
 
         /// <summary>
         /// Devuelve o establece el peso de la arista que une dos vértices.
@@ -127,16 +141,16 @@ namespace Gráficas
         /// <param name="x">Un vértice.</param>
         /// <param name="y">Otro vértice.</param>
         /// <returns>Devuelve el peso de la arista que une estos nodos. <see cref="float.PositiveInfinity"/> si no existe arista.</returns>
-        public float this[Nodo x, Nodo y]
+        public float this[T x, T y]
         {
             get
             {
-                return x.Vecinos[y];
+                return Vecinos[new Tuple<T,T>(x,y)];
             }
             set
             {
-                x.Vecinos[y] = value;
-                y.Vecinos[x] = value;                
+                Vecinos[new Tuple<T,T>(x,y)] = value;
+                if (EsSimétrico) Vecinos[new Tuple<T,T>(y,x)] = value;
             }
         }
 
@@ -146,12 +160,12 @@ namespace Gráficas
         /// <param name="x">Un nodo.</param>
         /// <param name="y">Otro nodo.</param>
         /// <param name="Peso">El peso de la arista entre los nodos</param>
-        public void AgregaVértice(Nodo x, Nodo y, float Peso)
+        public void AgregaVértice(T x, T y, float Peso)
         {
-            if (_Nodos.Contains(x) && _Nodos.Contains(y))
             {
-                x.Vecinos[y] = Peso;
-                y.Vecinos[x] = Peso;
+                this[x,y] = Peso;
+                //x.Vecinos[y] = Peso;
+                //y.Vecinos[x] = Peso;
             }
         }
 
@@ -162,7 +176,7 @@ namespace Gráficas
         {
             get
             {
-                return _Nodos.Count;
+                return Nodos.Length;
             }
         }
 
@@ -174,12 +188,12 @@ namespace Gráficas
         /// <param name="Ignorar">Lista de nodos a evitar.</param>
         /// <returns>Devuelve la ruta de menor <c>Longitud</c>.</returns>
         /// <remarks>Puede ciclar si no existe ruta de x a y.</remarks> // TODO: Arreglar esto.
-        public Ruta CaminoÓptimo(Nodo x, Nodo y, List<Nodo> Ignorar)
+        public Ruta CaminoÓptimo(T x, T y, List<T> Ignorar)
         {
             Ruta ret = new Ruta();
             Ruta RutaBuscar;
-            List<Nodo> Ignora2;
-            Nodo[] tmp = {};
+            List<T> Ignora2;
+            T[] tmp = {};
 
 
             if (x.Equals(y)) {
@@ -187,17 +201,17 @@ namespace Gráficas
                 return ret;            
             }
             // else
-            foreach (var n in y.Vecinos.Keys)
+            foreach (var n in AntiVecino(y))
 	        {
 		        if (!Ignorar.Contains(n))
                 {
                     Ignorar.CopyTo(tmp);
-                    Ignora2 = new List<Nodo> (tmp);
+                    Ignora2 = new List<T> (tmp);
 
                     RutaBuscar = CaminoÓptimo(x, n, Ignora2);
                     RutaBuscar.Paso.Add(y);
 
-                    if (ret.Paso.Count > 0 && ret.Longitud > RutaBuscar.Longitud) ret = RutaBuscar;
+                    if (ret.Paso.Count > 0 && Longitud(ret) > Longitud(RutaBuscar)) ret = RutaBuscar;
                 }
 	        }
             return ret;           
@@ -210,11 +224,12 @@ namespace Gráficas
         /// <param name="y">Nodo final.</param>
         /// <returns>Devuelve la ruta de menor <c>Longitud</c>.</returns>
         /// <remarks>Puede ciclar si no existe ruta de x a y.</remarks> // TODO: Arreglar esto.
-        public Ruta CaminoÓptimo (Nodo x, Nodo y)
+        public Ruta CaminoÓptimo (T x, T y)
         {
-            return CaminoÓptimo (x,y, new List<Nodo>());
+            return CaminoÓptimo (x,y, new List<T>());
         }
 
+        /* // TODO:
         /// <summary>
         /// Genera una gráfica aleatoria.
         /// </summary>
@@ -234,6 +249,7 @@ namespace Gráficas
             }
             return ret;
         }
+         * */
 
         /* // TODO: Esto...
 
