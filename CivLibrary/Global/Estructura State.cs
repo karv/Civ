@@ -14,6 +14,11 @@ namespace Global
         /// La topología del mundo.
         /// </summary>
         public Gráfica<IPosición> Topología;
+
+        public g_State()
+        {
+            Topología.EsSimétrico = true;
+        }
 	}
 }
 
