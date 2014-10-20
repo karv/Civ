@@ -17,6 +17,7 @@ namespace Global
 
         public g_State()
         {
+            Topología = new Gráfica<IPosición>();
             Topología.EsSimétrico = true;
         }
 	}
