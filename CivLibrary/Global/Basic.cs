@@ -55,19 +55,21 @@ namespace Basic
         /// <returns>Devuelve un arreglo pseudoaleatoriamente generado de flotantes cuya suma es 1.</returns>
         public static float[] Separadores (this Random r, int Partes, float Suma = 1)
         {
-            List<float> ret = new List<float>();
-            for (int i = 0; i < Partes - 1; i++)
+            //List<float> ret = new List<float>();
+            float[] ret = new float[Partes];
+            float S = 0;
+            for (int i = 0; i < Partes; i++)
             {
-                ret.Add((float)r.NextDouble() * Suma);
+                ret[i] = (float)r.NextDouble();
+                S += ret[i];
             }
-            ret.Sort();
-            ret.Add(Suma);
 
-            for (int i = 0; i < Partes - 1; i++)
+            for (int i = 0; i < Partes; i++)
             {
-                ret[i] = ret[i + 1] - ret[i];
+                ret[i] = ret[i] * Suma / S;
             }
-            return ret.ToArray();
+
+            return ret;
         }
 
         /// <summary>
