@@ -42,7 +42,7 @@
             this.listTrabajos.IntegralHeight = false;
             this.listTrabajos.Location = new System.Drawing.Point(396, 12);
             this.listTrabajos.Name = "listTrabajos";
-            this.listTrabajos.Size = new System.Drawing.Size(134, 195);
+            this.listTrabajos.Size = new System.Drawing.Size(330, 195);
             this.listTrabajos.TabIndex = 19;
             this.listTrabajos.SelectedIndexChanged += new System.EventHandler(this.listTrabajos_SelectedIndexChanged);
             // 
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 441);
+            this.ClientSize = new System.Drawing.Size(738, 441);
             this.Controls.Add(this.comboConstruir);
             this.Controls.Add(this.numTrabajador);
             this.Controls.Add(this.listTrabajos);
