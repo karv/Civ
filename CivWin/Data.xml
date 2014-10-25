@@ -15,7 +15,7 @@
       <ReqCiencia></ReqCiencia>
     </Ciencia>
     <Ciencia>
-      <Nombre>Recolleción</Nombre>
+      <Nombre>Recolección</Nombre>
       <RecursoReq>Social</RecursoReq>
       <CantidadReq>12</CantidadReq>
       <ReqCiencia>
@@ -99,7 +99,7 @@
       </ReqCiencia>
     </Ciencia>
     <Ciencia>
-      <Nombre>Fabricación de utecilios</Nombre>
+      <Nombre>Fabricación de utensilios</Nombre>
       <RecursoReq>Manufactura</RecursoReq>
       <CantidadReq>17</CantidadReq>
       <ReqCiencia>
@@ -141,10 +141,10 @@
     </Ciencia>
     <Ciencia>
       <Nombre>Percutor duro de piedra</Nombre>
-      <RecursoReq>Arte</RecursoReq>
+      <RecursoReq>Manufactura</RecursoReq>
       <CantidadReq>20</CantidadReq>
       <ReqCiencia>
-        <string>Fabricación de utencilios</string>
+        <string>Fabricación de utensilios</string>
       </ReqCiencia>
     </Ciencia>
     <Ciencia>
@@ -260,20 +260,6 @@
       <Edificio>Granja</Edificio>
     </TrabajoRAW>
     <TrabajoRAW>
-      <Nombre>Hacerce el pato</Nombre>
-      <SalidaStr>
-        <ParOfStringSingle>
-          <x>Alimento</x>
-          <y>3</y>
-        </ParOfStringSingle>
-        <ParOfStringSingle>
-          <x>Ciencia</x>
-          <y>1</y>
-        </ParOfStringSingle>
-      </SalidaStr>
-      <Edificio>Palacio</Edificio>
-    </TrabajoRAW>
-    <TrabajoRAW>
       <Nombre>Producir</Nombre>
       <SalidaStr>
         <ParOfStringSingle>
@@ -283,6 +269,55 @@
       </SalidaStr>
       <Edificio>Palacio</Edificio>      
     </TrabajoRAW>
+    <TrabajoRAW>
+      <Nombre>Producir ciencia social</Nombre>
+      <SalidaStr>
+        <ParOfStringSingle>
+          <x>Social</x>
+          <y>1</y>
+        </ParOfStringSingle>
+      </SalidaStr>
+      <Edificio>Palacio</Edificio>      
+    </TrabajoRAW>
+    <TrabajoRAW>
+      <Nombre>Interactuar con entorno</Nombre>
+      <SalidaStr>
+        <ParOfStringSingle>
+          <x>Interacción con entorno</x>
+          <y>1</y>
+        </ParOfStringSingle>
+      </SalidaStr>
+      <Requiere>
+        <string>Vida nómada</string>
+      </Requiere>
+      <Edificio>Palacio</Edificio>      
+    </TrabajoRAW>
+    <TrabajoRAW>
+      <Nombre>Producir ciencia manufactura</Nombre>
+      <SalidaStr>
+        <ParOfStringSingle>
+          <x>Manufactura</x>
+          <y>1</y>
+        </ParOfStringSingle>
+      </SalidaStr>
+      <Requiere>
+        <string>Recolección</string>
+      </Requiere>
+      <Edificio>Palacio</Edificio>      
+    </TrabajoRAW>  
+    <TrabajoRAW>
+      <Nombre>Producir ciencia artístical</Nombre>
+      <SalidaStr>
+        <ParOfStringSingle>
+          <x>Arte</x>
+          <y>1</y>
+        </ParOfStringSingle>
+      </SalidaStr>
+      <Requiere>
+        <string>Tradición oral</string>
+      </Requiere>
+      <Edificio>Palacio</Edificio>      
+    </TrabajoRAW>  
   </Trabajos>
   <Unidades>
     <UnidadRAW>

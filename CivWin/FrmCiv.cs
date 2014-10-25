@@ -27,7 +27,7 @@ namespace CivWin
         }
 
         /// <summary>
-        /// Ejecuta un turno
+        /// Ejecuta un turno.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -75,7 +75,6 @@ namespace CivWin
                 Program.MuestraCiudad(C, this);		 
 	        }
         }
-
 
     }
 }
