@@ -104,7 +104,8 @@ namespace Global
 					return x;
 				}
 			}
-			return null;
+            throw new Exception(string.Format("No existe el recurso {0}. Compruebe que los nombres y referencias estén bien escritos en el XML.", nombre));
+			// return null;
 		}
 
 		/// <summary>
