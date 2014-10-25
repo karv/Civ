@@ -34,13 +34,17 @@ namespace Civ
 					i++;
 
 					// Si Tiene lo suficiente para terminar investigación
-					if (Investigando[y] >= y.CantidadReq) Investigado.Add(y);
+                    if (Investigando[y] >= y.CantidadReq)
+                    {
+                        Investigado.Add(y);
+                    }
 				}
 			}
 
 			foreach (var x in Investigado) {
 				Avances.Add(x);
 				Investigando.Data.Remove (x);
+                Msj.Add("Investigación terminada: " + x.Nombre);
 			}
 
 			// Fase final, desaparecer recursos.
