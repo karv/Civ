@@ -47,6 +47,13 @@ namespace CivWin
 
             // Actualizar este formulario
             Draw();
+
+            // Mensajes
+            foreach (var x in Civ.Msj)
+            {
+                MessageBox.Show(x);
+            }
+            Civ.Msj.Clear();
         }
 
         public void Draw ()

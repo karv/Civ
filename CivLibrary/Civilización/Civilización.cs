@@ -27,6 +27,12 @@ namespace Civ
 			return ret;
 		}
 
+        // TODO: Hacer clase que controle esto:
+
+        /// <summary>
+        /// Lista de mensajes de eventos para el usuario.
+        /// </summary>
+        public List<string> Msj = new List<string>();
 
 	}
 }

@@ -138,7 +138,7 @@ namespace Global
 				}
 			}
             throw new Exception("No se encuentra requerimiento " + Id + ". ");
-			return null;            
+			// return null;            
 		}
 
 		/// <summary>
