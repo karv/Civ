@@ -229,7 +229,6 @@ namespace Gráficas
             return CaminoÓptimo (x,y, new List<T>());
         }
 
-         // TODO:
         /// <summary>
         /// Genera una gráfica aleatoria.
         /// Por ahora no es aleatoria. Es completa, con peso aleatorio.

@@ -48,6 +48,15 @@ namespace Civ
 			Crecimiento [2] -= getPoblaciónPostProductiva * TasaMortalidadVejezBase;
 
 			// Aplicar cambios.
+
+            if (Crecimiento[1] < -(long)getTrabajadoresDesocupados)
+            {                
+                CivDueño.Msj.Add(string.Format("La ciudad {0} ha perdido trabajadores productivos ocupados.", this.Nombre));
+                LiberarTrabajadores(PoblaciónProductiva - (ulong)Crecimiento[1]);
+
+            }
+
+
 			// TODO: Un crecimiento negativo en el sector productivo causaría problemas con los trabajos. Arreglarlo.
 			// Agregar una propiedad a los trabajos, que controle su prioridad, los de menor prioridad pierden trabajadores en este caso.
 			// Los de mayor prioridad reclutan trabajadores en descanso. (¿opcional?)

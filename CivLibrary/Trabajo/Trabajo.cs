@@ -34,5 +34,9 @@ namespace Civ
 				return _RAW;
 			}
 		}
+
+        // Lo nuevo
+        public float Prioridad;
+
 	}
 }
