@@ -38,7 +38,6 @@ namespace Civ
 		/// <returns>La instancia de edificio en la ciudad; si no existe devuelve <c>null</c>.</returns>
 		public Edificio EncuentraInstanciaEdificio(EdificioRAW Ed)
 		{
-			// TODO: Probar
 			foreach (Edificio x in Edificios)
 			{
 				if (x.RAW == Ed)

@@ -229,27 +229,28 @@ namespace Gráficas
             return CaminoÓptimo (x,y, new List<T>());
         }
 
-        /* // TODO:
+         // TODO:
         /// <summary>
         /// Genera una gráfica aleatoria.
+        /// Por ahora no es aleatoria. Es completa, con peso aleatorio.
         /// </summary>
-        /// <param name="Nodos">El conjunto de nodos que se usarán</param>
+        /// <param name="Nodos">El conjunto de nodos que se usarán.</param>
         /// <param name="r">El generador aleatorio.</param>
         /// <returns></returns>
         public static Gráfica<T> GeneraGráficaAleatoria(T[] Nods, Random r)
         {
             Gráfica<T> ret = new Gráfica<T>();
-            foreach (var x in Nods)
-            {
-                ret.AgregaNodo(x);
-                if (ret._Nodos.Count > 1)
-                {
 
-                }
+            for (int i = 0; i < Nods.Length; i++)
+            {
+                for (int j = i + 1; j < Nods.Length; j++)
+                {
+                    ret.AgregaVértice(Nods[i], Nods[j], (float)r.NextDouble());
+                }                
             }
             return ret;
         }
-         * */
+         
 
         /* // TODO: Esto...
 
