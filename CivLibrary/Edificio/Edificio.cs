@@ -39,9 +39,10 @@ namespace Civ
 
 		public Edificio (EdificioRAW nRAW, Ciudad nCiudad):this(nRAW)
 		{
-			// TODO: Debe tirar error si ya existe esta clase de edificio en la ciudad.
+            if (_Ciudad.ExisteEdificio(nRAW)) throw new Exception("Error. Se quiere construir un edificio existente.");
 			_Ciudad = nCiudad;
 			_Ciudad.Edificios.Add (this);
+
 		}
 
 		/// <summary>
