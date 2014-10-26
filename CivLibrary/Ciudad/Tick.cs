@@ -56,10 +56,7 @@ namespace Civ
 
             }
 
-
-			// TODO: Un crecimiento negativo en el sector productivo causaría problemas con los trabajos. Arreglarlo.
-			// Agregar una propiedad a los trabajos, que controle su prioridad, los de menor prioridad pierden trabajadores en este caso.
-			// Los de mayor prioridad reclutan trabajadores en descanso. (¿opcional?)
+			// TODO: Los de mayor prioridad reclutan trabajadores en descanso. (¿opcional?)
 
 			_PoblaciónPreProductiva = Math.Max (_PoblaciónPreProductiva + Crecimiento [0], 0);
 			_PoblaciónProductiva = Math.Max (_PoblaciónProductiva + Crecimiento [1], 0);

@@ -39,7 +39,6 @@ namespace Civ
 				List<TrabajoRAW> ret = new List<TrabajoRAW>();
 				foreach (var x in Global.g_.Data.Trabajos)
 				{
-					// TODO: Revisar todos los trabajos, hacer función que determine si un trabajo es posible.
 					List<IRequerimiento> Req = Basic.Covertidor<string, IRequerimiento>.ConvertirLista(x.Requiere, (z => Global.g_.Data.EncuentraRequerimiento(z)));
 					if (SatisfaceReq(Req) && ExisteEdificio(Global.g_.Data.EncuentraEdificio(x.Edificio))) 
 					{
@@ -79,8 +78,6 @@ namespace Civ
 		/// <returns>Devuelve el trabajo en la ciudad correspondiente a este TrabajoRAW.</returns>
 		public Trabajo EncuentraInstanciaTrabajo (TrabajoRAW TRAW)
 		{
-			// TODO: Probar.
-
 			EdificioRAW Ed = Global.g_.Data.EncuentraEdificio(TRAW.Edificio);   // La clase de edificio que puede contener este trabajo.
 			Edificio Edif = EncuentraInstanciaEdificio(Ed); // La instancia del edificio en esta ciudad.
 

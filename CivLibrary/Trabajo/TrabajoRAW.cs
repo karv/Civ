@@ -74,15 +74,18 @@ namespace Civ
 		public List<String> Requiere = new List<string>();
 
 		/// <summary>
-		/// Devuelve la lista de requerimientos
+		/// Devuelve la lista de requerimientos.
 		/// </summary>
 		/// <value>El IRequerimiento</value> 
 		public List<IRequerimiento> Reqs()
 		{
 			// TODO: Que funcione, debería revisar la lista de cada Edificio, Ciencias y los demás IRequerimientos
 			// y convertirlos a su respectivo objeto. Devolver esa lista.
-			throw new NotImplementedException();
-			//return null;
+            List<IRequerimiento> ret = Basic.Covertidor<string, IRequerimiento>.ConvertirLista(
+                Requiere,
+                x => Global.g_.Data.EncuentraRequerimiento(x));
+
+            return ret;
 		}
 
 		/// <summary>
