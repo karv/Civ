@@ -63,6 +63,7 @@
     <Compile Include="Global\Estructura State.cs" />
     <Compile Include="Global\Estáticos.cs" />
     <Compile Include="Global\Basic.cs" />
+    <Compile Include="Terreno.cs" />
     <Compile Include="Trabajo\TrabajoRAW.cs" />
     <Compile Include="Trabajo\CiudadEdificio.cs" />
     <Compile Include="Trabajo\Trabajadores.cs" />

@@ -7,7 +7,7 @@ namespace Civ
 	/// <summary>
 	/// Representa una instancia de ciudad.
 	/// </summary>
-	public partial class Ciudad : IPosición
+	public partial class Ciudad
 	{
 		public override string ToString ()
 		{
@@ -36,16 +36,42 @@ namespace Civ
 			}
 		}
 
+
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Civ.Ciudad"/> class.
 		/// </summary>
-		/// <param name="Nombre">Nombre de la ciudad</param>
-		/// <param name="Dueño">Civ a la que pertenece esta ciudad</param>
-		public Ciudad (string Nom, Civilización Dueño)
+		/// <param name="Nom">Nombre de la ciudad.</param>
+		/// <param name="Dueño">Civ a la que pertenece esta ciudad.</param>
+        /// <param name="T">Terreno de contrucción de la ciudad.</param>
+		public Ciudad (string Nom, Civilización Dueño, Terreno T)
 		{
 			Nombre = Nom;
 			CivDueño = Dueño;
+            T.CiudadConstruida = this;
+            Terr = T;
+
+
+
+                // Importar desde T.
+
+            foreach (var x in T.EdificiosIniciales)
+            {
+                AgregaEdificio(x);
+            }
+
+            foreach (var x in T.Eco.RecursoEcológico.Keys)
+            {
+                Almacén[x] = T.Eco.RecursoEcológico[x].Cant;
+            }
 		}
+
+            // Partial no asinado. 
+
+        /// <summary>
+        /// Terreno donde se contruye la ciudad.
+        /// </summary>
+        Terreno Terr;
 	        
 	}
 }
