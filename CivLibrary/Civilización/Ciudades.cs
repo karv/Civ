@@ -34,9 +34,9 @@ namespace Civ
 		/// </summary>
 		/// <returns>Devuelve la ciudad que se agregó.</returns>
 		/// <param name="Nom">Nombre de la ciudad.</param>
-		public Ciudad addCiudad (string Nom)
+		public Ciudad addCiudad (string Nom, Terreno T)
 		{
-			Ciudad C = new Ciudad (Nom, this);
+			Ciudad C = new Ciudad (Nom, this, T);
 			return C;
 		}
 

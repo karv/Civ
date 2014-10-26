@@ -12,14 +12,14 @@ namespace Civ
         /// <summary>
         /// Edificios que se contruyen al construir una ciudad aquí.
         /// </summary>
-        public List<EdificioRAW> EdificiosIniciales;
+        public List<EdificioRAW> EdificiosIniciales = new List<EdificioRAW>();
 
 
             // Ecología
         /// <summary>
         /// Representa la ecología del terreno.
         /// </summary>
-        public Ecología Eco;
+        public Ecología Eco = new Ecología();
 
         /// <summary>
         /// Representa la ecología del terreno.
@@ -32,7 +32,7 @@ namespace Civ
                 public float Max;
                 public float Crec;		
 	        }
-            public Dictionary<Recurso, RecursoEstado> RecursoEcológico;
+            public Dictionary<Recurso, RecursoEstado> RecursoEcológico = new Dictionary<Recurso,RecursoEstado>();
         }
 
         /// <summary>
