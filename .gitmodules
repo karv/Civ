@@ -6,3 +6,6 @@
 	path = CivLibrary
 
 	url = https://github.com/karv/civlib.git
+[submodule "Gráficas"]
+	path = Gráficas
+	url = git@github.com:karv/Grafo.git
