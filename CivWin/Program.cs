@@ -45,7 +45,7 @@ namespace CivWin
 
             Civilización C = new Civilización();
             C.Nombre = "E:3";
-            Ciudad Cd = new Ciudad("MyCity", C);
+            Ciudad Cd = new Ciudad("MyCity", C, new Terreno());
 
             Cd.PoblaciónProductiva = 10;
             Cd.Almacén[Ciudad.RecursoAlimento] = 10000;
