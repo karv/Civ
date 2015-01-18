@@ -1,3 +1,6 @@
 [submodule "ListaExtras"]
 	path = ListaExtras
 	url = git@gitlab.com:karvayoedgar/listaextras.git
+[submodule "CivLibrary"]
+	path = CivLibrary
+	url = https://github.com/karv/civlib.git
