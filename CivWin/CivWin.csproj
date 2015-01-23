@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,7 +96,7 @@
       <Project>{d0da2f97-634b-4693-a73b-0c2241ba0c4c}</Project>
       <Name>CivLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ListaExtras\ListaExtras.csproj">
+    <ProjectReference Include="..\CivLibrary\ListaExtras\ListaExtras.csproj">
       <Project>{b9f315ae-47f8-4629-83fc-3b4d70087083}</Project>
       <Name>ListaExtras</Name>
     </ProjectReference>
