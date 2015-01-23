@@ -1,73 +1,48 @@
-using System.IO;
-using System.Xml.Serialization;
 using System;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-
 using System.Collections.Generic;
-//using Gtk;
+using System.Text;
+using System.Xml.Serialization;
+using System.Xml;
+using System.Runtime.Serialization;
+
+using System.IO;
 
 namespace Store
 {
 
-	[Serializable()]	
-	public partial class Store<T>
+	public static partial class Store<T>
 	{
-		// For use with FileStream, MemoryStream, etc.
-		/// <summary>
-		/// Guarda algÃºn objeto por un protocolo Stream.
-		/// </summary>
-		/// <param name="stream">El stream. FileStream, MemoryStream, etc.</param>
-		/// <param name="theObject">Objeto a guardar</param>
-		[Obsolete()]
-		public static void Save(Stream stream, T theObject)
+        /// <summary>
+        /// Serializa un objeto a un archivo xml
+        /// </summary>
+        /// <param name="xml">Archivo en dónde guardar el xml</param>
+        /// <param name="Data">Datos a guardar.</param>
+		public static void Serialize(string xml, T Data)
 		{
-			new XmlSerializer(typeof(T)).Serialize(stream, theObject);
+
+            var settings = new XmlWriterSettings { Indent = true, IndentChars = "\t", OmitXmlDeclaration= true };
+            XmlWriter wr = XmlWriter.Create(xml, settings);
+            DataContractSerializer serializer = new DataContractSerializer(typeof(T));
+            serializer.WriteObject(wr, Data);
+            wr.Close();
 		}
 
-		// Store the object to the specified file
-		[Obsolete()]
-		public static void Save(string filename, T theObject)
+        /// <summary>
+        /// Deserializa un objeto
+        /// </summary>
+        /// <param name="xml">nombre del archivo de dónde deserealizar.</param>
+        /// <returns>Devuelve un objeto con la información deserializada.</returns>
+		public static T Deserialize (string xml)
 		{
-			using (TextWriter stream = new StreamWriter(filename))
-				new XmlSerializer(typeof(T)).Serialize(stream, theObject);
-		}
-
-		// For use with FileStream, MemoryStream, etc.
-		[Obsolete()]
-		public static T Load(Stream stream)
-		{
-			return (T)(new XmlSerializer(typeof(T)).Deserialize(stream));
-		}
-
-		// Store the object to the specified file
-		[Obsolete()]
-		public static T Load(string filename)
-		{
-			using (TextReader stream = new StreamReader(filename))
-				return (T)(new XmlSerializer(typeof(T)).Deserialize(stream));
-		}
-		[Obsolete()]
-		public static void SerializeOld(string FileName, T mp)
-		{
-			Stream stream = File.Open(FileName, FileMode.Create);
-			BinaryFormatter bformatter = new BinaryFormatter();
-
-			Console.WriteLine("Writing Employee Information");
-			bformatter.Serialize(stream, mp);
-			stream.Close();
-		}
-		[Obsolete()]
-		public static T DeSerializeOld(string FileName)
-		{
-			T mp;
-			Stream stream = File.Open (FileName, FileMode.Open);
-			BinaryFormatter bformatter = new BinaryFormatter ();
-
-			mp = (T)bformatter.Deserialize (stream);
-			stream.Close ();
-
-			return mp;
+            XmlTextReader xr = new XmlTextReader(new FileStream(xml, FileMode.Open));
+            DataContractSerializer deserializer = new DataContractSerializer(typeof(T));
+            object r = deserializer.ReadObject(xr);
+            xr.Close();            
+            return (T)r;           
 		}
 	}
 }
+
+
+
+
