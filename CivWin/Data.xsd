@@ -1,178 +1,205 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-  <xs:element name="g_Data">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:i="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Civ" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="Data">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="Ciencias" minOccurs="1" maxOccurs="1"/>
-        <xs:element ref="Recursos" minOccurs="1" maxOccurs="1"/>
-        <xs:element ref="Edificios" minOccurs="1" maxOccurs="1"/>
-        <xs:element ref="Trabajos" minOccurs="1" maxOccurs="1"/>
-        <xs:element ref="Unidades" minOccurs="1" maxOccurs="1"></xs:element>
-        <xs:element name="RecursoAlimento" type="xs:string"  minOccurs="1" maxOccurs="1"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Ciencias">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="Ciencia" maxOccurs ="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Ciencia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="Nombre" type="xs:string"/>
-        <xs:element name="RecursoReq" type="xs:string"/>
-        <xs:element name="CantidadReq" type="xs:decimal"/>
-     <!--   <xs:element name="ReqCiencia" type="xs:string"/> -->
-        <xs:element ref="ReqCiencia" minOccurs="1" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReqCiencia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="string" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Recursos">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="Recurso" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Recurso">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="Desaparece" type="xs:boolean" minOccurs="0" default="false"/>
-        <xs:element name="EsCientífico" type="xs:boolean" minOccurs="0" default="false"/>
-        <xs:element name="EsEcológico" type="xs:boolean" minOccurs="0" default="false"/>
-        <xs:element name="Nombre" type="xs:string"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Edificios">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="EdificioRAW" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EdificioRAW">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="Nombre" type="xs:string"/>
-        <xs:element name="MaxWorkers" type="xs:unsignedLong"/>
-        <xs:element ref="Requiere" minOccurs="0"/>
-        <xs:element ref="ReqRecursos"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Requiere">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="string" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReqRecursos">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="ParOfStringSingle" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ParOfStringSingle">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="x" type="xs:string"/>
-        <xs:element name="y" type="xs:string"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Trabajos">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="TrabajoRAW" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TrabajoRAW">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="Nombre" type="xs:string" maxOccurs="1"/>
-		    <xs:element ref="EntradaStr" minOccurs ="0" maxOccurs="1" />
-		    <xs:element ref="SalidaStr" minOccurs ="0" maxOccurs="1" />
-		    <xs:element ref="Requiere" minOccurs ="0" maxOccurs="1" />
-        <xs:element name="Edificio" type = "xs:string" minOccurs ="1" maxOccurs="1" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>  
-  <xs:element name="EntradaStr">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="ParOfStringSingle" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SalidaStr">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="ParOfStringSingle" maxOccurs="unbounded"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Unidades">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="UnidadRAW" maxOccurs="unbounded">
+        <xs:element name="Ciencias">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Nombre" type="xs:string" />
-              <xs:element name="Mods">
+              <xs:element maxOccurs="unbounded" name="Ciencia">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="ParOfStringSingle">
+                    <xs:element name="Nombre" type="xs:string" />
+                    <xs:element name="Requiere">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element name="x" type="xs:string" />
-                          <xs:element name="y" type="xs:decimal" />
+                          <xs:element name="Cantidad" type="xs:unsignedByte" />
+                          <xs:element name="Ciencias">
+                            <xs:complexType mixed="true">
+                              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="Ciencia">
+                                  <xs:complexType>
+                                    <xs:attribute ref="z:Ref" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="1" name="Recurso">
+                            <xs:complexType>
+                              <xs:sequence minOccurs="0">
+                                <xs:element name="Científico" type="xs:boolean" />
+                                <xs:element name="Desaparece" type="xs:boolean" />
+                                <xs:element name="Nombre" type="xs:string" />
+                              </xs:sequence>            
+                              <xs:attribute ref="z:Id" use="optional" />
+                              <xs:attribute ref="z:Ref" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
+                  <xs:attribute ref="z:Id" use="optional" />
                 </xs:complexType>
               </xs:element>
-              <xs:element name="Fuerza" type="xs:unsignedByte" />
-              <xs:element name="Flags">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="string" type="xs:string" />
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="Reqs">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="ParOfStringSingle">
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="x" type="xs:string" />
-                          <xs:element name="y" type="xs:unsignedByte" />
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="CostePoblación" type="xs:unsignedByte" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Recursos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Recurso">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element name="Desaparece" type="xs:boolean" />
+                    <xs:element name="Científico" type="xs:boolean" />
+                    <xs:element name="Nombre" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute ref="z:Ref" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Edificios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="EdificioRAW">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Nombre" type="xs:string" />
+                    <xs:element name="MaxWorkers" type="xs:unsignedByte" />
+                    <xs:element name="Requiere">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="string" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ReqRecursos">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="ParOfStringSingle">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="x" type="xs:string" />
+                                <xs:element name="y" type="xs:decimal" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Trabajos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="TrabajoRAW">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Nombre" type="xs:string" />
+                    <xs:element minOccurs="0" name="EntradaStr">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ParOfStringSingle">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="x" type="xs:string" />
+                                <xs:element name="y" type="xs:decimal" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="SalidaStr">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ParOfStringSingle">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="x" type="xs:string" />
+                                <xs:element name="y" type="xs:decimal" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Requiere">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="string" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Edificio" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Unidades">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UnidadRAW">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Nombre" type="xs:string" />
+                    <xs:element name="Mods">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="ParOfStringSingle">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="x" type="xs:string" />
+                                <xs:element name="y" type="xs:decimal" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Fuerza" type="xs:unsignedByte" />
+                    <xs:element name="Flags">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="string" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Reqs">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="ParOfStringSingle">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="x" type="xs:string" />
+                                <xs:element name="y" type="xs:unsignedByte" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="CostePoblación" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RecursoAlimento" type="xs:string" />
       </xs:sequence>
+      <xs:attribute ref="z:Id" use="required" />
     </xs:complexType>
   </xs:element>
 </xs:schema>
