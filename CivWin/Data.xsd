@@ -58,6 +58,7 @@
                     <xs:element name="Nombre" type="xs:string" />
                   </xs:sequence>
                   <xs:attribute ref="z:Ref" use="optional" />
+                  <xs:attribute ref="z:Id" use="optional" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

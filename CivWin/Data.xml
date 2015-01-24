@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Data xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="i1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/Civ" > 
+<Data xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/Civ" >
+  <Alimento z:Id ="rAlimento">
+    <Científico>false</Científico>
+    <Desaparece>false</Desaparece>
+    <Nombre>Alimento</Nombre>
+  </Alimento>
   <Ciencias>
     <Ciencia z:Id="cLenguaje">
       <Nombre>Lenguaje</Nombre>
@@ -235,65 +240,77 @@
       </Requiere>
     </Ciencia>
   </Ciencias>
+  <Edificios>
+    <Edificio z:Id ="ePalacio">
+      <Construcción xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+        <d4p1:KeyValueOfRecursofloatbN_PeySYD>
+          <d4p1:Key z:Id="rPiedra">
+            <Científico>false</Científico>
+            <Desaparece>false</Desaparece>
+            <Nombre>Piedra</Nombre>
+          </d4p1:Key>
+          <d4p1:Value>12</d4p1:Value>
+        </d4p1:KeyValueOfRecursofloatbN_PeySYD>
+      </Construcción>
+      <MaxWorkers>4</MaxWorkers>
+      <Nombre>Palacio</Nombre>
+      <ReqCiencias/>
+      <ReqEdificios/>
+    </Edificio>
+
+
+    <Edificio z:Id ="eGranja">
+      <Construcción xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+        <d4p1:KeyValueOfRecursofloatbN_PeySYD>
+          <d4p1:Key z:Ref="rAlimento" />
+          <d4p1:Value>5</d4p1:Value>
+        </d4p1:KeyValueOfRecursofloatbN_PeySYD>
+
+        <d4p1:KeyValueOfRecursofloatbN_PeySYD>
+          <d4p1:Key z:Id="rProducción">
+            <Científico>false</Científico>
+            <Desaparece>false</Desaparece>
+            <Nombre>Producción</Nombre>
+          </d4p1:Key>
+          <d4p1:Value>5</d4p1:Value>
+        </d4p1:KeyValueOfRecursofloatbN_PeySYD>
+      </Construcción>
+      <MaxWorkers>100</MaxWorkers>
+      <Nombre>Granja</Nombre>
+      <ReqCiencias/>
+      <ReqEdificios/>
+    </Edificio>
+  </Edificios>
   <Recursos>
     <Recurso z:Ref ="rSocial" />
     <Recurso z:Ref="rInteracción con el entorno" />
-    <Recurso>
-      <Desaparece>false</Desaparece>
-      <Científico>false</Científico>
-      <Nombre>Alimento</Nombre>
-    </Recurso>
-    <Recurso>
-      <Desaparece>true</Desaparece>
-      <Científico>false</Científico>
-      <Nombre>Producción</Nombre>
-    </Recurso>
-    <Recurso>
-      <Desaparece>true</Desaparece>
-      <Científico>true</Científico>
-      <Nombre>Manufactura</Nombre>
-    </Recurso>
-    <Recurso>
-      <Desaparece>true</Desaparece>
-      <Científico>true</Científico>
-      <Nombre>Arte</Nombre>
-    </Recurso>
+    <Recurso z:Ref="rAlimento" />
+    <Recurso z:Ref="rProducción"/>
+    <Recurso z:Ref="rManufactura" />
+    <Recurso z:Ref="rArte" />
   </Recursos>
-  <Edificios>
-    <EdificioRAW>
-      <Nombre>Palacio</Nombre>
-      <MaxWorkers>1</MaxWorkers>
-      <Requiere>
-        <string>Lenguaje</string>
-      </Requiere>
-      <ReqRecursos>
-        <ParOfStringSingle>
-          <x>Piedra</x>
-          <y>12</y>
-        </ParOfStringSingle>
-        <ParOfStringSingle>
-          <x>Otro</x>
-          <y>12.34</y>
-        </ParOfStringSingle>
-      </ReqRecursos>
-    </EdificioRAW>
-    <EdificioRAW>
-      <Nombre>Granja</Nombre>
-      <MaxWorkers>100</MaxWorkers>
-      <Requiere />
-      <ReqRecursos>
-        <ParOfStringSingle>
-          <x>Alimento</x>
-          <y>5</y>
-        </ParOfStringSingle>
-        <ParOfStringSingle>
-          <x>Producción</x>
-          <y>50</y>
-        </ParOfStringSingle>
-      </ReqRecursos>
-    </EdificioRAW>
-  </Edificios>
   <Trabajos>
+    <Trabajo z:Id="tSembrar maíz">
+      <Edificio z:Ref="eGranja" />
+      <Entrada xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      </Entrada>
+      <Nombre>Granja</Nombre>
+      <Requiere>
+        <Ciencias>
+          <Ciencia z:Ref="cLenguaje" />
+        </Ciencias>
+        <Edificios />
+      </Requiere>
+      <Salida xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+          <d5p1:KeyValueOfRecursofloatbN_PeySYD>
+            <d5p1:Key z:Ref="rAlimento" />
+            <d5p1:Value>1.3</d5p1:Value>
+          </d5p1:KeyValueOfRecursofloatbN_PeySYD>
+        </d4p1:List>
+      </Salida>
+    </Trabajo>
     <TrabajoRAW>
       <Nombre>Sembrar Maíz</Nombre>
       <EntradaStr>
@@ -404,5 +421,4 @@
       <CostePoblación>1</CostePoblación>
     </UnidadRAW>
   </Unidades>
-  <RecursoAlimento>Alimento</RecursoAlimento>
 </Data>
