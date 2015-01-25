@@ -29,9 +29,26 @@ namespace CivWin
         [STAThread]
         static void Main()
         {
+            
+            Ciencia Cx = new Ciencia();
+            Cx.Nombre = "Hue";
+            Cx.Reqs.Cantidad = 10f;
+            Cx.Reqs.Rec = new Recurso();
+            Cx.Reqs.Ciencias.Add(Cx);
 
-            DoRead(); /*
 
+            g_.Data.Ciencias.Add(Cx);
+
+            g_.GuardaData();
+
+            
+
+            DoRead(); 
+            
+            
+            /*
+
+                       * 
             TrabajoRAW T = new TrabajoRAW();
             T.Nombre = "Trab";
             T.Edificio = "Granja";
@@ -47,6 +64,7 @@ namespace CivWin
 
             Civilización C = new Civilización();
             C.Nombre = "E:3";
+            
             Ciudad Cd = new Ciudad("MyCity", C, new Terreno());
 
             Cd.PoblaciónProductiva = 10;
