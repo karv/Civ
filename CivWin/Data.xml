@@ -19,7 +19,7 @@
         </Recurso>
       </Requiere>
     </Ciencia>
-    <Ciencia z:Id="cVida Nómada">
+    <Ciencia z:Id="cVida nómada">
       <Nombre>Vida nómada</Nombre>
       <Requiere>
         <Cantidad>10</Cantidad>
@@ -32,7 +32,7 @@
       <Requiere>
         <Cantidad>12</Cantidad>
         <Ciencias>
-          <Ciencia z:Ref = "cVida Nómada" />
+          <Ciencia z:Ref = "cVida nómada" />
         </Ciencias>
         <Recurso z:Ref="rSocial" />
       </Requiere>
@@ -42,7 +42,7 @@
       <Requiere>
         <Cantidad>14</Cantidad>
         <Ciencias>
-          <Ciencia z:Ref = "cVida Nómada" />
+          <Ciencia z:Ref = "cVida nómada" />
         </Ciencias>
         <Recurso z:Id="rInteracción con el entorno">
           <Científico>true</Científico>
@@ -254,11 +254,11 @@
       </Construcción>
       <MaxWorkers>4</MaxWorkers>
       <Nombre>Palacio</Nombre>
-      <ReqCiencias/>
-      <ReqEdificios/>
+			<Requiere>
+				<Ciencias />
+				<Edificios />
+			</Requiere>
     </Edificio>
-
-
     <Edificio z:Id ="eGranja">
       <Construcción xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
         <d4p1:KeyValueOfRecursofloatbN_PeySYD>
@@ -277,8 +277,12 @@
       </Construcción>
       <MaxWorkers>100</MaxWorkers>
       <Nombre>Granja</Nombre>
-      <ReqCiencias/>
-      <ReqEdificios/>
+			<Requiere>
+        <Ciencias>
+          <Ciencia z:Ref ="cLenguaje" />
+        </Ciencias>
+				<Edificios />
+			</Requiere>
     </Edificio>
   </Edificios>
   <Recursos>
@@ -311,84 +315,107 @@
         </d4p1:List>
       </Salida>
     </Trabajo>
-    <TrabajoRAW>
-      <Nombre>Sembrar Maíz</Nombre>
-      <EntradaStr>
-        <ParOfStringSingle>
-          <x>Alimento</x>
-          <y>0.1</y>
-        </ParOfStringSingle>
-      </EntradaStr>
-      <SalidaStr>
-        <ParOfStringSingle>
-          <x>Alimento</x>
-          <y>1.3</y>
-        </ParOfStringSingle>
-      </SalidaStr>
+    <Trabajo z:Id="tProducción">
+      <Edificio z:Ref="ePalacio" />
+      <Entrada xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      </Entrada>
+      <Nombre>Producción</Nombre>
       <Requiere>
-        <string>Lenguaje</string>
+        <Ciencias />
+        <Edificios />
       </Requiere>
-      <Edificio>Granja</Edificio>
-    </TrabajoRAW>
-    <TrabajoRAW>
-      <Nombre>Producir</Nombre>
-      <SalidaStr>
-        <ParOfStringSingle>
-          <x>Producción</x>
-          <y>10</y>
-        </ParOfStringSingle>
-      </SalidaStr>
-      <Edificio>Palacio</Edificio>      
-    </TrabajoRAW>
-    <TrabajoRAW>
-      <Nombre>Producir ciencia social</Nombre>
-      <SalidaStr>
-        <ParOfStringSingle>
-          <x>Social</x>
-          <y>1</y>
-        </ParOfStringSingle>
-      </SalidaStr>
-      <Edificio>Palacio</Edificio>      
-    </TrabajoRAW>
-    <TrabajoRAW>
+      <Salida xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+          <d5p1:KeyValueOfRecursofloatbN_PeySYD>
+            <d5p1:Key z:Ref="rProducción" />
+            <d5p1:Value>10</d5p1:Value>
+          </d5p1:KeyValueOfRecursofloatbN_PeySYD>
+        </d4p1:List>
+      </Salida>
+    </Trabajo>
+    <Trabajo z:Id="tProducir ciencia social">
+      <Edificio z:Ref="ePalacio" />
+      <Entrada xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      </Entrada>
+      <Nombre>Prodicur ciencia social</Nombre>
+      <Requiere>
+        <Ciencias />
+        <Edificios />
+      </Requiere>
+      <Salida xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+          <d5p1:KeyValueOfRecursofloatbN_PeySYD>
+            <d5p1:Key z:Ref="rSocial" />
+            <d5p1:Value>1</d5p1:Value>
+          </d5p1:KeyValueOfRecursofloatbN_PeySYD>
+        </d4p1:List>
+      </Salida>
+    </Trabajo>
+    <Trabajo z:Id="tInteractuar con entorno">
+      <Edificio z:Ref="ePalacio" />
+      <Entrada xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      </Entrada>
       <Nombre>Interactuar con entorno</Nombre>
-      <SalidaStr>
-        <ParOfStringSingle>
-          <x>Interacción con entorno</x>
-          <y>1</y>
-        </ParOfStringSingle>
-      </SalidaStr>
       <Requiere>
-        <string>Vida nómada</string>
+        <Ciencias>
+          <Ciencia z:Ref="cVida nómada" />
+        </Ciencias>
+        <Edificios />
       </Requiere>
-      <Edificio>Palacio</Edificio>      
-    </TrabajoRAW>
-    <TrabajoRAW>
-      <Nombre>Producir ciencia manufactura</Nombre>
-      <SalidaStr>
-        <ParOfStringSingle>
-          <x>Manufactura</x>
-          <y>1</y>
-        </ParOfStringSingle>
-      </SalidaStr>
+      <Salida xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+          <d5p1:KeyValueOfRecursofloatbN_PeySYD>
+            <d5p1:Key z:Ref="rInteracción con entorno" />
+            <d5p1:Value>1</d5p1:Value>
+          </d5p1:KeyValueOfRecursofloatbN_PeySYD>
+        </d4p1:List>
+      </Salida>
+    </Trabajo>
+    <Trabajo z:Id="tProducir ciencia manufactura">
+      <Edificio z:Ref="ePalacio" />
+      <Entrada xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      </Entrada>
+      <Nombre>Producir ciancia manufactura</Nombre>
       <Requiere>
-        <string>Recolección</string>
+        <Ciencias>
+          <Ciencia z:Ref="cRecolección" />
+        </Ciencias>
+        <Edificios />
       </Requiere>
-      <Edificio>Palacio</Edificio>      
-    </TrabajoRAW>  
-    <TrabajoRAW>
-      <Nombre>Producir ciencia artístical</Nombre>
-      <SalidaStr>
-        <ParOfStringSingle>
-          <x>Arte</x>
-          <y>1</y>
-        </ParOfStringSingle>
-      </SalidaStr>
+      <Salida xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+          <d5p1:KeyValueOfRecursofloatbN_PeySYD>
+            <d5p1:Key z:Ref="rManufactura" />
+            <d5p1:Value>1</d5p1:Value>
+          </d5p1:KeyValueOfRecursofloatbN_PeySYD>
+        </d4p1:List>
+      </Salida>
+    </Trabajo>
+    <Trabajo z:Id="tProducir ciencia artística">
+      <Edificio z:Ref="ePalacio" />
+      <Entrada xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      </Entrada>
+      <Nombre>Producir ciencia artística</Nombre>
       <Requiere>
-        <string>Tradición oral</string>
+        <Ciencias>
+          <Ciencia z:Ref="cTradición oral" />
+        </Ciencias>
+        <Edificios />
       </Requiere>
-      <Edificio>Palacio</Edificio>      
-    </TrabajoRAW>  
+      <Salida xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
+        <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+          <d5p1:KeyValueOfRecursofloatbN_PeySYD>
+            <d5p1:Key z:Ref="rArte" />
+            <d5p1:Value>1</d5p1:Value>
+          </d5p1:KeyValueOfRecursofloatbN_PeySYD>
+        </d4p1:List>
+      </Salida>
+    </Trabajo>
   </Trabajos>
   <Unidades>
     <UnidadRAW>
