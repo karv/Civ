@@ -10,11 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivLibrary", "CivLibrary\Ci
 		{B9F315AE-47F8-4629-83FC-3B4D70087083} = {B9F315AE-47F8-4629-83FC-3B4D70087083}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store\Store\Store.csproj", "{B5651422-0901-4E7F-976A-A4F7893267CA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B9F315AE-47F8-4629-83FC-3B4D70087083} = {B9F315AE-47F8-4629-83FC-3B4D70087083}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivWin", "CivWin\CivWin.csproj", "{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9259C019-57AC-446E-AD0E-8D0F56AD71EE} = {9259C019-57AC-446E-AD0E-8D0F56AD71EE}
@@ -27,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gráficas", "CivLibrary\Gra
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListaExtras", "CivLibrary\ListaExtras\ListaExtras.csproj", "{B9F315AE-47F8-4629-83FC-3B4D70087083}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "CivLibrary\Store\Store\Store.csproj", "{B5651422-0901-4E7F-976A-A4F7893267CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,20 +51,6 @@ Global
 		{D0DA2F97-634B-4693-A73B-0C2241BA0C4C}.Release|Win32.ActiveCfg = Release|Any CPU
 		{D0DA2F97-634B-4693-A73B-0C2241BA0C4C}.Release|x86.ActiveCfg = Release|Any CPU
 		{D0DA2F97-634B-4693-A73B-0C2241BA0C4C}.Release|x86.Build.0 = Release|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|x86.Build.0 = Debug|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Win32.ActiveCfg = Release|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|x86.ActiveCfg = Release|Any CPU
-		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|x86.Build.0 = Release|Any CPU
 		{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56BBE7C1-FCC0-476B-9BC1-6D5695AFCED9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -104,6 +87,18 @@ Global
 		{B9F315AE-47F8-4629-83FC-3B4D70087083}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B9F315AE-47F8-4629-83FC-3B4D70087083}.Release|Win32.ActiveCfg = Release|Any CPU
 		{B9F315AE-47F8-4629-83FC-3B4D70087083}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|Win32.ActiveCfg = Release|Any CPU
+		{B5651422-0901-4E7F-976A-A4F7893267CA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

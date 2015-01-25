@@ -96,7 +96,7 @@
       <Project>{b9f315ae-47f8-4629-83fc-3b4d70087083}</Project>
       <Name>ListaExtras</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Store\Store\Store\Store.csproj">
+    <ProjectReference Include="..\CivLibrary\Store\Store\Store.csproj">
       <Project>{b5651422-0901-4e7f-976a-a4f7893267ca}</Project>
       <Name>Store</Name>
     </ProjectReference>
