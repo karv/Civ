@@ -92,6 +92,10 @@
       <Project>{d0da2f97-634b-4693-a73b-0c2241ba0c4c}</Project>
       <Name>CivLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CivLibrary\Grafos\Grafos.csproj">
+      <Project>{af2e2c37-9f1d-4d32-ae62-8484b0a9dd50}</Project>
+      <Name>Grafos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CivLibrary\ListaExtras\ListaExtras.csproj">
       <Project>{b9f315ae-47f8-4629-83fc-3b4d70087083}</Project>
       <Name>ListaExtras</Name>
@@ -104,6 +108,7 @@
   <ItemGroup>
     <Content Include="Data.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

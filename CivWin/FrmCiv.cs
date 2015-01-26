@@ -14,12 +14,12 @@ namespace CivWin
 {
     public partial class FrmCiv : Form, IDibujable
     {
-        public readonly Civilización Civ;
+        public readonly Civilizacion Civ;
         /// <summary>
         /// Crea una instancia de esta forma, para una civilización
         /// </summary>
         /// <param name="C">La civilización que estará vinculada a esta forma.</param>
-        public FrmCiv(Civilización C)
+        public FrmCiv(Civilizacion C)
         {
             Civ = C;
             InitializeComponent();

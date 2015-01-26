@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Civ;
+using Global;
+using Graficas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.Runtime.Serialization;
-
-
-using Global;
-using Civ;
 
 namespace CivWin
 {
@@ -17,9 +16,7 @@ namespace CivWin
 
         private static void DoRead(string f = "Data.xml")
         {
-            g_.Data = new g_Data();
             g_.Data = Store.Store<g_Data>.Deserialize(f);
-
             
         }
 
@@ -29,48 +26,11 @@ namespace CivWin
         [STAThread]
         static void Main()
         {
-            
-            Ciencia Cx = new Ciencia();
-            Cx.Nombre = "Hue";
-            Cx.Reqs.Cantidad = 10f;
-            Cx.Reqs.Rec = new Recurso();
-            Cx.Reqs.Ciencias.Add(Cx);
 
+            DoRead();
+            g_.InicializarJuego();
 
-            g_.Data.Ciencias.Add(Cx);
-
-            g_.GuardaData();
-
-            
-
-            DoRead(); 
-            
-            
-            /*
-
-                       * 
-            TrabajoRAW T = new TrabajoRAW();
-            T.Nombre = "Trab";
-            T.Edificio = "Granja";
-            T.EntradaStr.Add(new Basic.Par<string, float>("Alimento", 0.3f));
-            T.EntradaStr.Add(new Basic.Par<string, float>("Oro", 0.1f));
-            T.SalidaStr.Add(new Basic.Par<string, float>("Salida", 12f));
-            T.SalidaStr.Add(new Basic.Par<string, float>("Salida 2", 10.1234f));
-            T.Requiere.Add("Una ciencia");
-            T.Requiere.Add("Otra ciencia");
-            g_.Data.Trabajos.Add(T);*/
-
-            //g_.GuardaData();
-
-            Civilización C = new Civilización();
-            C.Nombre = "E:3";
-            
-            Ciudad Cd = new Ciudad("MyCity", C, new Terreno());
-
-            Cd.PoblaciónProductiva = 10;
-            Cd.Almacén[Ciudad.RecursoAlimento] = 10000;
-            //g_.Data.RecursoAlimento = "";
-            Cd.AgregaEdificio(g_.Data.EncuentraEdificio("Palacio"));
+            Civilizacion C = g_.State.Civs[0];
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
