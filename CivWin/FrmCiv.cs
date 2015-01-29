@@ -29,30 +29,13 @@ namespace CivWin
 		/// <summary>
 		/// Ejecuta un turno.
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void acTurno(object sender, EventArgs e)
+		public void acTurno(object sender, EventArgs e)
 		{
-			Global.g_.Tick();
-
-			if (!Global.g_.State.Civs.Contains(Civ))
-				throw new Exception("Ya se acabó el juego :3");
-
-			// Actualizar otros formularios abiertos.
-			foreach (var x in Application.OpenForms)
-			{
-				if (x is IDibujable)
-				{
-					IDibujable y = (IDibujable)x;
-					y.Draw();
-				}
-			}
-
 			// Actualizar este formulario
 			Draw();
 
 			// Mensajes
-			foreach (var x in Civ.Msj)
+			foreach (string x in Civ.Msj)
 			{
 				MessageBox.Show(x);
 			}
@@ -68,6 +51,17 @@ namespace CivWin
 			{
 				listCiudades.Items.Add(x);
 			}
+
+			lstCiencias.Items.Clear();
+			foreach (var x in Civ.Investigando.Keys.ToArray())
+			{
+				lstCiencias.Items.Add(string.Format("{0} - {1}/{2}", x, Civ.Investigando[x], x.Reqs.Cantidad));
+			}
+			lstCiencias.Items.Add("");
+			foreach (var x in Civ.Avances)
+			{
+				lstCiencias.Items.Add(x);
+			}
 		}
 
 		private void listCiudades_DoubleClick(object sender, EventArgs e)
@@ -79,5 +73,11 @@ namespace CivWin
 			}
 		}
 
+		private void toolStripButton2_Click(object sender, EventArgs e)
+		{
+			Program.DibujaTodo();
+		}
+
+		
 	}
 }

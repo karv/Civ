@@ -36,7 +36,7 @@ namespace CivWin
 
 			// Recursos
 			listRecursos.Items.Clear();
-			foreach (var x in ciudad.Almacén.Keys)
+			foreach (var x in ciudad.Almacén.Keys.ToArray())
 			{
 				listRecursos.Items.Add(string.Format("{0} - {1}", x, ciudad.Almacén[x]));
 			}
@@ -68,7 +68,8 @@ namespace CivWin
 				comboConstruir.Items.Add(x);
 			}
 			comboConstruir.SelectedItem = ciudad.RAWConstruyendo;
-
+			if (ciudad.EdifConstruyendo != null)
+				pbEdif.Value = (int)(ciudad.EdifConstruyendo.Porcentageconstruccion() * 100);
 		}
 
 		/// <summary>
@@ -78,6 +79,7 @@ namespace CivWin
 		private Trabajo TrabajoSeleccionado()
 		{
 			TrabajoRAW Selec = (TrabajoRAW)listTrabajos.SelectedItem;
+			if (Selec == null) return null;
 			Trabajo Sel = ciudad.EncuentraInstanciaTrabajo(Selec);
 			if (Sel == null)    // Si no existen instancia, se crea
 			{
@@ -108,8 +110,11 @@ namespace CivWin
 		private void numTrabajador_ValueChanged(object sender, EventArgs e)
 		{
 			Trabajo T = TrabajoSeleccionado();
-			T.Trabajadores = (ulong)numTrabajador.Value;
-			numTrabajador.Value = T.Trabajadores;
+			if (T != null)
+			{
+				T.Trabajadores = (ulong)numTrabajador.Value;
+				numTrabajador.Value = T.Trabajadores;
+			}
 		}
 
 		private void comboConstruir_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,6 +123,11 @@ namespace CivWin
 			{
 				ciudad.RAWConstruyendo = (EdificioRAW)comboConstruir.SelectedItem;
 			}
+		}
+
+		private void toolStripButton2_Click(object sender, EventArgs e)
+		{
+			Program.DibujaTodo();
 		}
 	}
 }
