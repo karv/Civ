@@ -110,11 +110,7 @@
           <Ciencia z:Ref="cAsentamiento de cuevas"/>
           <Ciencia z:Ref="cTejeduría"/>
         </Ciencias>
-        <Recurso z:Id="rInteracción con entorno">
-          <Científico>true</Científico>
-          <Desaparece>true</Desaparece>
-          <Nombre>Interacción con entorno</Nombre>
-        </Recurso>
+        <Recurso z:Ref="rInteracción con el entorno"/>
       </Requiere>
     </Ciencia>
     <Ciencia z:Id="cCestrería">
@@ -160,7 +156,7 @@
         <Ciencias>
           <Ciencia z:Ref ="cControl del fuego"/>
         </Ciencias>
-        <Recurso z:Ref="rInteracción con entorno" />
+        <Recurso z:Ref="rInteracción con el entorno" />
       </Requiere>
     </Ciencia>
     <Ciencia z:Id="cTradición oral">
@@ -289,6 +285,7 @@
           <d4p1:Value>12</d4p1:Value>
         </d4p1:KeyValueOfRecursofloatbN_PeySYD>
       </Construcción>
+      <EsAutoConstruíble>true</EsAutoConstruíble>
       <MaxWorkers>4</MaxWorkers>
       <Nombre>Palacio</Nombre>
 			<Requiere>
@@ -302,11 +299,10 @@
           <d4p1:Key z:Ref="rAlimento" />
           <d4p1:Value>5</d4p1:Value>
         </d4p1:KeyValueOfRecursofloatbN_PeySYD>
-
         <d4p1:KeyValueOfRecursofloatbN_PeySYD>
           <d4p1:Key z:Id="rProducción">
             <Científico>false</Científico>
-            <Desaparece>false</Desaparece>
+            <Desaparece>true</Desaparece>
             <Nombre>Producción</Nombre>
           </d4p1:Key>
           <d4p1:Value>5</d4p1:Value>
@@ -359,7 +355,7 @@
       <Entrada xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
         <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       </Entrada>
-      <Nombre>Granja</Nombre>
+      <Nombre>Sembrar maíz</Nombre>
       <Requiere>
         <Ciencias>
           <Ciencia z:Ref="cLenguaje" />
@@ -370,7 +366,7 @@
         <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
           <d5p1:KeyValueOfRecursofloatbN_PeySYD>
             <d5p1:Key z:Ref="rAlimento" />
-            <d5p1:Value>1.3</d5p1:Value>
+            <d5p1:Value>3</d5p1:Value>
           </d5p1:KeyValueOfRecursofloatbN_PeySYD>
         </d4p1:List>
       </Salida>
@@ -428,7 +424,7 @@
       <Salida xmlns:d4p1="http://schemas.datacontract.org/2004/07/ListasExtra">
         <d4p1:List xmlns:d5p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
           <d5p1:KeyValueOfRecursofloatbN_PeySYD>
-            <d5p1:Key z:Ref="rInteracción con entorno" />
+            <d5p1:Key z:Ref="rInteracción con el entorno" />
             <d5p1:Value>1</d5p1:Value>
           </d5p1:KeyValueOfRecursofloatbN_PeySYD>
         </d4p1:List>
