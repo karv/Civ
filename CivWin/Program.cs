@@ -31,6 +31,7 @@ namespace CivWin
             g_.InicializarJuego();
 
             Civilizacion C = g_.State.Civs[0];
+			C.getCiudades[0].AlimentoAlmacén = 100;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
