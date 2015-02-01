@@ -38,6 +38,7 @@
 			this.toolStrip2 = new System.Windows.Forms.ToolStrip();
 			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
 			this.pbEdif = new System.Windows.Forms.ProgressBar();
+			this.chkAutoReclutar = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).BeginInit();
 			this.toolStrip2.SuspendLayout();
 			this.SuspendLayout();
@@ -124,11 +125,23 @@
 			this.pbEdif.Size = new System.Drawing.Size(100, 23);
 			this.pbEdif.TabIndex = 28;
 			// 
+			// chkAutoReclutar
+			// 
+			this.chkAutoReclutar.AutoSize = true;
+			this.chkAutoReclutar.Location = new System.Drawing.Point(537, 229);
+			this.chkAutoReclutar.Name = "chkAutoReclutar";
+			this.chkAutoReclutar.Size = new System.Drawing.Size(83, 17);
+			this.chkAutoReclutar.TabIndex = 29;
+			this.chkAutoReclutar.Text = "&Autoreclutar";
+			this.chkAutoReclutar.UseVisualStyleBackColor = true;
+			this.chkAutoReclutar.CheckedChanged += new System.EventHandler(this.chkAutoReclutar_CheckedChanged);
+			// 
 			// FrmCiudad
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(738, 441);
+			this.Controls.Add(this.chkAutoReclutar);
 			this.Controls.Add(this.pbEdif);
 			this.Controls.Add(this.toolStrip2);
 			this.Controls.Add(this.comboConstruir);
@@ -158,6 +171,7 @@
 		private System.Windows.Forms.ToolStrip toolStrip2;
 		private System.Windows.Forms.ToolStripButton toolStripButton2;
 		private System.Windows.Forms.ProgressBar pbEdif;
+		private System.Windows.Forms.CheckBox chkAutoReclutar;
 
 
     }

@@ -34,6 +34,7 @@
 			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
 			this.listCiudades = new System.Windows.Forms.ListBox();
 			this.lstCiencias = new System.Windows.Forms.CheckedListBox();
+			this.listMensajes = new System.Windows.Forms.ListBox();
 			this.toolStrip2.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -56,7 +57,6 @@
 			this.cmdTurn.Size = new System.Drawing.Size(59, 22);
 			this.cmdTurn.Text = "&Turno";
 			this.cmdTurn.ToolTipText = "Avanza un turno.";
-			this.cmdTurn.Click += new System.EventHandler(this.acTurno);
 			// 
 			// toolStripButton2
 			// 
@@ -84,9 +84,18 @@
 			this.lstCiencias.Size = new System.Drawing.Size(278, 94);
 			this.lstCiencias.TabIndex = 2;
 			// 
+			// listMensajes
+			// 
+			this.listMensajes.FormattingEnabled = true;
+			this.listMensajes.Location = new System.Drawing.Point(13, 130);
+			this.listMensajes.Name = "listMensajes";
+			this.listMensajes.Size = new System.Drawing.Size(170, 95);
+			this.listMensajes.TabIndex = 3;
+			// 
 			// FrmCiv
 			// 
 			this.ClientSize = new System.Drawing.Size(601, 286);
+			this.Controls.Add(this.listMensajes);
 			this.Controls.Add(this.lstCiencias);
 			this.Controls.Add(this.listCiudades);
 			this.Controls.Add(this.toolStrip2);
@@ -105,6 +114,7 @@
         private System.Windows.Forms.ListBox listCiudades;
 		private System.Windows.Forms.ToolStripButton toolStripButton2;
 		private System.Windows.Forms.CheckedListBox lstCiencias;
+		private System.Windows.Forms.ListBox listMensajes;
     }
 }
 

@@ -26,22 +26,6 @@ namespace CivWin
 			Draw();
 		}
 
-		/// <summary>
-		/// Ejecuta un turno.
-		/// </summary>
-		public void acTurno(object sender, EventArgs e)
-		{
-			// Actualizar este formulario
-			Draw();
-
-			// Mensajes
-			foreach (string x in Civ.Msj)
-			{
-				MessageBox.Show(x);
-			}
-			Civ.Msj.Clear();
-		}
-
 		public void Draw()
 		{
 			this.Text = Civ.Nombre;

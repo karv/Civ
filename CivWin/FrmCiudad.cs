@@ -26,7 +26,7 @@ namespace CivWin
 		{
 			ciudad = C;
 			InitializeComponent();
-
+			chkAutoReclutar.Checked = ciudad.AutoReclutar;
 			Draw();
 		}
 
@@ -128,6 +128,11 @@ namespace CivWin
 		private void toolStripButton2_Click(object sender, EventArgs e)
 		{
 			Program.DibujaTodo();
+		}
+
+		private void chkAutoReclutar_CheckedChanged(object sender, EventArgs e)
+		{
+			ciudad.AutoReclutar = chkAutoReclutar.Checked;
 		}
 	}
 }
