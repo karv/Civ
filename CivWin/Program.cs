@@ -57,20 +57,6 @@ namespace CivWin
 			//helper.Start();
 
 
-			Armada A = new Armada();
-			A.MaxPeso = 200;
-			MyCiv.Armadas.Add(A);
-			A.AgregaUnidad(new Unidad(g_.Data.Unidades[0]));
-			A.Unidades[0].Posición = MyCiv.getCiudades[0].Terr;
-
-			Armada B = new Armada();
-			B.MaxPeso = 200;
-			g_.State.Civs[1].Armadas.Add(B);
-			B.AgregaUnidad(new Unidad(g_.Data.Unidades[0]));
-			B.Unidades[0].Posición = MyCiv.getCiudades[0].Terr;
-
-			MyCiv.Diplomacia.Add(g_.State.Civs[1], new EstadoDiplomatico());
-			MyCiv.Diplomacia[g_.State.Civs[1]].PermiteAtacar = true;
 			Application.Run(frmCiv);
 
 			emu.Abort();
