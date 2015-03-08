@@ -134,5 +134,15 @@ namespace CivWin
 		{
 			ciudad.AutoReclutar = chkAutoReclutar.Checked;
 		}
+
+		private void listTrabajos_DoubleClick(object sender, EventArgs e)
+		{
+			Trabajo T = TrabajoSeleccionado();
+			if (T != null)
+			{
+				frmTrabajo frmT = new frmTrabajo(T);
+				frmT.Show();
+			}
+		}
 	}
 }

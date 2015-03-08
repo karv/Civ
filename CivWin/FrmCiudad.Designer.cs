@@ -51,6 +51,7 @@
 			this.listTrabajos.Size = new System.Drawing.Size(330, 195);
 			this.listTrabajos.TabIndex = 19;
 			this.listTrabajos.SelectedIndexChanged += new System.EventHandler(this.listTrabajos_SelectedIndexChanged);
+			this.listTrabajos.DoubleClick += new System.EventHandler(this.listTrabajos_DoubleClick);
 			// 
 			// listRecursos
 			// 
