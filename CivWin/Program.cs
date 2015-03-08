@@ -119,7 +119,6 @@ namespace CivWin
 
 /// <summary>
 /// Para un Windows.form, obliga tener una función de redibujar/actualizar.
-/// En partícular, para actualizar todo después de un tick.
 /// </summary>
 public interface IDibujable
 {
