@@ -37,9 +37,9 @@ namespace CivWin
 			}
 
 			lstCiencias.Items.Clear();
-			foreach (var x in Civ.Investigando.Keys.ToArray())
+			foreach (var x in Civ.Investigando.ToArray())	//Crear copia e iterar.
 			{
-				lstCiencias.Items.Add(string.Format("{0} - {1}/?", x, Civ.Investigando[x]));	// TODO: Que se muestre más o menos cuánto falta
+				lstCiencias.Items.Add(string.Format("{0} - {1:p}", x.Ciencia.Nombre, x.ObtPct ()));	// TODO: Que se muestre más o menos cuánto falta
 			}
 			lstCiencias.Items.Add("");
 			foreach (var x in Civ.Avances)
