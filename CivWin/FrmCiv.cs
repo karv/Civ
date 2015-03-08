@@ -39,7 +39,7 @@ namespace CivWin
 			lstCiencias.Items.Clear();
 			foreach (var x in Civ.Investigando.Keys.ToArray())
 			{
-				lstCiencias.Items.Add(string.Format("{0} - {1}/{2}", x, Civ.Investigando[x], x.Reqs.Cantidad));
+				lstCiencias.Items.Add(string.Format("{0} - {1}/?", x, Civ.Investigando[x]));	// TODO: Que se muestre más o menos cuánto falta
 			}
 			lstCiencias.Items.Add("");
 			foreach (var x in Civ.Avances)
