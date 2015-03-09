@@ -42,7 +42,6 @@ namespace CivWin
 			Civilizacion C = g_.State.Civs[0];
 			MyCiv = C;
 			C.OnNuevoMensaje += MuestraMensajes;
-			C.getCiudades[0].AlimentoAlmacén = 1000;
 
 			Thread emu = new Thread(new ThreadStart(Ticker));
 
