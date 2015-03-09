@@ -27,7 +27,6 @@ namespace CivWin
 		[MTAThread]
 		static void Main()
 		{
-
 			DoRead();
 			g_.InicializarJuego();
 
@@ -40,6 +39,7 @@ namespace CivWin
 			//g_.GuardaData();
 
 			Civilizacion C = g_.State.Civs[0];
+			C.getCiudades[0].AlimentoAlmacén = 10;
 			MyCiv = C;
 			C.OnNuevoMensaje += MuestraMensajes;
 
