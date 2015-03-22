@@ -57,6 +57,12 @@
     <Compile Include="FrmCiv.Designer.cs">
       <DependentUpon>FrmCiv.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRecluta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecluta.Designer.cs">
+      <DependentUpon>frmRecluta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTrabajo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCiv.resx">
       <DependentUpon>FrmCiv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecluta.resx">
+      <DependentUpon>frmRecluta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTrabajo.resx">
       <DependentUpon>frmTrabajo.cs</DependentUpon>
