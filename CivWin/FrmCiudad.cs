@@ -144,5 +144,15 @@ namespace CivWin
 				frmT.Show();
 			}
 		}
+
+		private void cmdReclutar_Click(object sender, EventArgs e)
+		{
+			frmRecluta Rec = new frmRecluta(ciudad);
+			frmRecluta.Regresa Res = Rec.ShowDialog();
+			if (Res.Unidad != null && Res.Cantidad > 0)
+			{
+				ciudad.EntrenarUnidades(Res.Unidad, Res.Cantidad);
+			}
+		}
 	}
 }
