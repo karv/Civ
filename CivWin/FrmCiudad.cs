@@ -66,18 +66,25 @@ namespace CivWin
 				pbEdif.Value = (int)(ciudad.EdifConstruyendo.Porcentageconstruccion() * 100);
 
 			// Unidades / Defensa
-			foreach (var x in ciudad.Defensa.UnidadesAgrupadas() )
+			listUnidades.Items.Clear();
+			ListasExtra.ListaPeso<UnidadRAW, ListViewGroup> Dict = new ListasExtra.ListaPeso<UnidadRAW,ListViewGroup>(null, null);
+			foreach (var x in ciudad.Defensa.Unidades)
 			{
-				ListViewItem Enlistar = new ListViewItem();
-				foreach (var y in x.Value)
+				ListViewGroup grp = Dict[x.RAW];
+				if (grp == null)
 				{
-					ListViewItem.ListViewSubItem SubItem = new ListViewItem.ListViewSubItem();
-					SubItem.Tag = y;
-					SubItem.Text = y.ToString();
-					Enlistar.SubItems.Add(SubItem);		 
+					grp = new ListViewGroup();
+					Dict[x.RAW] = grp;
 				}
-				Enlistar.Text = x.Key.ToString();
-				listUnidades.Items.Add(Enlistar);
+				//grp.Name = "n: " + x.RAW.ToString();
+				grp.Header = x.RAW.ToString();
+				grp.Tag = x.RAW;
+				listUnidades.Groups.Add(grp);
+
+				ListViewItem It = new ListViewItem(grp);
+				It.Text = x.ToString();
+				It.Tag = x;
+				listUnidades.Items.Add(It);
 			}
 		}
 
@@ -162,6 +169,7 @@ namespace CivWin
 			{
 				ciudad.EntrenarUnidades(Res.Unidad, Res.Cantidad);
 			}
+			Draw();
 		}
 	}
 }
