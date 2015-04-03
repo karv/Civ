@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCiudad));
 			this.textInfo = new System.Windows.Forms.TextBox();
 			this.numTrabajador = new System.Windows.Forms.NumericUpDown();
@@ -42,7 +41,6 @@
 			this.listRecursos = new System.Windows.Forms.ListView();
 			this.listEdificios = new System.Windows.Forms.ListView();
 			this.listTrabajos = new System.Windows.Forms.ListView();
-			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).BeginInit();
 			this.toolStrip2.SuspendLayout();
 			this.SuspendLayout();
@@ -164,12 +162,6 @@
 			this.listTrabajos.SelectedIndexChanged += new System.EventHandler(this.listTrabajos_SelectedIndexChanged);
 			this.listTrabajos.DoubleClick += new System.EventHandler(this.listTrabajos_DoubleClick);
 			// 
-			// imageList1
-			// 
-			this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-			this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageList1.Images.SetKeyName(0, "135.jpg");
-			// 
 			// FrmCiudad
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,7 +202,6 @@
 		private System.Windows.Forms.ListView listRecursos;
 		private System.Windows.Forms.ListView listEdificios;
 		private System.Windows.Forms.ListView listTrabajos;
-		private System.Windows.Forms.ImageList imageList1;
 
 
 	}

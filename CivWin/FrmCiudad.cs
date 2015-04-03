@@ -41,7 +41,10 @@ namespace CivWin
 			listRecursos.Items.Clear();
 			foreach (var x in ciudad.Almacén.Keys.ToArray())
 			{
-				listRecursos.Items.Add(string.Format("{0} - {1}", x, ciudad.Almacén[x]));
+				ListViewItem Agr = new ListViewItem();
+				Agr.Text = string.Format("{0} - {1}", x, ciudad.Almacén[x]);
+				Agr.ImageKey = x.Img;
+				listRecursos.Items.Add(Agr);
 			}
 
 			// textInfo            

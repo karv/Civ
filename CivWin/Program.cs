@@ -14,6 +14,7 @@ namespace CivWin
 {
 	public static class Program
 	{
+		public static ImageList Imágenes = new ImageList();
 
 		private static void DoRead(string f = "Data.xml")
 		{
@@ -30,13 +31,14 @@ namespace CivWin
 			DoRead();
 			g_.InicializarJuego();
 
-			//EdificioRAW E = new EdificioRAW();
-			//E.EsAutoConstruíble = true;
-			//E.Nombre = "Auto";
+			// Inicializar imágenes
+			Imágenes.ImageSize = new System.Drawing.Size(24, 24);
 
-			//g_.Data.Edificios.Add(E);
-
-			//g_.GuardaData();
+			foreach (var x in g_.Data.Recursos)
+			{
+				if (x.Img != null)
+					Imágenes.Images.Add(x.Img, System.Drawing.Image.FromFile("img//" + x.Img));
+			}
 
 			Civilizacion C = g_.State.Civs[0];
 			C.getCiudades[0].AlimentoAlmacén = 10;
@@ -75,19 +77,20 @@ namespace CivWin
 		{
 			while (true)
 			{
-					TimeSpan tiempo = DateTime.Now - timer;
-					timer = DateTime.Now;
-					float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
+				TimeSpan tiempo = DateTime.Now - timer;
+				timer = DateTime.Now;
+				float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
 
-					Console.WriteLine(t);
-					Global.g_.Tick(t);
+				Console.WriteLine(t);
+				Global.g_.Tick(t);
 
-					if (Global.g_.State.Civs.Count == 0)
-						throw new Exception("Ya se acabó el juego :3");			}
+				if (Global.g_.State.Civs.Count == 0)
+					throw new Exception("Ya se acabó el juego :3");
+			}
 		}
 
 		public static void DibujaTodo()
-		{			
+		{
 			foreach (var x in Application.OpenForms)
 			{
 				if (x is IDibujable)
