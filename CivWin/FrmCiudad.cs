@@ -20,6 +20,9 @@ namespace CivWin
 		{
 			ciudad = C;
 			InitializeComponent();
+
+			listRecursos.SmallImageList = Program.Imágenes;
+
 			chkAutoReclutar.Checked = ciudad.AutoReclutar;
 			Draw();
 		}
@@ -27,6 +30,12 @@ namespace CivWin
 		public void Draw()
 		{
 			Text = ciudad.Nombre;
+
+			// Begin update
+			listEdificios.BeginUpdate();
+			listRecursos.BeginUpdate();
+			listTrabajos.BeginUpdate();
+			listUnidades.BeginUpdate();
 
 			// Recursos
 			listRecursos.Items.Clear();
@@ -70,7 +79,7 @@ namespace CivWin
 
 			// Unidades / Defensa
 			listUnidades.Items.Clear();
-			ListasExtra.ListaPeso<UnidadRAW, ListViewGroup> Dict = new ListasExtra.ListaPeso<UnidadRAW,ListViewGroup>(null, null);
+			ListasExtra.ListaPeso<UnidadRAW, ListViewGroup> Dict = new ListasExtra.ListaPeso<UnidadRAW, ListViewGroup>(null, null);
 			foreach (var x in ciudad.Defensa.Unidades)
 			{
 				ListViewGroup grp = Dict[x.RAW];
@@ -89,6 +98,11 @@ namespace CivWin
 				It.Tag = x;
 				listUnidades.Items.Add(It);
 			}
+
+			listEdificios.EndUpdate();
+			listRecursos.EndUpdate();
+			listTrabajos.EndUpdate();
+			listUnidades.EndUpdate();
 		}
 
 		/// <summary>
