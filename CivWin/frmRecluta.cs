@@ -36,6 +36,7 @@ namespace CivWin
 		private void lbUnidades_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			UnidadRAW Unid = (UnidadRAW)lbUnidades.SelectedItem;
+			if (Unid == null) return;
 			// Poner máximo reclutable
 			float maxf = Ciudad.getTrabajadoresDesocupados / Unid.CostePoblación;
 			foreach (var rec in Unid.Reqs.Keys)
