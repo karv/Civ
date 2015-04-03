@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCiudad));
-			this.listTrabajos = new System.Windows.Forms.ListBox();
-			this.listRecursos = new System.Windows.Forms.ListBox();
 			this.textInfo = new System.Windows.Forms.TextBox();
-			this.listEdificios = new System.Windows.Forms.ListBox();
 			this.numTrabajador = new System.Windows.Forms.NumericUpDown();
 			this.comboConstruir = new System.Windows.Forms.ComboBox();
 			this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -41,29 +38,12 @@
 			this.chkAutoReclutar = new System.Windows.Forms.CheckBox();
 			this.cmdReclutar = new System.Windows.Forms.Button();
 			this.listUnidades = new System.Windows.Forms.ListView();
+			this.listRecursos = new System.Windows.Forms.ListView();
+			this.listEdificios = new System.Windows.Forms.ListView();
+			this.listTrabajos = new System.Windows.Forms.ListView();
 			((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).BeginInit();
 			this.toolStrip2.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// listTrabajos
-			// 
-			this.listTrabajos.IntegralHeight = false;
-			this.listTrabajos.Location = new System.Drawing.Point(396, 28);
-			this.listTrabajos.Name = "listTrabajos";
-			this.listTrabajos.Size = new System.Drawing.Size(330, 195);
-			this.listTrabajos.TabIndex = 19;
-			this.listTrabajos.SelectedIndexChanged += new System.EventHandler(this.listTrabajos_SelectedIndexChanged);
-			this.listTrabajos.DoubleClick += new System.EventHandler(this.listTrabajos_DoubleClick);
-			// 
-			// listRecursos
-			// 
-			this.listRecursos.FormattingEnabled = true;
-			this.listRecursos.IntegralHeight = false;
-			this.listRecursos.Location = new System.Drawing.Point(12, 106);
-			this.listRecursos.MultiColumn = true;
-			this.listRecursos.Name = "listRecursos";
-			this.listRecursos.Size = new System.Drawing.Size(378, 142);
-			this.listRecursos.TabIndex = 20;
 			// 
 			// textInfo
 			// 
@@ -73,15 +53,6 @@
 			this.textInfo.ReadOnly = true;
 			this.textInfo.Size = new System.Drawing.Size(186, 72);
 			this.textInfo.TabIndex = 21;
-			// 
-			// listEdificios
-			// 
-			this.listEdificios.FormattingEnabled = true;
-			this.listEdificios.IntegralHeight = false;
-			this.listEdificios.Location = new System.Drawing.Point(204, 28);
-			this.listEdificios.Name = "listEdificios";
-			this.listEdificios.Size = new System.Drawing.Size(186, 72);
-			this.listEdificios.TabIndex = 22;
 			// 
 			// numTrabajador
 			// 
@@ -152,17 +123,53 @@
 			// listUnidades
 			// 
 			this.listUnidades.Location = new System.Drawing.Point(12, 283);
+			this.listUnidades.MultiSelect = false;
 			this.listUnidades.Name = "listUnidades";
 			this.listUnidades.Size = new System.Drawing.Size(344, 146);
 			this.listUnidades.TabIndex = 31;
 			this.listUnidades.UseCompatibleStateImageBehavior = false;
 			this.listUnidades.View = System.Windows.Forms.View.SmallIcon;
 			// 
+			// listRecursos
+			// 
+			this.listRecursos.Location = new System.Drawing.Point(13, 106);
+			this.listRecursos.MultiSelect = false;
+			this.listRecursos.Name = "listRecursos";
+			this.listRecursos.Size = new System.Drawing.Size(377, 140);
+			this.listRecursos.TabIndex = 32;
+			this.listRecursos.UseCompatibleStateImageBehavior = false;
+			this.listRecursos.View = System.Windows.Forms.View.SmallIcon;
+			// 
+			// listEdificios
+			// 
+			this.listEdificios.Location = new System.Drawing.Point(204, 28);
+			this.listEdificios.MultiSelect = false;
+			this.listEdificios.Name = "listEdificios";
+			this.listEdificios.Size = new System.Drawing.Size(186, 72);
+			this.listEdificios.TabIndex = 33;
+			this.listEdificios.UseCompatibleStateImageBehavior = false;
+			this.listEdificios.View = System.Windows.Forms.View.SmallIcon;
+			// 
+			// listTrabajos
+			// 
+			this.listTrabajos.Location = new System.Drawing.Point(396, 28);
+			this.listTrabajos.MultiSelect = false;
+			this.listTrabajos.Name = "listTrabajos";
+			this.listTrabajos.Size = new System.Drawing.Size(330, 195);
+			this.listTrabajos.TabIndex = 34;
+			this.listTrabajos.UseCompatibleStateImageBehavior = false;
+			this.listTrabajos.View = System.Windows.Forms.View.SmallIcon;
+			this.listTrabajos.SelectedIndexChanged += new System.EventHandler(this.listTrabajos_SelectedIndexChanged);
+			this.listTrabajos.DoubleClick += new System.EventHandler(this.listTrabajos_DoubleClick);
+			// 
 			// FrmCiudad
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(738, 441);
+			this.Controls.Add(this.listTrabajos);
+			this.Controls.Add(this.listEdificios);
+			this.Controls.Add(this.listRecursos);
 			this.Controls.Add(this.listUnidades);
 			this.Controls.Add(this.cmdReclutar);
 			this.Controls.Add(this.chkAutoReclutar);
@@ -170,10 +177,7 @@
 			this.Controls.Add(this.toolStrip2);
 			this.Controls.Add(this.comboConstruir);
 			this.Controls.Add(this.numTrabajador);
-			this.Controls.Add(this.listTrabajos);
-			this.Controls.Add(this.listRecursos);
 			this.Controls.Add(this.textInfo);
-			this.Controls.Add(this.listEdificios);
 			this.Name = "FrmCiudad";
 			this.Text = "FrmCiudad";
 			((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).EndInit();
@@ -186,10 +190,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listTrabajos;
-        private System.Windows.Forms.ListBox listRecursos;
-        private System.Windows.Forms.TextBox textInfo;
-        private System.Windows.Forms.ListBox listEdificios;
+		private System.Windows.Forms.TextBox textInfo;
         private System.Windows.Forms.NumericUpDown numTrabajador;
         private System.Windows.Forms.ComboBox comboConstruir;
 		private System.Windows.Forms.ToolStrip toolStrip2;
@@ -198,6 +199,9 @@
 		private System.Windows.Forms.CheckBox chkAutoReclutar;
 		private System.Windows.Forms.Button cmdReclutar;
 		private System.Windows.Forms.ListView listUnidades;
+		private System.Windows.Forms.ListView listRecursos;
+		private System.Windows.Forms.ListView listEdificios;
+		private System.Windows.Forms.ListView listTrabajos;
 
 
     }

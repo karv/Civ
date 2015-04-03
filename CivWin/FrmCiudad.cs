@@ -52,7 +52,10 @@ namespace CivWin
 			listTrabajos.Items.Clear();
 			foreach (var x in ciudad.ObtenerListaTrabajosRAW)
 			{
-				listTrabajos.Items.Add(x);
+				ListViewItem Agrega = new ListViewItem();
+				Agrega.Tag = x;
+				Agrega.Text = x.ToString();
+				listTrabajos.Items.Add(Agrega);
 			}
 
 			// El "construyendo".
@@ -94,7 +97,8 @@ namespace CivWin
 		/// <returns></returns>
 		private Trabajo TrabajoSeleccionado()
 		{
-			TrabajoRAW Selec = (TrabajoRAW)listTrabajos.SelectedItem;
+			//listTrabajos.SelectedItems[0].Tag
+			TrabajoRAW Selec = listTrabajos.SelectedItems.Count > 0 ? (TrabajoRAW)listTrabajos.SelectedItems[0].Tag : null;
 			if (Selec == null) return null;
 			Trabajo Sel = ciudad.EncuentraInstanciaTrabajo(Selec);
 			if (Sel == null)    // Si no existen instancia, se crea
@@ -107,7 +111,7 @@ namespace CivWin
 
 		private void listTrabajos_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (listTrabajos.SelectedItem != null)
+			if (listTrabajos.SelectedItems.Count > 0)
 			{
 				Trabajo Sel = TrabajoSeleccionado();
 				numTrabajador.Minimum = 0;
