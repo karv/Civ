@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCiudad));
+			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("test");
 			this.listTrabajos = new System.Windows.Forms.ListBox();
 			this.listRecursos = new System.Windows.Forms.ListBox();
 			this.textInfo = new System.Windows.Forms.TextBox();
@@ -40,6 +41,9 @@
 			this.pbEdif = new System.Windows.Forms.ProgressBar();
 			this.chkAutoReclutar = new System.Windows.Forms.CheckBox();
 			this.cmdReclutar = new System.Windows.Forms.Button();
+			this.listUnidades = new System.Windows.Forms.ListView();
+			this.cNombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.cCantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).BeginInit();
 			this.toolStrip2.SuspendLayout();
 			this.SuspendLayout();
@@ -148,11 +152,34 @@
 			this.cmdReclutar.UseVisualStyleBackColor = true;
 			this.cmdReclutar.Click += new System.EventHandler(this.cmdReclutar_Click);
 			// 
+			// listUnidades
+			// 
+			this.listUnidades.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.cNombre,
+            this.cCantidad});
+			this.listUnidades.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+			this.listUnidades.Location = new System.Drawing.Point(12, 283);
+			this.listUnidades.Name = "listUnidades";
+			this.listUnidades.Size = new System.Drawing.Size(156, 146);
+			this.listUnidades.TabIndex = 31;
+			this.listUnidades.UseCompatibleStateImageBehavior = false;
+			this.listUnidades.View = System.Windows.Forms.View.Details;
+			// 
+			// cNombre
+			// 
+			this.cNombre.Text = "Nombre";
+			// 
+			// cCantidad
+			// 
+			this.cCantidad.Text = "Cantidad";
+			// 
 			// FrmCiudad
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(738, 441);
+			this.Controls.Add(this.listUnidades);
 			this.Controls.Add(this.cmdReclutar);
 			this.Controls.Add(this.chkAutoReclutar);
 			this.Controls.Add(this.pbEdif);
@@ -186,6 +213,9 @@
 		private System.Windows.Forms.ProgressBar pbEdif;
 		private System.Windows.Forms.CheckBox chkAutoReclutar;
 		private System.Windows.Forms.Button cmdReclutar;
+		private System.Windows.Forms.ListView listUnidades;
+		private System.Windows.Forms.ColumnHeader cNombre;
+		private System.Windows.Forms.ColumnHeader cCantidad;
 
 
     }

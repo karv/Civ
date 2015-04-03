@@ -1,14 +1,8 @@
-﻿using System;
+﻿using Civ;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Civ;
-using CivWin;
 
 namespace CivWin
 {
@@ -70,6 +64,21 @@ namespace CivWin
 			comboConstruir.SelectedItem = ciudad.RAWConstruyendo;
 			if (ciudad.EdifConstruyendo != null)
 				pbEdif.Value = (int)(ciudad.EdifConstruyendo.Porcentageconstruccion() * 100);
+
+			// Unidades / Defensa
+			foreach (var x in ciudad.Defensa.UnidadesAgrupadas() )
+			{
+				ListViewItem Enlistar = new ListViewItem();
+				foreach (var y in x.Value)
+				{
+					ListViewItem.ListViewSubItem SubItem = new ListViewItem.ListViewSubItem();
+					SubItem.Tag = y;
+					SubItem.Text = y.ToString();
+					Enlistar.SubItems.Add(SubItem);		 
+				}
+				Enlistar.Text = x.Key.ToString();
+				listUnidades.Items.Add(Enlistar);
+			}
 		}
 
 		/// <summary>
