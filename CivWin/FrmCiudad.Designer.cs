@@ -41,6 +41,7 @@
 			this.listRecursos = new System.Windows.Forms.ListView();
 			this.listEdificios = new System.Windows.Forms.ListView();
 			this.listTrabajos = new System.Windows.Forms.ListView();
+			this.listPropiedades = new System.Windows.Forms.ListView();
 			((System.ComponentModel.ISupportInitialize)(this.numTrabajador)).BeginInit();
 			this.toolStrip2.SuspendLayout();
 			this.SuspendLayout();
@@ -162,11 +163,22 @@
 			this.listTrabajos.SelectedIndexChanged += new System.EventHandler(this.listTrabajos_SelectedIndexChanged);
 			this.listTrabajos.DoubleClick += new System.EventHandler(this.listTrabajos_DoubleClick);
 			// 
+			// listPropiedades
+			// 
+			this.listPropiedades.Location = new System.Drawing.Point(362, 255);
+			this.listPropiedades.MultiSelect = false;
+			this.listPropiedades.Name = "listPropiedades";
+			this.listPropiedades.Size = new System.Drawing.Size(283, 104);
+			this.listPropiedades.TabIndex = 35;
+			this.listPropiedades.UseCompatibleStateImageBehavior = false;
+			this.listPropiedades.View = System.Windows.Forms.View.SmallIcon;
+			// 
 			// FrmCiudad
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(738, 441);
+			this.Controls.Add(this.listPropiedades);
 			this.Controls.Add(this.listTrabajos);
 			this.Controls.Add(this.listEdificios);
 			this.Controls.Add(this.listRecursos);
@@ -202,6 +214,7 @@
 		private System.Windows.Forms.ListView listRecursos;
 		private System.Windows.Forms.ListView listEdificios;
 		private System.Windows.Forms.ListView listTrabajos;
+		private System.Windows.Forms.ListView listPropiedades;
 
 
 	}

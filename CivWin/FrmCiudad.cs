@@ -36,6 +36,7 @@ namespace CivWin
 			listRecursos.BeginUpdate();
 			listTrabajos.BeginUpdate();
 			listUnidades.BeginUpdate();
+			listPropiedades.BeginUpdate();
 
 			// Recursos
 			listRecursos.Items.Clear();
@@ -102,10 +103,19 @@ namespace CivWin
 				listUnidades.Items.Add(It);
 			}
 
+			// Propiedades
+			listPropiedades.Items.Clear();
+			listPropiedades.Items.Add(ciudad.Terr.Nombre);
+			foreach (var x in ciudad.Propiedades)
+			{
+				listPropiedades.Items.Add(x.Nombre);
+			}
+
 			listEdificios.EndUpdate();
 			listRecursos.EndUpdate();
 			listTrabajos.EndUpdate();
 			listUnidades.EndUpdate();
+			listPropiedades.EndUpdate();
 		}
 
 		/// <summary>
