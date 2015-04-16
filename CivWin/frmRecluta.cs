@@ -28,7 +28,7 @@ namespace CivWin
 			lbUnidades.Items.Clear();
 			foreach (var x in g_.Data.Unidades)
 			{
-				if (Ciudad.SatisfaceReq(x.ReqCiencia) && x.Reqs <= Ciudad.Almacén)				
+				if (Ciudad.SatisfaceReq(x.ReqCiencia) && x.Reqs <= Ciudad.Almacen)				
 					lbUnidades.Items.Add(x);				
 			}
 		}
@@ -38,10 +38,10 @@ namespace CivWin
 			UnidadRAW Unid = (UnidadRAW)lbUnidades.SelectedItem;
 			if (Unid == null) return;
 			// Poner máximo reclutable
-			float maxf = Ciudad.getTrabajadoresDesocupados / Unid.CostePoblación;
+			float maxf = Ciudad.getTrabajadoresDesocupados / Unid.CostePoblacion;
 			foreach (var rec in Unid.Reqs.Keys)
 			{
-				maxf = System.Math.Min(maxf, Ciudad.Almacén[rec] / Unid.Reqs[rec]);
+				maxf = System.Math.Min(maxf, Ciudad.Almacen[rec] / Unid.Reqs[rec]);
 			}
 
 			ttCantidad.Máximo = (int)maxf;

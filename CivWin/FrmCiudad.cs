@@ -39,18 +39,18 @@ namespace CivWin
 
 			// Recursos
 			listRecursos.Items.Clear();
-			foreach (var x in ciudad.Almacén.Keys.ToArray())
+			foreach (var x in ciudad.Almacen.Keys.ToArray())
 			{
 				ListViewItem Agr = new ListViewItem();
-				Agr.Text = string.Format("{0} - {1}", x, ciudad.Almacén[x]);
+				Agr.Text = string.Format("{0} - {1}", x, ciudad.Almacen[x]);
 				Agr.ImageKey = x.Img;
 				listRecursos.Items.Add(Agr);
 			}
 
 			// textInfo            
 			List<string> strInfo = new List<string>();
-			strInfo.Add("Población: " + ciudad.getPoblación.ToString());
-			strInfo.Add(string.Format("Distribución por edad: {0} / {1} / {2}", ciudad.getPoblaciónPreProductiva, ciudad.PoblaciónProductiva, ciudad.getPoblaciónPostProductiva));
+			strInfo.Add("Poblacion: " + ciudad.getPoblacion.ToString());
+			strInfo.Add(string.Format("Distribución por edad: {0} / {1} / {2}", ciudad.getPoblacionPreProductiva, ciudad.PoblacionProductiva, ciudad.getPoblacionPostProductiva));
 			textInfo.Lines = strInfo.ToArray();
 
 			// Edificios

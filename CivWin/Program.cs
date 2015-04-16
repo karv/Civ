@@ -41,7 +41,7 @@ namespace CivWin
 			}
 
 			Civilizacion C = g_.State.Civs[0];
-			C.getCiudades[0].AlimentoAlmacén = 10;
+			C.getCiudades[0].AlimentoAlmacen = 10;
 			MyCiv = C;
 			C.OnNuevoMensaje += MuestraMensajes;
 
