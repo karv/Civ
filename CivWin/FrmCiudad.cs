@@ -51,7 +51,7 @@ namespace CivWin
 			// textInfo            
 			List<string> strInfo = new List<string>();
 			strInfo.Add("Poblacion: " + ciudad.getPoblacion.ToString());
-			strInfo.Add(string.Format("Distribución por edad: {0} / {1} / {2}", ciudad.getPoblacionPreProductiva, ciudad.PoblacionProductiva, ciudad.getPoblacionPostProductiva));
+			strInfo.Add(string.Format("Distribución por edad: {0} / {1} / {2}", ciudad.getPoblacionPreProductiva, ciudad.getPoblacionProductiva, ciudad.getPoblacionPostProductiva));
 			textInfo.Lines = strInfo.ToArray();
 
 			// Edificios
