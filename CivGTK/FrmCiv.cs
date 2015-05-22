@@ -158,6 +158,11 @@ namespace CivGTK
 			a.RetVal = true;
 		}
 
+		protected override bool OnDeleteEvent (Gdk.Event evnt)
+		{
+			Gtk.Application.Quit ();
+			return true;
+		}
 
 	}
 }
