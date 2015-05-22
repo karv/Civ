@@ -82,12 +82,13 @@ namespace CivGTK
 
 		static void Ticker ()
 		{
+			timer = DateTime.Now;
 			while (true) {
 				TimeSpan tiempo = DateTime.Now - timer;
 				timer = DateTime.Now;
 				float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
 
-				Console.WriteLine (t);
+				// Console.WriteLine (t);
 				Global.g_.Tick (t);
 
 				if (Global.g_.State.Civs.Count == 0)

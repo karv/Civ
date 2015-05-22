@@ -1,5 +1,6 @@
-CivGTK/bin
-﻿Civ/Civ/bin/Debug/Civ.vshost.exe
+gtk/bin
+gtk/obj
+Civ/Civ/bin
 *.manifest
 Civ/bin/*
 *.exe
