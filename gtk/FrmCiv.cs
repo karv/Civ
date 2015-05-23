@@ -25,7 +25,7 @@ namespace CivGTK
 {
 	class CityListEntry : Gtk.TreeNode
 	{
-		readonly Ciudad ciudad;
+		public readonly Ciudad ciudad;
 
 		[Gtk.TreeNodeValue (Column = 0)]
 		public string nombre {
@@ -77,6 +77,7 @@ namespace CivGTK
 
 			Civ = nCiv;
 			foreach (var x in Civ.getCiudades) {
+				//store.AppendValues (new CityListEntry (x));
 				store.AddNode (new CityListEntry (x));
 			}
 
@@ -143,12 +144,18 @@ namespace CivGTK
 			this.DefaultHeight = 300;
 			this.Show ();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+			this.cmdIr.Clicked += OnCmdIrActivated;
 		}
 
 
 		protected void OnCmdIrActivated (object sender, EventArgs e)
 		{
-			throw new NotImplementedException ();
+			Gtk.NodeSelection r = nv.NodeSelection;
+			Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
+
+			frmCiudad wind = new frmCiudad (c);
+			wind.Show ();
+			//throw new NotImplementedException ();
 
 		}
 

@@ -48,8 +48,14 @@ namespace CivGTK
 
 			Civilizacion C = g_.State.Civs [0];
 			MyCiv = C;
+			Ciudad cd = C.getCiudades [0];
 
-			C.getCiudades [0].AlimentoAlmacen = 10;
+			cd.AlimentoAlmacen = 100;
+			cd.AutoReclutar = false;
+			EdificioRAW eraw = g_.Data.Trabajos [0].Edificio;
+			cd.AgregaEdificio (eraw);
+			cd.Edificios [0].Trabajos.Add (
+				new Trabajo (g_.Data.Trabajos [0], cd));
 
 			C.OnNuevoMensaje += MuestraMensajes;
 

@@ -3,6 +3,10 @@
 
 public partial class MainWindow
 {
+	private global::Gtk.Notebook notebook1;
+	
+	private global::Gtk.Label label1;
+
 	protected virtual void Build ()
 	{
 		global::Stetic.Gui.Initialize (this);
@@ -10,6 +14,21 @@ public partial class MainWindow
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+		// Container child MainWindow.Gtk.Container+ContainerChild
+		this.notebook1 = new global::Gtk.Notebook ();
+		this.notebook1.CanFocus = true;
+		this.notebook1.Name = "notebook1";
+		this.notebook1.CurrentPage = 0;
+		// Notebook tab
+		global::Gtk.Label w1 = new global::Gtk.Label ();
+		w1.Visible = true;
+		this.notebook1.Add (w1);
+		this.label1 = new global::Gtk.Label ();
+		this.label1.Name = "label1";
+		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("page1");
+		this.notebook1.SetTabLabel (w1, this.label1);
+		this.label1.ShowAll ();
+		this.Add (this.notebook1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
