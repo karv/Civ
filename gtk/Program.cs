@@ -54,8 +54,8 @@ namespace CivGTK
 			cd.AutoReclutar = false;
 			EdificioRAW eraw = g_.Data.Trabajos [0].Edificio;
 			cd.AgregaEdificio (eraw);
-			cd.Edificios [0].Trabajos.Add (
-				new Trabajo (g_.Data.Trabajos [0], cd));
+
+			new Trabajo (g_.Data.Trabajos [0], cd);
 
 			C.OnNuevoMensaje += MuestraMensajes;
 
