@@ -30,28 +30,52 @@ namespace CivGTK
 		public readonly Ciudad ciudad;
 		public Gtk.NodeStore RecStore = new NodeStore(typeof(RecursoListEntry));
 
-		public frmCiudad(Ciudad c) :
-			base(Gtk.WindowType.Toplevel)
+		public frmCiudad (Ciudad c) :
+			base (Gtk.WindowType.Toplevel)
 		{
 			ciudad = c;
 
-			this.Build();
+			this.Build ();
 
 			textview1.Buffer.Text = 
-				string.Format("Población: {0}/{1}/{2}",
+				string.Format ("Población: {0}/{1}/{2}",
 				c.getPoblacionPreProductiva,
 				c.getPoblacionProductiva,
 				c.getPoblacionPostProductiva);
 
+			CellRendererText rtEdif = new CellRendererText ();
+			CellRendererText rtNumTrab = new CellRendererText ();
+			CellRendererText rtTrab = new CellRendererText ();
+
+			TreeViewColumn EdifCol = new TreeViewColumn ();
+			EdifCol.Title = "Edificio";
+			EdifCol.PackStart (rtEdif, true);
+
+			TreeViewColumn NumTrabCol = new TreeViewColumn ();
+			NumTrabCol.Title = "Trabajadores";
+			NumTrabCol.PackStart (rtNumTrab, true);
+
+			TreeViewColumn TrabCol = new TreeViewColumn ();
+			TrabCol.Title = "Trabajo";
+			TrabCol.PackStart (rtTrab, true);
+
+			treeview1.AppendColumn (EdifCol);
+			treeview1.AppendColumn (NumTrabCol);
+			treeview1.AppendColumn (TrabCol);
+
+			EdifCol.AddAttribute (rtEdif, "text", 0);
+			NumTrabCol.AddAttribute (rtNumTrab, "text", 1);
+			TrabCol.AddAttribute (rtTrab, "text", 2);
+
 			// Hacer el árbol de trabajos
-			TreeStore store = new TreeStore(typeof(Edificio), typeof(uint), typeof(Trabajo));
-			foreach (var x in ciudad.Edificios)
-			{
-				TreeIter Iterx = store.AppendValues(x, x.getEspaciosTrabajadoresCiudad);
+			TreeStore store = new TreeStore (typeof(string), typeof(ulong), typeof(string));
+			foreach (var x in ciudad.Edificios) {
+				// TreeIter Iterx = store.AppendValues (x, x.getEspaciosTrabajadoresCiudad);
+				TreeIter Iterx = store.AppendValues (x.Nombre, x.getTrabajadores);
 
 				foreach (var y in x.Trabajos)
 				{	
-					store.AppendValues(Iterx, x, y.Trabajadores, y);
+					store.AppendValues (Iterx, x.Nombre, y.Trabajadores, y.RAW.Nombre);
 				}
 			}
 			treeview1.Model = store;

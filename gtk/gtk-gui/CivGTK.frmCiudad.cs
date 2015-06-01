@@ -48,11 +48,12 @@ namespace CivGTK
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow.WidthRequest = 140;
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
 			this.textview1 = new global::Gtk.TextView ();
-			this.textview1.Buffer.Text = "Uno";
+			this.textview1.Buffer.Text = "Uno----------";
 			this.textview1.CanFocus = true;
 			this.textview1.Name = "textview1";
 			this.textview1.Editable = false;
@@ -64,6 +65,7 @@ namespace CivGTK
 			this.hbox1.Add (this.vbox1);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox1]));
 			w3.Position = 0;
+			w3.Expand = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
