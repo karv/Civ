@@ -37,7 +37,8 @@ namespace CivGTK
 
 			this.Build ();
 
-			textview1.Buffer.Text = 
+			lbCityInfo.Text =
+			// textview1.Buffer.Text = 
 				string.Format ("Población: {0}/{1}/{2}",
 				c.getPoblacionPreProductiva,
 				c.getPoblacionProductiva,

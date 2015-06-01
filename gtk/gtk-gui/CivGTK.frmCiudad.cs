@@ -10,9 +10,7 @@ namespace CivGTK
 		
 		private global::Gtk.VBox vbox1;
 		
-		private global::Gtk.ScrolledWindow GtkScrolledWindow;
-		
-		private global::Gtk.TextView textview1;
+		private global::Gtk.Label lbCityInfo;
 		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow1;
 		
@@ -47,25 +45,19 @@ namespace CivGTK
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
-			this.GtkScrolledWindow.WidthRequest = 140;
-			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
-			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
-			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.textview1 = new global::Gtk.TextView ();
-			this.textview1.Buffer.Text = "Uno----------";
-			this.textview1.CanFocus = true;
-			this.textview1.Name = "textview1";
-			this.textview1.Editable = false;
-			this.textview1.AcceptsTab = false;
-			this.GtkScrolledWindow.Add (this.textview1);
-			this.vbox1.Add (this.GtkScrolledWindow);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.GtkScrolledWindow]));
-			w2.Position = 0;
+			this.lbCityInfo = new global::Gtk.Label ();
+			this.lbCityInfo.Name = "lbCityInfo";
+			this.lbCityInfo.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
+			this.vbox1.Add (this.lbCityInfo);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.lbCityInfo]));
+			w1.Position = 0;
+			w1.Expand = false;
+			w1.Fill = false;
 			this.hbox1.Add (this.vbox1);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox1]));
-			w3.Position = 0;
-			w3.Expand = false;
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox1]));
+			w2.Position = 0;
+			w2.Expand = false;
+			w2.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
@@ -76,8 +68,8 @@ namespace CivGTK
 			this.treeview1.Name = "treeview1";
 			this.GtkScrolledWindow1.Add (this.treeview1);
 			this.hbox1.Add (this.GtkScrolledWindow1);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GtkScrolledWindow1]));
-			w5.Position = 1;
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GtkScrolledWindow1]));
+			w4.Position = 1;
 			this.notebook1.Add (this.hbox1);
 			// Notebook tab
 			this.label1 = new global::Gtk.Label ();
