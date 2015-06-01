@@ -109,7 +109,7 @@ namespace CivGTK
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 400;
+			this.DefaultWidth = 687;
 			this.DefaultHeight = 300;
 			this.Show ();
 		}
