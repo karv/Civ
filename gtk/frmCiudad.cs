@@ -24,69 +24,49 @@ using Civ;
 
 namespace CivGTK
 {
-	class TrabajoListEntry : Gtk.TreeNode
-	{
-		public readonly Trabajo trabajo;
-
-		[Gtk.TreeNodeValue (Column = 0)]
-		public string nombre {
-			get {
-				return trabajo.RAW.Nombre;
-			}
-		}
-
-		[Gtk.TreeNodeValue (Column = 1)]
-		public ulong Trabajadores {
-			get {
-				return trabajo.Trabajadores;
-			}
-		}
-
-		[Gtk.TreeNodeValue (Column = 2)]
-		public ulong MaxTrabajadores {
-			get {
-				return trabajo.MaxTrabajadores;
-			}
-		}
-
-		public TrabajoListEntry (Trabajo trabajo)
-		{
-			this.trabajo = trabajo;
-		}
-	}
-
-
+	[Obsolete()]
 	public partial class frmCiudad : Gtk.Window
 	{
 		public readonly Ciudad ciudad;
+		public Gtk.NodeStore RecStore = new NodeStore(typeof(RecursoListEntry));
 
-		public frmCiudad (Ciudad c) :
-			base (Gtk.WindowType.Toplevel)
+		public frmCiudad(Ciudad c) :
+			base(Gtk.WindowType.Toplevel)
 		{
 			ciudad = c;
 
-			this.Build ();
+			this.Build();
 
 			textview1.Buffer.Text = 
-				string.Format ("Población: {0}/{1}/{2}",
+				string.Format("Población: {0}/{1}/{2}",
 				c.getPoblacionPreProductiva,
 				c.getPoblacionProductiva,
 				c.getPoblacionPostProductiva);
 
 			// Hacer el árbol de trabajos
-			TreeStore store = new TreeStore (typeof(Edificio), typeof(uint), typeof(Trabajo));
-			foreach (var x in ciudad.Edificios) {
-				TreeIter Iterx = store.AppendValues (x, x.getEspaciosTrabajadoresCiudad);
+			TreeStore store = new TreeStore(typeof(Edificio), typeof(uint), typeof(Trabajo));
+			foreach (var x in ciudad.Edificios)
+			{
+				TreeIter Iterx = store.AppendValues(x, x.getEspaciosTrabajadoresCiudad);
 
-				foreach (var y in x.Trabajos) {	
-					store.AppendValues (Iterx, x, y.Trabajadores, y);
+				foreach (var y in x.Trabajos)
+				{	
+					store.AppendValues(Iterx, x, y.Trabajadores, y);
 				}
 			}
 			treeview1.Model = store;
 
-			ShowAll ();
+			// Los recursos:
+			foreach (var x in ciudad.Almacen)
+			{
+				RecStore.AddNode(new RecursoListEntry(x));
+			}
 
+			nvRec.AppendColumn("Recurso", new Gtk.CellRendererText(), "text", 0);
+			nvRec.AppendColumn("Valor", new Gtk.CellRendererText(), "text", 1);
+			nvRec.Model = (Gtk.TreeModel)RecStore;
 
+			ShowAll();
 		}
 	}
 }

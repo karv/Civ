@@ -19,6 +19,12 @@ namespace CivGTK
 		private global::Gtk.TreeView treeview1;
 		
 		private global::Gtk.Label label1;
+		
+		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
+		
+		private global::Gtk.NodeView nvRec;
+		
+		private global::Gtk.Label label2;
 
 		protected virtual void Build ()
 		{
@@ -31,7 +37,7 @@ namespace CivGTK
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 1;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
@@ -78,6 +84,25 @@ namespace CivGTK
 			this.label1.UseUnderline = true;
 			this.notebook1.SetTabLabel (this.hbox1, this.label1);
 			this.label1.ShowAll ();
+			// Container child notebook1.Gtk.Notebook+NotebookChild
+			this.GtkScrolledWindow2 = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow2.Name = "GtkScrolledWindow2";
+			this.GtkScrolledWindow2.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow2.Gtk.Container+ContainerChild
+			this.nvRec = new global::Gtk.NodeView ();
+			this.nvRec.CanFocus = true;
+			this.nvRec.Name = "nvRec";
+			this.nvRec.Reorderable = true;
+			this.GtkScrolledWindow2.Add (this.nvRec);
+			this.notebook1.Add (this.GtkScrolledWindow2);
+			global::Gtk.Notebook.NotebookChild w8 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.GtkScrolledWindow2]));
+			w8.Position = 1;
+			// Notebook tab
+			this.label2 = new global::Gtk.Label ();
+			this.label2.Name = "label2";
+			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Recursos");
+			this.notebook1.SetTabLabel (this.GtkScrolledWindow2, this.label2);
+			this.label2.ShowAll ();
 			this.Add (this.notebook1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
