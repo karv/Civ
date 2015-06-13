@@ -23,28 +23,61 @@ using Civ;
 
 namespace CivGTK
 {
+	class CienciaConoListEntry : Gtk.TreeNode
+	{
+		public readonly Ciencia ciencia;
+
+		public CienciaConoListEntry(Ciencia c)
+		{
+			ciencia = c;
+		}
+
+		[Gtk.TreeNodeValue(Column = 0)]
+		public string nombre { get { return ciencia.Nombre; } }
+	}
+
+	class CienciaAbtaListEntry : Gtk.TreeNode
+	{
+		public readonly InvestigandoCiencia ciencia;
+
+		public CienciaAbtaListEntry(InvestigandoCiencia c)
+		{
+			ciencia = c;
+		}
+
+		[Gtk.TreeNodeValue(Column = 1)]
+		public string nombre { get { return ciencia.Ciencia.Nombre; } }
+
+		[Gtk.TreeNodeValue(Column = 0)]
+		public float getPct { get { return ciencia.ObtPct(); } }
+	}
+
 	class CityListEntry : Gtk.TreeNode
 	{
 		public readonly Ciudad ciudad;
 
 		[Gtk.TreeNodeValue (Column = 0)]
-		public string nombre {
-			get {
+		public string nombre
+		{
+			get
+			{
 				return ciudad.Nombre;
 			}
 		}
 
-		[Gtk.TreeNodeValue (Column = 1)]
-		public ulong población {
-			get {
+		[Gtk.TreeNodeValue(Column = 1)]
+		public ulong población
+		{
+			get
+			{
 				return ciudad.getPoblacion;
 			}
 		}
 
-		[Gtk.TreeNodeValue (Column = 2)]
+		[Gtk.TreeNodeValue(Column = 2)]
 		public float Ocupación { get { return ciudad.getNumTrabajadores / ciudad.getPoblacionProductiva; } }
 
-		public CityListEntry (Ciudad ciudad)
+		public CityListEntry(Ciudad ciudad)
 		{
 			this.ciudad = ciudad;
 		}
@@ -54,7 +87,7 @@ namespace CivGTK
 	{
 		#region Controles
 
-		private global::Gtk.Notebook notebook1;
+		private global::Gtk.Notebook tabs;
 
 		private global::Gtk.VBox vbox1;
 
@@ -64,110 +97,152 @@ namespace CivGTK
 
 		private global::Gtk.Label label1;
 
-		Gtk.NodeView nv;
+		Gtk.NodeView nvListaCiudad;
+
+		Gtk.NodeView nvCienciasConocidas;
+
+		Gtk.NodeView nvCienciasAbtas;
 
 		#endregion
 
 		public readonly Civilizacion Civ;
-		Gtk.NodeStore store = new Gtk.NodeStore (typeof(CityListEntry));
+		Gtk.NodeStore stCiudad = new Gtk.NodeStore(typeof(CityListEntry));
+		Gtk.NodeStore stCienciasCono = new Gtk.NodeStore(typeof(CienciaConoListEntry));
+		Gtk.NodeStore stCienciasAbtas = new Gtk.NodeStore(typeof(CienciaAbtaListEntry));
 
-		public frmCiv (Civilizacion nCiv) :
-			base (Gtk.WindowType.Toplevel)
+		public frmCiv(Civilizacion nCiv) :
+			base(Gtk.WindowType.Toplevel)
 		{
-
 			Civ = nCiv;
-			foreach (var x in Civ.getCiudades) {
+			foreach (var x in Civ.getCiudades)
+			{
 				//store.AppendValues (new CityListEntry (x));
-				store.AddNode (new CityListEntry (x));
+				stCiudad.AddNode(new CityListEntry(x));
 			}
 
-			Build ();
-			nv.Columns [0].Reorderable = false;
-			nv.Columns [1].Reorderable = true;
-			nv.Columns [2].Reorderable = true;
+			foreach (var x in Civ.Avances)
+			{
+				stCienciasCono.AddNode(new CienciaConoListEntry(x));
+			}
 
-			ShowAll ();
+			Build();
+
+			nvListaCiudad.Columns[0].Reorderable = false;
+			nvListaCiudad.Columns[1].Reorderable = true;
+			nvListaCiudad.Columns[2].Reorderable = true;
+
+			nvCienciasConocidas.Columns[0].Reorderable = true;
+
+			nvCienciasAbtas.Columns[0].Reorderable = true;
+			nvCienciasAbtas.Columns[1].Reorderable = true;
+
+			ShowAll();
 		}
 
-		protected virtual void Build ()
+		protected virtual void Build()
 		{
-			global::Stetic.Gui.Initialize (this);
+			global::Stetic.Gui.Initialize(this);
 			// Widget CivGTK.frmCiv
 			this.Name = "CivGTK.frmCiv";
-			this.Title = global::Mono.Unix.Catalog.GetString ("frmCiv");
+			this.Title = global::Mono.Unix.Catalog.GetString("frmCiv");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Container child CivGTK.frmCiv.Gtk.Container+ContainerChild
-			this.notebook1 = new global::Gtk.Notebook ();
-			this.notebook1.CanFocus = true;
-			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.tabs = new global::Gtk.Notebook();
+			this.tabs.CanFocus = true;
+			this.tabs.Name = "tabs";
+			this.tabs.CurrentPage = 0;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
-			this.vbox1 = new global::Gtk.VBox ();
+			this.vbox1 = new global::Gtk.VBox();
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.hbuttonbox2 = new global::Gtk.HButtonBox ();
+			this.hbuttonbox2 = new global::Gtk.HButtonBox();
 			this.hbuttonbox2.Name = "hbuttonbox2";
 			// Nodeview
-			nv = new Gtk.NodeView (store);
-			nv.AppendColumn ("Nombre", new Gtk.CellRendererText (), "text", 0);
-			nv.AppendColumn ("Población", new Gtk.CellRendererText (), "text", 1);
-			nv.AppendColumn ("Ocupación", new Gtk.CellRendererText (), "text", 2);
+			nvListaCiudad = new Gtk.NodeView(stCiudad);
+			nvListaCiudad.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
+			nvListaCiudad.AppendColumn("Población", new Gtk.CellRendererText(), "text", 1);
+			nvListaCiudad.AppendColumn("Ocupación", new Gtk.CellRendererText(), "text", 2);
 			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
-			this.cmdIr = new global::Gtk.Button ();
+			this.cmdIr = new global::Gtk.Button();
 			this.cmdIr.CanFocus = true;
 			this.cmdIr.Name = "cmdIr";
 			this.cmdIr.UseUnderline = true;
-			this.cmdIr.Label = global::Mono.Unix.Catalog.GetString ("_Ir");
-			this.hbuttonbox2.Add (this.cmdIr);
-			global::Gtk.ButtonBox.ButtonBoxChild w1 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.cmdIr]));
+			this.cmdIr.Label = global::Mono.Unix.Catalog.GetString("_Ir");
+			this.hbuttonbox2.Add(this.cmdIr);
+			global::Gtk.ButtonBox.ButtonBoxChild w1 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2[this.cmdIr]));
 			w1.Expand = false;
 			w1.Fill = false;
-			this.vbox1.Add (this.hbuttonbox2);
-			this.vbox1.Add (this.nv);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbuttonbox2]));
+			this.vbox1.Add(this.hbuttonbox2);
+			this.vbox1.Add(this.nvListaCiudad);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.hbuttonbox2]));
 			w2.Position = 1;
 			w2.Expand = false;
 			w2.Fill = false;
-			this.notebook1.Add (this.vbox1);
+			this.tabs.Add(this.vbox1);
+
 			// Notebook tab
-			this.label1 = new global::Gtk.Label ();
+			this.label1 = new global::Gtk.Label();
 			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Ciudades");
-			this.notebook1.SetTabLabel (this.vbox1, this.label1);
-			this.label1.ShowAll ();
-			this.Add (this.notebook1);
-			if ((this.Child != null)) {
-				this.Child.ShowAll ();
+			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Ciudades");
+			this.tabs.SetTabLabel(this.vbox1, this.label1);
+			this.label1.ShowAll();
+
+			#region tab:Ciencias
+			Gtk.HBox boxCiencias = new Gtk.HBox();
+			tabs.Add(boxCiencias);
+			tabs.SetTabLabel(boxCiencias, new Gtk.Label("Ciencia"));
+
+			nvCienciasConocidas = new Gtk.NodeView(stCienciasCono);
+			nvCienciasConocidas.AppendColumn("Ciencia", new Gtk.CellRendererText(), "text", 0);
+			boxCiencias.Add(nvCienciasConocidas);
+
+			boxCiencias.Add(new Gtk.VSeparator());
+
+			nvCienciasAbtas = new Gtk.NodeView(stCienciasAbtas);
+			nvCienciasAbtas.AppendColumn("%", new Gtk.CellRendererText(), "text", 0);
+			nvCienciasAbtas.AppendColumn("Ciencia", new Gtk.CellRendererText(), "text", 1);
+			boxCiencias.Add(nvCienciasAbtas);
+			#endregion
+
+
+
+			this.Add(this.tabs);
+			if ((this.Child != null))
+			{
+				this.Child.ShowAll();
 			}
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 300;
-			this.Show ();
-			this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+			//this.Show();
+
+			// Eventos
+			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 			this.cmdIr.Clicked += OnCmdIrActivated;
+
 		}
 
 
-		protected void OnCmdIrActivated (object sender, EventArgs e)
+		protected void OnCmdIrActivated(object sender, EventArgs e)
 		{
-			Gtk.NodeSelection r = nv.NodeSelection;
+			Gtk.NodeSelection r = nvListaCiudad.NodeSelection;
 			Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
-			frmCiudad wind = new frmCiudad (c);
-			wind.Show ();
+			FrmCiudad wind = new FrmCiudad(c);
+			wind.Show();
 			//throw new NotImplementedException ();
 
 		}
 
-		protected void OnDeleteEvent (object sender, Gtk.DeleteEventArgs a)
+		protected void OnDeleteEvent(object sender, Gtk.DeleteEventArgs a)
 		{
-			Gtk.Application.Quit ();
+			Gtk.Application.Quit();
 			a.RetVal = true;
 		}
 
-		protected override bool OnDeleteEvent (Gdk.Event evnt)
+		protected override bool OnDeleteEvent(Gdk.Event evnt)
 		{
-			Gtk.Application.Quit ();
+			Gtk.Application.Quit();
 			return true;
 		}
 
