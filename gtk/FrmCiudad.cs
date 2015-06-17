@@ -101,14 +101,14 @@ namespace CivGTK
 
 		private ScrolledWindow GtkScrolledWindow1;
 
-		private TreeView tvTrabajos;
-
 		private Label tab1Title;
 
 		private ScrolledWindow GtkScrolledWindow2;
 
-		NodeStore recStore = new NodeStore(typeof(RecursoListEntry));
+		NodeStore stRecurso = new NodeStore(typeof(RecursoListEntry));
+		NodeStore stTrabajo = new NodeStore(typeof(TrabajoListEntry));
 		private NodeView nvRecursos;
+		private NodeView nvTrabajo;
 
 		private Label tab2Title;
 
@@ -119,9 +119,15 @@ namespace CivGTK
 			this.ciudad = ciudad;
 
 			// Construir recStore
-			foreach (var x in ciudad.Almacen)  //Clonar
+			foreach (var x in ciudad.Almacen.ToDictionary())  //Clonar
 			{
-				recStore.AddNode(new RecursoListEntry(x));
+				stRecurso.AddNode(new RecursoListEntry(x));
+			}
+
+			// Construir lista de trabajos
+			foreach (var x in ciudad.ObtenerListaTrabajos.ToArray())
+			{
+				stTrabajo.AddNode(new TrabajoListEntry(x));
 			}
 
 			#region Build
@@ -154,6 +160,7 @@ namespace CivGTK
 			this.txCityInfo.Name = "textview1";
 			this.txCityInfo.Editable = false;
 			this.txCityInfo.AcceptsTab = false;
+			txCityInfo.WidthRequest = 100;
 			this.GtkScrolledWindow.Add(this.txCityInfo);
 			this.vbox1.Add(this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow]));
@@ -166,10 +173,6 @@ namespace CivGTK
 			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
 			this.GtkScrolledWindow1.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow1.Gtk.Container+ContainerChild
-			this.tvTrabajos = new global::Gtk.TreeView();
-			this.tvTrabajos.CanFocus = true;
-			this.tvTrabajos.Name = "treeview1";
-			this.GtkScrolledWindow1.Add(this.tvTrabajos);
 			this.hbox1.Add(this.GtkScrolledWindow1);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.GtkScrolledWindow1]));
 			w5.Position = 1;
@@ -186,7 +189,7 @@ namespace CivGTK
 			this.GtkScrolledWindow2.Name = "GtkScrolledWindow2";
 			this.GtkScrolledWindow2.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow2.Gtk.Container+ContainerChild
-			this.nvRecursos = new NodeView(recStore);
+			this.nvRecursos = new NodeView(stRecurso);
 			this.nvRecursos.CanFocus = true;
 			this.nvRecursos.Name = "nvRec";
 			this.nvRecursos.Reorderable = true;
@@ -194,6 +197,17 @@ namespace CivGTK
 			this.nvRecursos.AppendColumn("Valor", new Gtk.CellRendererText(), "text", 1);
 			this.GtkScrolledWindow2.Add(this.nvRecursos);
 			this.notebook1.Add(this.GtkScrolledWindow2);
+
+			// Trabajos
+			nvTrabajo = new NodeView(stTrabajo);
+			nvTrabajo.CanFocus = true;
+			nvTrabajo.Reorderable = true;
+			nvTrabajo.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
+			nvTrabajo.AppendColumn("Trabajadores", new Gtk.CellRendererText(), "text", 1);
+			nvTrabajo.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
+			this.GtkScrolledWindow1.Add(nvTrabajo);
+
+
 			global::Gtk.Notebook.NotebookChild w8 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1[this.GtkScrolledWindow2]));
 			w8.Position = 1;
 			// Notebook tab
@@ -209,6 +223,8 @@ namespace CivGTK
 			}
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 300;
+
+
 			#endregion
 
 			this.Show();

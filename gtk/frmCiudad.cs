@@ -2,7 +2,7 @@
 //  frmCiudad.cs
 //
 //  Author:
-//       edgar <>
+//       Edgar Carballo <karvayoEdgar@gmail.com>
 //
 //  Copyright (c) 2015 edgar
 //
@@ -19,79 +19,109 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using Gtk;
 using Civ;
+using Gtk;
 
-namespace CivGTK
+namespace gtk
 {
-	[Obsolete()]
+	class TrabajoListEntry : Gtk.TreeNode
+	{
+		public readonly Trabajo trabajo;
+
+		[Gtk.TreeNodeValue(Column = 0)]
+		public string nombre
+		{
+			get
+			{
+				return trabajo.RAW.Nombre;
+			}
+		}
+
+		[Gtk.TreeNodeValue(Column = 1)]
+		public ulong Trabajadores
+		{
+			get
+			{
+				return trabajo.Trabajadores;
+			}
+		}
+
+		[Gtk.TreeNodeValue(Column = 2)]
+		public ulong MaxTrabajadores
+		{
+			get
+			{
+				return trabajo.MaxTrabajadores;
+			}
+		}
+
+		public TrabajoListEntry(Trabajo trabajo)
+		{
+			this.trabajo = trabajo;
+		}
+	}
+
+	class RecursoListEntry : Gtk.TreeNode
+	{
+		public readonly Recurso recurso;
+		public readonly float cantidad;
+
+		public RecursoListEntry(System.Collections.Generic.KeyValuePair<Recurso, float> entry)
+		{
+			recurso = entry.Key;
+			cantidad = entry.Value;
+		}
+
+		public RecursoListEntry(Recurso recurso, float cap)
+		{
+			this.recurso = recurso;
+			this.cantidad = cap;
+		}
+
+		[Gtk.TreeNodeValue(Column = 0)]
+		public string nombre { get { return recurso.Nombre; } }
+
+		[Gtk.TreeNodeValue(Column = 1)]
+		public float cant { get { return cantidad; } }
+	}
+
+
+
 	public partial class frmCiudad : Gtk.Window
 	{
 		public readonly Ciudad ciudad;
-		public Gtk.NodeStore RecStore = new NodeStore(typeof(RecursoListEntry));
 
-		public frmCiudad (Ciudad c) :
-			base (Gtk.WindowType.Toplevel)
+		NodeStore stRecurso = new NodeStore(typeof(RecursoListEntry));
+		NodeStore stTrabajo = new NodeStore(typeof(TrabajoListEntry));
+
+		public frmCiudad(Ciudad ciudad) :
+			base(Gtk.WindowType.Toplevel)
 		{
-			ciudad = c;
+			this.ciudad = ciudad;
 
-			this.Build ();
-
-			lbCityInfo.Text =
-			// textview1.Buffer.Text = 
-				string.Format ("Población: {0}/{1}/{2}",
-				c.getPoblacionPreProductiva,
-				c.getPoblacionProductiva,
-				c.getPoblacionPostProductiva);
-
-			CellRendererText rtEdif = new CellRendererText ();
-			CellRendererText rtNumTrab = new CellRendererText ();
-			CellRendererText rtTrab = new CellRendererText ();
-
-			TreeViewColumn EdifCol = new TreeViewColumn ();
-			EdifCol.Title = "Edificio";
-			EdifCol.PackStart (rtEdif, true);
-
-			TreeViewColumn NumTrabCol = new TreeViewColumn ();
-			NumTrabCol.Title = "Trabajadores";
-			NumTrabCol.PackStart (rtNumTrab, true);
-
-			TreeViewColumn TrabCol = new TreeViewColumn ();
-			TrabCol.Title = "Trabajo";
-			TrabCol.PackStart (rtTrab, true);
-
-			treeview1.AppendColumn (EdifCol);
-			treeview1.AppendColumn (NumTrabCol);
-			treeview1.AppendColumn (TrabCol);
-
-			EdifCol.AddAttribute (rtEdif, "text", 0);
-			NumTrabCol.AddAttribute (rtNumTrab, "text", 1);
-			TrabCol.AddAttribute (rtTrab, "text", 2);
-
-			// Hacer el árbol de trabajos
-			TreeStore store = new TreeStore (typeof(string), typeof(ulong), typeof(string));
-			foreach (var x in ciudad.Edificios) {
-				// TreeIter Iterx = store.AppendValues (x, x.getEspaciosTrabajadoresCiudad);
-				TreeIter Iterx = store.AppendValues (x.Nombre, x.getTrabajadores);
-
-				foreach (var y in x.Trabajos)
-				{	
-					store.AppendValues (Iterx, x.Nombre, y.Trabajadores, y.RAW.Nombre);
-				}
-			}
-			treeview1.Model = store;
-
-			// Los recursos:
-			foreach (var x in ciudad.Almacen)
+			// Construir recStore
+			foreach (var x in ciudad.Almacen.ToDictionary())  //Clonar
 			{
-				RecStore.AddNode(new RecursoListEntry(x));
+				stRecurso.AddNode(new RecursoListEntry(x));
 			}
 
-			nvRec.AppendColumn("Recurso", new Gtk.CellRendererText(), "text", 0);
-			nvRec.AppendColumn("Valor", new Gtk.CellRendererText(), "text", 1);
-			nvRec.Model = (Gtk.TreeModel)RecStore;
+			// Construir lista de trabajos
+			foreach (var x in ciudad.ObtenerListaTrabajos.ToArray())
+			{
+				stTrabajo.AddNode(new TrabajoListEntry(x));
+			}
 
-			ShowAll();
+
+
+			this.Build();
+
+			nvTrabajos.NodeStore = stTrabajo;
+			//TreeViewColumn tc = new TreeViewColumn();
+			nvTrabajos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
+			nvTrabajos.AppendColumn("Trabajadores", new gtk.CellRendererNumTrab(), "text", 1);
+			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
+
 		}
 	}
 }
+

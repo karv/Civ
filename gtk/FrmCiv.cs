@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using Civ;
+using gtk;
 
 namespace CivGTK
 {
@@ -56,7 +57,7 @@ namespace CivGTK
 	{
 		public readonly Ciudad ciudad;
 
-		[Gtk.TreeNodeValue (Column = 0)]
+		[Gtk.TreeNodeValue(Column = 0)]
 		public string nombre
 		{
 			get
@@ -228,7 +229,7 @@ namespace CivGTK
 			Gtk.NodeSelection r = nvListaCiudad.NodeSelection;
 			Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
-			FrmCiudad wind = new FrmCiudad(c);
+			frmCiudad wind = new frmCiudad(c);
 			wind.Show();
 			//throw new NotImplementedException ();
 
