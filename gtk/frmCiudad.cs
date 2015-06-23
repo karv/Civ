@@ -121,6 +121,13 @@ namespace gtk
 			nvTrabajos.AppendColumn("Trabajadores", new gtk.CellRendererNumTrab(), "text", 1);
 			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
 
+			//Llenar etiquetas
+			Title = ciudad.Nombre;
+			lbCityInfo.Text = string.Format 
+				("Población:\n{0}/{1}/{2}",
+				ciudad.getPoblacionPreProductiva,
+				ciudad.getPoblacionProductiva,
+				ciudad.getPoblacionPostProductiva);
 		}
 	}
 }
