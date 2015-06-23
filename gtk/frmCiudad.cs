@@ -121,11 +121,8 @@ namespace gtk
 		{
 			this.ciudad = ciudad;
 
-			//Pausar threads
-			CivGTK.ThreadManager.libThreadPaused = true;
-			while (!CivGTK.ThreadManager.isLibThreadPaused)
-			{
-			}
+			CivGTK.ThreadManager.Pausar();
+
 			// Construir recStore
 			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
 			{
@@ -138,7 +135,7 @@ namespace gtk
 				stTrabajo.AddNode(new TrabajoListEntry(x));
 			}
 
-			CivGTK.ThreadManager.libThreadPaused = false;
+			CivGTK.ThreadManager.Continuar();
 
 			this.Build();
 
@@ -154,6 +151,7 @@ namespace gtk
 			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 2);
 
 			//Llenar etiquetas
+			lbCityInfo.Angle = 90;
 			Title = ciudad.Nombre;
 			lbCityInfo.Text = string.Format 
 				("Población:\n{0}/{1}/{2}",

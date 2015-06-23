@@ -40,6 +40,25 @@ namespace CivGTK
 		/// </summary>
 		public static bool isLibThreadPaused = false;
 
+		/// <summary>
+		/// Pausa el thread servidor en lugar seguro.
+		/// </summary>
+		public static void Pausar()
+		{
+			CivGTK.ThreadManager.libThreadPaused = true;
+			while (!CivGTK.ThreadManager.isLibThreadPaused)
+			{
+			}
+		}
+
+		/// <summary>
+		/// Continua con el proceso servidor.
+		/// </summary>
+		public static void Continuar()
+		{
+			CivGTK.ThreadManager.libThreadPaused = false;
+		}
+
 	}
 
 	class MainClass
