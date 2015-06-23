@@ -119,9 +119,9 @@ namespace CivGTK
 			this.ciudad = ciudad;
 
 			// Construir recStore
-			foreach (var x in ciudad.Almacen)  //Clonar
+			foreach (var x in ciudad.Almacen)
 			{
-				recStore.AddNode(new RecursoListEntry(x));
+				// recStore.AddNode(new RecursoListEntry(x.Key));
 			}
 
 			#region Build
