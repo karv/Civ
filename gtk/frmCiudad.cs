@@ -63,19 +63,34 @@ namespace gtk
 
 	class RecursoListEntry : Gtk.TreeNode
 	{
+		const string iconDir = "img//";
+		const string nullIconFile = "Comida.jpg";
+
+
 		public readonly Recurso recurso;
 		public readonly float cantidad;
+		readonly Gdk.Pixbuf _icon;
 
-		public RecursoListEntry(System.Collections.Generic.KeyValuePair<Recurso, float> entry)
+		public RecursoListEntry(System.Collections.Generic.KeyValuePair<Recurso, float> entry) : this(entry.Key, entry.Value)
 		{
-			recurso = entry.Key;
-			cantidad = entry.Value;
 		}
 
 		public RecursoListEntry(Recurso recurso, float cap)
 		{
 			this.recurso = recurso;
 			this.cantidad = cap;
+			_icon = buildIcon();
+		}
+
+		Gdk.Pixbuf buildIcon()
+		{
+			string IconName = recurso.Img;
+			if (IconName == null)
+			{
+				System.Diagnostics.Debug.WriteLine(string.Format("recurso {0} con enlace a icono roto a {1}", recurso.Nombre, recurso.Img));
+				return new Gdk.Pixbuf(iconDir + nullIconFile);
+			}
+			return new Gdk.Pixbuf(iconDir + IconName);
 		}
 
 		[Gtk.TreeNodeValue(Column = 0)]
@@ -83,9 +98,16 @@ namespace gtk
 
 		[Gtk.TreeNodeValue(Column = 1)]
 		public float cant { get { return cantidad; } }
+
+		[Gtk.TreeNodeValue(Column = 2)]
+		public Gdk.Pixbuf icon
+		{ 
+			get
+			{ 
+				return _icon;
+			} 
+		}
 	}
-
-
 
 	public partial class frmCiudad : Gtk.Window
 	{
@@ -100,7 +122,7 @@ namespace gtk
 			this.ciudad = ciudad;
 
 			// Construir recStore
-			foreach (var x in ciudad.Almacen.ToDictionary())  //Clonar
+			foreach (var x in ciudad.Almacen.ToDictionary())
 			{
 				stRecurso.AddNode(new RecursoListEntry(x));
 			}
@@ -121,6 +143,11 @@ namespace gtk
 			nvTrabajos.AppendColumn("Trabajadores", new gtk.CellRendererNumTrab(), "text", 1);
 			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
 
+			nvRecursos.NodeStore = stRecurso;
+			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
+			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 1);
+			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 2);
+
 			//Llenar etiquetas
 			Title = ciudad.Nombre;
 			lbCityInfo.Text = string.Format 
@@ -131,4 +158,3 @@ namespace gtk
 		}
 	}
 }
-

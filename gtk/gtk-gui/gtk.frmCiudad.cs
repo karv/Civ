@@ -15,6 +15,12 @@ namespace gtk
 		private global::Gtk.NodeView nvTrabajos;
 		
 		private global::Gtk.Label label1;
+		
+		private global::Gtk.ScrolledWindow GtkScrolledWindow1;
+		
+		private global::Gtk.NodeView nvRecursos;
+		
+		private global::Gtk.Label label2;
 
 		protected virtual void Build ()
 		{
@@ -27,7 +33,7 @@ namespace gtk
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 1;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
@@ -60,6 +66,24 @@ namespace gtk
 			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("General");
 			this.notebook1.SetTabLabel (this.hbox1, this.label1);
 			this.label1.ShowAll ();
+			// Container child notebook1.Gtk.Notebook+NotebookChild
+			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
+			this.GtkScrolledWindow1.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow1.Gtk.Container+ContainerChild
+			this.nvRecursos = new global::Gtk.NodeView ();
+			this.nvRecursos.CanFocus = true;
+			this.nvRecursos.Name = "nvRecursos";
+			this.GtkScrolledWindow1.Add (this.nvRecursos);
+			this.notebook1.Add (this.GtkScrolledWindow1);
+			global::Gtk.Notebook.NotebookChild w6 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.GtkScrolledWindow1]));
+			w6.Position = 1;
+			// Notebook tab
+			this.label2 = new global::Gtk.Label ();
+			this.label2.Name = "label2";
+			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Recursos");
+			this.notebook1.SetTabLabel (this.GtkScrolledWindow1, this.label2);
+			this.label2.ShowAll ();
 			this.Add (this.notebook1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

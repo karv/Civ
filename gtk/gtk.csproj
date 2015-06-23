@@ -68,7 +68,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrmCiv.cs" />
-    <Compile Include="FrmCiudad.cs" />
     <Compile Include="frmCiudad.cs" />
     <Compile Include="gtk-gui\gtk.frmCiudad.cs" />
     <Compile Include="CellRendererNumTrab.cs" />
