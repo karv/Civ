@@ -67,37 +67,37 @@ namespace gtk
 		const string nullIconFile = "Comida.jpg";
 
 
-		public readonly Recurso recurso;
-		public readonly float cantidad;
+		public readonly ListasExtra.ReadonlyPair<Recurso, float> data;
 		readonly Gdk.Pixbuf _icon;
 
-		public RecursoListEntry(System.Collections.Generic.KeyValuePair<Recurso, float> entry) : this(entry.Key, entry.Value)
+		public RecursoListEntry(System.Collections.Generic.KeyValuePair<Recurso, float> entry)
 		{
+			data = new ListasExtra.ReadonlyPair<Recurso, float>(entry);
+			_icon = buildIcon();
 		}
 
-		public RecursoListEntry(Recurso recurso, float cap)
+		public RecursoListEntry(ListasExtra.ReadonlyPair<Recurso, float> entry)
 		{
-			this.recurso = recurso;
-			this.cantidad = cap;
+			data = entry;
 			_icon = buildIcon();
 		}
 
 		Gdk.Pixbuf buildIcon()
 		{
-			string IconName = recurso.Img;
+			string IconName = data.Key.Img;
 			if (IconName == null)
 			{
-				System.Diagnostics.Debug.WriteLine(string.Format("recurso {0} con enlace a icono roto a {1}", recurso.Nombre, recurso.Img));
+				System.Diagnostics.Debug.WriteLine(string.Format("recurso {0} con enlace a icono roto a {1}", data.Key.Nombre, data.Key.Img));
 				return new Gdk.Pixbuf(iconDir + nullIconFile);
 			}
 			return new Gdk.Pixbuf(iconDir + IconName);
 		}
 
 		[Gtk.TreeNodeValue(Column = 0)]
-		public string nombre { get { return recurso.Nombre; } }
+		public string nombre { get { return data.Key.Nombre; } }
 
 		[Gtk.TreeNodeValue(Column = 1)]
-		public float cant { get { return cantidad; } }
+		public float cant { get { return data.Value; } }
 
 		[Gtk.TreeNodeValue(Column = 2)]
 		public Gdk.Pixbuf icon
@@ -121,8 +121,13 @@ namespace gtk
 		{
 			this.ciudad = ciudad;
 
+			//Pausar threads
+			CivGTK.ThreadManager.libThreadPaused = true;
+			while (!CivGTK.ThreadManager.isLibThreadPaused)
+			{
+			}
 			// Construir recStore
-			foreach (var x in ciudad.Almacen.ToDictionary())
+			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
 			{
 				stRecurso.AddNode(new RecursoListEntry(x));
 			}
@@ -133,7 +138,7 @@ namespace gtk
 				stTrabajo.AddNode(new TrabajoListEntry(x));
 			}
 
-
+			CivGTK.ThreadManager.libThreadPaused = false;
 
 			this.Build();
 
