@@ -24,6 +24,7 @@ using Gtk;
 
 namespace gtk
 {
+	#region TreeNodes
 	class TrabajoListEntry : Gtk.TreeNode
 	{
 		public readonly Trabajo trabajo;
@@ -114,6 +115,7 @@ namespace gtk
 			} 
 		}
 	}
+	#endregion
 
 	public partial class frmCiudad : Gtk.Window
 	{
@@ -136,8 +138,9 @@ namespace gtk
 			}
 
 			// Construir lista de trabajos
-			foreach (var x in ciudad.ObtenerListaTrabajos.ToArray())
+			foreach (var x in ciudad.ObtenerListaTrabajos)
 			{
+				
 				stTrabajo.AddNode(new TrabajoListEntry(x));
 			}
 
