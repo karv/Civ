@@ -93,7 +93,7 @@ namespace gtk
 			string IconName = data.Key.Img;
 			if (IconName == null)
 			{
-				System.Diagnostics.Debug.WriteLine(string.Format("recurso {0} con enlace a icono roto a {1}", data.Key.Nombre, data.Key.Img));
+				System.Diagnostics.Debug.WriteLine(string.Format("Recurso {0} con enlace a icono roto a {1}. Usando icono genérico.", data.Key.Nombre, data.Key.Img));
 				return new Gdk.Pixbuf(iconDir + nullIconFile, iconSize_x, iconSize_y);
 			}
 			return new Gdk.Pixbuf(iconDir + IconName, iconSize_x, iconSize_y);
