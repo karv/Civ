@@ -138,7 +138,7 @@ namespace gtk
 			}
 
 			// Construir lista de trabajos
-			foreach (var x in ciudad.ObtenerListaTrabajos)
+			foreach (var x in ciudad.ObtenerListaTrabajos())
 			{
 				
 				stTrabajo.AddNode(new TrabajoListEntry(x));
