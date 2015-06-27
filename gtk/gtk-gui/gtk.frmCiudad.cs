@@ -6,6 +6,8 @@ namespace gtk
 	{
 		private global::Gtk.Notebook notebook1;
 		
+		private global::Gtk.VBox vbox1;
+		
 		private global::Gtk.HBox hbox1;
 		
 		private global::Gtk.Label lbCityInfo;
@@ -13,6 +15,10 @@ namespace gtk
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 		
 		private global::Gtk.NodeView nvTrabajos;
+		
+		private global::Gtk.HButtonBox hbuttonbox1;
+		
+		private global::Gtk.Button cmdRenombrarCiudad;
 		
 		private global::Gtk.Label label1;
 		
@@ -33,8 +39,12 @@ namespace gtk
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 1;
+			this.notebook1.CurrentPage = 0;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
+			this.vbox1 = new global::Gtk.VBox ();
+			this.vbox1.Name = "vbox1";
+			this.vbox1.Spacing = 6;
+			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
@@ -59,12 +69,36 @@ namespace gtk
 			this.hbox1.Add (this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GtkScrolledWindow]));
 			w3.Position = 1;
-			this.notebook1.Add (this.hbox1);
+			this.vbox1.Add (this.hbox1);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox1]));
+			w4.Position = 0;
+			w4.Expand = false;
+			w4.Fill = false;
+			// Container child vbox1.Gtk.Box+BoxChild
+			this.hbuttonbox1 = new global::Gtk.HButtonBox ();
+			this.hbuttonbox1.Name = "hbuttonbox1";
+			this.hbuttonbox1.BorderWidth = ((uint)(9));
+			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
+			this.cmdRenombrarCiudad = new global::Gtk.Button ();
+			this.cmdRenombrarCiudad.CanFocus = true;
+			this.cmdRenombrarCiudad.Name = "cmdRenombrarCiudad";
+			this.cmdRenombrarCiudad.UseUnderline = true;
+			this.cmdRenombrarCiudad.Label = global::Mono.Unix.Catalog.GetString ("_Renombrar");
+			this.hbuttonbox1.Add (this.cmdRenombrarCiudad);
+			global::Gtk.ButtonBox.ButtonBoxChild w5 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.cmdRenombrarCiudad]));
+			w5.Expand = false;
+			w5.Fill = false;
+			this.vbox1.Add (this.hbuttonbox1);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbuttonbox1]));
+			w6.Position = 1;
+			w6.Expand = false;
+			w6.Fill = false;
+			this.notebook1.Add (this.vbox1);
 			// Notebook tab
 			this.label1 = new global::Gtk.Label ();
 			this.label1.Name = "label1";
 			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("General");
-			this.notebook1.SetTabLabel (this.hbox1, this.label1);
+			this.notebook1.SetTabLabel (this.vbox1, this.label1);
 			this.label1.ShowAll ();
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
@@ -76,8 +110,8 @@ namespace gtk
 			this.nvRecursos.Name = "nvRecursos";
 			this.GtkScrolledWindow1.Add (this.nvRecursos);
 			this.notebook1.Add (this.GtkScrolledWindow1);
-			global::Gtk.Notebook.NotebookChild w6 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.GtkScrolledWindow1]));
-			w6.Position = 1;
+			global::Gtk.Notebook.NotebookChild w9 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.GtkScrolledWindow1]));
+			w9.Position = 1;
 			// Notebook tab
 			this.label2 = new global::Gtk.Label ();
 			this.label2.Name = "label2";
@@ -91,6 +125,7 @@ namespace gtk
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 300;
 			this.Show ();
+			this.cmdRenombrarCiudad.Clicked += new global::System.EventHandler (this.OnCmdRenombrarCiudadClicked);
 		}
 	}
 }
