@@ -99,13 +99,13 @@ namespace gtk
 			return new Gdk.Pixbuf(iconDir + IconName, iconSize_x, iconSize_y);
 		}
 
-		[Gtk.TreeNodeValue(Column = 0)]
+		[Gtk.TreeNodeValue(Column = 1)]
 		public string nombre { get { return data.Key.Nombre; } }
 
-		[Gtk.TreeNodeValue(Column = 1)]
+		[Gtk.TreeNodeValue(Column = 2)]
 		public float cant { get { return data.Value; } }
 
-		[Gtk.TreeNodeValue(Column = 2)]
+		[Gtk.TreeNodeValue(Column = 0)]
 		public Gdk.Pixbuf icon
 		{ 
 			get
@@ -152,9 +152,10 @@ namespace gtk
 			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
 
 			nvRecursos.NodeStore = stRecurso;
-			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
-			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 1);
-			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 2);
+			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 0);
+			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 1);
+			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 2);
+
 
 			//Llenar etiquetas
 			lbCityInfo.Angle = 90;
