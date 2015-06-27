@@ -114,9 +114,7 @@ namespace CivGTK
 				IU.Mensaje m = MyCiv.SiguitenteMensaje();
 				if (m != null)
 				{
-					Gtk.Dialog d = new Dialog();
-					d.Title = m.ToString();
-					d.Show();
+					System.Diagnostics.Debug.WriteLine(m.ToString());
 				}
 			}
 		}
