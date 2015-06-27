@@ -44,6 +44,10 @@ namespace gtk
 			{
 				return trabajo.Trabajadores;
 			}
+			set
+			{
+				trabajo.Trabajadores = value;
+			}
 		}
 
 		[Gtk.TreeNodeValue(Column = 2)]
@@ -140,9 +144,9 @@ namespace gtk
 			this.Build();
 
 			nvTrabajos.NodeStore = stTrabajo;
-			//TreeViewColumn tc = new TreeViewColumn();
+
 			nvTrabajos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
-			nvTrabajos.AppendColumn("Trabajadores", new gtk.CellRendererNumTrab(), "text", 1);
+			nvTrabajos.AppendColumn("Trabajadores", new CellRendererNumTrab(stTrabajo), "text", 1);
 			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
 
 			nvRecursos.NodeStore = stRecurso;

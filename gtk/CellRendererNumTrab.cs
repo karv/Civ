@@ -24,35 +24,32 @@ namespace gtk
 {
 	public class CellRendererNumTrab: Gtk.CellRendererText
 	{
-		
-		public CellRendererNumTrab()
+
+		public Gtk.NodeStore store;
+
+		public CellRendererNumTrab(Gtk.NodeStore store) : this()
+		{
+			this.store = store;
+		}
+
+		CellRendererNumTrab()
 		{
 			Editable = true;
-
-			//base.OnEdited += onEdt;
 		}
 
 		/// <summary>
-		/// Raises the edited event.
+		/// Valida valor ulong, y luego cambia los trabajadores del trabajo seleccionado.
 		/// </summary>
 		/// <param name="path">Path.</param>
 		/// <param name="new_text">New text.</param>
-		protected void OnEdited2(string path, string new_text)
+		override protected void OnEdited(string path, string new_text)
 		{
-			int res;
-			string outstr;
-			if (int.TryParse(new_text, out res))
+			ulong res;
+			if (ulong.TryParse(new_text, out res))
 			{
-				outstr = res.ToString();
-				new_text = outstr;
-				Text = outstr;
-				base.OnEdited(path, outstr);
+				TrabajoListEntry nodo = (TrabajoListEntry)store.GetNode(new Gtk.TreePath(path));
+				nodo.Trabajadores = res;
 			}
-		}
-
-		void onEdt()
-		{
-			
 		}
 	}
 }
