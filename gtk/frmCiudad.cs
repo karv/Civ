@@ -69,6 +69,8 @@ namespace gtk
 	{
 		const string iconDir = "img//";
 		const string nullIconFile = "Comida.jpg";
+		const int iconSize_x = 24;
+		const int iconSize_y = 24;
 
 
 		public readonly ListasExtra.ReadonlyPair<Recurso, float> data;
@@ -92,9 +94,9 @@ namespace gtk
 			if (IconName == null)
 			{
 				System.Diagnostics.Debug.WriteLine(string.Format("recurso {0} con enlace a icono roto a {1}", data.Key.Nombre, data.Key.Img));
-				return new Gdk.Pixbuf(iconDir + nullIconFile);
+				return new Gdk.Pixbuf(iconDir + nullIconFile, iconSize_x, iconSize_y);
 			}
-			return new Gdk.Pixbuf(iconDir + IconName);
+			return new Gdk.Pixbuf(iconDir + IconName, iconSize_x, iconSize_y);
 		}
 
 		[Gtk.TreeNodeValue(Column = 0)]
@@ -162,6 +164,11 @@ namespace gtk
 				ciudad.getPoblacionPreProductiva,
 				ciudad.getPoblacionProductiva,
 				ciudad.getPoblacionPostProductiva);
+		}
+
+		protected void OnCmdRenombrarCiudadClicked(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
