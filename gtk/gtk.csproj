@@ -71,6 +71,7 @@
     <Compile Include="frmCiudad.cs" />
     <Compile Include="gtk-gui\gtk.frmCiudad.cs" />
     <Compile Include="CellRendererNumTrab.cs" />
+    <Compile Include="CellRendererPrioridadTrab.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

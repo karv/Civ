@@ -60,6 +60,19 @@ namespace gtk
 			}
 		}
 
+		[Gtk.TreeNodeValue(Column = 3)]
+		public float Prioridad
+		{
+			get
+			{
+				return trabajo.Prioridad;
+			}
+			set
+			{
+				trabajo.Prioridad = value;
+			}
+		}
+
 		public TrabajoListEntry(Trabajo trabajo)
 		{
 			this.trabajo = trabajo;
@@ -153,11 +166,13 @@ namespace gtk
 			nvTrabajos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
 			nvTrabajos.AppendColumn("Trabajadores", new CellRendererNumTrab(stTrabajo), "text", 1);
 			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
+			nvTrabajos.AppendColumn("Prioridad", new CellRendererPrioridadTrab(stTrabajo), "text", 3);
 
 			nvRecursos.NodeStore = stRecurso;
 			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 0);
 			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 1);
 			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 2);
+
 
 
 			//Llenar etiquetas
