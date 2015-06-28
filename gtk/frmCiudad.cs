@@ -95,38 +95,36 @@ namespace gtk
 		const int iconSize_x = 24;
 		const int iconSize_y = 24;
 
+		IAlmacenante almacen;
+		Recurso recurso;
 
-		public readonly ListasExtra.ReadonlyPair<Recurso, float> data;
+		//public readonly ListasExtra.ReadonlyPair<Recurso, float> data;
 		readonly Gdk.Pixbuf _icon;
 
-		public RecursoListEntry(System.Collections.Generic.KeyValuePair<Recurso, float> entry)
+		public RecursoListEntry(IAlmacenante almacén, Recurso recurso)
 		{
-			data = new ListasExtra.ReadonlyPair<Recurso, float>(entry);
-			_icon = buildIcon();
-		}
-
-		public RecursoListEntry(ListasExtra.ReadonlyPair<Recurso, float> entry)
-		{
-			data = entry;
+			this.almacen = almacén;
+			this.recurso = recurso;
 			_icon = buildIcon();
 		}
 
 		Gdk.Pixbuf buildIcon()
 		{
-			string IconName = data.Key.Img;
+			string IconName = recurso.Img;
 			if (IconName == null)
 			{
-				System.Diagnostics.Debug.WriteLine(string.Format("Recurso {0} con enlace a icono roto a {1}. Usando icono genérico.", data.Key.Nombre, data.Key.Img));
+				System.Diagnostics.Debug.WriteLine(string.Format("Recurso {0} con enlace a icono roto a {1}. Usando icono genérico.", 
+					nombre, cant));
 				return new Gdk.Pixbuf(iconDir + nullIconFile, iconSize_x, iconSize_y);
 			}
 			return new Gdk.Pixbuf(iconDir + IconName, iconSize_x, iconSize_y);
 		}
 
 		[Gtk.TreeNodeValue(Column = 1)]
-		public string nombre { get { return data.Key.Nombre; } }
+		public string nombre { get { return recurso.Nombre; } }
 
 		[Gtk.TreeNodeValue(Column = 2)]
-		public float cant { get { return data.Value; } }
+		public float cant { get { return almacen.obtenerRecurso(recurso); } }
 
 		[Gtk.TreeNodeValue(Column = 0)]
 		public Gdk.Pixbuf icon
@@ -156,7 +154,7 @@ namespace gtk
 			// Construir recStore
 			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
 			{
-				stRecurso.AddNode(new RecursoListEntry(x));
+				stRecurso.AddNode(new RecursoListEntry(ciudad, x.Key));
 			}
 			/*
 			// Construir lista de trabajos
