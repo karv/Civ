@@ -64,6 +64,7 @@ namespace gtk
 			this.GtkScrolledWindow2.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow2.Gtk.Container+ContainerChild
 			this.nvTrabajos = new global::Gtk.NodeView ();
+			this.nvTrabajos.WidthRequest = 600;
 			this.nvTrabajos.CanFocus = true;
 			this.nvTrabajos.Name = "nvTrabajos";
 			this.GtkScrolledWindow2.Add (this.nvTrabajos);
@@ -123,7 +124,7 @@ namespace gtk
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 400;
+			this.DefaultWidth = 665;
 			this.DefaultHeight = 380;
 			this.Show ();
 		}

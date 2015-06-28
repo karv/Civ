@@ -73,6 +73,15 @@ namespace gtk
 			}
 		}
 
+		[Gtk.TreeNodeValue(Column = 4)]
+		public string edificio
+		{
+			get
+			{
+				return trabajo.EdificioBase.Nombre;
+			}
+		}
+
 		public TrabajoListEntry(Trabajo trabajo)
 		{
 			this.trabajo = trabajo;
@@ -172,6 +181,7 @@ namespace gtk
 			nvTrabajos.AppendColumn("Trabajadores", new CellRendererNumTrab(stTrabajo), "text", 1);
 			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
 			nvTrabajos.AppendColumn("Prioridad", new CellRendererPrioridadTrab(stTrabajo), "text", 3);
+			nvTrabajos.AppendColumn("Edificio", new CellRendererText(), "text", 4);
 
 			nvRecursos.NodeStore = stRecurso;
 			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 0);
