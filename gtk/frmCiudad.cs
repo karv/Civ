@@ -140,6 +140,7 @@ namespace gtk
 	public partial class frmCiudad : Gtk.Window, IActualizable
 	{
 		public readonly Ciudad ciudad;
+		public readonly CivGTK.frmCiv mainWindow;
 
 		#region IActualizable implementation
 
@@ -172,9 +173,10 @@ namespace gtk
 		NodeStore stRecurso = new NodeStore(typeof(RecursoListEntry));
 		NodeStore stTrabajo = new NodeStore(typeof(TrabajoListEntry));
 
-		public frmCiudad(Ciudad ciudad) :
+		public frmCiudad(Ciudad ciudad, CivGTK.frmCiv main) :
 			base(Gtk.WindowType.Toplevel)
 		{
+			this.mainWindow = main;
 			this.ciudad = ciudad;
 			this.Build();
 			popdisplay1.Ciudad = ciudad;
@@ -199,7 +201,10 @@ namespace gtk
 			throw new NotImplementedException();
 		}
 
-
-
+		protected override void OnDestroyed()
+		{
+			mainWindow.formsActualizables.Remove(this);
+			base.OnDestroyed();
+		}
 	}
 }

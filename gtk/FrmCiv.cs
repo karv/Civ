@@ -257,7 +257,7 @@ namespace CivGTK
 			Gtk.NodeSelection r = nvListaCiudad.NodeSelection;
 			Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
-			frmCiudad wind = new frmCiudad(c);
+			frmCiudad wind = new frmCiudad(c, this);
 			formsActualizables.Add(wind);
 			wind.Show();
 			//throw new NotImplementedException ();
@@ -275,7 +275,5 @@ namespace CivGTK
 			Gtk.Application.Quit();
 			return true;
 		}
-
 	}
 }
-

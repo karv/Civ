@@ -72,6 +72,7 @@ namespace CivGTK
 			Global.g_.Data = Store.Store<Global.g_Data>.Deserialize(f);
 		}
 
+		static frmCiv win;
 
 		public static void Main(string[] args)
 		{
@@ -99,7 +100,7 @@ namespace CivGTK
 			ThreadManager.emu.Start();
 
 			Application.Init();
-			frmCiv win = new frmCiv(MyCiv);
+			win = new frmCiv(MyCiv);
 			win.Show();
 			Application.Run();
 
@@ -116,6 +117,10 @@ namespace CivGTK
 				{
 					System.Diagnostics.Debug.WriteLine(m.ToString());
 				}
+
+				//Thread thrRefresh = new Thread(new ThreadStart(win.Actualizar));
+				//thrRefresh.Start();
+				// win.Actualizar();
 			}
 		}
 
