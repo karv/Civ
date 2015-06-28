@@ -10,7 +10,7 @@ namespace gtk
 		
 		private global::Gtk.HBox hbox1;
 		
-		private global::Gtk.Label lbCityInfo;
+		private global::gtk.PopDisplay popdisplay1;
 		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
 		
@@ -50,11 +50,11 @@ namespace gtk
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.lbCityInfo = new global::Gtk.Label ();
-			this.lbCityInfo.Name = "lbCityInfo";
-			this.lbCityInfo.LabelProp = global::Mono.Unix.Catalog.GetString ("label2");
-			this.hbox1.Add (this.lbCityInfo);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.lbCityInfo]));
+			this.popdisplay1 = new global::gtk.PopDisplay ();
+			this.popdisplay1.Events = ((global::Gdk.EventMask)(256));
+			this.popdisplay1.Name = "popdisplay1";
+			this.hbox1.Add (this.popdisplay1);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.popdisplay1]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
@@ -124,7 +124,7 @@ namespace gtk
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 665;
+			this.DefaultWidth = 724;
 			this.DefaultHeight = 380;
 			this.Show ();
 		}

@@ -172,6 +172,7 @@ namespace gtk
 			CivGTK.ThreadManager.Continuar();
 
 			this.Build();
+			popdisplay1.Ciudad = ciudad;
 
 			nvTrabajos.NodeStore = stTrabajo;
 
@@ -186,21 +187,25 @@ namespace gtk
 			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 1);
 			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 2);
 
-
-
 			//Llenar etiquetas
-			lbCityInfo.Angle = 90;
+			//lbCityInfo.Angle = 90;
 			Title = ciudad.Nombre;
+			/*
 			lbCityInfo.Text = string.Format 
 				("Población:\n{0}/{1}/{2}",
 				ciudad.getPoblacionPreProductiva,
 				ciudad.getPoblacionProductiva,
 				ciudad.getPoblacionPostProductiva);
+			*/
+
 		}
 
 		protected void OnCmdRenombrarCiudadClicked(object sender, EventArgs e)
 		{
 			throw new NotImplementedException();
 		}
+
+
+
 	}
 }
