@@ -149,12 +149,17 @@ namespace gtk
 			{
 				stRecurso.AddNode(new RecursoListEntry(x));
 			}
-
+			/*
 			// Construir lista de trabajos
 			foreach (var x in ciudad.ObtenerListaTrabajos())
 			{
 				
 				stTrabajo.AddNode(new TrabajoListEntry(x));
+			}
+			*/
+			foreach (var x in ciudad.obtenerTrabajosAbiertos())
+			{
+				stTrabajo.AddNode(new TrabajoListEntry(ciudad.EncuentraInstanciaTrabajo(x)));
 			}
 
 			CivGTK.ThreadManager.Continuar();

@@ -33,7 +33,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="gtk.frmCiudad" design-size="400 300">
+  <widget class="Gtk.Window" id="gtk.frmCiudad" design-size="400 380">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frmCiudad</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -49,6 +49,7 @@
             <child>
               <widget class="Gtk.HBox" id="hbox1">
                 <property name="MemberName" />
+                <property name="HeightRequest">300</property>
                 <property name="Spacing">6</property>
                 <child>
                   <widget class="Gtk.Label" id="lbCityInfo">
@@ -63,7 +64,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow2">
                     <property name="MemberName" />
                     <property name="ShadowType">In</property>
                     <child>
@@ -99,7 +100,6 @@
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">_Renombrar</property>
                     <property name="UseUnderline">True</property>
-                    <signal name="Clicked" handler="OnCmdRenombrarCiudadClicked" />
                   </widget>
                   <packing>
                     <property name="Expand">False</property>

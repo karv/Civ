@@ -12,7 +12,7 @@ namespace gtk
 		
 		private global::Gtk.Label lbCityInfo;
 		
-		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
 		
 		private global::Gtk.NodeView nvTrabajos;
 		
@@ -46,6 +46,7 @@ namespace gtk
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox ();
+			this.hbox1.HeightRequest = 300;
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
@@ -58,16 +59,16 @@ namespace gtk
 			w1.Expand = false;
 			w1.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
-			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
-			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
-			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+			this.GtkScrolledWindow2 = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow2.Name = "GtkScrolledWindow2";
+			this.GtkScrolledWindow2.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow2.Gtk.Container+ContainerChild
 			this.nvTrabajos = new global::Gtk.NodeView ();
 			this.nvTrabajos.CanFocus = true;
 			this.nvTrabajos.Name = "nvTrabajos";
-			this.GtkScrolledWindow.Add (this.nvTrabajos);
-			this.hbox1.Add (this.GtkScrolledWindow);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GtkScrolledWindow]));
+			this.GtkScrolledWindow2.Add (this.nvTrabajos);
+			this.hbox1.Add (this.GtkScrolledWindow2);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GtkScrolledWindow2]));
 			w3.Position = 1;
 			this.vbox1.Add (this.hbox1);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox1]));
@@ -123,9 +124,8 @@ namespace gtk
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 400;
-			this.DefaultHeight = 300;
+			this.DefaultHeight = 380;
 			this.Show ();
-			this.cmdRenombrarCiudad.Clicked += new global::System.EventHandler (this.OnCmdRenombrarCiudadClicked);
 		}
 	}
 }
