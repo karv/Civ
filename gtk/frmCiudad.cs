@@ -137,9 +137,37 @@ namespace gtk
 	}
 	#endregion
 
-	public partial class frmCiudad : Gtk.Window
+	public partial class frmCiudad : Gtk.Window, IActualizable
 	{
 		public readonly Ciudad ciudad;
+
+		#region IActualizable implementation
+
+		public void Actualizar()
+		{
+			CivGTK.ThreadManager.Pausar();
+
+			// Construir recStore
+			stRecurso.Clear();
+			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
+			{
+				stRecurso.AddNode(new RecursoListEntry(ciudad, x.Key));
+			}
+			// Construir lista de trabajos
+			stTrabajo.Clear();
+			foreach (var x in ciudad.obtenerTrabajosAbiertos())
+			{
+				stTrabajo.AddNode(new TrabajoListEntry(ciudad.EncuentraInstanciaTrabajo(x)));
+			}
+
+			CivGTK.ThreadManager.Continuar();
+
+			//Llenar etiquetas
+			Title = ciudad.Nombre;
+			popdisplay1.Refresh();
+		}
+
+		#endregion
 
 		NodeStore stRecurso = new NodeStore(typeof(RecursoListEntry));
 		NodeStore stTrabajo = new NodeStore(typeof(TrabajoListEntry));
@@ -148,34 +176,12 @@ namespace gtk
 			base(Gtk.WindowType.Toplevel)
 		{
 			this.ciudad = ciudad;
-
-			CivGTK.ThreadManager.Pausar();
-
-			// Construir recStore
-			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
-			{
-				stRecurso.AddNode(new RecursoListEntry(ciudad, x.Key));
-			}
-			/*
-			// Construir lista de trabajos
-			foreach (var x in ciudad.ObtenerListaTrabajos())
-			{
-				
-				stTrabajo.AddNode(new TrabajoListEntry(x));
-			}
-			*/
-			foreach (var x in ciudad.obtenerTrabajosAbiertos())
-			{
-				stTrabajo.AddNode(new TrabajoListEntry(ciudad.EncuentraInstanciaTrabajo(x)));
-			}
-
-			CivGTK.ThreadManager.Continuar();
-
 			this.Build();
 			popdisplay1.Ciudad = ciudad;
 
-			nvTrabajos.NodeStore = stTrabajo;
+			Actualizar();
 
+			nvTrabajos.NodeStore = stTrabajo;
 			nvTrabajos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
 			nvTrabajos.AppendColumn("Trabajadores", new CellRendererNumTrab(stTrabajo), "text", 1);
 			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
@@ -186,18 +192,6 @@ namespace gtk
 			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 0);
 			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 1);
 			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 2);
-
-			//Llenar etiquetas
-			//lbCityInfo.Angle = 90;
-			Title = ciudad.Nombre;
-			/*
-			lbCityInfo.Text = string.Format 
-				("Población:\n{0}/{1}/{2}",
-				ciudad.getPoblacionPreProductiva,
-				ciudad.getPoblacionProductiva,
-				ciudad.getPoblacionPostProductiva);
-			*/
-
 		}
 
 		protected void OnCmdRenombrarCiudadClicked(object sender, EventArgs e)

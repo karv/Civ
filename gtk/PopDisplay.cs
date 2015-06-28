@@ -24,8 +24,17 @@ namespace gtk
 {
 
 	[System.ComponentModel.ToolboxItem(true)]
-	public partial class PopDisplay : Gtk.Bin
+	public partial class PopDisplay : Gtk.Bin, IActualizable
 	{
+		#region IActualizable implementation
+
+		public void Actualizar()
+		{
+			Refresh();
+		}
+
+		#endregion
+
 		Civ.Ciudad ciudad;
 
 		public Civ.Ciudad Ciudad

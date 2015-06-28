@@ -24,6 +24,7 @@ using gtk;
 
 namespace CivGTK
 {
+	#region EntryLists
 	class CienciaConoListEntry : Gtk.TreeNode
 	{
 		public readonly Ciencia ciencia;
@@ -83,8 +84,9 @@ namespace CivGTK
 			this.ciudad = ciudad;
 		}
 	}
+	#endregion
 
-	public class frmCiv : Gtk.Window
+	public class frmCiv : Gtk.Window, IActualizable
 	{
 		#region Controles
 
@@ -107,6 +109,32 @@ namespace CivGTK
 		#endregion
 
 		public readonly Civilizacion Civ;
+		public readonly System.Collections.Generic.List<IActualizable> formsActualizables = new System.Collections.Generic.List<IActualizable>();
+
+		#region IActualizable implementation
+
+		/// <summary>
+		/// Actualiza esta form y todas sus hijas.
+		/// </summary>
+		public void Actualizar()
+		{
+			ActualizarDebil();
+			foreach (var x in formsActualizables)
+			{
+				x.Actualizar();
+			}
+		}
+
+		/// <summary>
+		/// Actualiza esta form
+		/// </summary>
+		public void ActualizarDebil()
+		{
+			//TODO
+		}
+
+		#endregion
+
 		Gtk.NodeStore stCiudad = new Gtk.NodeStore(typeof(CityListEntry));
 		Gtk.NodeStore stCienciasCono = new Gtk.NodeStore(typeof(CienciaConoListEntry));
 		Gtk.NodeStore stCienciasAbtas = new Gtk.NodeStore(typeof(CienciaAbtaListEntry));
@@ -230,6 +258,7 @@ namespace CivGTK
 			Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
 			frmCiudad wind = new frmCiudad(c);
+			formsActualizables.Add(wind);
 			wind.Show();
 			//throw new NotImplementedException ();
 
