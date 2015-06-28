@@ -26,7 +26,13 @@ namespace gtk
 		
 		private global::Gtk.NodeView nvRecursos;
 		
-		private global::Gtk.Label label2;
+		private global::Gtk.Label label6;
+		
+		private global::Gtk.HBox hbox4;
+		
+		private global::gtk.ArmadaWidget armDefensa;
+		
+		private global::Gtk.Label label7;
 
 		protected virtual void Build ()
 		{
@@ -38,8 +44,7 @@ namespace gtk
 			// Container child gtk.frmCiudad.Gtk.Container+ContainerChild
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
-			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 2;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox1 = new global::Gtk.VBox ();
 			this.vbox1.Name = "vbox1";
@@ -115,11 +120,32 @@ namespace gtk
 			global::Gtk.Notebook.NotebookChild w9 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.GtkScrolledWindow1]));
 			w9.Position = 1;
 			// Notebook tab
-			this.label2 = new global::Gtk.Label ();
-			this.label2.Name = "label2";
-			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Recursos");
-			this.notebook1.SetTabLabel (this.GtkScrolledWindow1, this.label2);
-			this.label2.ShowAll ();
+			this.label6 = new global::Gtk.Label ();
+			this.label6.Name = "label6";
+			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString ("Recursos");
+			this.notebook1.SetTabLabel (this.GtkScrolledWindow1, this.label6);
+			this.label6.ShowAll ();
+			// Container child notebook1.Gtk.Notebook+NotebookChild
+			this.hbox4 = new global::Gtk.HBox ();
+			this.hbox4.Name = "hbox4";
+			this.hbox4.Spacing = 6;
+			// Container child hbox4.Gtk.Box+BoxChild
+			this.armDefensa = new global::gtk.ArmadaWidget ();
+			this.armDefensa.Events = ((global::Gdk.EventMask)(256));
+			this.armDefensa.Name = "armDefensa";
+			this.hbox4.Add (this.armDefensa);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.armDefensa]));
+			w10.Position = 0;
+			this.notebook1.Add (this.hbox4);
+			global::Gtk.Notebook.NotebookChild w11 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox4]));
+			w11.Position = 2;
+			// Notebook tab
+			this.label7 = new global::Gtk.Label ();
+			this.label7.Name = "label7";
+			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("_Armada");
+			this.label7.UseUnderline = true;
+			this.notebook1.SetTabLabel (this.hbox4, this.label7);
+			this.label7.ShowAll ();
 			this.Add (this.notebook1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

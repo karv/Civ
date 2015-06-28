@@ -161,6 +161,8 @@ namespace gtk
 				stTrabajo.AddNode(new TrabajoListEntry(ciudad.EncuentraInstanciaTrabajo(x)));
 			}
 
+			armDefensa.Actualizar();
+
 			CivGTK.ThreadManager.Continuar();
 
 			//Llenar etiquetas
@@ -179,6 +181,7 @@ namespace gtk
 			this.mainWindow = main;
 			this.ciudad = ciudad;
 			this.Build();
+			armDefensa.Armada = ciudad.Defensa;
 			popdisplay1.Ciudad = ciudad;
 
 			Actualizar();

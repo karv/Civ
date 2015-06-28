@@ -75,6 +75,8 @@
     <Compile Include="PopDisplay.cs" />
     <Compile Include="gtk-gui\gtk.PopDisplay.cs" />
     <Compile Include="IActualizable.cs" />
+    <Compile Include="ArmadaWidget.cs" />
+    <Compile Include="gtk-gui\gtk.ArmadaWidget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
