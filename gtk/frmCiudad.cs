@@ -181,8 +181,12 @@ namespace gtk
 			this.mainWindow = main;
 			this.ciudad = ciudad;
 			this.Build();
+
 			armDefensa.Armada = ciudad.Defensa;
+			rcReclutar.ciudad = ciudad;
 			popdisplay1.Ciudad = ciudad;
+
+			rcReclutar.ConstruirModelo();
 
 			Actualizar();
 
