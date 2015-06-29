@@ -79,6 +79,7 @@
     <Compile Include="gtk-gui\gtk.ArmadaWidget.cs" />
     <Compile Include="wgReclutar.cs" />
     <Compile Include="gtk-gui\gtk.wgReclutar.cs" />
+    <Compile Include="CellRendererNumRecluta.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

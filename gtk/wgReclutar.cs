@@ -42,7 +42,7 @@ namespace gtk
 		
 			Nodeview.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
 			Nodeview.AppendColumn("Existentes", new Gtk.CellRendererText(), "text", 1);
-			Nodeview.AppendColumn("Reclutar", new Gtk.CellRendererText(), "text", 2);
+			Nodeview.AppendColumn("Reclutar", new CellRendererNumRecluta(store), "text", 2);
 			Nodeview.AppendColumn("Máximo", new Gtk.CellRendererText(), "text", 3);
 
 			Nodeview.NodeStore = store;
@@ -74,7 +74,7 @@ namespace gtk
 		/// <summary>
 		/// Entrada de TreeView de lista de reclutamiento de unidades.
 		/// </summary>
-		class ReclutarListEntry : Gtk.TreeNode
+		public class ReclutarListEntry : Gtk.TreeNode
 		{
 			public readonly UnidadRAW unidad;
 			public readonly Ciudad ciudad;
