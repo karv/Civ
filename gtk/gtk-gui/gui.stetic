@@ -167,6 +167,25 @@
               </packing>
             </child>
             <child>
+              <widget class="Gtk.VBox" id="vbox3">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+                <child>
+                  <placeholder />
+                </child>
+                <child>
+                  <placeholder />
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+              </packing>
+            </child>
+            <child>
               <widget class="Gtk.Frame" id="frame2">
                 <property name="MemberName" />
                 <property name="WidthRequest">300</property>
@@ -198,14 +217,11 @@
                 </child>
               </widget>
               <packing>
-                <property name="Position">1</property>
+                <property name="Position">2</property>
                 <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
-            </child>
-            <child>
-              <placeholder />
             </child>
           </widget>
           <packing>
@@ -340,6 +356,17 @@ P</property>
             <property name="ShowScrollbars">True</property>
           </widget>
         </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Bin" id="gtk.wgArmadaComboBox" design-size="300 30">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.ComboBox" id="combobox3">
+        <property name="MemberName" />
+        <property name="IsTextCombo">True</property>
+        <property name="Items" translatable="yes" />
       </widget>
     </child>
   </widget>

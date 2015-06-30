@@ -163,6 +163,8 @@ namespace gtk
 
 			armDefensa.Actualizar();
 
+			rcReclutar.ConstruirModelo();
+
 			CivGTK.ThreadManager.Continuar();
 
 			//Llenar etiquetas
@@ -219,4 +221,5 @@ namespace gtk
 			Actualizar();
 		}
 	}
+
 }
