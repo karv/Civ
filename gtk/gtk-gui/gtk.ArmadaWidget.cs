@@ -6,7 +6,7 @@ namespace gtk
 	{
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 		
-		private global::Gtk.TreeView TreeView;
+		private global::Gtk.NodeView nodeview2;
 
 		protected virtual void Build ()
 		{
@@ -19,10 +19,10 @@ namespace gtk
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.TreeView = new global::Gtk.TreeView ();
-			this.TreeView.CanFocus = true;
-			this.TreeView.Name = "TreeView";
-			this.GtkScrolledWindow.Add (this.TreeView);
+			this.nodeview2 = new global::Gtk.NodeView ();
+			this.nodeview2.CanFocus = true;
+			this.nodeview2.Name = "nodeview2";
+			this.GtkScrolledWindow.Add (this.nodeview2);
 			this.Add (this.GtkScrolledWindow);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

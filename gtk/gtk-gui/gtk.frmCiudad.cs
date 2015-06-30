@@ -147,7 +147,7 @@ namespace gtk
 			w10.Position = 0;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.frame2 = new global::Gtk.Frame ();
-			this.frame2.WidthRequest = 200;
+			this.frame2.WidthRequest = 300;
 			this.frame2.Name = "frame2";
 			this.frame2.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame2.Gtk.Container+ContainerChild
@@ -188,6 +188,7 @@ namespace gtk
 			this.DefaultWidth = 724;
 			this.DefaultHeight = 380;
 			this.Show ();
+			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
 		}
 	}
 }

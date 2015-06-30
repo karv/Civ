@@ -78,7 +78,6 @@ namespace gtk
 		{
 			public readonly UnidadRAW unidad;
 			public readonly Ciudad ciudad;
-			ulong marcados;
 
 			public ReclutarListEntry(UnidadRAW unidad, Ciudad ciudad)
 			{
@@ -109,11 +108,7 @@ namespace gtk
 			{
 				get
 				{
-					return marcados;
-				}
-				set
-				{
-					marcados = Math.Min(value, ciudad.UnidadesConstruibles(unidad));
+					return 0;
 				}
 			}
 

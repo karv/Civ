@@ -213,5 +213,10 @@ namespace gtk
 			mainWindow.formsActualizables.Remove(this);
 			base.OnDestroyed();
 		}
+
+		protected void OnNotebook1SwitchPage(object o, SwitchPageArgs args)
+		{
+			Actualizar();
+		}
 	}
 }

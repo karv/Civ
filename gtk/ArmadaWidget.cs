@@ -33,24 +33,31 @@ namespace gtk
 		}
 
 		[Gtk.TreeNodeValue(Column = 0)]
-		public UnidadRAW Tipo
+		public string Tipo
 		{
 			get
 			{
-				return unidad.RAW;
+				return unidad.RAW.Nombre;
 			}
 		}
+
+		[Gtk.TreeNodeValue(Column = 1)]
+		public float Entrenamiento { get { return unidad.Entrenamiento; } }
 	}
 
 	[System.ComponentModel.ToolboxItem(true)]
 	public partial class ArmadaWidget : Gtk.Bin, IActualizable
 	{
-		public Gtk.TreeStore store = new Gtk.TreeStore(typeof(UnidadListEntry));
+		public Gtk.NodeStore store = new Gtk.NodeStore(typeof(UnidadListEntry));
 		public Civ.Armada Armada;
 
 		public ArmadaWidget()
 		{
 			this.Build();
+
+			nodeview2.AppendColumn("Tipo", new Gtk.CellRendererText(), "text", 0);
+			nodeview2.AppendColumn("Entrenamiento", new Gtk.CellRendererText(), "text", 1);
+			nodeview2.NodeStore = store;
 		}
 
 		#region IActualizable implementation
@@ -60,9 +67,19 @@ namespace gtk
 			store.Clear();
 			foreach (var x in Armada.Unidades)
 			{
-				Gtk.TreeIter iter = store.AppendValues(x.RAW);
-				store.AppendValues(iter, x);
+				store.AddNode(new UnidadListEntry(x));
 			}
+/*
+			System.Collections.Generic.Dictionary <UnidadRAW, System.Collections.Generic.List <Unidad>> unid = Armada.ToDictionary();
+			foreach (var x in unid)
+			{
+				Gtk.TreeIter iter = store.AppendValues(x.Key);
+				foreach (var y in x.Value)
+				{
+					store.AppendValues(iter, new UnidadListEntry(y));
+				}
+			}
+			*/
 		}
 
 		#endregion
