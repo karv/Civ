@@ -4,7 +4,7 @@ namespace gtk
 {
 	public partial class wgArmadaComboBox
 	{
-		private global::Gtk.ComboBox combobox3;
+		private global::Gtk.ComboBox comboBox;
 
 		protected virtual void Build ()
 		{
@@ -13,9 +13,9 @@ namespace gtk
 			global::Stetic.BinContainer.Attach (this);
 			this.Name = "gtk.wgArmadaComboBox";
 			// Container child gtk.wgArmadaComboBox.Gtk.Container+ContainerChild
-			this.combobox3 = global::Gtk.ComboBox.NewText ();
-			this.combobox3.Name = "combobox3";
-			this.Add (this.combobox3);
+			this.comboBox = global::Gtk.ComboBox.NewText ();
+			this.comboBox.Name = "comboBox";
+			this.Add (this.comboBox);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}

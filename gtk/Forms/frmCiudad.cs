@@ -184,6 +184,8 @@ namespace gtk
 			this.ciudad = ciudad;
 			this.Build();
 
+			ArmadaComboBox.Add(ciudad.Defensa, "Defensa");
+
 			armDefensa.Armada = ciudad.Defensa;
 			rcReclutar.ciudad = ciudad;
 			popdisplay1.Ciudad = ciudad;

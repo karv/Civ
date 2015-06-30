@@ -21,24 +21,43 @@
 using System;
 using System.Collections.Generic;
 using Civ;
+using Gtk;
 
 namespace gtk
 {
 	[System.ComponentModel.ToolboxItem(true)]
-	public partial class wgArmadaComboBox : Gtk.ComboBox
+	public partial class wgArmadaComboBox : Gtk.Bin
 	{
-		List<Armada> armadas;
+		Dictionary<string, Armada> armadas = new Dictionary<string, Armada>();
 
 		public wgArmadaComboBox()
 		{
 			this.Build();
+			comboBox.Model = new Gtk.ListStore(typeof(string));
+			CellRendererText text = new CellRendererText();
+			comboBox.PackStart(text, false);
+			//comboBox.AddAttribute(text
 		}
 
 		public void Add(Armada arm)
 		{
-			AppendText(arm.ToString());
-			armadas.Add(arm);
+			string nombre = string.Format("Peso {0}/{1}", arm.Peso, arm.MaxPeso);
+			Add(arm, nombre);
+		}
+
+		public void Add(Armada arm, string nombre)
+		{
+			comboBox.AppendText(nombre);
+			armadas.Add(nombre, arm);
+		}
+
+		/// <summary>
+		/// Devuelve la armada seleccionada.
+		/// </summary>
+		/// <returns>The selected.</returns>
+		public Armada getSelected()
+		{
+			return armadas[comboBox.ActiveText];
 		}
 	}
 }
-
