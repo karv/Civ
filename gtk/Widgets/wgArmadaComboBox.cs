@@ -26,7 +26,7 @@ using Gtk;
 namespace gtk
 {
 	[System.ComponentModel.ToolboxItem(true)]
-	public partial class wgArmadaComboBox : Gtk.Bin
+	public partial class wgArmadaComboBox : Gtk.Bin, IEnumerable<Armada>
 	{
 		Dictionary<string, Armada> armadas = new Dictionary<string, Armada>();
 
@@ -42,7 +42,18 @@ namespace gtk
 		public void Add(Armada arm)
 		{
 			string nombre = string.Format("Peso {0}/{1}", arm.Peso, arm.MaxPeso);
-			Add(arm, nombre);
+
+			// Evita repeticiones.
+			int i = 0;
+			string nom = nombre;
+
+			while (armadas.ContainsKey(nom))
+			{
+				nom = nombre + " - " + (i++).ToString();
+			}
+			Add(arm, nom);
+
+			comboBox.CheckResize();
 		}
 
 		public void Add(Armada arm, string nombre)
@@ -51,13 +62,41 @@ namespace gtk
 			armadas.Add(nombre, arm);
 		}
 
+		public void Clear()
+		{
+			armadas.Clear();
+			//comboBox.Clear();
+			comboBox.Model = new Gtk.ListStore(typeof(string));
+			CellRendererText text = new CellRendererText();
+			comboBox.PackStart(text, false);
+		}
+
 		/// <summary>
 		/// Devuelve la armada seleccionada.
 		/// </summary>
 		/// <returns>The selected.</returns>
 		public Armada getSelected()
 		{
+			if (comboBox.ActiveText == null || !armadas.ContainsKey(comboBox.ActiveText))
+				return null;
 			return armadas[comboBox.ActiveText];
+		}
+
+		System.Collections.Generic.IEnumerator<Civ.Armada> System.Collections.Generic.IEnumerable<Civ.Armada>.GetEnumerator()
+		{
+			IEnumerable<Armada> enu;
+			enu = (IEnumerable<Armada>)(armadas.Values);
+			return enu.GetEnumerator();
+		}
+
+		public event EventHandler onSelectionChanged;
+
+		protected void OnComboBoxChanged(object sender, EventArgs e)
+		{
+			if (onSelectionChanged != null)
+			{
+				onSelectionChanged.Invoke(sender, e);
+			}
 		}
 	}
 }

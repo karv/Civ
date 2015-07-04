@@ -60,6 +60,20 @@ namespace gtk
 			nodeview2.NodeStore = store;
 		}
 
+		/// <summary>
+		/// Devuelve la unidad seleccionada.
+		/// </summary>
+		/// <returns>The selected.</returns>
+		public Civ.Unidad getSelected()
+		{
+			Gtk.NodeSelection r = nodeview2.NodeSelection;
+			if (r.SelectedNode == null)
+				return null;
+			Unidad c = ((UnidadListEntry)r.SelectedNode).unidad;
+
+			return c;
+		}
+
 		#region IActualizable implementation
 
 		public void Actualizar()

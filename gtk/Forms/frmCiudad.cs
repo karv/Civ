@@ -161,6 +161,14 @@ namespace gtk
 				stTrabajo.AddNode(new TrabajoListEntry(ciudad.EncuentraInstanciaTrabajo(x)));
 			}
 
+			ArmadaCombobox.Clear();
+			foreach (var x in ciudad.armadasEnCiudad())
+			{
+				ArmadaCombobox.Add(x);
+			}
+
+			armSeleccionada.Visible = false;
+
 			armDefensa.Actualizar();
 
 			rcReclutar.ConstruirModelo();
@@ -170,6 +178,8 @@ namespace gtk
 			//Llenar etiquetas
 			Title = ciudad.Nombre;
 			popdisplay1.Refresh();
+
+			ShowAll();
 		}
 
 		#endregion
@@ -184,7 +194,7 @@ namespace gtk
 			this.ciudad = ciudad;
 			this.Build();
 
-			ArmadaCombobox.Add(ciudad.Defensa, "Defensa");
+			//ArmadaCombobox.Add(ciudad.Defensa, "Defensa");
 
 			armDefensa.Armada = ciudad.Defensa;
 			rcReclutar.ciudad = ciudad;
@@ -226,8 +236,37 @@ namespace gtk
 		protected void OnCmdAddArmadaClicked(object sender, EventArgs e)
 		{
 			Armada nuevaArmada = new Armada(ciudad.CivDueno);
+			nuevaArmada.Posicion = (Pseudoposicion)ciudad.Terr;
+			nuevaArmada.MaxPeso = 100;
 			Actualizar();
 		}
-	}
 
+		protected void OnArmadaComboboxonSelectionChanged(object sender, EventArgs e)
+		{
+			Armada selArmada = ArmadaCombobox.getSelected();
+			if (selArmada == null)
+			{
+				armSeleccionada.Visible = false;
+			}
+			else
+			{
+				armSeleccionada.Armada = selArmada;
+				armSeleccionada.Actualizar();
+			}
+		}
+
+		protected void OnCmdAddClicked(object sender, EventArgs e)
+		{
+			Unidad c = armDefensa.getSelected();
+			Armada selArmada = ArmadaCombobox.getSelected();
+			if (c == null || selArmada == null)
+			{
+				System.Diagnostics.Debug.WriteLine("No se seleccionó unidad o armada.");
+				return;
+			}
+			selArmada.AgregaUnidad(c);
+			armDefensa.Actualizar();
+			armSeleccionada.Actualizar();
+		}
+	}
 }

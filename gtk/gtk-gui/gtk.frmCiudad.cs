@@ -40,9 +40,23 @@ namespace gtk
 		
 		private global::Gtk.Button cmdAddArmada;
 		
+		private global::Gtk.Frame fEdiciónArmada;
+		
+		private global::Gtk.Alignment GtkAlignment2;
+		
+		private global::Gtk.VBox vbox4;
+		
+		private global::gtk.ArmadaWidget armSeleccionada;
+		
+		private global::Gtk.HButtonBox btboxEditArmada;
+		
+		private global::Gtk.Button cmdAdd;
+		
+		private global::Gtk.Label GtkLabel3;
+		
 		private global::Gtk.Frame frame2;
 		
-		private global::Gtk.Alignment GtkAlignment;
+		private global::Gtk.Alignment GtkAlignment1;
 		
 		private global::gtk.wgReclutar rcReclutar;
 		
@@ -187,26 +201,76 @@ namespace gtk
 			w14.Position = 0;
 			w14.Expand = false;
 			w14.Fill = false;
+			// Container child vbox3.Gtk.Box+BoxChild
+			this.fEdiciónArmada = new global::Gtk.Frame ();
+			this.fEdiciónArmada.Name = "fEdiciónArmada";
+			this.fEdiciónArmada.ShadowType = ((global::Gtk.ShadowType)(0));
+			// Container child fEdiciónArmada.Gtk.Container+ContainerChild
+			this.GtkAlignment2 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment2.Name = "GtkAlignment2";
+			this.GtkAlignment2.LeftPadding = ((uint)(12));
+			// Container child GtkAlignment2.Gtk.Container+ContainerChild
+			this.vbox4 = new global::Gtk.VBox ();
+			this.vbox4.Name = "vbox4";
+			this.vbox4.Spacing = 6;
+			// Container child vbox4.Gtk.Box+BoxChild
+			this.armSeleccionada = new global::gtk.ArmadaWidget ();
+			this.armSeleccionada.Events = ((global::Gdk.EventMask)(256));
+			this.armSeleccionada.Name = "armSeleccionada";
+			this.vbox4.Add (this.armSeleccionada);
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.armSeleccionada]));
+			w15.Position = 0;
+			// Container child vbox4.Gtk.Box+BoxChild
+			this.btboxEditArmada = new global::Gtk.HButtonBox ();
+			this.btboxEditArmada.Name = "btboxEditArmada";
+			// Container child btboxEditArmada.Gtk.ButtonBox+ButtonBoxChild
+			this.cmdAdd = new global::Gtk.Button ();
+			this.cmdAdd.CanFocus = true;
+			this.cmdAdd.Name = "cmdAdd";
+			this.cmdAdd.UseUnderline = true;
+			this.cmdAdd.Label = global::Mono.Unix.Catalog.GetString ("_A armada");
+			global::Gtk.Image w16 = new global::Gtk.Image ();
+			w16.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_right", global::Gtk.IconSize.SmallToolbar);
+			this.cmdAdd.Image = w16;
+			this.btboxEditArmada.Add (this.cmdAdd);
+			global::Gtk.ButtonBox.ButtonBoxChild w17 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.btboxEditArmada [this.cmdAdd]));
+			w17.Expand = false;
+			w17.Fill = false;
+			this.vbox4.Add (this.btboxEditArmada);
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.btboxEditArmada]));
+			w18.Position = 1;
+			w18.Expand = false;
+			w18.Fill = false;
+			this.GtkAlignment2.Add (this.vbox4);
+			this.fEdiciónArmada.Add (this.GtkAlignment2);
+			this.GtkLabel3 = new global::Gtk.Label ();
+			this.GtkLabel3.Name = "GtkLabel3";
+			this.GtkLabel3.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Armada</b>");
+			this.GtkLabel3.UseMarkup = true;
+			this.fEdiciónArmada.LabelWidget = this.GtkLabel3;
+			this.vbox3.Add (this.fEdiciónArmada);
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.fEdiciónArmada]));
+			w21.Position = 1;
 			this.hbox4.Add (this.vbox3);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.vbox3]));
-			w15.Position = 1;
-			w15.Expand = false;
-			w15.Fill = false;
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.vbox3]));
+			w22.Position = 1;
+			w22.Expand = false;
+			w22.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.frame2 = new global::Gtk.Frame ();
 			this.frame2.WidthRequest = 300;
 			this.frame2.Name = "frame2";
 			this.frame2.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame2.Gtk.Container+ContainerChild
-			this.GtkAlignment = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
-			this.GtkAlignment.Name = "GtkAlignment";
-			this.GtkAlignment.LeftPadding = ((uint)(12));
-			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			this.GtkAlignment1 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment1.Name = "GtkAlignment1";
+			this.GtkAlignment1.LeftPadding = ((uint)(12));
+			// Container child GtkAlignment1.Gtk.Container+ContainerChild
 			this.rcReclutar = new global::gtk.wgReclutar ();
 			this.rcReclutar.Events = ((global::Gdk.EventMask)(256));
 			this.rcReclutar.Name = "rcReclutar";
-			this.GtkAlignment.Add (this.rcReclutar);
-			this.frame2.Add (this.GtkAlignment);
+			this.GtkAlignment1.Add (this.rcReclutar);
+			this.frame2.Add (this.GtkAlignment1);
 			this.GtkLabel2 = new global::Gtk.Label ();
 			this.GtkLabel2.Name = "GtkLabel2";
 			this.GtkLabel2.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>_Reclutar</b>");
@@ -214,13 +278,13 @@ namespace gtk
 			this.GtkLabel2.UseUnderline = true;
 			this.frame2.LabelWidget = this.GtkLabel2;
 			this.hbox4.Add (this.frame2);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.frame2]));
-			w18.Position = 2;
-			w18.Expand = false;
-			w18.Fill = false;
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.frame2]));
+			w25.Position = 2;
+			w25.Expand = false;
+			w25.Fill = false;
 			this.notebook1.Add (this.hbox4);
-			global::Gtk.Notebook.NotebookChild w19 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox4]));
-			w19.Position = 2;
+			global::Gtk.Notebook.NotebookChild w26 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox4]));
+			w26.Position = 2;
 			// Notebook tab
 			this.label7 = new global::Gtk.Label ();
 			this.label7.Name = "label7";
@@ -235,8 +299,9 @@ namespace gtk
 			this.DefaultWidth = 724;
 			this.DefaultHeight = 380;
 			this.Show ();
-			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
+			this.ArmadaCombobox.onSelectionChanged += new global::System.EventHandler (this.OnArmadaComboboxonSelectionChanged);
 			this.cmdAddArmada.Clicked += new global::System.EventHandler (this.OnCmdAddArmadaClicked);
+			this.cmdAdd.Clicked += new global::System.EventHandler (this.OnCmdAddClicked);
 		}
 	}
 }
