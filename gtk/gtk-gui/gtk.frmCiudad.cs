@@ -34,7 +34,11 @@ namespace gtk
 		
 		private global::Gtk.VBox vbox3;
 		
-		private global::gtk.wgArmadaComboBox ArmadaComboBox;
+		private global::Gtk.HBox hbox5;
+		
+		private global::gtk.wgArmadaComboBox ArmadaCombobox;
+		
+		private global::Gtk.Button cmdAddArmada;
 		
 		private global::Gtk.Frame frame2;
 		
@@ -42,7 +46,7 @@ namespace gtk
 		
 		private global::gtk.wgReclutar rcReclutar;
 		
-		private global::Gtk.Label GtkLabel1;
+		private global::Gtk.Label GtkLabel2;
 		
 		private global::Gtk.Label label7;
 
@@ -154,19 +158,40 @@ namespace gtk
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.ArmadaComboBox = new global::gtk.wgArmadaComboBox ();
-			this.ArmadaComboBox.Events = ((global::Gdk.EventMask)(256));
-			this.ArmadaComboBox.Name = "ArmadaComboBox";
-			this.vbox3.Add (this.ArmadaComboBox);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.ArmadaComboBox]));
+			this.hbox5 = new global::Gtk.HBox ();
+			this.hbox5.Name = "hbox5";
+			this.hbox5.Spacing = 6;
+			// Container child hbox5.Gtk.Box+BoxChild
+			this.ArmadaCombobox = new global::gtk.wgArmadaComboBox ();
+			this.ArmadaCombobox.Events = ((global::Gdk.EventMask)(256));
+			this.ArmadaCombobox.Name = "ArmadaCombobox";
+			this.hbox5.Add (this.ArmadaCombobox);
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.ArmadaCombobox]));
 			w11.Position = 0;
 			w11.Expand = false;
 			w11.Fill = false;
+			// Container child hbox5.Gtk.Box+BoxChild
+			this.cmdAddArmada = new global::Gtk.Button ();
+			this.cmdAddArmada.CanFocus = true;
+			this.cmdAddArmada.Name = "cmdAddArmada";
+			global::Gtk.Image w12 = new global::Gtk.Image ();
+			w12.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-add", global::Gtk.IconSize.Menu);
+			this.cmdAddArmada.Image = w12;
+			this.hbox5.Add (this.cmdAddArmada);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.cmdAddArmada]));
+			w13.Position = 1;
+			w13.Expand = false;
+			w13.Fill = false;
+			this.vbox3.Add (this.hbox5);
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox5]));
+			w14.Position = 0;
+			w14.Expand = false;
+			w14.Fill = false;
 			this.hbox4.Add (this.vbox3);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.vbox3]));
-			w12.Position = 1;
-			w12.Expand = false;
-			w12.Fill = false;
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.vbox3]));
+			w15.Position = 1;
+			w15.Expand = false;
+			w15.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.frame2 = new global::Gtk.Frame ();
 			this.frame2.WidthRequest = 300;
@@ -182,20 +207,20 @@ namespace gtk
 			this.rcReclutar.Name = "rcReclutar";
 			this.GtkAlignment.Add (this.rcReclutar);
 			this.frame2.Add (this.GtkAlignment);
-			this.GtkLabel1 = new global::Gtk.Label ();
-			this.GtkLabel1.Name = "GtkLabel1";
-			this.GtkLabel1.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>_Reclutar</b>");
-			this.GtkLabel1.UseMarkup = true;
-			this.GtkLabel1.UseUnderline = true;
-			this.frame2.LabelWidget = this.GtkLabel1;
+			this.GtkLabel2 = new global::Gtk.Label ();
+			this.GtkLabel2.Name = "GtkLabel2";
+			this.GtkLabel2.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>_Reclutar</b>");
+			this.GtkLabel2.UseMarkup = true;
+			this.GtkLabel2.UseUnderline = true;
+			this.frame2.LabelWidget = this.GtkLabel2;
 			this.hbox4.Add (this.frame2);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.frame2]));
-			w15.Position = 2;
-			w15.Expand = false;
-			w15.Fill = false;
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.frame2]));
+			w18.Position = 2;
+			w18.Expand = false;
+			w18.Fill = false;
 			this.notebook1.Add (this.hbox4);
-			global::Gtk.Notebook.NotebookChild w16 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox4]));
-			w16.Position = 2;
+			global::Gtk.Notebook.NotebookChild w19 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox4]));
+			w19.Position = 2;
 			// Notebook tab
 			this.label7 = new global::Gtk.Label ();
 			this.label7.Name = "label7";
@@ -211,6 +236,7 @@ namespace gtk
 			this.DefaultHeight = 380;
 			this.Show ();
 			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
+			this.cmdAddArmada.Clicked += new global::System.EventHandler (this.OnCmdAddArmadaClicked);
 		}
 	}
 }

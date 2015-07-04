@@ -184,7 +184,7 @@ namespace gtk
 			this.ciudad = ciudad;
 			this.Build();
 
-			ArmadaComboBox.Add(ciudad.Defensa, "Defensa");
+			ArmadaCombobox.Add(ciudad.Defensa, "Defensa");
 
 			armDefensa.Armada = ciudad.Defensa;
 			rcReclutar.ciudad = ciudad;
@@ -220,6 +220,12 @@ namespace gtk
 
 		protected void OnNotebook1SwitchPage(object o, SwitchPageArgs args)
 		{
+			Actualizar();
+		}
+
+		protected void OnCmdAddArmadaClicked(object sender, EventArgs e)
+		{
+			Armada nuevaArmada = new Armada(ciudad.CivDueno);
 			Actualizar();
 		}
 	}

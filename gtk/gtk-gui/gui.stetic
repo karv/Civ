@@ -171,9 +171,37 @@
                 <property name="MemberName" />
                 <property name="Spacing">6</property>
                 <child>
-                  <widget class="gtk.wgArmadaComboBox" id="ArmadaComboBox">
+                  <widget class="Gtk.HBox" id="hbox5">
                     <property name="MemberName" />
-                    <property name="Events">ButtonPressMask</property>
+                    <property name="Spacing">6</property>
+                    <child>
+                      <widget class="gtk.wgArmadaComboBox" id="ArmadaCombobox">
+                        <property name="MemberName" />
+                        <property name="Events">ButtonPressMask</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Button" id="cmdAddArmada">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="Type">TextAndIcon</property>
+                        <property name="Icon">stock:gtk-add Menu</property>
+                        <property name="Label" translatable="yes" />
+                        <signal name="Clicked" handler="OnCmdAddArmadaClicked" />
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -216,7 +244,7 @@
                   </widget>
                 </child>
                 <child>
-                  <widget class="Gtk.Label" id="GtkLabel1">
+                  <widget class="Gtk.Label" id="GtkLabel2">
                     <property name="MemberName" />
                     <property name="LabelProp" translatable="yes">&lt;b&gt;_Reclutar&lt;/b&gt;</property>
                     <property name="UseMarkup">True</property>
