@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 
 namespace CivGTK
 {
+	
 	public static class ThreadManager
 	{
 		public static Thread emu;
@@ -45,6 +46,7 @@ namespace CivGTK
 		/// </summary>
 		public static void Pausar()
 		{
+			return;
 			CivGTK.ThreadManager.libThreadPaused = true;
 			while (!CivGTK.ThreadManager.isLibThreadPaused)
 			{
@@ -56,6 +58,7 @@ namespace CivGTK
 		/// </summary>
 		public static void Continuar()
 		{
+			return;
 			CivGTK.ThreadManager.libThreadPaused = false;
 		}
 
@@ -72,7 +75,7 @@ namespace CivGTK
 			Global.g_.Data = Store.Store<Global.g_Data>.Deserialize(f);
 		}
 
-		static frmCiv win;
+		static gtk.frmCiv win;
 
 		public static void Main(string[] args)
 		{
@@ -100,7 +103,7 @@ namespace CivGTK
 			ThreadManager.emu.Start();
 
 			Application.Init();
-			win = new frmCiv(MyCiv);
+			win = new gtk.frmCiv(MyCiv);
 			win.Show();
 			Application.Run();
 
@@ -116,6 +119,7 @@ namespace CivGTK
 				if (m != null)
 				{
 					System.Diagnostics.Debug.WriteLine(m.ToString());
+					win.Actualizar();
 				}
 
 				//Thread thrRefresh = new Thread(new ThreadStart(win.Actualizar));
