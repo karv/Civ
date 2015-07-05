@@ -77,11 +77,12 @@
     <Compile Include="CellRenderer\CellRendererNumTrab.cs" />
     <Compile Include="CellRenderer\CellRendererPrioridadTrab.cs" />
     <Compile Include="Forms\frmCiudad.cs" />
-    <Compile Include="Forms\FrmCiv.cs" />
     <Compile Include="Widgets\PopDisplay.cs" />
     <Compile Include="Widgets\wgArmadaComboBox.cs" />
     <Compile Include="Widgets\wgReclutar.cs" />
     <Compile Include="Widgets\ArmadaWidget.cs" />
+    <Compile Include="gtk-gui\gtk.frmCiv.cs" />
+    <Compile Include="Forms\frmCiv.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -140,7 +140,7 @@ namespace gtk
 	public partial class frmCiudad : Gtk.Window, IActualizable
 	{
 		public readonly Ciudad ciudad;
-		public readonly CivGTK.frmCiv mainWindow;
+		public readonly gtk.frmCiv mainWindow;
 
 		#region IActualizable implementation
 
@@ -187,7 +187,7 @@ namespace gtk
 		NodeStore stRecurso = new NodeStore(typeof(RecursoListEntry));
 		NodeStore stTrabajo = new NodeStore(typeof(TrabajoListEntry));
 
-		public frmCiudad(Ciudad ciudad, CivGTK.frmCiv main) :
+		public frmCiudad(Ciudad ciudad, gtk.frmCiv main) :
 			base(Gtk.WindowType.Toplevel)
 		{
 			this.mainWindow = main;
