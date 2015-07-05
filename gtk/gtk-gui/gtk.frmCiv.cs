@@ -101,6 +101,7 @@ namespace gtk
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.frame1 = new global::Gtk.Frame ();
+			this.frame1.WidthRequest = 130;
 			this.frame1.Name = "frame1";
 			this.frame1.ShadowType = ((global::Gtk.ShadowType)(0));
 			this.frame1.LabelXalign = 1F;
@@ -174,7 +175,7 @@ namespace gtk
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 401;
+			this.DefaultWidth = 460;
 			this.DefaultHeight = 300;
 			this.Show ();
 			this.cmdIrCiudad.Clicked += new global::System.EventHandler (this.OnCmdIrActivated);
