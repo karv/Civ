@@ -42,6 +42,9 @@ namespace gtk
 		}
 
 		[Gtk.TreeNodeValue(Column = 1)]
+		public ulong Cantidad { get { return unidad.cantidad; } }
+
+		[Gtk.TreeNodeValue(Column = 2)]
 		public float Entrenamiento { get { return unidad.Entrenamiento; } }
 	}
 
@@ -56,7 +59,8 @@ namespace gtk
 			this.Build();
 
 			nodeview2.AppendColumn("Tipo", new Gtk.CellRendererText(), "text", 0);
-			nodeview2.AppendColumn("Entrenamiento", new Gtk.CellRendererText(), "text", 1);
+			nodeview2.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 1);
+			nodeview2.AppendColumn("Entrenamiento", new Gtk.CellRendererText(), "text", 2);
 			nodeview2.NodeStore = store;
 		}
 

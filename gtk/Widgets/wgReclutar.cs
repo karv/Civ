@@ -56,7 +56,6 @@ namespace gtk
 			foreach (var x in ciudad.UnidadesConstruibles())
 			{
 				store.AddNode(new ReclutarListEntry(x.Key, ciudad));
-				//store.AppendValues(new ReclutarListEntry(x.Key, ciudad));
 			}
 
 			CivGTK.ThreadManager.Continuar();
@@ -99,8 +98,8 @@ namespace gtk
 			{
 				get
 				{
-					return ciudad.Defensa.UnidadesAgrupadas(unidad).cantidad;
-
+					Stack grupo = ciudad.Defensa.UnidadesAgrupadas(unidad);
+					return grupo == null ? 0 : grupo.cantidad;
 				}
 			}
 
