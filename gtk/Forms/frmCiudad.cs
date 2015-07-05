@@ -237,7 +237,7 @@ namespace gtk
 		{
 			Armada nuevaArmada = new Armada(ciudad.CivDueno);
 			nuevaArmada.Posicion = (Pseudoposicion)ciudad.Terr;
-			nuevaArmada.MaxPeso = 100;
+			nuevaArmada.MaxPeso = 100; //TODO temporal
 			Actualizar();
 		}
 
