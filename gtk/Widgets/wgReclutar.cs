@@ -99,7 +99,8 @@ namespace gtk
 			{
 				get
 				{
-					return (ulong)ciudad.Defensa.UnidadesAgrupadas(unidad).LongLength;
+					return ciudad.Defensa.UnidadesAgrupadas(unidad).cantidad;
+
 				}
 			}
 

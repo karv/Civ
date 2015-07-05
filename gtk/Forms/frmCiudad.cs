@@ -257,7 +257,7 @@ namespace gtk
 
 		protected void OnCmdAddClicked(object sender, EventArgs e)
 		{
-			Unidad c = armDefensa.getSelected();
+			Stack c = armDefensa.getSelected();
 			Armada selArmada = ArmadaCombobox.getSelected();
 			if (c == null || selArmada == null)
 			{

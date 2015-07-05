@@ -25,9 +25,9 @@ namespace gtk
 {
 	class UnidadListEntry : Gtk.TreeNode
 	{
-		public readonly Unidad unidad;
+		public readonly Stack unidad;
 
-		public UnidadListEntry(Unidad unidad)
+		public UnidadListEntry(Stack unidad)
 		{
 			this.unidad = unidad;
 		}
@@ -64,12 +64,12 @@ namespace gtk
 		/// Devuelve la unidad seleccionada.
 		/// </summary>
 		/// <returns>The selected.</returns>
-		public Civ.Unidad getSelected()
+		public Civ.Stack getSelected()
 		{
 			Gtk.NodeSelection r = nodeview2.NodeSelection;
 			if (r.SelectedNode == null)
 				return null;
-			Unidad c = ((UnidadListEntry)r.SelectedNode).unidad;
+			Stack c = ((UnidadListEntry)r.SelectedNode).unidad;
 
 			return c;
 		}
