@@ -67,8 +67,21 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FrmCiv.cs" />
-    <Compile Include="FrmCiudad.cs" />
+    <Compile Include="gtk-gui\gtk.frmCiudad.cs" />
+    <Compile Include="gtk-gui\gtk.PopDisplay.cs" />
+    <Compile Include="IActualizable.cs" />
+    <Compile Include="gtk-gui\gtk.ArmadaWidget.cs" />
+    <Compile Include="gtk-gui\gtk.wgReclutar.cs" />
+    <Compile Include="gtk-gui\gtk.wgArmadaComboBox.cs" />
+    <Compile Include="CellRenderer\CellRendererNumRecluta.cs" />
+    <Compile Include="CellRenderer\CellRendererNumTrab.cs" />
+    <Compile Include="CellRenderer\CellRendererPrioridadTrab.cs" />
+    <Compile Include="Forms\frmCiudad.cs" />
+    <Compile Include="Forms\FrmCiv.cs" />
+    <Compile Include="Widgets\PopDisplay.cs" />
+    <Compile Include="Widgets\wgArmadaComboBox.cs" />
+    <Compile Include="Widgets\wgReclutar.cs" />
+    <Compile Include="Widgets\ArmadaWidget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -84,5 +97,10 @@
       <Project>{B9F315AE-47F8-4629-83FC-3B4D70087083}</Project>
       <Name>ListaExtras</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CellRenderer\" />
+    <Folder Include="Forms\" />
+    <Folder Include="Widgets\" />
   </ItemGroup>
 </Project>

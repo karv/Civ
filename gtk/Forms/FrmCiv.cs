@@ -20,9 +20,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using Civ;
+using gtk;
 
 namespace CivGTK
 {
+	#region EntryLists
 	class CienciaConoListEntry : Gtk.TreeNode
 	{
 		public readonly Ciencia ciencia;
@@ -56,7 +58,7 @@ namespace CivGTK
 	{
 		public readonly Ciudad ciudad;
 
-		[Gtk.TreeNodeValue (Column = 0)]
+		[Gtk.TreeNodeValue(Column = 0)]
 		public string nombre
 		{
 			get
@@ -82,8 +84,9 @@ namespace CivGTK
 			this.ciudad = ciudad;
 		}
 	}
+	#endregion
 
-	public class frmCiv : Gtk.Window
+	public class frmCiv : Gtk.Window, IActualizable
 	{
 		#region Controles
 
@@ -106,6 +109,32 @@ namespace CivGTK
 		#endregion
 
 		public readonly Civilizacion Civ;
+		public readonly System.Collections.Generic.List<IActualizable> formsActualizables = new System.Collections.Generic.List<IActualizable>();
+
+		#region IActualizable implementation
+
+		/// <summary>
+		/// Actualiza esta form y todas sus hijas.
+		/// </summary>
+		public void Actualizar()
+		{
+			ActualizarDebil();
+			foreach (var x in formsActualizables)
+			{
+				x.Actualizar();
+			}
+		}
+
+		/// <summary>
+		/// Actualiza esta form
+		/// </summary>
+		public void ActualizarDebil()
+		{
+			//TODO
+		}
+
+		#endregion
+
 		Gtk.NodeStore stCiudad = new Gtk.NodeStore(typeof(CityListEntry));
 		Gtk.NodeStore stCienciasCono = new Gtk.NodeStore(typeof(CienciaConoListEntry));
 		Gtk.NodeStore stCienciasAbtas = new Gtk.NodeStore(typeof(CienciaAbtaListEntry));
@@ -228,7 +257,8 @@ namespace CivGTK
 			Gtk.NodeSelection r = nvListaCiudad.NodeSelection;
 			Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
-			FrmCiudad wind = new FrmCiudad(c);
+			frmCiudad wind = new frmCiudad(c, this);
+			formsActualizables.Add(wind);
 			wind.Show();
 			//throw new NotImplementedException ();
 
@@ -245,7 +275,5 @@ namespace CivGTK
 			Gtk.Application.Quit();
 			return true;
 		}
-
 	}
 }
-
