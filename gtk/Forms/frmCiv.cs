@@ -50,7 +50,7 @@ namespace gtk
 		public string nombre { get { return ciencia.Ciencia.Nombre; } }
 
 		[Gtk.TreeNodeValue(Column = 0)]
-		public float getPct { get { return ciencia.ObtPct(); } }
+		public float getPct { get { return ciencia.ObtPct() * 100; } }
 	}
 
 	class CityListEntry : Gtk.TreeNode
@@ -76,7 +76,7 @@ namespace gtk
 		}
 
 		[Gtk.TreeNodeValue(Column = 2)]
-		public float Ocupación { get { return (float)ciudad.getNumTrabajadores / ciudad.getPoblacionProductiva; } }
+		public float Ocupación { get { return (float)ciudad.getNumTrabajadores * 100 / ciudad.getPoblacionProductiva; } }
 
 		public CityListEntry(Ciudad ciudad)
 		{
@@ -195,12 +195,16 @@ namespace gtk
 
 			nvCiudades.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
 			nvCiudades.AppendColumn("Población", new Gtk.CellRendererText(), "text", 1);
-			nvCiudades.AppendColumn("Ocupación", new Gtk.CellRendererText(), "text", 2);
+			nvCiudades.AppendColumn("Ocupación", new Gtk.CellRendererProgress(), "value", 2);
+
 			nvAvances.AppendColumn("Avance", new Gtk.CellRendererText(), "text", 0);
-			nvInvestigando.AppendColumn("%", new Gtk.CellRendererText(), "text", 0);
+
+			nvInvestigando.AppendColumn("%", new Gtk.CellRendererProgress(), "text", 0);
 			nvInvestigando.AppendColumn("Avance", new Gtk.CellRendererText(), "text", 1);
+
 			nvInvestDetalle.AppendColumn("Recurso", new Gtk.CellRendererText(), "text", 0);
 			nvInvestDetalle.AppendColumn("Progreso", new Gtk.CellRendererProgress(), "value", 1);
+
 
 			nvCiudades.Columns[0].Reorderable = false;
 			nvCiudades.Columns[1].Reorderable = true;
