@@ -689,7 +689,7 @@ P</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Bin" id="gtk.MensView" design-size="207 27">
+  <widget class="Gtk.Bin" id="gtk.MensView" design-size="108 28">
     <property name="MemberName" />
     <property name="Visible">False</property>
     <child>
@@ -701,12 +701,12 @@ P</property>
             <property name="MemberName" />
             <property name="Sensitive">False</property>
             <property name="CanFocus">True</property>
-            <property name="UseStock">True</property>
-            <property name="Type">StockItem</property>
-            <property name="StockId">gtk-remove</property>
+            <property name="Type">TextAndIcon</property>
+            <property name="Icon">stock:gtk-delete Button</property>
+            <property name="Label" translatable="yes" />
+            <property name="UseUnderline">True</property>
             <signal name="Clicked" handler="OnCmdBorrarClicked" />
             <signal name="Activated" handler="OnCmdBorrarClicked" />
-            <property name="label">gtk-remove</property>
           </widget>
           <packing>
             <property name="Position">0</property>
@@ -719,7 +719,6 @@ P</property>
           <widget class="Gtk.Label" id="label">
             <property name="MemberName" />
             <property name="Xalign">0</property>
-            <property name="LabelProp" translatable="yes">label</property>
           </widget>
           <packing>
             <property name="Position">1</property>
@@ -733,12 +732,12 @@ P</property>
             <property name="MemberName" />
             <property name="Sensitive">False</property>
             <property name="CanFocus">True</property>
-            <property name="UseStock">True</property>
-            <property name="Type">StockItem</property>
-            <property name="StockId">gtk-go-back</property>
+            <property name="Type">TextAndIcon</property>
+            <property name="Icon">stock:gtk-go-back Menu</property>
+            <property name="Label" translatable="yes" />
+            <property name="UseUnderline">True</property>
             <signal name="Clicked" handler="OnButton19Clicked" />
             <signal name="Activated" handler="OnButton19Clicked" />
-            <property name="label">gtk-go-back</property>
           </widget>
           <packing>
             <property name="Position">2</property>
@@ -752,12 +751,12 @@ P</property>
             <property name="MemberName" />
             <property name="Sensitive">False</property>
             <property name="CanFocus">True</property>
-            <property name="UseStock">True</property>
-            <property name="Type">StockItem</property>
-            <property name="StockId">gtk-go-forward</property>
+            <property name="Type">TextAndIcon</property>
+            <property name="Icon">stock:gtk-go-forward Menu</property>
+            <property name="Label" translatable="yes" />
+            <property name="UseUnderline">True</property>
             <signal name="Clicked" handler="OnCmdAdelClicked" />
             <signal name="Activated" handler="OnCmdAdelClicked" />
-            <property name="label">gtk-go-forward</property>
           </widget>
           <packing>
             <property name="Position">3</property>
