@@ -4,9 +4,11 @@ namespace gtk
 {
 	public partial class frmCiv
 	{
+		private global::Gtk.VBox vbox1;
+		
 		private global::Gtk.Notebook notebook1;
 		
-		private global::Gtk.VBox vbox1;
+		private global::Gtk.VBox vbox2;
 		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 		
@@ -41,6 +43,10 @@ namespace gtk
 		private global::Gtk.Label GtkLabel2;
 		
 		private global::Gtk.Label label2;
+		
+		private global::Gtk.Statusbar statusbar1;
+		
+		private global::gtk.MensView Mens;
 
 		protected virtual void Build ()
 		{
@@ -50,15 +56,19 @@ namespace gtk
 			this.Title = global::Mono.Unix.Catalog.GetString ("frmCiv");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Container child gtk.frmCiv.Gtk.Container+ContainerChild
+			this.vbox1 = new global::Gtk.VBox ();
+			this.vbox1.Name = "vbox1";
+			this.vbox1.Spacing = 6;
+			// Container child vbox1.Gtk.Box+BoxChild
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
 			this.notebook1.CurrentPage = 1;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
-			this.vbox1 = new global::Gtk.VBox ();
-			this.vbox1.Name = "vbox1";
-			this.vbox1.Spacing = 6;
-			// Container child vbox1.Gtk.Box+BoxChild
+			this.vbox2 = new global::Gtk.VBox ();
+			this.vbox2.Name = "vbox2";
+			this.vbox2.Spacing = 6;
+			// Container child vbox2.Gtk.Box+BoxChild
 			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
@@ -67,10 +77,10 @@ namespace gtk
 			this.nvCiudades.CanFocus = true;
 			this.nvCiudades.Name = "nvCiudades";
 			this.GtkScrolledWindow.Add (this.nvCiudades);
-			this.vbox1.Add (this.GtkScrolledWindow);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.GtkScrolledWindow]));
+			this.vbox2.Add (this.GtkScrolledWindow);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.GtkScrolledWindow]));
 			w2.Position = 0;
-			// Container child vbox1.Gtk.Box+BoxChild
+			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbuttonbox1 = new global::Gtk.HButtonBox ();
 			this.hbuttonbox1.Name = "hbuttonbox1";
 			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
@@ -83,17 +93,17 @@ namespace gtk
 			global::Gtk.ButtonBox.ButtonBoxChild w3 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.cmdIrCiudad]));
 			w3.Expand = false;
 			w3.Fill = false;
-			this.vbox1.Add (this.hbuttonbox1);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbuttonbox1]));
+			this.vbox2.Add (this.hbuttonbox1);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbuttonbox1]));
 			w4.Position = 1;
 			w4.Expand = false;
 			w4.Fill = false;
-			this.notebook1.Add (this.vbox1);
+			this.notebook1.Add (this.vbox2);
 			// Notebook tab
 			this.label1 = new global::Gtk.Label ();
 			this.label1.Name = "label1";
 			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Ciudades");
-			this.notebook1.SetTabLabel (this.vbox1, this.label1);
+			this.notebook1.SetTabLabel (this.vbox2, this.label1);
 			this.label1.ShowAll ();
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.hbox1 = new global::Gtk.HBox ();
@@ -171,7 +181,28 @@ namespace gtk
 			this.label2.UseUnderline = true;
 			this.notebook1.SetTabLabel (this.hbox1, this.label2);
 			this.label2.ShowAll ();
-			this.Add (this.notebook1);
+			this.vbox1.Add (this.notebook1);
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.notebook1]));
+			w15.Position = 0;
+			// Container child vbox1.Gtk.Box+BoxChild
+			this.statusbar1 = new global::Gtk.Statusbar ();
+			this.statusbar1.Name = "statusbar1";
+			this.statusbar1.Spacing = 6;
+			// Container child statusbar1.Gtk.Box+BoxChild
+			this.Mens = new global::gtk.MensView ();
+			this.Mens.Events = ((global::Gdk.EventMask)(256));
+			this.Mens.Name = "Mens";
+			this.statusbar1.Add (this.Mens);
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.statusbar1 [this.Mens]));
+			w16.Position = 1;
+			w16.Expand = false;
+			w16.Fill = false;
+			this.vbox1.Add (this.statusbar1);
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.statusbar1]));
+			w17.Position = 1;
+			w17.Expand = false;
+			w17.Fill = false;
+			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
