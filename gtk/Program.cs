@@ -119,6 +119,7 @@ namespace CivGTK
 				if (m != null)
 				{
 					System.Diagnostics.Debug.WriteLine(m.ToString());
+					win.AddMens(m.ToString());
 					win.Actualizar();
 				}
 

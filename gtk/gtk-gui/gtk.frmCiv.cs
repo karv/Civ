@@ -46,7 +46,7 @@ namespace gtk
 		
 		private global::Gtk.Statusbar statusbar1;
 		
-		private global::gtk.MensView mensview1;
+		private global::gtk.MensView Mens;
 
 		protected virtual void Build ()
 		{
@@ -189,11 +189,11 @@ namespace gtk
 			this.statusbar1.Name = "statusbar1";
 			this.statusbar1.Spacing = 6;
 			// Container child statusbar1.Gtk.Box+BoxChild
-			this.mensview1 = new global::gtk.MensView ();
-			this.mensview1.Events = ((global::Gdk.EventMask)(256));
-			this.mensview1.Name = "mensview1";
-			this.statusbar1.Add (this.mensview1);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.statusbar1 [this.mensview1]));
+			this.Mens = new global::gtk.MensView ();
+			this.Mens.Events = ((global::Gdk.EventMask)(256));
+			this.Mens.Name = "Mens";
+			this.statusbar1.Add (this.Mens);
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.statusbar1 [this.Mens]));
 			w16.Position = 1;
 			w16.Expand = false;
 			w16.Fill = false;

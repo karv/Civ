@@ -180,6 +180,15 @@ namespace gtk
 			formsActualizables.Add(wind);
 			wind.Show();
 		}
+
+		/// <summary>
+		/// Agrega un mensaje al pie de formulario.
+		/// </summary>
+		/// <param name="s">String del mensaje</param>
+		public void AddMens(string s)
+		{
+			Mens.Add(s);
+		}
 	}
 }
 

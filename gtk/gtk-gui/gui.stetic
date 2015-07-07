@@ -667,7 +667,7 @@ P</property>
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
-              <widget class="gtk.MensView" id="mensview1">
+              <widget class="gtk.MensView" id="Mens">
                 <property name="MemberName" />
                 <property name="Events">ButtonPressMask</property>
               </widget>
@@ -699,6 +699,7 @@ P</property>
         <child>
           <widget class="Gtk.Button" id="cmdBorrar">
             <property name="MemberName" />
+            <property name="Sensitive">False</property>
             <property name="CanFocus">True</property>
             <property name="UseStock">True</property>
             <property name="Type">StockItem</property>
@@ -730,6 +731,7 @@ P</property>
         <child>
           <widget class="Gtk.Button" id="cmdAtras">
             <property name="MemberName" />
+            <property name="Sensitive">False</property>
             <property name="CanFocus">True</property>
             <property name="UseStock">True</property>
             <property name="Type">StockItem</property>
@@ -748,6 +750,7 @@ P</property>
         <child>
           <widget class="Gtk.Button" id="cmdAdel">
             <property name="MemberName" />
+            <property name="Sensitive">False</property>
             <property name="CanFocus">True</property>
             <property name="UseStock">True</property>
             <property name="Type">StockItem</property>
