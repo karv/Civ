@@ -83,6 +83,8 @@
     <Compile Include="Widgets\ArmadaWidget.cs" />
     <Compile Include="gtk-gui\gtk.frmCiv.cs" />
     <Compile Include="Forms\frmCiv.cs" />
+    <Compile Include="gtk-gui\gtk.MensView.cs" />
+    <Compile Include="Widgets\MensView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
