@@ -83,6 +83,30 @@ namespace gtk
 			this.ciudad = ciudad;
 		}
 	}
+
+	class CienciaDetalleListEntry : Gtk.TreeNode
+	{
+		Recurso recurso;
+		InvestigandoCiencia invest;
+
+		public CienciaDetalleListEntry(InvestigandoCiencia inv, Recurso recurso)
+		{
+			invest = inv;
+			this.recurso = recurso;
+		}
+
+		[Gtk.TreeNodeValue(Column = 0)]
+		public string Recurso
+		{
+			get { return recurso.ToString(); }
+		}
+
+		[Gtk.TreeNodeValue(Column = 1)]
+		public double Progreso
+		{
+			get { return (double)invest[recurso] * 100 / invest.Ciencia.Reqs.Recursos[recurso]; }
+		}
+	}
 	#endregion
 
 	public partial class frmCiv : Gtk.Window
@@ -129,6 +153,23 @@ namespace gtk
 				stCienciasAbtas.AddNode(new CienciaAbtaListEntry(x));
 			}
 
+			ActualizaDetalle();
+		}
+
+		void ActualizaDetalle()
+		{
+			// Obtener nodo seleccionado
+			Gtk.NodeSelection r = nvInvestigando.NodeSelection;
+			if (r.SelectedNode != null)
+			{
+				InvestigandoCiencia c = ((CienciaAbtaListEntry)r.SelectedNode).ciencia;
+
+				stCienciaDetail.Clear();
+				foreach (var x in c.Keys)
+				{
+					stCienciaDetail.AddNode(new CienciaDetalleListEntry(c, x));
+				}
+			}
 		}
 
 		#endregion
@@ -136,6 +177,7 @@ namespace gtk
 		Gtk.NodeStore stCiudad = new Gtk.NodeStore(typeof(CityListEntry));
 		Gtk.NodeStore stCienciasCono = new Gtk.NodeStore(typeof(CienciaConoListEntry));
 		Gtk.NodeStore stCienciasAbtas = new Gtk.NodeStore(typeof(CienciaAbtaListEntry));
+		Gtk.NodeStore stCienciaDetail = new Gtk.NodeStore(typeof(CienciaDetalleListEntry));
 
 		public frmCiv(Civilizacion civ) :
 			base(Gtk.WindowType.Toplevel)
@@ -149,6 +191,7 @@ namespace gtk
 			nvCiudades.NodeStore = stCiudad;
 			nvAvances.NodeStore = stCienciasCono;
 			nvInvestigando.NodeStore = stCienciasAbtas;
+			nvInvestDetalle.NodeStore = stCienciaDetail;
 
 			nvCiudades.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
 			nvCiudades.AppendColumn("Población", new Gtk.CellRendererText(), "text", 1);
@@ -156,6 +199,8 @@ namespace gtk
 			nvAvances.AppendColumn("Avance", new Gtk.CellRendererText(), "text", 0);
 			nvInvestigando.AppendColumn("%", new Gtk.CellRendererText(), "text", 0);
 			nvInvestigando.AppendColumn("Avance", new Gtk.CellRendererText(), "text", 1);
+			nvInvestDetalle.AppendColumn("Recurso", new Gtk.CellRendererText(), "text", 0);
+			nvInvestDetalle.AppendColumn("Progreso", new Gtk.CellRendererProgress(), "value", 1);
 
 			nvCiudades.Columns[0].Reorderable = false;
 			nvCiudades.Columns[1].Reorderable = true;
@@ -188,6 +233,11 @@ namespace gtk
 		public void AddMens(string s)
 		{
 			Mens.Add(s);
+		}
+
+		protected void OnNvInvestigandoCursorChanged(object sender, EventArgs e)
+		{
+			ActualizaDetalle();
 		}
 	}
 }
