@@ -38,23 +38,50 @@ namespace gtk
 		{
 			get
 			{
-				return _data.Count > 0 ? _current.Value : "";
+				return _current.Value;
 			}
+		}
+
+		public int Count
+		{
+			get{ return _data.Count; }
 		}
 
 		public void Add(string data)
 		{
 			_data.AddLast(data);
+			if (Count == 1)
+				_current = _data.First;
+			UpdateLabel();
+			UpdateControls();
+		}
+
+		void UpdateLabel()
+		{
+			if (_data.Count > 0)
+				label.Text = Texto;
+			else
+				label.Text = null;
+		}
+
+		void UpdateControls()
+		{
+			bool Sensib = (Count > 0);
+			cmdAdel.Sensitive = Sensib;
+			cmdAtras.Sensitive = Sensib;
+			cmdBorrar.Sensitive = Sensib;
 		}
 
 		public void MoveNext()
 		{
 			_current = _current.Next ?? _data.First;
+			UpdateLabel();
 		}
 
 		public void MovePrev()
 		{
 			_current = _current.Previous ?? _data.Last;
+			UpdateLabel();
 		}
 
 		public void RemoveCurrent()
@@ -62,12 +89,15 @@ namespace gtk
 			LinkedListNode<string> del = _current;
 			MoveNext();
 			_data.Remove(del);
+			UpdateLabel();
+			UpdateControls();
 		}
 
 		public MensView()
 		{
 			_current = _data.First;
 			this.Build();
+			UpdateLabel();
 		}
 
 		protected void OnCmdBorrarClicked(object sender, EventArgs e)

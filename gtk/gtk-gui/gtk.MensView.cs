@@ -26,6 +26,7 @@ namespace gtk
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.cmdBorrar = new global::Gtk.Button ();
+			this.cmdBorrar.Sensitive = false;
 			this.cmdBorrar.CanFocus = true;
 			this.cmdBorrar.Name = "cmdBorrar";
 			this.cmdBorrar.UseStock = true;
@@ -48,6 +49,7 @@ namespace gtk
 			w2.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.cmdAtras = new global::Gtk.Button ();
+			this.cmdAtras.Sensitive = false;
 			this.cmdAtras.CanFocus = true;
 			this.cmdAtras.Name = "cmdAtras";
 			this.cmdAtras.UseStock = true;
@@ -60,6 +62,7 @@ namespace gtk
 			w3.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.cmdAdel = new global::Gtk.Button ();
+			this.cmdAdel.Sensitive = false;
 			this.cmdAdel.CanFocus = true;
 			this.cmdAdel.Name = "cmdAdel";
 			this.cmdAdel.UseStock = true;
