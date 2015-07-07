@@ -44,7 +44,7 @@ namespace gtk
 		
 		private global::Gtk.Label label2;
 		
-		private global::Gtk.Statusbar statusbar1;
+		private global::Gtk.Statusbar statusbar;
 		
 		private global::gtk.MensView Mens;
 
@@ -185,20 +185,20 @@ namespace gtk
 			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.notebook1]));
 			w15.Position = 0;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.statusbar1 = new global::Gtk.Statusbar ();
-			this.statusbar1.Name = "statusbar1";
-			this.statusbar1.Spacing = 6;
-			// Container child statusbar1.Gtk.Box+BoxChild
+			this.statusbar = new global::Gtk.Statusbar ();
+			this.statusbar.Name = "statusbar";
+			this.statusbar.Spacing = 6;
+			// Container child statusbar.Gtk.Box+BoxChild
 			this.Mens = new global::gtk.MensView ();
 			this.Mens.Events = ((global::Gdk.EventMask)(256));
 			this.Mens.Name = "Mens";
-			this.statusbar1.Add (this.Mens);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.statusbar1 [this.Mens]));
+			this.statusbar.Add (this.Mens);
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.Mens]));
 			w16.Position = 1;
 			w16.Expand = false;
 			w16.Fill = false;
-			this.vbox1.Add (this.statusbar1);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.statusbar1]));
+			this.vbox1.Add (this.statusbar);
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.statusbar]));
 			w17.Position = 1;
 			w17.Expand = false;
 			w17.Fill = false;
@@ -207,7 +207,7 @@ namespace gtk
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 460;
-			this.DefaultHeight = 300;
+			this.DefaultHeight = 299;
 			this.Show ();
 			this.cmdIrCiudad.Clicked += new global::System.EventHandler (this.OnCmdIrActivated);
 			this.cmdIrCiudad.Activated += new global::System.EventHandler (this.OnCmdIrActivated);

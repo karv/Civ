@@ -475,7 +475,7 @@ P</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="gtk.frmCiv" design-size="460 300">
+  <widget class="Gtk.Window" id="gtk.frmCiv" design-size="460 299">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frmCiv</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -663,7 +663,7 @@ P</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Statusbar" id="statusbar1">
+          <widget class="Gtk.Statusbar" id="statusbar">
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
