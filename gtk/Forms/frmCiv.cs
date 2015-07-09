@@ -265,7 +265,7 @@ namespace gtk
 
 				// Las órdenes
 				// Orden Ir a
-				IrACB.LlenarCon(selArmada.Posicion.getVecindad(), (x => x.ToString()));
+				IrACB.LlenarCon(selArmada.Posicion.getVecindad(), (x => x.ToString()));  //TODO Terrenos con el mismo nombre produce error.
 			}
 		}
 
