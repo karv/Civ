@@ -274,5 +274,12 @@ namespace gtk
 			ActualizarDebil();
 		}
 
+		protected void OnCmdIrAClicked(object sender, EventArgs e)
+		{
+			Terreno destino = (Terreno)IrACB.getSelected();
+			Armada selArmada = ArmadaSelector.getSelected();
+
+			selArmada.Orden = new Civ.Orden.OrdenIr((Pseudoposicion)destino);
+		}
 	}
 }
