@@ -154,6 +154,13 @@ namespace gtk
 			}
 
 			ActualizaDetalle();
+
+			ArmadaSelector.Clear();
+			foreach (var x in civ.Armadas)
+			{
+				if (!x.esDefensa)
+					ArmadaSelector.Add(x);
+			}
 		}
 
 		void ActualizaDetalle()
@@ -243,6 +250,29 @@ namespace gtk
 		{
 			ActualizaDetalle();
 		}
+
+		protected void OnArmadaSelectoronSelectionChanged(object sender, EventArgs e)
+		{
+			Armada selArmada = ArmadaSelector.getSelected();
+			if (selArmada == null)
+			{
+				ArmadaSeleccionadaInfo.Visible = false;
+			}
+			else
+			{
+				ArmadaSeleccionadaInfo.Armada = selArmada;
+				ArmadaSeleccionadaInfo.Actualizar();
+
+				// Las órdenes
+				// Orden Ir a
+				IrACB.LlenarCon(selArmada.Posicion.getVecindad(), (x => x.ToString()));
+			}
+		}
+
+		protected void OnCmdActualizaClicked(object sender, EventArgs e)
+		{
+			ActualizarDebil();
+		}
+
 	}
 }
-
