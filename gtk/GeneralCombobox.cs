@@ -99,7 +99,14 @@ namespace gtk
 			Clear();
 			foreach (var x in list)
 			{
-				Add(x, stringSelector(x));
+				//TODO Forzar que no se repitan
+				string s = stringSelector(x);
+				int i = 0;
+				while (this.model.ContainsKey(s))
+				{
+					s = stringSelector(x) + (++i).ToString();
+				}
+				Add(x, s);
 			}
 		}
 	}

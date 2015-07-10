@@ -163,6 +163,9 @@ namespace gtk
 			}
 		}
 
+		/// <summary>
+		/// Actualiza los detalles de investigación
+		/// </summary>
 		void ActualizaDetalle()
 		{
 			// Obtener nodo seleccionado
