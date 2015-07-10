@@ -235,8 +235,7 @@ namespace gtk
 
 		protected void OnCmdAddArmadaClicked(object sender, EventArgs e)
 		{
-			Armada nuevaArmada = new Armada(ciudad.CivDueno);
-			nuevaArmada.Posicion = (Pseudoposicion)ciudad.Terr;
+			Armada nuevaArmada = new Armada(ciudad);
 			nuevaArmada.MaxPeso = 100; //TODO temporal
 			Actualizar();
 		}
