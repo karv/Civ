@@ -265,10 +265,11 @@ namespace gtk
 			{
 				ArmadaSeleccionadaInfo.Armada = selArmada;
 				ArmadaSeleccionadaInfo.Actualizar();
+				lbPos.Text = selArmada.Posicion.ToString();
 
 				// Las órdenes
 				// Orden Ir a
-				IrACB.LlenarCon(selArmada.Posicion.getVecindad(), (x => x.ToString()));  //TODO Terrenos con el mismo nombre produce error.
+				IrACB.LlenarCon(selArmada.Posicion.getVecindad(), (x => x.ToString()));
 			}
 		}
 
