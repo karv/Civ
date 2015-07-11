@@ -282,7 +282,7 @@ namespace gtk
 			Terreno destino = (Terreno)IrACB.getSelected();
 			Armada selArmada = ArmadaSelector.getSelected();
 
-			selArmada.Orden = new Civ.Orden.OrdenIr((Pseudoposicion)destino);
+			selArmada.Orden = new Civ.Orden.OrdenIr(destino);
 		}
 	}
 }
