@@ -365,6 +365,7 @@ namespace gtk
 			this.nvInvestigando.CursorChanged += new global::System.EventHandler (this.OnNvInvestigandoCursorChanged);
 			this.ArmadaSelector.onSelectionChanged += new global::System.EventHandler (this.OnArmadaSelectoronSelectionChanged);
 			this.cmdIrA.Clicked += new global::System.EventHandler (this.OnCmdIrAClicked);
+			this.cmdIrA.Activated += new global::System.EventHandler (this.OnCmdIrAClicked);
 			this.cmdActualiza.Clicked += new global::System.EventHandler (this.OnCmdActualizaClicked);
 			this.cmdActualiza.Activated += new global::System.EventHandler (this.OnCmdActualizaClicked);
 		}

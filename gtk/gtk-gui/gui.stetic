@@ -759,6 +759,7 @@ P</property>
                                 <property name="Label" translatable="yes">_Ir</property>
                                 <property name="UseUnderline">True</property>
                                 <signal name="Clicked" handler="OnCmdIrAClicked" />
+                                <signal name="Activated" handler="OnCmdIrAClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
