@@ -146,8 +146,6 @@ namespace gtk
 
 		public void Actualizar()
 		{
-			CivGTK.ThreadManager.Pausar();
-
 			// Construir recStore
 			stRecurso.Clear();
 			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
@@ -172,8 +170,6 @@ namespace gtk
 			armDefensa.Actualizar();
 
 			rcReclutar.ConstruirModelo();
-
-			CivGTK.ThreadManager.Continuar();
 
 			//Llenar etiquetas
 			Title = ciudad.Nombre;
