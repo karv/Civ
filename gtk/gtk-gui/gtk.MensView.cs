@@ -42,6 +42,7 @@ namespace gtk
 			this.label = new global::Gtk.Label ();
 			this.label.Name = "label";
 			this.label.Xalign = 0F;
+			this.label.MaxWidthChars = 200;
 			this.hbox1.Add (this.label);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.label]));
 			w3.Position = 1;

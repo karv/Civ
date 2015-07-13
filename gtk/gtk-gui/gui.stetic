@@ -908,6 +908,7 @@ P</property>
           <widget class="Gtk.Label" id="label">
             <property name="MemberName" />
             <property name="Xalign">0</property>
+            <property name="MaxWidthChars">200</property>
           </widget>
           <packing>
             <property name="Position">1</property>
