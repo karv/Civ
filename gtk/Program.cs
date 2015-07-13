@@ -52,7 +52,6 @@ namespace CivGTK
 			MyCiv = C;
 			Ciudad cd = C.getCiudades[0];
 
-			cd.AlimentoAlmacen = 100;
 			cd.AutoReclutar = false;
 			EdificioRAW eraw = g_.Data.Trabajos[0].Edificio;
 			cd.AgregaEdificio(eraw);
