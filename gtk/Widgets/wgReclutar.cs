@@ -50,15 +50,11 @@ namespace gtk
 
 		public void ConstruirModelo()
 		{
-			CivGTK.ThreadManager.Pausar();
-
 			store.Clear();
 			foreach (var x in ciudad.UnidadesConstruibles())
 			{
 				store.AddNode(new ReclutarListEntry(x.Key, ciudad));
 			}
-
-			CivGTK.ThreadManager.Continuar();
 		}
 
 		#region IActualizable implementation

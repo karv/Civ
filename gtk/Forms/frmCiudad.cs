@@ -146,8 +146,6 @@ namespace gtk
 
 		public void Actualizar()
 		{
-			CivGTK.ThreadManager.Pausar();
-
 			// Construir recStore
 			stRecurso.Clear();
 			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
@@ -172,8 +170,6 @@ namespace gtk
 			armDefensa.Actualizar();
 
 			rcReclutar.ConstruirModelo();
-
-			CivGTK.ThreadManager.Continuar();
 
 			//Llenar etiquetas
 			Title = ciudad.Nombre;
@@ -235,8 +231,7 @@ namespace gtk
 
 		protected void OnCmdAddArmadaClicked(object sender, EventArgs e)
 		{
-			Armada nuevaArmada = new Armada(ciudad.CivDueno);
-			nuevaArmada.Posicion = (Pseudoposicion)ciudad.Terr;
+			Armada nuevaArmada = new Armada(ciudad);
 			nuevaArmada.MaxPeso = 100; //TODO temporal
 			Actualizar();
 		}

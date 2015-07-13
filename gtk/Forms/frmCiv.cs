@@ -154,8 +154,18 @@ namespace gtk
 			}
 
 			ActualizaDetalle();
+
+			ArmadaSelector.Clear();
+			foreach (var x in civ.Armadas)
+			{
+				if (!x.esDefensa)
+					ArmadaSelector.Add(x);
+			}
 		}
 
+		/// <summary>
+		/// Actualiza los detalles de investigación
+		/// </summary>
 		void ActualizaDetalle()
 		{
 			// Obtener nodo seleccionado
@@ -243,6 +253,37 @@ namespace gtk
 		{
 			ActualizaDetalle();
 		}
+
+		protected void OnArmadaSelectoronSelectionChanged(object sender, EventArgs e)
+		{
+			Armada selArmada = ArmadaSelector.getSelected();
+			if (selArmada == null)
+			{
+				ArmadaSeleccionadaInfo.Visible = false;
+			}
+			else
+			{
+				ArmadaSeleccionadaInfo.Armada = selArmada;
+				ArmadaSeleccionadaInfo.Actualizar();
+				lbPos.Text = selArmada.Posicion.ToString();
+
+				// Las órdenes
+				// Orden Ir a
+				IrACB.LlenarCon(selArmada.Posicion.getVecindad(), (x => x.ToString()));
+			}
+		}
+
+		protected void OnCmdActualizaClicked(object sender, EventArgs e)
+		{
+			ActualizarDebil();
+		}
+
+		protected void OnCmdIrAClicked(object sender, EventArgs e)
+		{
+			Terreno destino = (Terreno)IrACB.getSelected();
+			Armada selArmada = ArmadaSelector.getSelected();
+
+			selArmada.Orden = new Civ.Orden.OrdenIr(destino);
+		}
 	}
 }
-

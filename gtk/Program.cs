@@ -29,41 +29,6 @@ using System.Threading.Tasks;
 namespace CivGTK
 {
 	
-	public static class ThreadManager
-	{
-		public static Thread emu;
-		/// <summary>
-		/// Devuelve o establece el deseo de pausar el thread.
-		/// </summary>
-		public static bool libThreadPaused = false;
-		/// <summary>
-		/// Devuelve o establece si el thread esta pausado en un lugar seguro.
-		/// </summary>
-		public static bool isLibThreadPaused = false;
-
-		/// <summary>
-		/// Pausa el thread servidor en lugar seguro.
-		/// </summary>
-		public static void Pausar()
-		{
-			return;
-			CivGTK.ThreadManager.libThreadPaused = true;
-			while (!CivGTK.ThreadManager.isLibThreadPaused)
-			{
-			}
-		}
-
-		/// <summary>
-		/// Continua con el proceso servidor.
-		/// </summary>
-		public static void Continuar()
-		{
-			return;
-			CivGTK.ThreadManager.libThreadPaused = false;
-		}
-
-	}
-
 	class MainClass
 	{
 		static DateTime timer = DateTime.Now;
@@ -87,7 +52,6 @@ namespace CivGTK
 			MyCiv = C;
 			Ciudad cd = C.getCiudades[0];
 
-			cd.AlimentoAlmacen = 100;
 			cd.AutoReclutar = false;
 			EdificioRAW eraw = g_.Data.Trabajos[0].Edificio;
 			cd.AgregaEdificio(eraw);
@@ -96,18 +60,18 @@ namespace CivGTK
 
 			C.OnNuevoMensaje += MuestraMensajes;
 
-			ThreadManager.emu = new Thread(new ThreadStart(Ticker));
+			Thread emu = new Thread(new ThreadStart(Ticker));
 
 
-			ThreadManager.emu.Priority = ThreadPriority.Lowest;
-			ThreadManager.emu.Start();
+			emu.Priority = ThreadPriority.Lowest;
+			emu.Start();
 
 			Application.Init();
 			win = new gtk.frmCiv(MyCiv);
 			win.Show();
 			Application.Run();
 
-			ThreadManager.emu.Abort();
+			emu.Abort();
 
 		}
 
@@ -134,13 +98,6 @@ namespace CivGTK
 			timer = DateTime.Now;
 			while (true)
 			{
-				//Pausar en el momento menos peligroso, si se requiere.
-				while (ThreadManager.libThreadPaused)
-				{
-					ThreadManager.isLibThreadPaused = true;
-				}
-				ThreadManager.isLibThreadPaused = false;
-
 				TimeSpan tiempo = DateTime.Now - timer;
 				timer = DateTime.Now;
 				float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
