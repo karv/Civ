@@ -230,14 +230,22 @@ namespace gtk
 			return true;
 		}
 
+		/// <summary>
+		/// Ir a la ciudad
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
 		protected void OnCmdIrActivated(object sender, EventArgs e)
 		{
 			Gtk.NodeSelection r = nvCiudades.NodeSelection;
-			Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
+			if (r.SelectedNode != null)
+			{
+				Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
-			frmCiudad wind = new frmCiudad(c, this);
-			formsActualizables.Add(wind);
-			wind.Show();
+				frmCiudad wind = new frmCiudad(c, this);
+				formsActualizables.Add(wind);
+				wind.Show();
+			}	
 		}
 
 		/// <summary>
@@ -278,6 +286,11 @@ namespace gtk
 			ActualizarDebil();
 		}
 
+		/// <summary>
+		/// Cuando le das OrdenIr a una Armada
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
 		protected void OnCmdIrAClicked(object sender, EventArgs e)
 		{
 			Terreno destino = (Terreno)IrACB.getSelected();
