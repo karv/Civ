@@ -53,10 +53,10 @@ namespace CivGTK
 			Ciudad cd = C.getCiudades[0];
 
 			cd.AutoReclutar = false;
-			EdificioRAW eraw = g_.Data.Trabajos[0].Edificio;
-			cd.AgregaEdificio(eraw);
+			//EdificioRAW eraw = g_.Data.Trabajos[0].Edificio;
+			//cd.AgregaEdificio(eraw);
 
-			new Trabajo(g_.Data.Trabajos[0], cd);
+			//new Trabajo(g_.Data.Trabajos[0], cd);
 
 			C.OnNuevoMensaje += MuestraMensajes;
 
