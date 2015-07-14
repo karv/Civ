@@ -285,5 +285,11 @@ namespace gtk
 
 			selArmada.Orden = new Civ.Orden.OrdenIr(destino);
 		}
+
+		protected void OnCmdColonizarClicked(object sender, EventArgs e)
+		{
+			Armada selArmada = ArmadaSelector.getSelected();
+			selArmada.Coloniza();
+		}
 	}
 }

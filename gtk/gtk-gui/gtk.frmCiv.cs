@@ -72,6 +72,10 @@ namespace gtk
 		
 		private global::Gtk.Label GtkLabel9;
 		
+		private global::Gtk.HButtonBox hbuttonbox2;
+		
+		private global::Gtk.Button cmdColonizar;
+		
 		private global::Gtk.Label label3;
 		
 		private global::Gtk.Statusbar statusbar;
@@ -95,7 +99,7 @@ namespace gtk
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 2;
+			this.notebook1.CurrentPage = 0;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox2 = new global::Gtk.VBox ();
 			this.vbox2.Name = "vbox2";
@@ -321,9 +325,27 @@ namespace gtk
 			w26.Position = 1;
 			w26.Expand = false;
 			w26.Fill = false;
+			// Container child hbox4.Gtk.Box+BoxChild
+			this.hbuttonbox2 = new global::Gtk.HButtonBox ();
+			this.hbuttonbox2.Name = "hbuttonbox2";
+			this.hbuttonbox2.BorderWidth = ((uint)(18));
+			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
+			this.cmdColonizar = new global::Gtk.Button ();
+			this.cmdColonizar.CanFocus = true;
+			this.cmdColonizar.Name = "cmdColonizar";
+			this.cmdColonizar.UseUnderline = true;
+			this.cmdColonizar.Label = global::Mono.Unix.Catalog.GetString ("_Colonizar");
+			this.hbuttonbox2.Add (this.cmdColonizar);
+			global::Gtk.ButtonBox.ButtonBoxChild w27 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.cmdColonizar]));
+			w27.Expand = false;
+			w27.Fill = false;
+			this.hbox4.Add (this.hbuttonbox2);
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.hbuttonbox2]));
+			w28.PackType = ((global::Gtk.PackType)(1));
+			w28.Position = 2;
 			this.notebook1.Add (this.hbox4);
-			global::Gtk.Notebook.NotebookChild w27 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox4]));
-			w27.Position = 2;
+			global::Gtk.Notebook.NotebookChild w29 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox4]));
+			w29.Position = 2;
 			// Notebook tab
 			this.label3 = new global::Gtk.Label ();
 			this.label3.Name = "label3";
@@ -331,8 +353,8 @@ namespace gtk
 			this.notebook1.SetTabLabel (this.hbox4, this.label3);
 			this.label3.ShowAll ();
 			this.vbox1.Add (this.notebook1);
-			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.notebook1]));
-			w28.Position = 0;
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.notebook1]));
+			w30.Position = 0;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.statusbar = new global::Gtk.Statusbar ();
 			this.statusbar.Name = "statusbar";
@@ -342,27 +364,27 @@ namespace gtk
 			this.Mens.Events = ((global::Gdk.EventMask)(256));
 			this.Mens.Name = "Mens";
 			this.statusbar.Add (this.Mens);
-			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.Mens]));
-			w29.Position = 1;
-			w29.Expand = false;
-			w29.Fill = false;
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.Mens]));
+			w31.Position = 1;
+			w31.Expand = false;
+			w31.Fill = false;
 			// Container child statusbar.Gtk.Box+BoxChild
 			this.cmdActualiza = new global::Gtk.Button ();
 			this.cmdActualiza.CanFocus = true;
 			this.cmdActualiza.Name = "cmdActualiza";
 			this.cmdActualiza.UseUnderline = true;
-			this.cmdActualiza.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.cmdActualiza.Label = global::Mono.Unix.Catalog.GetString ("Actualiza");
 			this.statusbar.Add (this.cmdActualiza);
-			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.cmdActualiza]));
-			w30.PackType = ((global::Gtk.PackType)(1));
-			w30.Position = 2;
-			w30.Expand = false;
-			w30.Fill = false;
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.cmdActualiza]));
+			w32.PackType = ((global::Gtk.PackType)(1));
+			w32.Position = 2;
+			w32.Expand = false;
+			w32.Fill = false;
 			this.vbox1.Add (this.statusbar);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.statusbar]));
-			w31.Position = 1;
-			w31.Expand = false;
-			w31.Fill = false;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.statusbar]));
+			w33.Position = 1;
+			w33.Expand = false;
+			w33.Fill = false;
 			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -376,6 +398,8 @@ namespace gtk
 			this.ArmadaSelector.onSelectionChanged += new global::System.EventHandler (this.OnArmadaSelectoronSelectionChanged);
 			this.cmdIrA.Clicked += new global::System.EventHandler (this.OnCmdIrAClicked);
 			this.cmdIrA.Activated += new global::System.EventHandler (this.OnCmdIrAClicked);
+			this.cmdColonizar.Clicked += new global::System.EventHandler (this.OnCmdColonizarClicked);
+			this.cmdColonizar.Activated += new global::System.EventHandler (this.OnCmdColonizarClicked);
 			this.cmdActualiza.Clicked += new global::System.EventHandler (this.OnCmdActualizaClicked);
 			this.cmdActualiza.Activated += new global::System.EventHandler (this.OnCmdActualizaClicked);
 		}

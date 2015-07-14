@@ -487,7 +487,7 @@ P</property>
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">2</property>
+            <property name="CurrentPage">0</property>
             <child>
               <widget class="Gtk.VBox" id="vbox2">
                 <property name="MemberName" />
@@ -813,6 +813,33 @@ P</property>
                     <property name="Fill">False</property>
                   </packing>
                 </child>
+                <child>
+                  <widget class="Gtk.HButtonBox" id="hbuttonbox2">
+                    <property name="MemberName" />
+                    <property name="BorderWidth">18</property>
+                    <property name="Size">1</property>
+                    <child>
+                      <widget class="Gtk.Button" id="cmdColonizar">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="Type">TextOnly</property>
+                        <property name="Label" translatable="yes">_Colonizar</property>
+                        <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="OnCmdColonizarClicked" />
+                        <signal name="Activated" handler="OnCmdColonizarClicked" />
+                      </widget>
+                      <packing>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="PackType">End</property>
+                    <property name="Position">2</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
               </widget>
               <packing>
                 <property name="Position">2</property>
@@ -854,7 +881,7 @@ P</property>
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">GtkButton</property>
+                <property name="Label" translatable="yes">Actualiza</property>
                 <property name="UseUnderline">True</property>
                 <signal name="Clicked" handler="OnCmdActualizaClicked" />
                 <signal name="Activated" handler="OnCmdActualizaClicked" />
