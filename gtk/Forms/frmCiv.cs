@@ -78,6 +78,8 @@ namespace gtk
 		[Gtk.TreeNodeValue(Column = 2)]
 		public float Ocupación { get { return (float)ciudad.getNumTrabajadores * 100 / ciudad.getPoblacionProductiva; } }
 
+		[Gtk.TreeNodeValue(Column = 3)]
+		public string getNombreTerreno { get { return ciudad.Terr.ToString(); }}
 		public CityListEntry(Ciudad ciudad)
 		{
 			this.ciudad = ciudad;
@@ -206,6 +208,7 @@ namespace gtk
 			nvCiudades.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
 			nvCiudades.AppendColumn("Población", new Gtk.CellRendererText(), "text", 1);
 			nvCiudades.AppendColumn("Ocupación", new Gtk.CellRendererProgress(), "value", 2);
+			nvCiudades.AppendColumn("Terreno", new Gtk.CellRendererText(), "text", 3);
 
 			nvAvances.AppendColumn("Avance", new Gtk.CellRendererText(), "text", 0);
 
