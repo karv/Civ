@@ -47,10 +47,9 @@ namespace CivGTK
 			DoRead();
 			Global.g_.InicializarJuego();
 
+			MyCiv = g_.State.Civs[0];
+			Ciudad cd = MyCiv.getCiudades[0];
 
-			Civilizacion C = g_.State.Civs[0];
-			MyCiv = C;
-			Ciudad cd = C.getCiudades[0];
 
 			cd.AutoReclutar = false;
 			//EdificioRAW eraw = g_.Data.Trabajos[0].Edificio;
@@ -58,7 +57,7 @@ namespace CivGTK
 
 			//new Trabajo(g_.Data.Trabajos[0], cd);
 
-			C.OnNuevoMensaje += MuestraMensajes;
+			MyCiv.OnNuevoMensaje += MuestraMensajes;
 
 			Thread emu = new Thread(new ThreadStart(Ticker));
 
