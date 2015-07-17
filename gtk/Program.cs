@@ -19,11 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using Gtk;
 using Civ;
 using Global;
-using System.Threading;
-using System.Threading.Tasks;
+using Gtk;
 
 
 namespace CivGTK
@@ -59,18 +57,18 @@ namespace CivGTK
 
 			MyCiv.OnNuevoMensaje += MuestraMensajes;
 
-			Thread emu = new Thread(new ThreadStart(Ticker));
-
-
-			emu.Priority = ThreadPriority.Lowest;
-			emu.Start();
-
 			Application.Init();
 			win = new gtk.frmCiv(MyCiv);
 			win.Show();
-			Application.Run();
+			timer = DateTime.Now;
 
-			emu.Abort();
+			// Ciclo principal
+			while (true)
+			{
+				Tick();
+				Gtk.Application.RunIteration();
+			}
+			//Application.Run();
 
 		}
 
@@ -92,20 +90,28 @@ namespace CivGTK
 			}
 		}
 
+		/// <summary>
+		/// Da un sólo tick global
+		/// </summary>
+		static void Tick()
+		{
+			TimeSpan tiempo = DateTime.Now - timer;
+			timer = DateTime.Now;
+			float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
+
+			// Console.WriteLine (t);
+			Global.g_.Tick(t);
+
+			if (Global.g_.State.Civs.Count == 0)
+				throw new Exception("Ya se acabó el juego :3");
+		}
+
 		static void Ticker()
 		{
 			timer = DateTime.Now;
 			while (true)
 			{
-				TimeSpan tiempo = DateTime.Now - timer;
-				timer = DateTime.Now;
-				float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
-
-				// Console.WriteLine (t);
-				Global.g_.Tick(t);
-
-				if (Global.g_.State.Civs.Count == 0)
-					throw new Exception("Ya se acabó el juego :3");
+				Tick();
 			}
 		}
 
