@@ -230,6 +230,7 @@ namespace gtk
 		protected override bool OnDeleteEvent(Gdk.Event evnt)
 		{
 			Gtk.Application.Quit();
+			CivGTK.MainClass.endGame = true;
 			return true;
 		}
 

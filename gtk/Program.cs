@@ -27,7 +27,7 @@ using Gtk;
 namespace CivGTK
 {
 	
-	class MainClass
+	public static class MainClass
 	{
 		static DateTime timer = DateTime.Now;
 		const float MultiplicadorVelocidad = 360;
@@ -39,6 +39,7 @@ namespace CivGTK
 		}
 
 		static gtk.frmCiv win;
+		public static bool endGame = false;
 
 		public static void Main(string[] args)
 		{
@@ -63,7 +64,7 @@ namespace CivGTK
 			timer = DateTime.Now;
 
 			// Ciclo principal
-			while (true)
+			while (!endGame)
 			{
 				Tick();
 				Gtk.Application.RunIteration();
