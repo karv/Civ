@@ -67,7 +67,8 @@ namespace CivGTK
 			while (!endGame)
 			{
 				Tick();
-				Gtk.Application.RunIteration();
+				while (Gtk.Application.EventsPending())
+					Gtk.Application.RunIteration();
 			}
 			//Application.Run();
 
@@ -84,10 +85,6 @@ namespace CivGTK
 					win.AddMens(m.ToString());
 					win.Actualizar();
 				}
-
-				//Thread thrRefresh = new Thread(new ThreadStart(win.Actualizar));
-				//thrRefresh.Start();
-				// win.Actualizar();
 			}
 		}
 
