@@ -79,7 +79,8 @@ namespace gtk
 		public float Ocupación { get { return (float)ciudad.getNumTrabajadores * 100 / ciudad.getPoblacionProductiva; } }
 
 		[Gtk.TreeNodeValue(Column = 3)]
-		public string getNombreTerreno { get { return ciudad.Terr.ToString(); }}
+		public string getNombreTerreno { get { return ciudad.Terr.ToString(); } }
+
 		public CityListEntry(Ciudad ciudad)
 		{
 			this.ciudad = ciudad;
@@ -306,7 +307,8 @@ namespace gtk
 		protected void OnCmdColonizarClicked(object sender, EventArgs e)
 		{
 			Armada selArmada = ArmadaSelector.getSelected();
-			selArmada.Coloniza();
+			if (selArmada != null)
+				selArmada.Coloniza();
 		}
 	}
 }
