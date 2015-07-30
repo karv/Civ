@@ -55,6 +55,18 @@
       <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="Grafos">
+      <HintPath>dll\Grafos.dll</HintPath>
+    </Reference>
+    <Reference Include="ListaExtras">
+      <HintPath>dll\ListaExtras.dll</HintPath>
+    </Reference>
+    <Reference Include="CivLibrary">
+      <HintPath>dll\CivLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Store">
+      <HintPath>dll\Store.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -90,26 +102,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\CivLibrary\CivLibrary.csproj">
-      <Project>{D0DA2F97-634B-4693-A73B-0C2241BA0C4C}</Project>
-      <Name>CivLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CivLibrary\Store\Store\Store.csproj">
-      <Project>{B5651422-0901-4E7F-976A-A4F7893267CA}</Project>
-      <Name>Store</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CivLibrary\ListaExtras\ListaExtras.csproj">
-      <Project>{B9F315AE-47F8-4629-83FC-3B4D70087083}</Project>
-      <Name>ListaExtras</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CivLibrary\Grafos\Grafos.csproj">
-      <Project>{AF2E2C37-9F1D-4D32-AE62-8484B0A9DD50}</Project>
-      <Name>Grafos</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="CellRenderer\" />
     <Folder Include="Forms\" />
     <Folder Include="Widgets\" />
+    <Folder Include="dll\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dll\CivLibrary.dll" />
+    <None Include="dll\Grafos.dll" />
+    <None Include="dll\ListaExtras.dll" />
+    <None Include="dll\Store.dll" />
   </ItemGroup>
 </Project>
