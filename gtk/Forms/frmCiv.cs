@@ -55,7 +55,7 @@ namespace gtk
 
 	class CityListEntry : Gtk.TreeNode
 	{
-		public readonly Ciudad ciudad;
+		public readonly ICiudad ciudad;
 
 		[Gtk.TreeNodeValue(Column = 0)]
 		public string nombre
@@ -71,17 +71,17 @@ namespace gtk
 		{
 			get
 			{
-				return ciudad.getPoblacion;
+				return ciudad.GetPoblacionInfo.Total;
 			}
 		}
 
 		[Gtk.TreeNodeValue(Column = 2)]
-		public float Ocupación { get { return (float)ciudad.getNumTrabajadores * 100 / ciudad.getPoblacionProductiva; } }
+		public float Ocupación { get { return (float)ciudad.getNumTrabajadores * 100 / ciudad.GetPoblacionInfo.Productiva; } }
 
 		[Gtk.TreeNodeValue(Column = 3)]
-		public string getNombreTerreno { get { return ciudad.Terr.ToString(); } }
+		public string getNombreTerreno { get { return ciudad.getPosicion().A.ToString(); } }
 
-		public CityListEntry(Ciudad ciudad)
+		public CityListEntry(ICiudad ciudad)
 		{
 			this.ciudad = ciudad;
 		}
@@ -138,7 +138,7 @@ namespace gtk
 		public void ActualizarDebil()
 		{
 			stCiudad.Clear();
-			foreach (var x in civ.getCiudades)
+			foreach (var x in civ.Ciudades)
 			{
 				//store.AppendValues (new CityListEntry (x));
 				stCiudad.AddNode(new CityListEntry(x));
@@ -245,7 +245,7 @@ namespace gtk
 			Gtk.NodeSelection r = nvCiudades.NodeSelection;
 			if (r.SelectedNode != null)
 			{
-				Ciudad c = ((CityListEntry)r.SelectedNode).ciudad;
+				ICiudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
 				frmCiudad wind = new frmCiudad(c, this);
 				formsActualizables.Add(wind);

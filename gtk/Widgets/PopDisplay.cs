@@ -35,9 +35,9 @@ namespace gtk
 
 		#endregion
 
-		Civ.Ciudad ciudad;
+		Civ.ICiudad ciudad;
 
-		public Civ.Ciudad Ciudad
+		public Civ.ICiudad Ciudad
 		{
 			get
 			{
@@ -57,9 +57,10 @@ namespace gtk
 
 		public void Refresh()
 		{
-			label3.Text = ciudad.getPoblacionProductiva.ToString();
-			label4.Text = ciudad.getPoblacionPreProductiva.ToString();
-			label5.Text = ciudad.getPoblacionPostProductiva.ToString();
+			Civ.InfoPoblacion pop = ciudad.GetPoblacionInfo;
+			label3.Text = pop.Productiva.ToString();
+			label4.Text = pop.PreProductiva.ToString();
+			label5.Text = pop.PostProductiva.ToString();
 		}
 			
 	}

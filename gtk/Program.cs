@@ -43,11 +43,11 @@ namespace CivGTK
 
 		public static void Main(string[] args)
 		{
-			DoRead();
+			g_.CargaData();
 			Global.g_.InicializarJuego();
 
-			MyCiv = g_.State.Civs[0];
-			Ciudad cd = MyCiv.getCiudades[0];
+			MyCiv = (Civilizacion)g_.State.Civs[0];
+			Ciudad cd = (Ciudad)(MyCiv.Ciudades[0]);
 
 
 			cd.AutoReclutar = false;

@@ -32,7 +32,7 @@ namespace gtk
 		/// <summary>
 		/// La ciudad anclada a este widget.
 		/// </summary>
-		public Ciudad ciudad;
+		public ICiudad ciudad;
 		//Gtk.ListStore store = new Gtk.ListStore(typeof(ReclutarListEntry));
 		Gtk.NodeStore store = new Gtk.NodeStore(typeof(ReclutarListEntry));
 
@@ -53,7 +53,7 @@ namespace gtk
 			store.Clear();
 			foreach (var x in ciudad.UnidadesConstruibles())
 			{
-				store.AddNode(new ReclutarListEntry(x.Key, ciudad));
+				store.AddNode(new ReclutarListEntry(x, ciudad));
 			}
 		}
 
@@ -72,9 +72,9 @@ namespace gtk
 		public class ReclutarListEntry : Gtk.TreeNode
 		{
 			public readonly UnidadRAW unidad;
-			public readonly Ciudad ciudad;
+			public readonly ICiudad ciudad;
 
-			public ReclutarListEntry(UnidadRAW unidad, Ciudad ciudad)
+			public ReclutarListEntry(UnidadRAW unidad, ICiudad ciudad)
 			{
 				this.unidad = unidad;
 				this.ciudad = ciudad;
@@ -95,7 +95,7 @@ namespace gtk
 				get
 				{
 					Stack grupo = ciudad.Defensa.UnidadesAgrupadas(unidad);
-					return grupo == null ? 0 : grupo.cantidad;
+					return grupo == null ? 0 : grupo.Cantidad;
 				}
 			}
 

@@ -139,7 +139,7 @@ namespace gtk
 
 	public partial class frmCiudad : Gtk.Window, IActualizable
 	{
-		public readonly Ciudad ciudad;
+		public readonly ICiudad ciudad;
 		public readonly gtk.frmCiv mainWindow;
 
 		#region IActualizable implementation
@@ -148,19 +148,19 @@ namespace gtk
 		{
 			// Construir recStore
 			stRecurso.Clear();
-			foreach (System.Collections.Generic.KeyValuePair<Recurso, float> x in ciudad.Almacen)
+			foreach (var x in ciudad.Almacen.recursos)
 			{
-				stRecurso.AddNode(new RecursoListEntry(ciudad, x.Key));
+				stRecurso.AddNode(new RecursoListEntry(ciudad, x));
 			}
 			// Construir lista de trabajos
 			stTrabajo.Clear();
-			foreach (var x in ciudad.obtenerTrabajosAbiertos())
+			foreach (var x in ciudad .ObtenerTrabajosAbiertos())
 			{
 				stTrabajo.AddNode(new TrabajoListEntry(ciudad.EncuentraInstanciaTrabajo(x)));
 			}
 
 			ArmadaCombobox.Clear();
-			foreach (var x in ciudad.armadasEnCiudad())
+			foreach (var x in ciudad.ArmadasEnCiudad())
 			{
 				ArmadaCombobox.Add(x);
 			}
@@ -183,7 +183,7 @@ namespace gtk
 		NodeStore stRecurso = new NodeStore(typeof(RecursoListEntry));
 		NodeStore stTrabajo = new NodeStore(typeof(TrabajoListEntry));
 
-		public frmCiudad(Ciudad ciudad, gtk.frmCiv main) :
+		public frmCiudad(ICiudad ciudad, gtk.frmCiv main) :
 			base(Gtk.WindowType.Toplevel)
 		{
 			this.mainWindow = main;

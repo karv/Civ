@@ -42,7 +42,7 @@ namespace gtk
 		}
 
 		[Gtk.TreeNodeValue(Column = 1)]
-		public ulong Cantidad { get { return unidad.cantidad; } }
+		public ulong Cantidad { get { return unidad.Cantidad; } }
 
 		[Gtk.TreeNodeValue(Column = 2)]
 		public float Entrenamiento { get { return unidad.Entrenamiento; } }
