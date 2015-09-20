@@ -134,6 +134,15 @@ namespace gtk
 				return _icon;
 			} 
 		}
+
+		[Gtk.TreeNodeValue(Column = 3)]
+		public float Delta
+		{ 
+			get
+			{ 
+				return this.almacen.CalculaDeltaRecurso(recurso);
+			} 
+		}
 	}
 	#endregion
 
@@ -211,6 +220,7 @@ namespace gtk
 			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 0);
 			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 1);
 			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 2);
+			nvRecursos.AppendColumn("Delta/h", new Gtk.CellRendererText(), "text", 3);
 		}
 
 		protected void OnCmdRenombrarCiudadClicked(object sender, EventArgs e)
