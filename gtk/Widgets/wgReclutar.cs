@@ -94,8 +94,8 @@ namespace gtk
 			{
 				get
 				{
-					Stack grupo = ciudad.Defensa.UnidadesAgrupadas(unidad);
-					return grupo == null ? 0 : grupo.Cantidad;
+					Stack grupo = ciudad.Defensa[unidad];
+					return grupo?.Cantidad ?? 0;
 				}
 			}
 
