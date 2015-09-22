@@ -105,11 +105,16 @@
     <Folder Include="CellRenderer\" />
     <Folder Include="Forms\" />
     <Folder Include="Widgets\" />
+    <Folder Include="dll\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="img\Comida.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
