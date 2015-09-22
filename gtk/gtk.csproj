@@ -55,17 +55,17 @@
       <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="Mono.Posix" />
-    <Reference Include="Grafos">
-      <HintPath>dll\Grafos.dll</HintPath>
-    </Reference>
     <Reference Include="ListaExtras">
-      <HintPath>dll\ListaExtras.dll</HintPath>
+      <HintPath>..\packages\ListaExtras.0.2\lib\ListaExtras.dll</HintPath>
     </Reference>
-    <Reference Include="CivLibrary">
-      <HintPath>dll\CivLibrary.dll</HintPath>
+    <Reference Include="Grafos">
+      <HintPath>..\packages\Grafos.0.1\lib\Grafos.dll</HintPath>
     </Reference>
     <Reference Include="Store">
-      <HintPath>dll\Store.dll</HintPath>
+      <HintPath>..\packages\Store.0.1\lib\Store.dll</HintPath>
+    </Reference>
+    <Reference Include="CivLibrary">
+      <HintPath>..\packages\CivLibrary.0.1\lib\CivLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -105,15 +105,11 @@
     <Folder Include="CellRenderer\" />
     <Folder Include="Forms\" />
     <Folder Include="Widgets\" />
-    <Folder Include="dll\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dll\CivLibrary.dll" />
-    <None Include="dll\Grafos.dll" />
-    <None Include="dll\ListaExtras.dll" />
-    <None Include="dll\Store.dll" />
     <None Include="Data.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
