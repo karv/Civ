@@ -299,6 +299,7 @@ namespace gtk
 			this.DefaultWidth = 724;
 			this.DefaultHeight = 380;
 			this.Show ();
+			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
 			this.ArmadaCombobox.onSelectionChanged += new global::System.EventHandler (this.OnArmadaComboboxonSelectionChanged);
 			this.cmdAddArmada.Clicked += new global::System.EventHandler (this.OnCmdAddArmadaClicked);
 			this.cmdAdd.Clicked += new global::System.EventHandler (this.OnCmdAddClicked);

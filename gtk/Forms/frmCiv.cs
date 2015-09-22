@@ -310,5 +310,10 @@ namespace gtk
 			if (selArmada != null)
 				selArmada.Coloniza();
 		}
+
+		protected void OnNotebook1SwitchPage(object sender, EventArgs e)
+		{
+			ActualizarDebil();
+		}
 	}
 }

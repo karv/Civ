@@ -47,7 +47,7 @@ namespace gtk
 			if (ulong.TryParse(new_text, out res) && res > 0)
 			{
 				wgReclutar.ReclutarListEntry nodo = (wgReclutar.ReclutarListEntry)store.GetNode(new Gtk.TreePath(path));
-				nodo.ciudad.EntrenarUnidades(nodo.unidad, res);
+				nodo.ciudad.Reclutar(nodo.unidad, res);
 				System.Diagnostics.Debug.WriteLine(string.Format("Se reclutaron {0} unidad(es) del tipo {1}", res, nodo.unidad));
 			}
 		}
