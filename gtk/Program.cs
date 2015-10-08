@@ -33,21 +33,21 @@ namespace CivGTK
 		const float MultiplicadorVelocidad = 360;
 		public static Civilizacion MyCiv;
 
-		private static void DoRead(string f = "Data.xml")
+		private static void DoRead (string f = "Data.xml")
 		{
-			Global.g_.Data = Store.Store<Global.g_Data>.Deserialize(f);
+			g_.Data = Store.Store<g_Data>.Deserialize (f);
 		}
 
 		static gtk.frmCiv win;
 		public static bool endGame = false;
 
-		public static void Main(string[] args)
+		public static void Main (string[] args)
 		{
-			g_.CargaData();
-			Global.g_.InicializarJuego();
+			g_.CargaData ();
+			g_.InicializarJuego ();
 
-			MyCiv = (Civilizacion)g_.State.Civs[0];
-			Ciudad cd = (Ciudad)(MyCiv.Ciudades[0]);
+			MyCiv = (Civilizacion)g_.State.Civs [0];
+			Ciudad cd = (Ciudad)(MyCiv.Ciudades [0]);
 
 
 			cd.AutoReclutar = false;
@@ -58,32 +58,29 @@ namespace CivGTK
 
 			MyCiv.OnNuevoMensaje += MuestraMensajes;
 
-			Application.Init();
-			win = new gtk.frmCiv(MyCiv);
-			win.Show();
+			Application.Init ();
+			win = new gtk.frmCiv (MyCiv);
+			win.Show ();
 			timer = DateTime.Now;
 
 			// Ciclo principal
-			while (!endGame)
-			{
-				Tick();
-				while (Gtk.Application.EventsPending())
-					Gtk.Application.RunIteration();
+			while (!endGame) {
+				Tick ();
+				while (Application.EventsPending ())
+					Application.RunIteration ();
 			}
 			//Application.Run();
 
 		}
 
-		static void MuestraMensajes()
+		static void MuestraMensajes ()
 		{
-			while (MyCiv.ExisteMensaje)
-			{
-				IU.Mensaje m = MyCiv.SiguitenteMensaje();
-				if (m != null)
-				{
-					System.Diagnostics.Debug.WriteLine(m.ToString());
-					win.AddMens(m.ToString());
-					win.Actualizar();
+			while (MyCiv.ExisteMensaje) {
+				IU.Mensaje m = MyCiv.SiguitenteMensaje ();
+				if (m != null) {
+					System.Diagnostics.Debug.WriteLine (m.ToString ());
+					win.AddMens (m.ToString ());
+					win.Actualizar ();
 				}
 			}
 		}
@@ -91,25 +88,24 @@ namespace CivGTK
 		/// <summary>
 		/// Da un sólo tick global
 		/// </summary>
-		static void Tick()
+		static void Tick ()
 		{
 			TimeSpan tiempo = DateTime.Now - timer;
 			timer = DateTime.Now;
 			float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
 
 			// Console.WriteLine (t);
-			Global.g_.Tick(t);
+			g_.Tick (t);
 
-			if (Global.g_.State.Civs.Count == 0)
-				throw new Exception("Ya se acabó el juego :3");
+			if (g_.State.Civs.Count == 0)
+				throw new Exception ("Ya se acabó el juego :3");
 		}
 
-		static void Ticker()
+		static void Ticker ()
 		{
 			timer = DateTime.Now;
-			while (true)
-			{
-				Tick();
+			while (true) {
+				Tick ();
 			}
 		}
 
