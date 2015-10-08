@@ -22,6 +22,7 @@ using System;
 using Civ;
 using Global;
 using Gtk;
+using System.Diagnostics;
 
 
 namespace CivGTK
@@ -33,21 +34,21 @@ namespace CivGTK
 		const float MultiplicadorVelocidad = 360;
 		public static Civilizacion MyCiv;
 
-		private static void DoRead (string f = "Data.xml")
+		static void DoRead (string f = "Data.xml")
 		{
 			g_.Data = Store.Store<g_Data>.Deserialize (f);
 		}
 
 		static gtk.frmCiv win;
-		public static bool endGame = false;
+		public static bool endGame;
 
-		public static void Main (string[] args)
+		public static void Main ()
 		{
 			g_.CargaData ();
 			g_.InicializarJuego ();
 
-			MyCiv = (Civilizacion)g_.State.Civs [0];
-			Ciudad cd = (Ciudad)(MyCiv.Ciudades [0]);
+			MyCiv = g_.State.Civs [0] as Civilizacion;
+			var cd = MyCiv.Ciudades [0] as Ciudad;
 
 
 			cd.AutoReclutar = false;
@@ -78,7 +79,7 @@ namespace CivGTK
 			while (MyCiv.ExisteMensaje) {
 				IU.Mensaje m = MyCiv.SiguitenteMensaje ();
 				if (m != null) {
-					System.Diagnostics.Debug.WriteLine (m.ToString ());
+					Debug.WriteLine (m.ToString ());
 					win.AddMens (m.ToString ());
 					win.Actualizar ();
 				}
@@ -100,14 +101,5 @@ namespace CivGTK
 			if (g_.State.Civs.Count == 0)
 				throw new Exception ("Ya se acabó el juego :3");
 		}
-
-		static void Ticker ()
-		{
-			timer = DateTime.Now;
-			while (true) {
-				Tick ();
-			}
-		}
-
 	}
 }
