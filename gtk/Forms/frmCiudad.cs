@@ -21,6 +21,7 @@
 using System;
 using Civ;
 using Gtk;
+using Civ.Data;
 
 namespace gtk
 {
@@ -29,60 +30,48 @@ namespace gtk
 	{
 		public readonly Trabajo trabajo;
 
-		[Gtk.TreeNodeValue(Column = 0)]
-		public string nombre
-		{
-			get
-			{
+		[Gtk.TreeNodeValue (Column = 0)]
+		public string nombre {
+			get {
 				return trabajo.RAW.Nombre;
 			}
 		}
 
-		[Gtk.TreeNodeValue(Column = 1)]
-		public ulong Trabajadores
-		{
-			get
-			{
+		[Gtk.TreeNodeValue (Column = 1)]
+		public ulong Trabajadores {
+			get {
 				return trabajo.Trabajadores;
 			}
-			set
-			{
+			set {
 				trabajo.Trabajadores = value;
 			}
 		}
 
-		[Gtk.TreeNodeValue(Column = 2)]
-		public ulong MaxTrabajadores
-		{
-			get
-			{
+		[Gtk.TreeNodeValue (Column = 2)]
+		public ulong MaxTrabajadores {
+			get {
 				return trabajo.MaxTrabajadores;
 			}
 		}
 
-		[Gtk.TreeNodeValue(Column = 3)]
-		public float Prioridad
-		{
-			get
-			{
+		[Gtk.TreeNodeValue (Column = 3)]
+		public float Prioridad {
+			get {
 				return trabajo.Prioridad;
 			}
-			set
-			{
+			set {
 				trabajo.Prioridad = value;
 			}
 		}
 
-		[Gtk.TreeNodeValue(Column = 4)]
-		public string edificio
-		{
-			get
-			{
+		[Gtk.TreeNodeValue (Column = 4)]
+		public string edificio {
+			get {
 				return trabajo.EdificioBase.Nombre;
 			}
 		}
 
-		public TrabajoListEntry(Trabajo trabajo)
+		public TrabajoListEntry (Trabajo trabajo)
 		{
 			this.trabajo = trabajo;
 		}
@@ -101,46 +90,41 @@ namespace gtk
 		//public readonly ListasExtra.ReadonlyPair<Recurso, float> data;
 		readonly Gdk.Pixbuf _icon;
 
-		public RecursoListEntry(IAlmacenante almacén, Recurso recurso)
+		public RecursoListEntry (IAlmacenante almacén, Recurso recurso)
 		{
 			this.almacen = almacén;
 			this.recurso = recurso;
-			_icon = buildIcon();
+			_icon = buildIcon ();
 		}
 
-		Gdk.Pixbuf buildIcon()
+		Gdk.Pixbuf buildIcon ()
 		{
 			string IconName = recurso.Img;
-			if (IconName == null)
-			{
-				System.Diagnostics.Debug.WriteLine(string.Format("Recurso {0} con enlace a icono roto a {1}. Usando icono genérico.", 
+			if (IconName == null) {
+				System.Diagnostics.Debug.WriteLine (string.Format ("Recurso {0} con enlace a icono roto a {1}. Usando icono genérico.", 
 					nombre, cant));
-				return new Gdk.Pixbuf(iconDir + nullIconFile, iconSize_x, iconSize_y);
+				return new Gdk.Pixbuf (iconDir + nullIconFile, iconSize_x, iconSize_y);
 			}
-			return new Gdk.Pixbuf(iconDir + IconName, iconSize_x, iconSize_y);
+			return new Gdk.Pixbuf (iconDir + IconName, iconSize_x, iconSize_y);
 		}
 
-		[Gtk.TreeNodeValue(Column = 1)]
+		[Gtk.TreeNodeValue (Column = 1)]
 		public string nombre { get { return recurso.Nombre; } }
 
-		[Gtk.TreeNodeValue(Column = 2)]
-		public float cant { get { return almacen.obtenerRecurso(recurso); } }
+		[Gtk.TreeNodeValue (Column = 2)]
+		public float cant { get { return almacen.Almacen [recurso]; } }
 
-		[Gtk.TreeNodeValue(Column = 0)]
-		public Gdk.Pixbuf icon
-		{ 
-			get
-			{ 
+		[Gtk.TreeNodeValue (Column = 0)]
+		public Gdk.Pixbuf icon { 
+			get { 
 				return _icon;
 			} 
 		}
 
-		[Gtk.TreeNodeValue(Column = 3)]
-		public float Delta
-		{ 
-			get
-			{ 
-				return this.almacen.CalculaDeltaRecurso(recurso);
+		[Gtk.TreeNodeValue (Column = 3)]
+		public float Delta { 
+			get { 
+				return this.almacen.CalculaDeltaRecurso (recurso);
 			} 
 		}
 	}
@@ -153,51 +137,48 @@ namespace gtk
 
 		#region IActualizable implementation
 
-		public void Actualizar()
+		public void Actualizar ()
 		{
 			// Construir recStore
-			stRecurso.Clear();
-			foreach (var x in ciudad.Almacen.recursos)
-			{
-				stRecurso.AddNode(new RecursoListEntry(ciudad, x));
+			stRecurso.Clear ();
+			foreach (var x in ciudad.Almacen.recursos) {
+				stRecurso.AddNode (new RecursoListEntry (ciudad, x));
 			}
 			// Construir lista de trabajos
-			stTrabajo.Clear();
-			foreach (var x in ciudad .ObtenerTrabajosAbiertos())
-			{
-				stTrabajo.AddNode(new TrabajoListEntry(ciudad.EncuentraInstanciaTrabajo(x)));
+			stTrabajo.Clear ();
+			foreach (var x in ciudad .ObtenerTrabajosAbiertos()) {
+				stTrabajo.AddNode (new TrabajoListEntry (ciudad.EncuentraInstanciaTrabajo (x)));
 			}
 
-			ArmadaCombobox.Clear();
-			foreach (var x in ciudad.ArmadasEnCiudad())
-			{
-				ArmadaCombobox.Add(x);
+			ArmadaCombobox.Clear ();
+			foreach (var x in ciudad.ArmadasEnCiudad()) {
+				ArmadaCombobox.Add (x);
 			}
 
 			armSeleccionada.Visible = false;
 
-			armDefensa.Actualizar();
+			armDefensa.Actualizar ();
 
-			rcReclutar.ConstruirModelo();
+			rcReclutar.ConstruirModelo ();
 
 			//Llenar etiquetas
 			Title = ciudad.Nombre;
-			popdisplay1.Refresh();
+			popdisplay1.Refresh ();
 
-			ShowAll();
+			ShowAll ();
 		}
 
 		#endregion
 
-		NodeStore stRecurso = new NodeStore(typeof(RecursoListEntry));
-		NodeStore stTrabajo = new NodeStore(typeof(TrabajoListEntry));
+		NodeStore stRecurso = new NodeStore (typeof(RecursoListEntry));
+		NodeStore stTrabajo = new NodeStore (typeof(TrabajoListEntry));
 
-		public frmCiudad(ICiudad ciudad, gtk.frmCiv main) :
-			base(Gtk.WindowType.Toplevel)
+		public frmCiudad (ICiudad ciudad, gtk.frmCiv main) :
+			base (Gtk.WindowType.Toplevel)
 		{
 			this.mainWindow = main;
 			this.ciudad = ciudad;
-			this.Build();
+			this.Build ();
 
 			//ArmadaCombobox.Add(ciudad.Defensa, "Defensa");
 
@@ -205,73 +186,69 @@ namespace gtk
 			rcReclutar.ciudad = ciudad;
 			popdisplay1.Ciudad = ciudad;
 
-			rcReclutar.ConstruirModelo();
+			rcReclutar.ConstruirModelo ();
 
-			Actualizar();
+			Actualizar ();
 
 			nvTrabajos.NodeStore = stTrabajo;
-			nvTrabajos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
-			nvTrabajos.AppendColumn("Trabajadores", new CellRendererNumTrab(stTrabajo), "text", 1);
-			nvTrabajos.AppendColumn("Máx. trab", new Gtk.CellRendererText(), "text", 2);
-			nvTrabajos.AppendColumn("Prioridad", new CellRendererPrioridadTrab(stTrabajo), "text", 3);
-			nvTrabajos.AppendColumn("Edificio", new CellRendererText(), "text", 4);
+			nvTrabajos.AppendColumn ("Nombre", new Gtk.CellRendererText (), "text", 0);
+			nvTrabajos.AppendColumn ("Trabajadores", new CellRendererNumTrab (stTrabajo), "text", 1);
+			nvTrabajos.AppendColumn ("Máx. trab", new Gtk.CellRendererText (), "text", 2);
+			nvTrabajos.AppendColumn ("Prioridad", new CellRendererPrioridadTrab (stTrabajo), "text", 3);
+			nvTrabajos.AppendColumn ("Edificio", new CellRendererText (), "text", 4);
 
 			nvRecursos.NodeStore = stRecurso;
-			nvRecursos.AppendColumn("Icono", new Gtk.CellRendererPixbuf(), "pixbuf", 0);
-			nvRecursos.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 1);
-			nvRecursos.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 2);
-			nvRecursos.AppendColumn("Delta/h", new Gtk.CellRendererText(), "text", 3);
+			nvRecursos.AppendColumn ("Icono", new Gtk.CellRendererPixbuf (), "pixbuf", 0);
+			nvRecursos.AppendColumn ("Nombre", new Gtk.CellRendererText (), "text", 1);
+			nvRecursos.AppendColumn ("Cantidad", new Gtk.CellRendererText (), "text", 2);
+			nvRecursos.AppendColumn ("Delta/h", new Gtk.CellRendererText (), "text", 3);
 		}
 
-		protected void OnCmdRenombrarCiudadClicked(object sender, EventArgs e)
+		protected void OnCmdRenombrarCiudadClicked (object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			throw new NotImplementedException ();
 		}
 
-		protected override void OnDestroyed()
+		protected override void OnDestroyed ()
 		{
-			mainWindow.formsActualizables.Remove(this);
-			base.OnDestroyed();
+			mainWindow.formsActualizables.Remove (this);
+			base.OnDestroyed ();
 		}
 
-		protected void OnNotebook1SwitchPage(object o, SwitchPageArgs args)
+		protected void OnNotebook1SwitchPage (object o, SwitchPageArgs args)
 		{
-			Actualizar();
+			Actualizar ();
 		}
 
-		protected void OnCmdAddArmadaClicked(object sender, EventArgs e)
+		protected void OnCmdAddArmadaClicked (object sender, EventArgs e)
 		{
-			Armada nuevaArmada = new Armada(ciudad);
+			Armada nuevaArmada = new Armada (ciudad);
 			nuevaArmada.MaxPeso = 100; //TODO temporal
-			Actualizar();
+			Actualizar ();
 		}
 
-		protected void OnArmadaComboboxonSelectionChanged(object sender, EventArgs e)
+		protected void OnArmadaComboboxonSelectionChanged (object sender, EventArgs e)
 		{
-			Armada selArmada = ArmadaCombobox.getSelected();
-			if (selArmada == null)
-			{
+			Armada selArmada = ArmadaCombobox.getSelected ();
+			if (selArmada == null) {
 				armSeleccionada.Visible = false;
-			}
-			else
-			{
+			} else {
 				armSeleccionada.Armada = selArmada;
-				armSeleccionada.Actualizar();
+				armSeleccionada.Actualizar ();
 			}
 		}
 
-		protected void OnCmdAddClicked(object sender, EventArgs e)
+		protected void OnCmdAddClicked (object sender, EventArgs e)
 		{
-			Stack c = armDefensa.getSelected();
-			Armada selArmada = ArmadaCombobox.getSelected();
-			if (c == null || selArmada == null)
-			{
-				System.Diagnostics.Debug.WriteLine("No se seleccionó unidad o armada.");
+			Stack c = armDefensa.getSelected ();
+			Armada selArmada = ArmadaCombobox.getSelected ();
+			if (c == null || selArmada == null) {
+				System.Diagnostics.Debug.WriteLine ("No se seleccionó unidad o armada.");
 				return;
 			}
-			selArmada.AgregaUnidad(c);
-			armDefensa.Actualizar();
-			armSeleccionada.Actualizar();
+			selArmada.AgregaUnidad (c);
+			armDefensa.Actualizar ();
+			armSeleccionada.Actualizar ();
 		}
 	}
 }

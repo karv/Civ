@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using Civ;
+using Civ.Data;
 using System;
 
 namespace gtk
@@ -26,7 +27,7 @@ namespace gtk
 	/// <summary>
 	/// Widget para reclutar
 	/// </summary>
-	[System.ComponentModel.ToolboxItem(true)]
+	[System.ComponentModel.ToolboxItem (true)]
 	public partial class wgReclutar : Gtk.Bin, IActualizable
 	{
 		/// <summary>
@@ -34,34 +35,33 @@ namespace gtk
 		/// </summary>
 		public ICiudad ciudad;
 		//Gtk.ListStore store = new Gtk.ListStore(typeof(ReclutarListEntry));
-		Gtk.NodeStore store = new Gtk.NodeStore(typeof(ReclutarListEntry));
+		Gtk.NodeStore store = new Gtk.NodeStore (typeof(ReclutarListEntry));
 
-		public wgReclutar()
+		public wgReclutar ()
 		{
-			this.Build();
+			this.Build ();
 		
-			Nodeview.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
-			Nodeview.AppendColumn("Existentes", new Gtk.CellRendererText(), "text", 1);
-			Nodeview.AppendColumn("Reclutar", new CellRendererNumRecluta(store), "text", 2);
-			Nodeview.AppendColumn("Máximo", new Gtk.CellRendererText(), "text", 3);
+			Nodeview.AppendColumn ("Nombre", new Gtk.CellRendererText (), "text", 0);
+			Nodeview.AppendColumn ("Existentes", new Gtk.CellRendererText (), "text", 1);
+			Nodeview.AppendColumn ("Reclutar", new CellRendererNumRecluta (store), "text", 2);
+			Nodeview.AppendColumn ("Máximo", new Gtk.CellRendererText (), "text", 3);
 
 			Nodeview.NodeStore = store;
 		}
 
-		public void ConstruirModelo()
+		public void ConstruirModelo ()
 		{
-			store.Clear();
-			foreach (var x in ciudad.UnidadesConstruibles())
-			{
-				store.AddNode(new ReclutarListEntry(x, ciudad));
+			store.Clear ();
+			foreach (var x in ciudad.UnidadesConstruibles()) {
+				store.AddNode (new ReclutarListEntry (x, ciudad));
 			}
 		}
 
 		#region IActualizable implementation
 
-		void IActualizable.Actualizar()
+		void IActualizable.Actualizar ()
 		{
-			ConstruirModelo();
+			ConstruirModelo ();
 		}
 
 		#endregion
@@ -74,46 +74,38 @@ namespace gtk
 			public readonly UnidadRAW unidad;
 			public readonly ICiudad ciudad;
 
-			public ReclutarListEntry(UnidadRAW unidad, ICiudad ciudad)
+			public ReclutarListEntry (UnidadRAW unidad, ICiudad ciudad)
 			{
 				this.unidad = unidad;
 				this.ciudad = ciudad;
 			}
 
-			[Gtk.TreeNodeValue(Column = 0)]
-			public string Nombre
-			{
-				get
-				{
+			[Gtk.TreeNodeValue (Column = 0)]
+			public string Nombre {
+				get {
 					return unidad.Nombre;
 				}
 			}
 
-			[Gtk.TreeNodeValue(Column = 1)]
-			public ulong Existentes
-			{
-				get
-				{
-					Stack grupo = ciudad.Defensa[unidad];
+			[Gtk.TreeNodeValue (Column = 1)]
+			public ulong Existentes {
+				get {
+					Stack grupo = ciudad.Defensa [unidad];
 					return grupo?.Cantidad ?? 0;
 				}
 			}
 
-			[Gtk.TreeNodeValue(Column = 2)]
-			public ulong MarcadoReclutar
-			{
-				get
-				{
+			[Gtk.TreeNodeValue (Column = 2)]
+			public ulong MarcadoReclutar {
+				get {
 					return 0;
 				}
 			}
 
-			[Gtk.TreeNodeValue(Column = 3)]
-			public ulong MaxRecluta
-			{
-				get
-				{
-					return ciudad.UnidadesConstruibles(unidad);
+			[Gtk.TreeNodeValue (Column = 3)]
+			public ulong MaxRecluta {
+				get {
+					return ciudad.UnidadesConstruibles (unidad);
 				}
 			}
 		}

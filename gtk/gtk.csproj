@@ -58,14 +58,14 @@
     <Reference Include="Store">
       <HintPath>..\packages\Store.0.1\lib\Store.dll</HintPath>
     </Reference>
-    <Reference Include="CivLibrary">
-      <HintPath>..\packages\CivLibrary.0.1.4\lib\CivLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Grafos">
       <HintPath>..\packages\Grafos.0.1.2\lib\Grafos.dll</HintPath>
     </Reference>
     <Reference Include="ListaExtras">
       <HintPath>..\packages\ListaExtras.0.2.2.1\lib\ListaExtras.dll</HintPath>
+    </Reference>
+    <Reference Include="CivLibrary">
+      <HintPath>..\packages\CivLibrary.0.1.4\lib\CivLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

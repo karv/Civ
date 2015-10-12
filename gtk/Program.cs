@@ -32,11 +32,11 @@ namespace CivGTK
 	{
 		static DateTime timer = DateTime.Now;
 		const float MultiplicadorVelocidad = 360;
-		public static Civilizacion MyCiv;
+		public static Civilización MyCiv;
 
 		static void DoRead (string f = "Data.xml")
 		{
-			g_.Data = Store.Store<g_Data>.Deserialize (f);
+			Juego.Data = Store.Store<GameData>.Deserialize (f);
 		}
 
 		static gtk.frmCiv win;
@@ -44,20 +44,19 @@ namespace CivGTK
 
 		public static void Main ()
 		{
-			g_.CargaData ();
-			g_.InicializarJuego ();
+			Juego.CargaData ();
+			Juego.InicializarJuego ();
 
-			MyCiv = g_.State.Civs [0] as Civilizacion;
-			var cd = MyCiv.Ciudades [0] as Ciudad;
+			MyCiv = Juego.State.Civs [0] as Civilización;
+			//var cd = MyCiv.Ciudades [0] as Ciudad;
 
 
-			cd.AutoReclutar = false;
-			//EdificioRAW eraw = g_.Data.Trabajos[0].Edificio;
+			//EdificioRAW eraw = Juego.Data.Trabajos[0].Edificio;
 			//cd.AgregaEdificio(eraw);
 
-			//new Trabajo(g_.Data.Trabajos[0], cd);
+			//new Trabajo(Juego.Data.Trabajos[0], cd);
 
-			MyCiv.OnNuevoMensaje += MuestraMensajes;
+			MyCiv.AlNuevoMensaje += MuestraMensajes;
 
 			Application.Init ();
 			win = new gtk.frmCiv (MyCiv);
@@ -77,7 +76,7 @@ namespace CivGTK
 		static void MuestraMensajes ()
 		{
 			while (MyCiv.ExisteMensaje) {
-				IU.Mensaje m = MyCiv.SiguitenteMensaje ();
+				IU.Mensaje m = MyCiv.SiguienteMensaje ();
 				if (m != null) {
 					Debug.WriteLine (m.ToString ());
 					win.AddMens (m.ToString ());
@@ -93,12 +92,12 @@ namespace CivGTK
 		{
 			TimeSpan tiempo = DateTime.Now - timer;
 			timer = DateTime.Now;
-			float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
+			var modTiempo = new TimeSpan ((long)(tiempo.Ticks * MultiplicadorVelocidad));
 
 			// Console.WriteLine (t);
-			g_.Tick (t);
+			Juego.Tick (modTiempo);
 
-			if (g_.State.Civs.Count == 0)
+			if (Juego.State.Civs.Count == 0)
 				throw new Exception ("Ya se acabó el juego :3");
 		}
 	}

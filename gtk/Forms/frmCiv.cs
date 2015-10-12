@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using Civ;
+using Civ.Data;
 
 namespace gtk
 {
@@ -72,10 +73,10 @@ namespace gtk
 		}
 
 		[Gtk.TreeNodeValue (Column = 2)]
-		public float Ocupación { get { return (float)ciudad.getNumTrabajadores * 100 / ciudad.GetPoblacionInfo.Productiva; } }
+		public float Ocupación { get { return (float)ciudad.NumTrabajadores * 100 / ciudad.GetPoblacionInfo.Productiva; } }
 
 		[Gtk.TreeNodeValue (Column = 3)]
-		public string getNombreTerreno { get { return ciudad.getPosicion ().A.ToString (); } }
+		public string getNombreTerreno { get { return ciudad.Posición ().A.ToString (); } }
 
 		public CityListEntry (ICiudad ciudad)
 		{
@@ -108,7 +109,7 @@ namespace gtk
 
 	public partial class frmCiv : Gtk.Window
 	{
-		public Civilizacion civ;
+		public Civilización civ;
 
 		public readonly System.Collections.Generic.List<IActualizable> formsActualizables = new System.Collections.Generic.List<IActualizable> ();
 
@@ -150,7 +151,7 @@ namespace gtk
 
 			ArmadaSelector.Clear ();
 			foreach (var x in civ.Armadas) {
-				if (!x.esDefensa)
+				if (!x.EsDefensa)
 					ArmadaSelector.Add (x);
 			}
 		}
@@ -179,7 +180,7 @@ namespace gtk
 		Gtk.NodeStore stCienciasAbtas = new Gtk.NodeStore (typeof(CienciaAbtaListEntry));
 		Gtk.NodeStore stCienciaDetail = new Gtk.NodeStore (typeof(CienciaDetalleListEntry));
 
-		public frmCiv (Civilizacion civ) :
+		public frmCiv (Civilización civ) :
 			base (Gtk.WindowType.Toplevel)
 		{
 			this.civ = civ;
@@ -261,11 +262,11 @@ namespace gtk
 			} else {
 				ArmadaSeleccionadaInfo.Armada = selArmada;
 				ArmadaSeleccionadaInfo.Actualizar ();
-				lbPos.Text = selArmada.Posicion.ToString ();
+				lbPos.Text = selArmada.Posición.ToString ();
 
 				// Las órdenes
 				// Orden Ir a
-				IrACB.LlenarCon (selArmada.Posicion.Vecindad (), (x => x.ToString ()));
+				IrACB.LlenarCon (selArmada.Posición.Vecindad (), (x => x.ToString ()));
 			}
 		}
 
@@ -284,7 +285,7 @@ namespace gtk
 			Terreno destino = (Terreno)IrACB.getSelected ();
 			Armada selArmada = ArmadaSelector.getSelected ();
 
-			selArmada.Orden = new Civ.Orden.OrdenIr (destino);
+			selArmada.Orden = new Civ.Orden.OrdenIr (selArmada, destino);
 		}
 
 		protected void OnCmdColonizarClicked (object sender, EventArgs e)
