@@ -22,6 +22,7 @@ using System;
 using Civ;
 using Global;
 using Gtk;
+using System.Diagnostics;
 
 
 namespace CivGTK
@@ -31,59 +32,55 @@ namespace CivGTK
 	{
 		static DateTime timer = DateTime.Now;
 		const float MultiplicadorVelocidad = 360;
-		public static Civilizacion MyCiv;
+		public static Civilización MyCiv;
 
-		private static void DoRead(string f = "Data.xml")
+		static void DoRead (string f = "Data.xml")
 		{
-			Global.g_.Data = Store.Store<Global.g_Data>.Deserialize(f);
+			Juego.Data = Store.Store<GameData>.Deserialize (f);
 		}
 
 		static gtk.frmCiv win;
-		public static bool endGame = false;
+		public static bool endGame;
 
-		public static void Main(string[] args)
+		public static void Main ()
 		{
-			g_.CargaData();
-			Global.g_.InicializarJuego();
+			Juego.CargaData ();
+			Juego.InicializarJuego ();
 
-			MyCiv = (Civilizacion)g_.State.Civs[0];
-			Ciudad cd = (Ciudad)(MyCiv.Ciudades[0]);
+			MyCiv = Juego.State.Civs [0] as Civilización;
+			//var cd = MyCiv.Ciudades [0] as Ciudad;
 
 
-			cd.AutoReclutar = false;
-			//EdificioRAW eraw = g_.Data.Trabajos[0].Edificio;
+			//EdificioRAW eraw = Juego.Data.Trabajos[0].Edificio;
 			//cd.AgregaEdificio(eraw);
 
-			//new Trabajo(g_.Data.Trabajos[0], cd);
+			//new Trabajo(Juego.Data.Trabajos[0], cd);
 
-			MyCiv.OnNuevoMensaje += MuestraMensajes;
+			MyCiv.AlNuevoMensaje += MuestraMensajes;
 
-			Application.Init();
-			win = new gtk.frmCiv(MyCiv);
-			win.Show();
+			Application.Init ();
+			win = new gtk.frmCiv (MyCiv);
+			win.Show ();
 			timer = DateTime.Now;
 
 			// Ciclo principal
-			while (!endGame)
-			{
-				Tick();
-				while (Gtk.Application.EventsPending())
-					Gtk.Application.RunIteration();
+			while (!endGame) {
+				Tick ();
+				while (Application.EventsPending ())
+					Application.RunIteration ();
 			}
 			//Application.Run();
 
 		}
 
-		static void MuestraMensajes()
+		static void MuestraMensajes ()
 		{
-			while (MyCiv.ExisteMensaje)
-			{
-				IU.Mensaje m = MyCiv.SiguitenteMensaje();
-				if (m != null)
-				{
-					System.Diagnostics.Debug.WriteLine(m.ToString());
-					win.AddMens(m.ToString());
-					win.Actualizar();
+			while (MyCiv.ExisteMensaje) {
+				IU.Mensaje m = MyCiv.SiguienteMensaje ();
+				if (m != null) {
+					Debug.WriteLine (m.ToString ());
+					win.AddMens (m.ToString ());
+					win.Actualizar ();
 				}
 			}
 		}
@@ -91,27 +88,17 @@ namespace CivGTK
 		/// <summary>
 		/// Da un sólo tick global
 		/// </summary>
-		static void Tick()
+		static void Tick ()
 		{
 			TimeSpan tiempo = DateTime.Now - timer;
 			timer = DateTime.Now;
-			float t = (float)tiempo.TotalHours * MultiplicadorVelocidad;
+			var modTiempo = new TimeSpan ((long)(tiempo.Ticks * MultiplicadorVelocidad));
 
 			// Console.WriteLine (t);
-			Global.g_.Tick(t);
+			Juego.Tick (modTiempo);
 
-			if (Global.g_.State.Civs.Count == 0)
-				throw new Exception("Ya se acabó el juego :3");
+			if (Juego.State.Civs.Count == 0)
+				throw new Exception ("Ya se acabó el juego :3");
 		}
-
-		static void Ticker()
-		{
-			timer = DateTime.Now;
-			while (true)
-			{
-				Tick();
-			}
-		}
-
 	}
 }
