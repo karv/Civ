@@ -23,6 +23,7 @@ using Civ;
 using Global;
 using Gtk;
 using System.Diagnostics;
+using Civ.Data.Import;
 
 
 namespace CivGTK
@@ -44,6 +45,7 @@ namespace CivGTK
 
 		public static void Main ()
 		{
+			ImportMachine.Directorio = @"/home/edgar/git/Civ/gtk/bin/Debug/CivObjects/";
 			Juego.CargaData ();
 			Juego.InicializarJuego ();
 

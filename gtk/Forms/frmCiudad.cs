@@ -112,7 +112,7 @@ namespace gtk
 		public string nombre { get { return recurso.Nombre; } }
 
 		[Gtk.TreeNodeValue (Column = 2)]
-		public float cant { get { return almacen.Almacen [recurso]; } }
+		public float cant { get { return almacen.Almacén [recurso]; } }
 
 		[Gtk.TreeNodeValue (Column = 0)]
 		public Gdk.Pixbuf icon { 
@@ -141,7 +141,7 @@ namespace gtk
 		{
 			// Construir recStore
 			stRecurso.Clear ();
-			foreach (var x in ciudad.Almacen.recursos) {
+			foreach (var x in ciudad.Almacén.recursos) {
 				stRecurso.AddNode (new RecursoListEntry (ciudad, x));
 			}
 			// Construir lista de trabajos

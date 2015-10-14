@@ -71,10 +71,10 @@ namespace gtk
 		/// </summary>
 		public class ReclutarListEntry : Gtk.TreeNode
 		{
-			public readonly UnidadRAW unidad;
+			public readonly IUnidadRAW unidad;
 			public readonly ICiudad ciudad;
 
-			public ReclutarListEntry (UnidadRAW unidad, ICiudad ciudad)
+			public ReclutarListEntry (IUnidadRAW unidad, ICiudad ciudad)
 			{
 				this.unidad = unidad;
 				this.ciudad = ciudad;

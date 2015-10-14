@@ -291,8 +291,10 @@ namespace gtk
 		protected void OnCmdColonizarClicked (object sender, EventArgs e)
 		{
 			Armada selArmada = ArmadaSelector.getSelected ();
-			if (selArmada != null)
-				selArmada.Coloniza ();
+			Stack Colonizador = null;
+			if (selArmada?.PuedeColonizar (out Colonizador) ?? false) {
+				Colonizador.Colonizar ();
+			}
 		}
 
 		protected void OnNotebook1SwitchPage (object sender, EventArgs e)
