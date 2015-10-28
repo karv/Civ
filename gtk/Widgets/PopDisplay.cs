@@ -57,7 +57,7 @@ namespace gtk
 
 		public void Refresh()
 		{
-			Civ.InfoPoblacion pop = ciudad.GetPoblacionInfo;
+			var pop = ciudad.GetPoblacionInfo;
 			label3.Text = pop.Productiva.ToString();
 			label4.Text = pop.PreProductiva.ToString();
 			label5.Text = pop.PostProductiva.ToString();
