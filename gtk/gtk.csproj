@@ -86,10 +86,10 @@
     <Compile Include="Forms\frmCiv.cs" />
     <Compile Include="gtk-gui\gtk.MensView.cs" />
     <Compile Include="Widgets\MensView.cs" />
-    <Compile Include="GeneralCombobox.cs" />
     <Compile Include="gtk-gui\gtk.GeneralCombobox.cs" />
     <Compile Include="gtk-gui\gtk.ArmadaComboBoxWidget.cs" />
     <Compile Include="Widgets\ArmadaComboBoxWidget.cs" />
+    <Compile Include="Widgets\GeneralCombobox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
