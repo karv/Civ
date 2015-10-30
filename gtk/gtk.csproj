@@ -75,21 +75,21 @@
     <Compile Include="IActualizable.cs" />
     <Compile Include="gtk-gui\gtk.ArmadaWidget.cs" />
     <Compile Include="gtk-gui\gtk.wgReclutar.cs" />
-    <Compile Include="gtk-gui\gtk.wgArmadaComboBox.cs" />
     <Compile Include="CellRenderer\CellRendererNumRecluta.cs" />
     <Compile Include="CellRenderer\CellRendererNumTrab.cs" />
     <Compile Include="CellRenderer\CellRendererPrioridadTrab.cs" />
     <Compile Include="Forms\frmCiudad.cs" />
     <Compile Include="Widgets\PopDisplay.cs" />
-    <Compile Include="Widgets\wgArmadaComboBox.cs" />
     <Compile Include="Widgets\wgReclutar.cs" />
     <Compile Include="Widgets\ArmadaWidget.cs" />
     <Compile Include="gtk-gui\gtk.frmCiv.cs" />
     <Compile Include="Forms\frmCiv.cs" />
     <Compile Include="gtk-gui\gtk.MensView.cs" />
     <Compile Include="Widgets\MensView.cs" />
-    <Compile Include="GeneralCombobox.cs" />
     <Compile Include="gtk-gui\gtk.GeneralCombobox.cs" />
+    <Compile Include="gtk-gui\gtk.ArmadaComboBoxWidget.cs" />
+    <Compile Include="Widgets\ArmadaComboBoxWidget.cs" />
+    <Compile Include="Widgets\GeneralCombobox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

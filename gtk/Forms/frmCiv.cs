@@ -1,238 +1,226 @@
-﻿//
-//  frmCiv.cs
-//
-//  Author:
-//       Edgar Carballo <karvayoEdgar@gmail.com>
-//
-//  Copyright (c) 2015 edgar
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
+﻿using System;
 using Civ;
 using Civ.Data;
 
-namespace gtk
+namespace Gtk
 {
 	#region EntryLists
-	class CienciaConoListEntry : Gtk.TreeNode
+	class CienciaConoListEntry : TreeNode
 	{
-		public readonly Ciencia ciencia;
+		public readonly Ciencia Ciencia;
 
-		public CienciaConoListEntry(Ciencia c)
+		public CienciaConoListEntry (Ciencia c)
 		{
-			ciencia = c;
+			Ciencia = c;
 		}
 
-		[Gtk.TreeNodeValue(Column = 0)]
-		public string nombre { get { return ciencia.Nombre; } }
+		[Gtk.TreeNodeValue (Column = 0)]
+		public string Nombre { get { return Ciencia.Nombre; } }
 	}
 
-	class CienciaAbtaListEntry : Gtk.TreeNode
+	class CienciaAbtaListEntry : TreeNode
 	{
-		public readonly InvestigandoCiencia ciencia;
+		public readonly InvestigandoCiencia Ciencia;
 
-		public CienciaAbtaListEntry(InvestigandoCiencia c)
+		public CienciaAbtaListEntry (InvestigandoCiencia c)
 		{
-			ciencia = c;
+			Ciencia = c;
 		}
 
-		[Gtk.TreeNodeValue(Column = 1)]
-		public string nombre { get { return ciencia.Ciencia.Nombre; } }
+		[Gtk.TreeNodeValue (Column = 1)]
+		public string Nombre { get { return Ciencia.Ciencia.Nombre; } }
 
-		[Gtk.TreeNodeValue(Column = 0)]
-		public float getPct { get { return ciencia.ObtPct() * 100; } }
+		[Gtk.TreeNodeValue (Column = 0)]
+		public float Pct { get { return Ciencia.ObtPct () * 100; } }
 	}
 
-	class CityListEntry : Gtk.TreeNode
+	class CityListEntry : TreeNode
 	{
-		public readonly ICiudad ciudad;
+		public readonly ICiudad Ciudad;
 
-		[Gtk.TreeNodeValue(Column = 0)]
-		public string nombre
+		[Gtk.TreeNodeValue (Column = 0)]
+		public string Nombre
 		{
 			get
 			{
-				return ciudad.Nombre;
+				return Ciudad.Nombre;
 			}
 		}
 
-		[Gtk.TreeNodeValue(Column = 1)]
-		public ulong población
+		[Gtk.TreeNodeValue (Column = 1)]
+		public ulong Población
 		{
 			get
 			{
-				return ciudad.GetPoblacionInfo.Total;
+				return Ciudad.GetPoblacionInfo.Total;
 			}
 		}
 
-		[Gtk.TreeNodeValue(Column = 2)]
-		public float Ocupación { get { return (float)ciudad.NumTrabajadores * 100 / ciudad.GetPoblacionInfo.Productiva; } }
+		[Gtk.TreeNodeValue (Column = 2)]
+		public float Ocupación { get { return (float)Ciudad.NumTrabajadores * 100 / Ciudad.GetPoblacionInfo.Productiva; } }
 
-		[Gtk.TreeNodeValue(Column = 3)]
-		public string getNombreTerreno { get { return ciudad.Posición().A.ToString(); } }
+		[Gtk.TreeNodeValue (Column = 3)]
+		public string NombreTerreno { get { return Ciudad.Posición ().A.ToString (); } }
 
-		public CityListEntry(ICiudad ciudad)
+		public CityListEntry (ICiudad ciudad)
 		{
-			this.ciudad = ciudad;
+			Ciudad = ciudad;
 		}
 	}
 
-	class CienciaDetalleListEntry : Gtk.TreeNode
+	class CienciaDetalleListEntry : TreeNode
 	{
-		Recurso recurso;
-		InvestigandoCiencia invest;
+		readonly Recurso _recurso;
+		readonly InvestigandoCiencia _invest;
 
-		public CienciaDetalleListEntry(InvestigandoCiencia inv, Recurso recurso)
+		public CienciaDetalleListEntry (InvestigandoCiencia inv, Recurso recurso)
 		{
-			invest = inv;
-			this.recurso = recurso;
+			_invest = inv;
+			_recurso = recurso;
 		}
 
-		[Gtk.TreeNodeValue(Column = 0)]
+		[Gtk.TreeNodeValue (Column = 0)]
 		public string Recurso
 		{
-			get { return recurso.ToString(); }
+			get { return _recurso.ToString (); }
 		}
 
-		[Gtk.TreeNodeValue(Column = 1)]
+		[Gtk.TreeNodeValue (Column = 1)]
 		public double Progreso
 		{
-			get { return (double)invest[recurso] * 100 / invest.Ciencia.Reqs.Recursos[recurso]; }
+			get { return (double)_invest [_recurso] * 100 / _invest.Ciencia.Reqs.Recursos [_recurso]; }
 		}
 	}
 	#endregion
 
-	public partial class frmCiv : Gtk.Window
+	public partial class FrmCiv : Window
 	{
-		public Civilización civ;
+		public Civilización Civ;
 
-		public readonly System.Collections.Generic.List<IActualizable> formsActualizables = new System.Collections.Generic.List<IActualizable>();
+		public readonly System.Collections.Generic.List<IActualizable> FormsActualizables = new System.Collections.Generic.List<IActualizable> ();
 
 		#region IActualizable implementation
 
 		/// <summary>
 		/// Actualiza esta form y todas sus hijas.
 		/// </summary>
-		public void Actualizar()
+		public void Actualizar ()
 		{
-			ActualizarDebil();
-			foreach (var x in formsActualizables)
+			ActualizarDebil ();
+			foreach (var x in FormsActualizables)
 			{
-				x.Actualizar();
+				x.Actualizar ();
 			}
 		}
 
 		/// <summary>
 		/// Actualiza esta form
 		/// </summary>
-		public void ActualizarDebil()
+		public void ActualizarDebil ()
 		{
-			stCiudad.Clear();
-			foreach (var x in civ.Ciudades)
+			stCiudad.Clear ();
+			foreach (var x in Civ.Ciudades)
 			{
 				//store.AppendValues (new CityListEntry (x));
-				stCiudad.AddNode(new CityListEntry(x));
+				stCiudad.AddNode (new CityListEntry (x));
 			}
 
-			stCienciasCono.Clear();
-			foreach (var x in civ.Avances)
+			stCienciasCono.Clear ();
+			foreach (var x in Civ.Avances)
 			{
-				stCienciasCono.AddNode(new CienciaConoListEntry(x));
+				stCienciasCono.AddNode (new CienciaConoListEntry (x));
 			}
 
-			stCienciasAbtas.Clear();
-			foreach (var x in civ.Investigando)
+			stCienciasAbtas.Clear ();
+			foreach (var x in Civ.Investigando)
 			{				
-				stCienciasAbtas.AddNode(new CienciaAbtaListEntry(x));
+				stCienciasAbtas.AddNode (new CienciaAbtaListEntry (x));
 			}
 
-			ActualizaDetalle();
+			ActualizaDetalle ();
 
-			ArmadaSelector.Clear();
-			foreach (var x in civ.Armadas)
+			ArmadaSelector.Clear ();
+			foreach (var x in Civ.Armadas)
 			{
 				if (!x.EsDefensa)
-					ArmadaSelector.Add(x);
+					ArmadaSelector.Add (x);
 			}
 		}
 
 		/// <summary>
 		/// Actualiza los detalles de investigación
 		/// </summary>
-		void ActualizaDetalle()
+		void ActualizaDetalle ()
 		{
 			// Obtener nodo seleccionado
-			Gtk.NodeSelection r = nvInvestigando.NodeSelection;
+			NodeSelection r = nvInvestigando.NodeSelection;
 			if (r.SelectedNode != null)
 			{
-				InvestigandoCiencia c = ((CienciaAbtaListEntry)r.SelectedNode).ciencia;
+				InvestigandoCiencia c = ((CienciaAbtaListEntry)r.SelectedNode).Ciencia;
 
-				stCienciaDetail.Clear();
+				stCienciaDetail.Clear ();
 				foreach (var x in c.Keys)
 				{
-					stCienciaDetail.AddNode(new CienciaDetalleListEntry(c, x));
+					stCienciaDetail.AddNode (new CienciaDetalleListEntry (c, x));
 				}
 			}
 		}
 
 		#endregion
 
-		Gtk.NodeStore stCiudad = new Gtk.NodeStore(typeof(CityListEntry));
-		Gtk.NodeStore stCienciasCono = new Gtk.NodeStore(typeof(CienciaConoListEntry));
-		Gtk.NodeStore stCienciasAbtas = new Gtk.NodeStore(typeof(CienciaAbtaListEntry));
-		Gtk.NodeStore stCienciaDetail = new Gtk.NodeStore(typeof(CienciaDetalleListEntry));
+		NodeStore stCiudad = new NodeStore (typeof (CityListEntry));
+		NodeStore stCienciasCono = new NodeStore (typeof (CienciaConoListEntry));
+		NodeStore stCienciasAbtas = new NodeStore (typeof (CienciaAbtaListEntry));
+		NodeStore stCienciaDetail = new NodeStore (typeof (CienciaDetalleListEntry));
 
-		public frmCiv(Civilización civ) :
-			base(Gtk.WindowType.Toplevel)
+		public FrmCiv (Civilización civ)
+			: base (WindowType.Toplevel)
 		{
-			this.civ = civ;
+			Civ = civ;
 
-			this.Build();
+			Build ();
 
-			ActualizarDebil();
+			ActualizarDebil ();
 
 			nvCiudades.NodeStore = stCiudad;
 			nvAvances.NodeStore = stCienciasCono;
 			nvInvestigando.NodeStore = stCienciasAbtas;
 			nvInvestDetalle.NodeStore = stCienciaDetail;
 
-			nvCiudades.AppendColumn("Nombre", new Gtk.CellRendererText(), "text", 0);
-			nvCiudades.AppendColumn("Población", new Gtk.CellRendererText(), "text", 1);
-			nvCiudades.AppendColumn("Ocupación", new Gtk.CellRendererProgress(), "value", 2);
-			nvCiudades.AppendColumn("Terreno", new Gtk.CellRendererText(), "text", 3);
+			nvCiudades.AppendColumn ("Nombre", new CellRendererText (), "text", 0);
+			nvCiudades.AppendColumn ("Población", new CellRendererText (), "text", 1);
+			nvCiudades.AppendColumn (
+				"Ocupación",
+				new CellRendererProgress (),
+				"value",
+				2);
+			nvCiudades.AppendColumn ("Terreno", new CellRendererText (), "text", 3);
 
-			nvAvances.AppendColumn("Avance", new Gtk.CellRendererText(), "text", 0);
+			nvAvances.AppendColumn ("Avance", new CellRendererText (), "text", 0);
 
-			nvInvestigando.AppendColumn("%", new Gtk.CellRendererProgress(), "text", 0);
-			nvInvestigando.AppendColumn("Avance", new Gtk.CellRendererText(), "text", 1);
+			nvInvestigando.AppendColumn ("%", new CellRendererProgress (), "text", 0);
+			nvInvestigando.AppendColumn ("Avance", new CellRendererText (), "text", 1);
 
-			nvInvestDetalle.AppendColumn("Recurso", new Gtk.CellRendererText(), "text", 0);
-			nvInvestDetalle.AppendColumn("Progreso", new Gtk.CellRendererProgress(), "value", 1);
+			nvInvestDetalle.AppendColumn ("Recurso", new CellRendererText (), "text", 0);
+			nvInvestDetalle.AppendColumn (
+				"Progreso",
+				new CellRendererProgress (),
+				"value",
+				1);
 
 
-			nvCiudades.Columns[0].Reorderable = false;
-			nvCiudades.Columns[1].Reorderable = true;
-			nvCiudades.Columns[2].Reorderable = true;
-			nvAvances.Columns[0].Reorderable = true;
-			nvInvestigando.Columns[0].MaxWidth = 70;
+			nvCiudades.Columns [0].Reorderable = false;
+			nvCiudades.Columns [1].Reorderable = true;
+			nvCiudades.Columns [2].Reorderable = true;
+			nvAvances.Columns [0].Reorderable = true;
+			nvInvestigando.Columns [0].MaxWidth = 70;
 
 		}
 
-		protected override bool OnDeleteEvent(Gdk.Event evnt)
+		protected override bool OnDeleteEvent (Gdk.Event evnt)
 		{
-			Gtk.Application.Quit();
-			CivGTK.MainClass.endGame = true;
+			Application.Quit ();
+			CivGTK.MainClass.EndGame = true;
 			return true;
 		}
 
@@ -241,16 +229,16 @@ namespace gtk
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="e">E.</param>
-		protected void OnCmdIrActivated(object sender, EventArgs e)
+		protected void OnCmdIrActivated (object sender, EventArgs e)
 		{
-			Gtk.NodeSelection r = nvCiudades.NodeSelection;
+			NodeSelection r = nvCiudades.NodeSelection;
 			if (r.SelectedNode != null)
 			{
-				ICiudad c = ((CityListEntry)r.SelectedNode).ciudad;
+				ICiudad c = ((CityListEntry)r.SelectedNode).Ciudad;
 
-				frmCiudad wind = new frmCiudad(c, this);
-				formsActualizables.Add(wind);
-				wind.Show();
+				var wind = new FrmCiudad (c, this);
+				FormsActualizables.Add (wind);
+				wind.Show ();
 			}	
 		}
 
@@ -258,19 +246,20 @@ namespace gtk
 		/// Agrega un mensaje al pie de formulario.
 		/// </summary>
 		/// <param name="s">String del mensaje</param>
-		public void AddMens(string s)
+		public void AddMens (string s)
 		{
-			Mens.Add(s);
+			Mens.Add (s);
 		}
 
-		protected void OnNvInvestigandoCursorChanged(object sender, EventArgs e)
+		protected void OnNvInvestigandoCursorChanged (object sender, EventArgs e)
 		{
-			ActualizaDetalle();
+			ActualizaDetalle ();
 		}
 
-		protected void OnArmadaSelectoronSelectionChanged(object sender, EventArgs e)
+		protected void OnArmadaSelectoronSelectionChanged (object sender,
+		                                                   EventArgs e)
 		{
-			Armada selArmada = ArmadaSelector.getSelected();
+			Armada selArmada = ArmadaSelector.Selected;
 			if (selArmada == null)
 			{
 				ArmadaSeleccionadaInfo.Visible = false;
@@ -278,18 +267,18 @@ namespace gtk
 			else
 			{
 				ArmadaSeleccionadaInfo.Armada = selArmada;
-				ArmadaSeleccionadaInfo.Actualizar();
-				lbPos.Text = selArmada.Posición.ToString();
+				ArmadaSeleccionadaInfo.Actualizar ();
+				lbPos.Text = selArmada.Posición.ToString ();
 
 				// Las órdenes
 				// Orden Ir a
-				IrACB.LlenarCon(selArmada.Posición.Vecindad(), (x => x.ToString()));
+				IrACB.LlenarCon (selArmada.Posición.Vecindad (), (x => x.ToString ()));
 			}
 		}
 
-		protected void OnCmdActualizaClicked(object sender, EventArgs e)
+		protected void OnCmdActualizaClicked (object sender, EventArgs e)
 		{
-			ActualizarDebil();
+			ActualizarDebil ();
 		}
 
 		/// <summary>
@@ -297,27 +286,28 @@ namespace gtk
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="e">E.</param>
-		protected void OnCmdIrAClicked(object sender, EventArgs e)
+		protected void OnCmdIrAClicked (object sender, EventArgs e)
 		{
-			Terreno destino = (Terreno)IrACB.getSelected();
-			Armada selArmada = ArmadaSelector.getSelected();
+			var destino = IrACB.Selected as Terreno;
+			var selArmada = ArmadaSelector.Selected;
 
-			selArmada.Orden = new Civ.Orden.OrdenIr(selArmada, destino.Pos);
+			selArmada.Orden = new Civ.Orden.OrdenIr (selArmada, destino.Pos);
 		}
 
-		protected void OnCmdColonizarClicked(object sender, EventArgs e)
+		protected void OnCmdColonizarClicked (object sender, EventArgs e)
 		{
-			Armada selArmada = ArmadaSelector.getSelected();
+			Armada selArmada = ArmadaSelector.Selected;
+			// FIXME: Si no pondo = null, tira error de compilación en .Colonizar (Use of unassigned variable Colonizador
 			Stack Colonizador = null;
-			if (selArmada?.PuedeColonizar(out Colonizador) ?? false)
+			if (selArmada?.PuedeColonizar (out Colonizador) ?? false)
 			{
-				Colonizador.Colonizar();
+				Colonizador.Colonizar ();
 			}
 		}
 
-		protected void OnNotebook1SwitchPage(object sender, EventArgs e)
+		protected void OnNotebook1SwitchPage (object sender, EventArgs e)
 		{
-			ActualizarDebil();
+			ActualizarDebil ();
 		}
 	}
 }
