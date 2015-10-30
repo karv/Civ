@@ -22,7 +22,7 @@ using System;
 using Civ;
 using Civ.Data;
 
-namespace gtk
+namespace Gtk
 {
 	#region EntryLists
 	class CienciaConoListEntry : Gtk.TreeNode
@@ -248,7 +248,7 @@ namespace gtk
 			{
 				ICiudad c = ((CityListEntry)r.SelectedNode).ciudad;
 
-				frmCiudad wind = new frmCiudad(c, this);
+				FrmCiudad wind = new FrmCiudad(c, this);
 				formsActualizables.Add(wind);
 				wind.Show();
 			}	

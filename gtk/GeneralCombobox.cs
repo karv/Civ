@@ -21,7 +21,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace gtk
+namespace Gtk
 {
 	[System.ComponentModel.ToolboxItem(true)]
 	public partial class GeneralCombobox : Gtk.Bin

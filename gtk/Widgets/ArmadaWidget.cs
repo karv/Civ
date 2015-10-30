@@ -21,7 +21,7 @@
 using System;
 using Civ;
 
-namespace gtk
+namespace Gtk
 {
 	class UnidadListEntry : Gtk.TreeNode
 	{

@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using Civ;
 using Gtk;
 
-namespace gtk
+namespace Gtk
 {
 	[System.ComponentModel.ToolboxItem(true)]
 	public partial class wgArmadaComboBox : Gtk.Bin, IEnumerable<Armada>

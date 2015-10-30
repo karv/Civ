@@ -20,7 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 
-namespace gtk
+namespace Gtk
 {
 
 	[System.ComponentModel.ToolboxItem(true)]

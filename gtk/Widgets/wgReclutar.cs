@@ -22,7 +22,7 @@ using Civ;
 using Civ.Data;
 using System;
 
-namespace gtk
+namespace Gtk
 {
 	/// <summary>
 	/// Widget para reclutar
