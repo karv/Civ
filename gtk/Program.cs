@@ -38,7 +38,7 @@ namespace CivGTK
 			Juego.Data = Store.Store<GameData>.Deserialize(f);
 		}
 
-		static Gtk.frmCiv win;
+		static Gtk.FrmCiv win;
 		public static bool endGame;
 
 		public static void Main()
@@ -58,7 +58,7 @@ namespace CivGTK
 			MyCiv.AlNuevoMensaje += MuestraMensajes;
 
 			Application.Init();
-			win = new Gtk.frmCiv(MyCiv);
+			win = new Gtk.FrmCiv(MyCiv);
 			win.Show();
 			timer = DateTime.Now;
 

@@ -131,7 +131,7 @@ namespace Gtk
 	public partial class FrmCiudad : Window, IActualizable
 	{
 		public readonly ICiudad Ciudad;
-		public readonly frmCiv MainWindow;
+		public readonly FrmCiv MainWindow;
 
 		#region IActualizable implementation
 
@@ -174,7 +174,7 @@ namespace Gtk
 		NodeStore stRecurso = new NodeStore (typeof (RecursoListEntry));
 		NodeStore stTrabajo = new NodeStore (typeof (TrabajoListEntry));
 
-		public FrmCiudad (ICiudad ciudad, frmCiv main)
+		public FrmCiudad (ICiudad ciudad, FrmCiv main)
 			: base (WindowType.Toplevel)
 		{
 			MainWindow = main;
@@ -184,7 +184,7 @@ namespace Gtk
 			//ArmadaCombobox.Add(ciudad.Defensa, "Defensa");
 
 			armDefensa.Armada = ciudad.Defensa;
-			rcReclutar.ciudad = ciudad;
+			rcReclutar.Ciudad = ciudad;
 			popdisplay1.Ciudad = ciudad;
 
 			rcReclutar.ConstruirModelo ();
@@ -229,7 +229,7 @@ namespace Gtk
 
 		protected override void OnDestroyed ()
 		{
-			MainWindow.formsActualizables.Remove (this);
+			MainWindow.FormsActualizables.Remove (this);
 			base.OnDestroyed ();
 		}
 
@@ -247,7 +247,7 @@ namespace Gtk
 		protected void OnArmadaComboboxonSelectionChanged (object sender,
 		                                                   EventArgs e)
 		{
-			Armada selArmada = ArmadaCombobox.getSelected ();
+			Armada selArmada = ArmadaCombobox.Selected;
 			if (selArmada == null)
 			{
 				armSeleccionada.Visible = false;
@@ -262,7 +262,7 @@ namespace Gtk
 		protected void OnCmdAddClicked (object sender, EventArgs e)
 		{
 			Stack c = armDefensa.getSelected ();
-			Armada selArmada = ArmadaCombobox.getSelected ();
+			Armada selArmada = ArmadaCombobox.Selected;
 			if (c == null || selArmada == null)
 			{
 				System.Diagnostics.Debug.WriteLine ("No se seleccionó unidad o armada.");

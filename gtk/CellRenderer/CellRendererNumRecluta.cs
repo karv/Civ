@@ -25,12 +25,12 @@
 			ulong res;
 			if (ulong.TryParse (new_text, out res) && res > 0)
 			{
-				var nodo = Store.GetNode (new TreePath (path)) as wgReclutar.ReclutarListEntry;
-				nodo.ciudad.Reclutar (nodo.unidad, res);
+				var nodo = Store.GetNode (new TreePath (path)) as ReclutarWidget.ReclutarListEntry;
+				nodo.Ciudad.Reclutar (nodo.Unidad, res);
 				System.Diagnostics.Debug.WriteLine (string.Format (
 					"Se reclutaron {0} unidad(es) del tipo {1}",
 					res,
-					nodo.unidad));
+					nodo.Unidad));
 			}
 		}
 	}
