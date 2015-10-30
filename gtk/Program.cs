@@ -13,11 +13,6 @@ namespace CivGTK
 		const float MultiplicadorVelocidad = 360;
 		public static Civilización MyCiv;
 
-		static void DoRead (string f = "Data.xml")
-		{
-			Juego.Data = Store.Store<GameData>.Deserialize (f);
-		}
-
 		static FrmCiv win;
 		public static bool EndGame;
 
