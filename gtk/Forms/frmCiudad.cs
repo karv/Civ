@@ -261,7 +261,7 @@ namespace Gtk
 
 		protected void OnCmdAddClicked (object sender, EventArgs e)
 		{
-			Stack c = armDefensa.getSelected ();
+			Stack c = armDefensa.Selected;
 			Armada selArmada = ArmadaCombobox.Selected;
 			if (c == null || selArmada == null)
 			{

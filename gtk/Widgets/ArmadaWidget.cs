@@ -1,91 +1,73 @@
-﻿//
-//  ArmadaWidget.cs
-//
-//  Author:
-//       Edgar Carballo <karvayoEdgar@gmail.com>
-//
-//  Copyright (c) 2015 edgar
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
-using Civ;
+﻿using Civ;
 
 namespace Gtk
 {
-	class UnidadListEntry : Gtk.TreeNode
+	class UnidadListEntry : TreeNode
 	{
-		public readonly Stack unidad;
+		public readonly Stack Unidad;
 
-		public UnidadListEntry(Stack unidad)
+		public UnidadListEntry (Stack unidad)
 		{
-			this.unidad = unidad;
+			Unidad = unidad;
 		}
 
-		[Gtk.TreeNodeValue(Column = 0)]
+		[Gtk.TreeNodeValue (Column = 0)]
 		public string Tipo
 		{
 			get
 			{
-				return unidad.RAW.Nombre;
+				return Unidad.RAW.Nombre;
 			}
 		}
 
-		[Gtk.TreeNodeValue(Column = 1)]
-		public ulong Cantidad { get { return unidad.Cantidad; } }
+		[Gtk.TreeNodeValue (Column = 1)]
+		public ulong Cantidad { get { return Unidad.Cantidad; } }
 
-		[Gtk.TreeNodeValue(Column = 2)]
-		public float Entrenamiento { get { return unidad.Entrenamiento; } }
+		[Gtk.TreeNodeValue (Column = 2)]
+		public float Entrenamiento { get { return Unidad.Entrenamiento; } }
 	}
 
-	[System.ComponentModel.ToolboxItem(true)]
-	public partial class ArmadaWidget : Gtk.Bin, IActualizable
+	[System.ComponentModel.ToolboxItem (true)]
+	public partial class ArmadaWidget : Bin, IActualizable
 	{
-		public Gtk.NodeStore store = new Gtk.NodeStore(typeof(UnidadListEntry));
-		public Civ.Armada Armada;
+		public NodeStore Store = new NodeStore (typeof (UnidadListEntry));
+		public Armada Armada;
 
-		public ArmadaWidget()
+		public ArmadaWidget ()
 		{
-			this.Build();
+			Build ();
 
-			nodeview2.AppendColumn("Tipo", new Gtk.CellRendererText(), "text", 0);
-			nodeview2.AppendColumn("Cantidad", new Gtk.CellRendererText(), "text", 1);
-			nodeview2.AppendColumn("Entrenamiento", new Gtk.CellRendererText(), "text", 2);
-			nodeview2.NodeStore = store;
+			nodeview2.AppendColumn ("Tipo", new CellRendererText (), "text", 0);
+			nodeview2.AppendColumn ("Cantidad", new CellRendererText (), "text", 1);
+			nodeview2.AppendColumn ("Entrenamiento", new CellRendererText (), "text", 2);
+			nodeview2.NodeStore = Store;
 		}
 
 		/// <summary>
 		/// Devuelve la unidad seleccionada.
 		/// </summary>
 		/// <returns>The selected.</returns>
-		public Civ.Stack getSelected()
+		public Stack Selected
 		{
-			Gtk.NodeSelection r = nodeview2.NodeSelection;
-			if (r.SelectedNode == null)
-				return null;
-			Stack c = ((UnidadListEntry)r.SelectedNode).unidad;
+			get
+			{
+				NodeSelection r = nodeview2.NodeSelection;
+				if (r.SelectedNode == null)
+					return null;
+				Stack c = ((UnidadListEntry)r.SelectedNode).Unidad;
 
-			return c;
+				return c;
+			}
 		}
 
 		#region IActualizable implementation
 
-		public void Actualizar()
+		public void Actualizar ()
 		{
-			store.Clear();
+			Store.Clear ();
 			foreach (var x in Armada.Unidades)
 			{
-				store.AddNode(new UnidadListEntry(x));
+				Store.AddNode (new UnidadListEntry (x));
 			}
 /*
 			System.Collections.Generic.Dictionary <UnidadRAW, System.Collections.Generic.List <Unidad>> unid = Armada.ToDictionary();
@@ -103,4 +85,3 @@ namespace Gtk
 		#endregion
 	}
 }
-
