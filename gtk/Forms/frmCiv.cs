@@ -220,7 +220,7 @@ namespace Gtk
 		protected override bool OnDeleteEvent (Gdk.Event evnt)
 		{
 			Application.Quit ();
-			CivGTK.MainClass.endGame = true;
+			CivGTK.MainClass.EndGame = true;
 			return true;
 		}
 
@@ -288,7 +288,7 @@ namespace Gtk
 		/// <param name="e">E.</param>
 		protected void OnCmdIrAClicked (object sender, EventArgs e)
 		{
-			var destino = IrACB.getSelected () as Terreno;
+			var destino = IrACB.Selected as Terreno;
 			var selArmada = ArmadaSelector.Selected;
 
 			selArmada.Orden = new Civ.Orden.OrdenIr (selArmada, destino.Pos);
