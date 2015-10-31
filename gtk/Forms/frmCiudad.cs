@@ -8,14 +8,19 @@ namespace Gtk
 	#region TreeNodes
 	class EdifConstrEntry : TreeNode
 	{
-		public Edificio Edificio { get; }
+		public Edificio Edif { get; }
+
+		public EdifConstrEntry (Edificio edificio)
+		{
+			Edif = edificio;
+		}
 
 		[Gtk.TreeNodeValue (Column = 0)]
 		public string Mostrar
 		{
 			get
 			{
-				return Edificio.Nombre;
+				return Edif.Nombre;
 			}
 		}
 	}
@@ -170,6 +175,12 @@ namespace Gtk
 				ArmadaCombobox.Add (x);
 			}
 
+			stEdifs.Clear ();
+			foreach (var x in Ciudad.Edificios)
+			{
+				stEdifs.AddNode (new EdifConstrEntry (x));
+			}
+
 			armSeleccionada.Visible = false;
 
 			armDefensa.Actualizar ();
@@ -240,8 +251,7 @@ namespace Gtk
 				"Nombre",
 				new CellRendererText (),
 				"text",
-				0);
-			
+				0);	
 		}
 
 		// Analysis disable UnusedParameter
