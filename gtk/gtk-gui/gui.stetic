@@ -8,31 +8,6 @@
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/gtk.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">MainWindow</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <signal name="DeleteEvent" handler="OnDeleteEvent" />
-    <child>
-      <widget class="Gtk.Notebook" id="notebook1">
-        <property name="MemberName" />
-        <property name="CanFocus">True</property>
-        <property name="CurrentPage">0</property>
-        <child>
-          <placeholder />
-        </child>
-        <child>
-          <widget class="Gtk.Label" id="label1">
-            <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">page1</property>
-          </widget>
-          <packing>
-            <property name="type">tab</property>
-          </packing>
-        </child>
-      </widget>
-    </child>
-  </widget>
   <widget class="Gtk.Window" id="Gtk.FrmCiudad" design-size="877 384">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frmCiudad</property>
