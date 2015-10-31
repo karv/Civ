@@ -180,6 +180,8 @@ namespace Gtk
 
 			Build ();
 
+			Title = civ.Nombre;
+
 			ActualizarDebil ();
 
 			nvCiudades.NodeStore = stCiudad;
