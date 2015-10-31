@@ -293,7 +293,7 @@ namespace Gtk
 			var destino = IrACB.Selected as Terreno;
 			var selArmada = ArmadaSelector.Selected;
 
-			selArmada.Orden = new Civ.Orden.OrdenIr (selArmada, destino.Pos);
+			selArmada.Orden = new Civ.Orden.OrdenIrALugar (selArmada, destino.Pos);
 		}
 
 		protected void OnCmdColonizarClicked (object sender, EventArgs e)
