@@ -56,13 +56,25 @@ namespace Gtk
 		
 		private global::Gtk.Frame frame2;
 		
-		private global::Gtk.Alignment GtkAlignment1;
+		private global::Gtk.Alignment GtkAlignment3;
 		
 		private global::Gtk.ReclutarWidget rcReclutar;
 		
-		private global::Gtk.Label GtkLabel2;
+		private global::Gtk.Label GtkLabel4;
 		
 		private global::Gtk.Label label7;
+		
+		private global::Gtk.HBox hbox6;
+		
+		private global::Gtk.VBox vbox5;
+		
+		private global::Gtk.Label label9;
+		
+		private global::Gtk.ScrolledWindow GtkScrolledWindow4;
+		
+		private global::Gtk.NodeView nvEdifiosConstruidos;
+		
+		private global::Gtk.Label label8;
 
 		protected virtual void Build ()
 		{
@@ -75,7 +87,7 @@ namespace Gtk
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 3;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox1 = new global::Gtk.VBox ();
 			this.vbox1.Name = "vbox1";
@@ -262,21 +274,21 @@ namespace Gtk
 			this.frame2.Name = "frame2";
 			this.frame2.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame2.Gtk.Container+ContainerChild
-			this.GtkAlignment1 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
-			this.GtkAlignment1.Name = "GtkAlignment1";
-			this.GtkAlignment1.LeftPadding = ((uint)(12));
-			// Container child GtkAlignment1.Gtk.Container+ContainerChild
+			this.GtkAlignment3 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment3.Name = "GtkAlignment3";
+			this.GtkAlignment3.LeftPadding = ((uint)(12));
+			// Container child GtkAlignment3.Gtk.Container+ContainerChild
 			this.rcReclutar = new global::Gtk.ReclutarWidget ();
 			this.rcReclutar.Events = ((global::Gdk.EventMask)(256));
 			this.rcReclutar.Name = "rcReclutar";
-			this.GtkAlignment1.Add (this.rcReclutar);
-			this.frame2.Add (this.GtkAlignment1);
-			this.GtkLabel2 = new global::Gtk.Label ();
-			this.GtkLabel2.Name = "GtkLabel2";
-			this.GtkLabel2.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>_Reclutar</b>");
-			this.GtkLabel2.UseMarkup = true;
-			this.GtkLabel2.UseUnderline = true;
-			this.frame2.LabelWidget = this.GtkLabel2;
+			this.GtkAlignment3.Add (this.rcReclutar);
+			this.frame2.Add (this.GtkAlignment3);
+			this.GtkLabel4 = new global::Gtk.Label ();
+			this.GtkLabel4.Name = "GtkLabel4";
+			this.GtkLabel4.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>_Reclutar</b>");
+			this.GtkLabel4.UseMarkup = true;
+			this.GtkLabel4.UseUnderline = true;
+			this.frame2.LabelWidget = this.GtkLabel4;
 			this.hbox4.Add (this.frame2);
 			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.frame2]));
 			w25.Position = 2;
@@ -292,12 +304,58 @@ namespace Gtk
 			this.label7.UseUnderline = true;
 			this.notebook1.SetTabLabel (this.hbox4, this.label7);
 			this.label7.ShowAll ();
+			// Container child notebook1.Gtk.Notebook+NotebookChild
+			this.hbox6 = new global::Gtk.HBox ();
+			this.hbox6.Name = "hbox6";
+			this.hbox6.Spacing = 6;
+			// Container child hbox6.Gtk.Box+BoxChild
+			this.vbox5 = new global::Gtk.VBox ();
+			this.vbox5.Name = "vbox5";
+			this.vbox5.Spacing = 6;
+			// Container child vbox5.Gtk.Box+BoxChild
+			this.label9 = new global::Gtk.Label ();
+			this.label9.Name = "label9";
+			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString ("Edificios construidos");
+			this.vbox5.Add (this.label9);
+			global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.label9]));
+			w27.Position = 0;
+			w27.Expand = false;
+			w27.Fill = false;
+			// Container child vbox5.Gtk.Box+BoxChild
+			this.GtkScrolledWindow4 = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow4.Name = "GtkScrolledWindow4";
+			this.GtkScrolledWindow4.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow4.Gtk.Container+ContainerChild
+			this.nvEdifiosConstruidos = new global::Gtk.NodeView ();
+			this.nvEdifiosConstruidos.WidthRequest = 600;
+			this.nvEdifiosConstruidos.CanFocus = true;
+			this.nvEdifiosConstruidos.Name = "nvEdifiosConstruidos";
+			this.GtkScrolledWindow4.Add (this.nvEdifiosConstruidos);
+			this.vbox5.Add (this.GtkScrolledWindow4);
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.GtkScrolledWindow4]));
+			w29.Position = 1;
+			this.hbox6.Add (this.vbox5);
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.vbox5]));
+			w30.Position = 0;
+			w30.Expand = false;
+			w30.Fill = false;
+			this.notebook1.Add (this.hbox6);
+			global::Gtk.Notebook.NotebookChild w31 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox6]));
+			w31.Position = 3;
+			// Notebook tab
+			this.label8 = new global::Gtk.Label ();
+			this.label8.Name = "label8";
+			this.label8.LabelProp = global::Mono.Unix.Catalog.GetString ("_Edificios");
+			this.label8.UseUnderline = true;
+			this.notebook1.SetTabLabel (this.hbox6, this.label8);
+			this.label8.ShowAll ();
 			this.Add (this.notebook1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 877;
 			this.DefaultHeight = 384;
+			this.label9.MnemonicWidget = this.nvEdifiosConstruidos;
 			this.Show ();
 			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
 			this.cmdAddArmada.Clicked += new global::System.EventHandler (this.OnCmdAddArmadaClicked);

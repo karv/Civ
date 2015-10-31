@@ -6,6 +6,20 @@ using Civ.Data;
 namespace Gtk
 {
 	#region TreeNodes
+	class EdifConstrEntry : TreeNode
+	{
+		public Edificio Edificio { get; }
+
+		[Gtk.TreeNodeValue (Column = 0)]
+		public string Mostrar
+		{
+			get
+			{
+				return Edificio.Nombre;
+			}
+		}
+	}
+
 	class TrabajoListEntry : TreeNode
 	{
 		public readonly Trabajo Trabajo;
@@ -173,6 +187,7 @@ namespace Gtk
 
 		NodeStore stRecurso = new NodeStore (typeof (RecursoListEntry));
 		NodeStore stTrabajo = new NodeStore (typeof (TrabajoListEntry));
+		NodeStore stEdifs = new NodeStore (typeof (EdifConstrEntry));
 
 		public FrmCiudad (ICiudad ciudad, FrmCiv main)
 			: base (WindowType.Toplevel)
@@ -219,6 +234,14 @@ namespace Gtk
 			nvRecursos.AppendColumn ("Nombre", new CellRendererText (), "text", 1);
 			nvRecursos.AppendColumn ("Cantidad", new CellRendererText (), "text", 2);
 			nvRecursos.AppendColumn ("Delta/h", new CellRendererText (), "text", 3);
+
+			nvEdifiosConstruidos.NodeStore = stEdifs;
+			nvEdifiosConstruidos.AppendColumn (
+				"Nombre",
+				new CellRendererText (),
+				"text",
+				0);
+			
 		}
 
 		// Analysis disable UnusedParameter
