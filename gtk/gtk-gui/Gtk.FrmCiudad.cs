@@ -10,7 +10,7 @@ namespace Gtk
 		
 		private global::Gtk.HBox hbox1;
 		
-		private Gtk.PopDisplay popdisplay1;
+		private global::Gtk.PopDisplay popdisplay1;
 		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
 		
@@ -30,13 +30,13 @@ namespace Gtk
 		
 		private global::Gtk.HBox hbox4;
 		
-		private Gtk.ArmadaWidget armDefensa;
+		private global::Gtk.ArmadaWidget armDefensa;
 		
 		private global::Gtk.VBox vbox3;
 		
 		private global::Gtk.HBox hbox5;
 		
-		private Gtk.ArmadaComboBoxWidget ArmadaCombobox;
+		private global::Gtk.ArmadaComboBoxWidget ArmadaCombobox;
 		
 		private global::Gtk.Button cmdAddArmada;
 		
@@ -46,7 +46,7 @@ namespace Gtk
 		
 		private global::Gtk.VBox vbox4;
 		
-		private Gtk.ArmadaWidget armSeleccionada;
+		private global::Gtk.ArmadaWidget armSeleccionada;
 		
 		private global::Gtk.HButtonBox btboxEditArmada;
 		
@@ -58,7 +58,7 @@ namespace Gtk
 		
 		private global::Gtk.Alignment GtkAlignment1;
 		
-		private Gtk.ReclutarWidget rcReclutar;
+		private global::Gtk.ReclutarWidget rcReclutar;
 		
 		private global::Gtk.Label GtkLabel2;
 		
@@ -67,15 +67,15 @@ namespace Gtk
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
-			// Widget gtk.frmCiudad
-			this.Name = "gtk.frmCiudad";
+			// Widget Gtk.FrmCiudad
+			this.Name = "Gtk.FrmCiudad";
 			this.Title = global::Mono.Unix.Catalog.GetString ("frmCiudad");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
-			// Container child gtk.frmCiudad.Gtk.Container+ContainerChild
+			// Container child Gtk.FrmCiudad.Gtk.Container+ContainerChild
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 1;
+			this.notebook1.CurrentPage = 0;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox1 = new global::Gtk.VBox ();
 			this.vbox1.Name = "vbox1";
@@ -86,7 +86,7 @@ namespace Gtk
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.popdisplay1 = new Gtk.PopDisplay ();
+			this.popdisplay1 = new global::Gtk.PopDisplay ();
 			this.popdisplay1.Events = ((global::Gdk.EventMask)(256));
 			this.popdisplay1.Name = "popdisplay1";
 			this.hbox1.Add (this.popdisplay1);
@@ -161,7 +161,7 @@ namespace Gtk
 			this.hbox4.Name = "hbox4";
 			this.hbox4.Spacing = 6;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.armDefensa = new Gtk.ArmadaWidget ();
+			this.armDefensa = new global::Gtk.ArmadaWidget ();
 			this.armDefensa.Events = ((global::Gdk.EventMask)(256));
 			this.armDefensa.Name = "armDefensa";
 			this.hbox4.Add (this.armDefensa);
@@ -176,7 +176,7 @@ namespace Gtk
 			this.hbox5.Name = "hbox5";
 			this.hbox5.Spacing = 6;
 			// Container child hbox5.Gtk.Box+BoxChild
-			this.ArmadaCombobox = new Gtk.ArmadaComboBoxWidget ();
+			this.ArmadaCombobox = new global::Gtk.ArmadaComboBoxWidget ();
 			this.ArmadaCombobox.Events = ((global::Gdk.EventMask)(256));
 			this.ArmadaCombobox.Name = "ArmadaCombobox";
 			this.hbox5.Add (this.ArmadaCombobox);
@@ -189,10 +189,7 @@ namespace Gtk
 			this.cmdAddArmada.CanFocus = true;
 			this.cmdAddArmada.Name = "cmdAddArmada";
 			global::Gtk.Image w12 = new global::Gtk.Image ();
-			w12.Pixbuf = global::Stetic.IconLoader.LoadIcon (
-				this,
-				"gtk-add",
-				global::Gtk.IconSize.Menu);
+			w12.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-add", global::Gtk.IconSize.Menu);
 			this.cmdAddArmada.Image = w12;
 			this.hbox5.Add (this.cmdAddArmada);
 			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.cmdAddArmada]));
@@ -217,7 +214,7 @@ namespace Gtk
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.armSeleccionada = new Gtk.ArmadaWidget ();
+			this.armSeleccionada = new global::Gtk.ArmadaWidget ();
 			this.armSeleccionada.Events = ((global::Gdk.EventMask)(256));
 			this.armSeleccionada.Name = "armSeleccionada";
 			this.vbox4.Add (this.armSeleccionada);
@@ -233,10 +230,7 @@ namespace Gtk
 			this.cmdAdd.UseUnderline = true;
 			this.cmdAdd.Label = global::Mono.Unix.Catalog.GetString ("_A armada");
 			global::Gtk.Image w16 = new global::Gtk.Image ();
-			w16.Pixbuf = global::Stetic.IconLoader.LoadIcon (
-				this,
-				"stock_right",
-				global::Gtk.IconSize.SmallToolbar);
+			w16.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "stock_right", global::Gtk.IconSize.SmallToolbar);
 			this.cmdAdd.Image = w16;
 			this.btboxEditArmada.Add (this.cmdAdd);
 			global::Gtk.ButtonBox.ButtonBoxChild w17 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.btboxEditArmada [this.cmdAdd]));
@@ -272,7 +266,7 @@ namespace Gtk
 			this.GtkAlignment1.Name = "GtkAlignment1";
 			this.GtkAlignment1.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment1.Gtk.Container+ContainerChild
-			this.rcReclutar = new Gtk.ReclutarWidget ();
+			this.rcReclutar = new global::Gtk.ReclutarWidget ();
 			this.rcReclutar.Events = ((global::Gdk.EventMask)(256));
 			this.rcReclutar.Name = "rcReclutar";
 			this.GtkAlignment1.Add (this.rcReclutar);
@@ -299,15 +293,13 @@ namespace Gtk
 			this.notebook1.SetTabLabel (this.hbox4, this.label7);
 			this.label7.ShowAll ();
 			this.Add (this.notebook1);
-			if ((this.Child != null))
-			{
+			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 724;
-			this.DefaultHeight = 380;
+			this.DefaultWidth = 877;
+			this.DefaultHeight = 384;
 			this.Show ();
 			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
-			this.ArmadaCombobox.OnSelectionChanged += new global::System.EventHandler (this.OnArmadaComboboxonSelectionChanged);
 			this.cmdAddArmada.Clicked += new global::System.EventHandler (this.OnCmdAddArmadaClicked);
 			this.cmdAdd.Clicked += new global::System.EventHandler (this.OnCmdAddClicked);
 		}

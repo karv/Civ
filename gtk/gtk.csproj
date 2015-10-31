@@ -70,10 +70,7 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="gtk-gui\gtk.frmCiudad.cs" />
-    <Compile Include="gtk-gui\gtk.PopDisplay.cs" />
     <Compile Include="IActualizable.cs" />
-    <Compile Include="gtk-gui\gtk.ArmadaWidget.cs" />
     <Compile Include="gtk-gui\gtk.wgReclutar.cs" />
     <Compile Include="CellRenderer\CellRendererNumRecluta.cs" />
     <Compile Include="CellRenderer\CellRendererNumTrab.cs" />
@@ -84,12 +81,15 @@
     <Compile Include="Widgets\ArmadaWidget.cs" />
     <Compile Include="gtk-gui\gtk.frmCiv.cs" />
     <Compile Include="Forms\frmCiv.cs" />
-    <Compile Include="gtk-gui\gtk.MensView.cs" />
     <Compile Include="Widgets\MensView.cs" />
-    <Compile Include="gtk-gui\gtk.GeneralCombobox.cs" />
-    <Compile Include="gtk-gui\gtk.ArmadaComboBoxWidget.cs" />
     <Compile Include="Widgets\ArmadaComboBoxWidget.cs" />
     <Compile Include="Widgets\GeneralCombobox.cs" />
+    <Compile Include="gtk-gui\Gtk.FrmCiudad.cs" />
+    <Compile Include="gtk-gui\Gtk.PopDisplay.cs" />
+    <Compile Include="gtk-gui\Gtk.ArmadaComboBoxWidget.cs" />
+    <Compile Include="gtk-gui\Gtk.ArmadaWidget.cs" />
+    <Compile Include="gtk-gui\Gtk.GeneralCombobox.cs" />
+    <Compile Include="gtk-gui\Gtk.MensView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

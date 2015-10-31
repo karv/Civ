@@ -9,10 +9,10 @@ namespace Gtk
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
-			// Widget gtk.wgArmadaComboBox
+			// Widget Gtk.ArmadaComboBoxWidget
 			global::Stetic.BinContainer.Attach (this);
-			this.Name = "gtk.wgArmadaComboBox";
-			// Container child gtk.wgArmadaComboBox.Gtk.Container+ContainerChild
+			this.Name = "Gtk.ArmadaComboBoxWidget";
+			// Container child Gtk.ArmadaComboBoxWidget.Gtk.Container+ContainerChild
 			this.comboBox = global::Gtk.ComboBox.NewText ();
 			this.comboBox.Name = "comboBox";
 			this.Add (this.comboBox);

@@ -21,10 +21,10 @@ namespace Gtk
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
-			// Widget gtk.PopDisplay
+			// Widget Gtk.PopDisplay
 			global::Stetic.BinContainer.Attach (this);
-			this.Name = "gtk.PopDisplay";
-			// Container child gtk.PopDisplay.Gtk.Container+ContainerChild
+			this.Name = "Gtk.PopDisplay";
+			// Container child Gtk.PopDisplay.Gtk.Container+ContainerChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;

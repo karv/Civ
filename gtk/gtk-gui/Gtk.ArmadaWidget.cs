@@ -11,10 +11,10 @@ namespace Gtk
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
-			// Widget gtk.ArmadaWidget
+			// Widget Gtk.ArmadaWidget
 			global::Stetic.BinContainer.Attach (this);
-			this.Name = "gtk.ArmadaWidget";
-			// Container child gtk.ArmadaWidget.Gtk.Container+ContainerChild
+			this.Name = "Gtk.ArmadaWidget";
+			// Container child Gtk.ArmadaWidget.Gtk.Container+ContainerChild
 			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));

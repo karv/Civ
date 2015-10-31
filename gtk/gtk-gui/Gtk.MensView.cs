@@ -17,10 +17,10 @@ namespace Gtk
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
-			// Widget gtk.MensView
+			// Widget Gtk.MensView
 			global::Stetic.BinContainer.Attach (this);
-			this.Name = "gtk.MensView";
-			// Container child gtk.MensView.Gtk.Container+ContainerChild
+			this.Name = "Gtk.MensView";
+			// Container child Gtk.MensView.Gtk.Container+ContainerChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
