@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Gtk
 {
@@ -60,7 +61,32 @@ namespace Gtk
 			}
 			set
 			{
-				combobox.ActiveText = value;
+				TreeIter iter;
+				combobox.Model.GetIterFirst (out iter);
+				do
+				{
+					var thisRow = new GLib.Value ();
+					combobox.Model.GetValue (iter, 0, ref thisRow);
+					if ((thisRow.Val as string).Equals (value))
+					{
+						combobox.SetActiveIter (iter);
+						return;
+					}
+				}
+				while (combobox.Model.IterNext (ref iter));
+
+				throw new Exception (string.Format (
+					"No se encuentra objeto con nombre {0} en el combobox {1}",
+					value,
+					this));
+			}
+		}
+
+		public int ÍndiceSelección
+		{
+			set
+			{
+				combobox.Active = value;
 			}
 		}
 

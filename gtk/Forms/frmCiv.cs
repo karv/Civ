@@ -236,7 +236,7 @@ namespace Gtk
 			NodeSelection r = nvCiudades.NodeSelection;
 			if (r.SelectedNode != null)
 			{
-				ICiudad c = ((CityListEntry)r.SelectedNode).Ciudad;
+				var c = ((CityListEntry)r.SelectedNode).Ciudad as Ciudad;
 
 				var wind = new FrmCiudad (c, this);
 				FormsActualizables.Add (wind);
