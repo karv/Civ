@@ -263,6 +263,9 @@ namespace Gtk
 				new CellRendererText (),
 				"text",
 				0);	
+
+			// Eventos
+			EdifConstruyendoCB.AlCambiarSelección += OnEdifConstruyendoCBOnSelectionChanged;
 		}
 
 		// Analysis disable UnusedParameter
@@ -316,6 +319,36 @@ namespace Gtk
 			armDefensa.Armada.QuitarUnidad (c);
 			armDefensa.Actualizar ();
 			armSeleccionada.Actualizar ();
+		}
+
+		/// <summary>
+		/// Al cambiar edificio construyendo
+		/// </summary>
+		protected void OnEdifConstruyendoCBOnSelectionChanged (object sender,
+		                                                       EventArgs e)
+		{
+			var sel = EdifConstruyendoCB.Selected as EdificioRAW;
+			if (sel != Ciudad.RAWConstruyendo)
+			{
+				Ciudad.EdifConstruyendo = sel != null ? new EdificioConstruyendo (
+					sel,
+					Ciudad) : null;
+			}
+
+			// Actualizar info
+			InfoCompletaciónEdif.Text = "";
+			var compl = Ciudad.EdifConstruyendo;
+			if (compl == null)
+			{
+				InfoCompletaciónEdif.Text = "Sin construcción.";
+				return;
+			}
+
+			foreach (var x in compl.RAW.ReqRecursos)
+			{
+				InfoCompletaciónEdif.Text += string.Format
+					("{0}: {1}/{2}\n\r", x.Key, compl.RecursosAcumulados [x.Key], x.Value);
+			}
 		}
 		// Analysis restore UnusedParameter
 	}

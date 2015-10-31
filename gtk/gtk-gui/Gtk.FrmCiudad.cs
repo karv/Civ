@@ -80,9 +80,7 @@ namespace Gtk
 		
 		private global::Gtk.GeneralCombobox EdifConstruyendoCB;
 		
-		private global::Gtk.ScrolledWindow GtkScrolledWindow5;
-		
-		private global::Gtk.TextView InfoCompletaciónEdifTB;
+		private global::Gtk.Label InfoCompletaciónEdif;
 		
 		private global::Gtk.Label label8;
 
@@ -372,28 +370,21 @@ namespace Gtk
 			w32.Expand = false;
 			w32.Fill = false;
 			// Container child vbox6.Gtk.Box+BoxChild
-			this.GtkScrolledWindow5 = new global::Gtk.ScrolledWindow ();
-			this.GtkScrolledWindow5.Name = "GtkScrolledWindow5";
-			this.GtkScrolledWindow5.ShadowType = ((global::Gtk.ShadowType)(1));
-			// Container child GtkScrolledWindow5.Gtk.Container+ContainerChild
-			this.InfoCompletaciónEdifTB = new global::Gtk.TextView ();
-			this.InfoCompletaciónEdifTB.CanFocus = true;
-			this.InfoCompletaciónEdifTB.ExtensionEvents = ((global::Gdk.ExtensionMode)(1));
-			this.InfoCompletaciónEdifTB.Name = "InfoCompletaciónEdifTB";
-			this.InfoCompletaciónEdifTB.Editable = false;
-			this.InfoCompletaciónEdifTB.AcceptsTab = false;
-			this.GtkScrolledWindow5.Add (this.InfoCompletaciónEdifTB);
-			this.vbox6.Add (this.GtkScrolledWindow5);
-			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.GtkScrolledWindow5]));
-			w34.Position = 2;
+			this.InfoCompletaciónEdif = new global::Gtk.Label ();
+			this.InfoCompletaciónEdif.Name = "InfoCompletaciónEdif";
+			this.vbox6.Add (this.InfoCompletaciónEdif);
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.InfoCompletaciónEdif]));
+			w33.Position = 2;
+			w33.Expand = false;
+			w33.Fill = false;
 			this.hbox6.Add (this.vbox6);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.vbox6]));
-			w35.Position = 1;
-			w35.Expand = false;
-			w35.Fill = false;
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.vbox6]));
+			w34.Position = 1;
+			w34.Expand = false;
+			w34.Fill = false;
 			this.notebook1.Add (this.hbox6);
-			global::Gtk.Notebook.NotebookChild w36 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox6]));
-			w36.Position = 3;
+			global::Gtk.Notebook.NotebookChild w35 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.hbox6]));
+			w35.Position = 3;
 			// Notebook tab
 			this.label8 = new global::Gtk.Label ();
 			this.label8.Name = "label8";
@@ -409,6 +400,7 @@ namespace Gtk
 			this.DefaultHeight = 384;
 			this.label9.MnemonicWidget = this.nvEdifiosConstruidos;
 			this.label10.MnemonicWidget = this.nvEdifiosConstruidos;
+			this.InfoCompletaciónEdif.MnemonicWidget = this.nvEdifiosConstruidos;
 			this.Show ();
 			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
 			this.cmdAddArmada.Clicked += new global::System.EventHandler (this.OnCmdAddArmadaClicked);

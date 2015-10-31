@@ -90,12 +90,7 @@ namespace Gtk
 			}
 		}
 
-		public event EventHandler OnSelectionChanged;
-
-		protected void OnComboBoxChanged (object sender, EventArgs e)
-		{
-			OnSelectionChanged?.Invoke (sender, e);
-		}
+		public event EventHandler AlCambiarSelección;
 
 		public void LlenarCon (System.Collections.IEnumerable list)
 		{
@@ -130,6 +125,11 @@ namespace Gtk
 				}
 				Add (x, s);
 			}
+		}
+
+		protected void OnComboboxChanged (object sender, EventArgs e)
+		{
+			AlCambiarSelección?.Invoke (sender, e);
 		}
 	}
 }
