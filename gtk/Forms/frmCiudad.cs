@@ -2,10 +2,30 @@
 using Civ;
 using Gtk;
 using Civ.Data;
+using Global;
 
 namespace Gtk
 {
 	#region TreeNodes
+	class EdifConstrEntry : TreeNode
+	{
+		public Edificio Edif { get; }
+
+		public EdifConstrEntry (Edificio edificio)
+		{
+			Edif = edificio;
+		}
+
+		[Gtk.TreeNodeValue (Column = 0)]
+		public string Mostrar
+		{
+			get
+			{
+				return Edif.Nombre;
+			}
+		}
+	}
+
 	class TrabajoListEntry : TreeNode
 	{
 		public readonly Trabajo Trabajo;
@@ -130,7 +150,8 @@ namespace Gtk
 
 	public partial class FrmCiudad : Window, IActualizable
 	{
-		public readonly ICiudad Ciudad;
+		public const string NoEdifConstru = "Sin construcción";
+		public readonly Ciudad Ciudad;
 		public readonly FrmCiv MainWindow;
 
 		#region IActualizable implementation
@@ -145,7 +166,7 @@ namespace Gtk
 			}
 			// Construir lista de trabajos
 			stTrabajo.Clear ();
-			foreach (var x in Ciudad .ObtenerTrabajosAbiertos())
+			foreach (var x in Ciudad.TrabajosAbiertos())
 			{
 				stTrabajo.AddNode (new TrabajoListEntry (Ciudad.EncuentraInstanciaTrabajo (x)));
 			}
@@ -155,6 +176,21 @@ namespace Gtk
 			{
 				ArmadaCombobox.Add (x);
 			}
+
+			stEdifs.Clear ();
+			foreach (var x in Ciudad.Edificios)
+			{
+				stEdifs.AddNode (new EdifConstrEntry (x));
+			}
+
+			EdifConstruyendoCB.Clear ();
+			EdifConstruyendoCB.Add (null, NoEdifConstru);
+			foreach (var x in Juego.Data.ObtenerEdificiosConstruíbles(Ciudad))
+			{
+				EdifConstruyendoCB.Add (x, x.Nombre);
+			}
+
+			EdifConstruyendoCB.Texto = Ciudad.EdifConstruyendo == null ? NoEdifConstru : Ciudad.EdifConstruyendo.RAW.Nombre;
 
 			armSeleccionada.Visible = false;
 
@@ -173,8 +209,9 @@ namespace Gtk
 
 		NodeStore stRecurso = new NodeStore (typeof (RecursoListEntry));
 		NodeStore stTrabajo = new NodeStore (typeof (TrabajoListEntry));
+		NodeStore stEdifs = new NodeStore (typeof (EdifConstrEntry));
 
-		public FrmCiudad (ICiudad ciudad, FrmCiv main)
+		public FrmCiudad (Ciudad ciudad, FrmCiv main)
 			: base (WindowType.Toplevel)
 		{
 			MainWindow = main;
@@ -219,6 +256,16 @@ namespace Gtk
 			nvRecursos.AppendColumn ("Nombre", new CellRendererText (), "text", 1);
 			nvRecursos.AppendColumn ("Cantidad", new CellRendererText (), "text", 2);
 			nvRecursos.AppendColumn ("Delta/h", new CellRendererText (), "text", 3);
+
+			nvEdifiosConstruidos.NodeStore = stEdifs;
+			nvEdifiosConstruidos.AppendColumn (
+				"Nombre",
+				new CellRendererText (),
+				"text",
+				0);	
+
+			// Eventos
+			EdifConstruyendoCB.AlCambiarSelección += OnEdifConstruyendoCBOnSelectionChanged;
 		}
 
 		// Analysis disable UnusedParameter
@@ -272,6 +319,36 @@ namespace Gtk
 			armDefensa.Armada.QuitarUnidad (c);
 			armDefensa.Actualizar ();
 			armSeleccionada.Actualizar ();
+		}
+
+		/// <summary>
+		/// Al cambiar edificio construyendo
+		/// </summary>
+		protected void OnEdifConstruyendoCBOnSelectionChanged (object sender,
+		                                                       EventArgs e)
+		{
+			var sel = EdifConstruyendoCB.Selected as EdificioRAW;
+			if (sel != Ciudad.RAWConstruyendo)
+			{
+				Ciudad.EdifConstruyendo = sel != null ? new EdificioConstruyendo (
+					sel,
+					Ciudad) : null;
+			}
+
+			// Actualizar info
+			InfoCompletaciónEdif.Text = "";
+			var compl = Ciudad.EdifConstruyendo;
+			if (compl == null)
+			{
+				InfoCompletaciónEdif.Text = "Sin construcción.";
+				return;
+			}
+
+			foreach (var x in compl.RAW.ReqRecursos)
+			{
+				InfoCompletaciónEdif.Text += string.Format
+					("{0}: {1}/{2}\n\r", x.Key, compl.RecursosAcumulados [x.Key], x.Value);
+			}
 		}
 		// Analysis restore UnusedParameter
 	}

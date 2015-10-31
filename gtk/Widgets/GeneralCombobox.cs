@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Gtk
 {
@@ -49,15 +50,47 @@ namespace Gtk
 			}
 		}
 
-		public event EventHandler OnSelectionChanged;
-
-		protected void OnComboBoxChanged (object sender, EventArgs e)
+		/// <summary>
+		/// Devuelve o establece el texto del control.
+		/// </summary>
+		public string Texto
 		{
-			if (OnSelectionChanged != null)
+			get
 			{
-				OnSelectionChanged.Invoke (sender, e);
+				return combobox.ActiveText;
+			}
+			set
+			{
+				TreeIter iter;
+				combobox.Model.GetIterFirst (out iter);
+				do
+				{
+					var thisRow = new GLib.Value ();
+					combobox.Model.GetValue (iter, 0, ref thisRow);
+					if ((thisRow.Val as string).Equals (value))
+					{
+						combobox.SetActiveIter (iter);
+						return;
+					}
+				}
+				while (combobox.Model.IterNext (ref iter));
+
+				throw new Exception (string.Format (
+					"No se encuentra objeto con nombre {0} en el combobox {1}",
+					value,
+					this));
 			}
 		}
+
+		public int ÍndiceSelección
+		{
+			set
+			{
+				combobox.Active = value;
+			}
+		}
+
+		public event EventHandler AlCambiarSelección;
 
 		public void LlenarCon (System.Collections.IEnumerable list)
 		{
@@ -92,6 +125,11 @@ namespace Gtk
 				}
 				Add (x, s);
 			}
+		}
+
+		protected void OnComboboxChanged (object sender, EventArgs e)
+		{
+			AlCambiarSelección?.Invoke (sender, e);
 		}
 	}
 }

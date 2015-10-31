@@ -20,6 +20,7 @@ namespace Gtk
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.combobox.Changed += new global::System.EventHandler (this.OnComboboxChanged);
 		}
 	}
 }
