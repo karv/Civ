@@ -6,9 +6,9 @@ namespace Gtk
 	{
 		private global::Gtk.Notebook notebook1;
 		
-		private global::Gtk.VBox vbox2;
+		private global::Gtk.VBox vbox1;
 		
-		private global::Gtk.HBox hbox3;
+		private global::Gtk.HBox hbox1;
 		
 		private global::Gtk.PopDisplay popdisplay1;
 		
@@ -56,11 +56,11 @@ namespace Gtk
 		
 		private global::Gtk.Frame frame2;
 		
-		private global::Gtk.Alignment GtkAlignment3;
+		private global::Gtk.Alignment GtkAlignment1;
 		
 		private global::Gtk.ReclutarWidget rcReclutar;
 		
-		private global::Gtk.Label GtkLabel4;
+		private global::Gtk.Label GtkLabel2;
 		
 		private global::Gtk.Label label7;
 
@@ -77,20 +77,20 @@ namespace Gtk
 			this.notebook1.Name = "notebook1";
 			this.notebook1.CurrentPage = 0;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
-			this.vbox2 = new global::Gtk.VBox ();
-			this.vbox2.Name = "vbox1";
-			this.vbox2.Spacing = 6;
+			this.vbox1 = new global::Gtk.VBox ();
+			this.vbox1.Name = "vbox1";
+			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.hbox3 = new global::Gtk.HBox ();
-			this.hbox3.HeightRequest = 300;
-			this.hbox3.Name = "hbox1";
-			this.hbox3.Spacing = 6;
+			this.hbox1 = new global::Gtk.HBox ();
+			this.hbox1.HeightRequest = 300;
+			this.hbox1.Name = "hbox1";
+			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.popdisplay1 = new global::Gtk.PopDisplay ();
 			this.popdisplay1.Events = ((global::Gdk.EventMask)(256));
 			this.popdisplay1.Name = "popdisplay1";
-			this.hbox3.Add (this.popdisplay1);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.popdisplay1]));
+			this.hbox1.Add (this.popdisplay1);
+			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.popdisplay1]));
 			w1.Position = 0;
 			w1.Expand = false;
 			w1.Fill = false;
@@ -104,11 +104,11 @@ namespace Gtk
 			this.nvTrabajos.CanFocus = true;
 			this.nvTrabajos.Name = "nvTrabajos";
 			this.GtkScrolledWindow2.Add (this.nvTrabajos);
-			this.hbox3.Add (this.GtkScrolledWindow2);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.GtkScrolledWindow2]));
+			this.hbox1.Add (this.GtkScrolledWindow2);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.GtkScrolledWindow2]));
 			w3.Position = 1;
-			this.vbox2.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox3]));
+			this.vbox1.Add (this.hbox1);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox1]));
 			w4.Position = 0;
 			w4.Expand = false;
 			w4.Fill = false;
@@ -126,17 +126,17 @@ namespace Gtk
 			global::Gtk.ButtonBox.ButtonBoxChild w5 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.cmdRenombrarCiudad]));
 			w5.Expand = false;
 			w5.Fill = false;
-			this.vbox2.Add (this.hbuttonbox1);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbuttonbox1]));
+			this.vbox1.Add (this.hbuttonbox1);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbuttonbox1]));
 			w6.Position = 1;
 			w6.Expand = false;
 			w6.Fill = false;
-			this.notebook1.Add (this.vbox2);
+			this.notebook1.Add (this.vbox1);
 			// Notebook tab
 			this.label1 = new global::Gtk.Label ();
 			this.label1.Name = "label1";
 			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("General");
-			this.notebook1.SetTabLabel (this.vbox2, this.label1);
+			this.notebook1.SetTabLabel (this.vbox1, this.label1);
 			this.label1.ShowAll ();
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
@@ -262,21 +262,21 @@ namespace Gtk
 			this.frame2.Name = "frame2";
 			this.frame2.ShadowType = ((global::Gtk.ShadowType)(0));
 			// Container child frame2.Gtk.Container+ContainerChild
-			this.GtkAlignment3 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
-			this.GtkAlignment3.Name = "GtkAlignment1";
-			this.GtkAlignment3.LeftPadding = ((uint)(12));
+			this.GtkAlignment1 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment1.Name = "GtkAlignment1";
+			this.GtkAlignment1.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment1.Gtk.Container+ContainerChild
 			this.rcReclutar = new global::Gtk.ReclutarWidget ();
 			this.rcReclutar.Events = ((global::Gdk.EventMask)(256));
 			this.rcReclutar.Name = "rcReclutar";
-			this.GtkAlignment3.Add (this.rcReclutar);
-			this.frame2.Add (this.GtkAlignment3);
-			this.GtkLabel4 = new global::Gtk.Label ();
-			this.GtkLabel4.Name = "GtkLabel2";
-			this.GtkLabel4.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>_Reclutar</b>");
-			this.GtkLabel4.UseMarkup = true;
-			this.GtkLabel4.UseUnderline = true;
-			this.frame2.LabelWidget = this.GtkLabel4;
+			this.GtkAlignment1.Add (this.rcReclutar);
+			this.frame2.Add (this.GtkAlignment1);
+			this.GtkLabel2 = new global::Gtk.Label ();
+			this.GtkLabel2.Name = "GtkLabel2";
+			this.GtkLabel2.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>_Reclutar</b>");
+			this.GtkLabel2.UseMarkup = true;
+			this.GtkLabel2.UseUnderline = true;
+			this.frame2.LabelWidget = this.GtkLabel2;
 			this.hbox4.Add (this.frame2);
 			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.frame2]));
 			w25.Position = 2;
