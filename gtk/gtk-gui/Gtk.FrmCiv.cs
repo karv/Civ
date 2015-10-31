@@ -54,9 +54,9 @@ namespace Gtk
 		
 		private global::Gtk.VBox vbox3;
 		
-		private Gtk.ArmadaComboBoxWidget ArmadaSelector;
+		private global::Gtk.ArmadaComboBoxWidget ArmadaSelector;
 		
-		private Gtk.ArmadaWidget ArmadaSeleccionadaInfo;
+		private global::Gtk.ArmadaWidget ArmadaSeleccionadaInfo;
 		
 		private global::Gtk.Label lbPos;
 		
@@ -66,7 +66,7 @@ namespace Gtk
 		
 		private global::Gtk.HBox hbox5;
 		
-		private Gtk.GeneralCombobox IrACB;
+		private global::Gtk.GeneralCombobox IrACB;
 		
 		private global::Gtk.Button cmdIrA;
 		
@@ -80,18 +80,18 @@ namespace Gtk
 		
 		private global::Gtk.Statusbar statusbar;
 		
-		private Gtk.MensView Mens;
+		private global::Gtk.MensView Mens;
 		
 		private global::Gtk.Button cmdActualiza;
 
 		protected virtual void Build ()
 		{
 			global::Stetic.Gui.Initialize (this);
-			// Widget gtk.frmCiv
-			this.Name = "gtk.frmCiv";
+			// Widget Gtk.FrmCiv
+			this.Name = "Gtk.FrmCiv";
 			this.Title = global::Mono.Unix.Catalog.GetString ("frmCiv");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
-			// Container child gtk.frmCiv.Gtk.Container+ContainerChild
+			// Container child Gtk.FrmCiv.Gtk.Container+ContainerChild
 			this.vbox1 = new global::Gtk.VBox ();
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
@@ -99,7 +99,7 @@ namespace Gtk
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 2;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox2 = new global::Gtk.VBox ();
 			this.vbox2.Name = "vbox2";
@@ -118,7 +118,6 @@ namespace Gtk
 			w2.Position = 0;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbuttonbox1 = new global::Gtk.HButtonBox ();
-			this.hbuttonbox1.Name = "hbuttonbox1";
 			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
 			this.cmdIrCiudad = new global::Gtk.Button ();
 			this.cmdIrCiudad.CanFocus = true;
@@ -247,7 +246,7 @@ namespace Gtk
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.ArmadaSelector = new Gtk.ArmadaComboBoxWidget ();
+			this.ArmadaSelector = new global::Gtk.ArmadaComboBoxWidget ();
 			this.ArmadaSelector.Events = ((global::Gdk.EventMask)(256));
 			this.ArmadaSelector.Name = "ArmadaSelector";
 			this.vbox3.Add (this.ArmadaSelector);
@@ -256,7 +255,7 @@ namespace Gtk
 			w18.Expand = false;
 			w18.Fill = false;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.ArmadaSeleccionadaInfo = new Gtk.ArmadaWidget ();
+			this.ArmadaSeleccionadaInfo = new global::Gtk.ArmadaWidget ();
 			this.ArmadaSeleccionadaInfo.WidthRequest = 200;
 			this.ArmadaSeleccionadaInfo.Events = ((global::Gdk.EventMask)(256));
 			this.ArmadaSeleccionadaInfo.Name = "ArmadaSeleccionadaInfo";
@@ -290,7 +289,7 @@ namespace Gtk
 			this.hbox5.Name = "hbox5";
 			this.hbox5.Spacing = 6;
 			// Container child hbox5.Gtk.Box+BoxChild
-			this.IrACB = new Gtk.GeneralCombobox ();
+			this.IrACB = new global::Gtk.GeneralCombobox ();
 			this.IrACB.Events = ((global::Gdk.EventMask)(256));
 			this.IrACB.Name = "IrACB";
 			this.hbox5.Add (this.IrACB);
@@ -360,7 +359,7 @@ namespace Gtk
 			this.statusbar.Name = "statusbar";
 			this.statusbar.Spacing = 6;
 			// Container child statusbar.Gtk.Box+BoxChild
-			this.Mens = new Gtk.MensView ();
+			this.Mens = new global::Gtk.MensView ();
 			this.Mens.Events = ((global::Gdk.EventMask)(256));
 			this.Mens.Name = "Mens";
 			this.statusbar.Add (this.Mens);
@@ -386,8 +385,7 @@ namespace Gtk
 			w33.Expand = false;
 			w33.Fill = false;
 			this.Add (this.vbox1);
-			if ((this.Child != null))
-			{
+			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 1002;
@@ -397,7 +395,6 @@ namespace Gtk
 			this.cmdIrCiudad.Activated += new global::System.EventHandler (this.OnCmdIrActivated);
 			this.cmdIrCiudad.Clicked += new global::System.EventHandler (this.OnCmdIrActivated);
 			this.nvInvestigando.CursorChanged += new global::System.EventHandler (this.OnNvInvestigandoCursorChanged);
-			this.ArmadaSelector.OnSelectionChanged += new global::System.EventHandler (this.OnArmadaSelectoronSelectionChanged);
 			this.cmdIrA.Clicked += new global::System.EventHandler (this.OnCmdIrAClicked);
 			this.cmdIrA.Activated += new global::System.EventHandler (this.OnCmdIrAClicked);
 			this.cmdColonizar.Clicked += new global::System.EventHandler (this.OnCmdColonizarClicked);
