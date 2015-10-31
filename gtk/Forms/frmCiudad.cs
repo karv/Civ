@@ -2,6 +2,7 @@
 using Civ;
 using Gtk;
 using Civ.Data;
+using Global;
 
 namespace Gtk
 {
@@ -149,7 +150,8 @@ namespace Gtk
 
 	public partial class FrmCiudad : Window, IActualizable
 	{
-		public readonly ICiudad Ciudad;
+		public const string NoEdifConstru = "Sin construcción";
+		public readonly Ciudad Ciudad;
 		public readonly FrmCiv MainWindow;
 
 		#region IActualizable implementation
@@ -164,7 +166,7 @@ namespace Gtk
 			}
 			// Construir lista de trabajos
 			stTrabajo.Clear ();
-			foreach (var x in Ciudad .ObtenerTrabajosAbiertos())
+			foreach (var x in Ciudad.TrabajosAbiertos())
 			{
 				stTrabajo.AddNode (new TrabajoListEntry (Ciudad.EncuentraInstanciaTrabajo (x)));
 			}
@@ -180,6 +182,15 @@ namespace Gtk
 			{
 				stEdifs.AddNode (new EdifConstrEntry (x));
 			}
+
+			EdifConstruyendoCB.Clear ();
+			EdifConstruyendoCB.Add (null, NoEdifConstru);
+			foreach (var x in Juego.Data.ObtenerEdificiosConstruíbles(Ciudad))
+			{
+				EdifConstruyendoCB.Add (x, x.Nombre);
+			}
+
+			EdifConstruyendoCB.Texto = Ciudad.EdifConstruyendo == null ? NoEdifConstru : Ciudad.EdifConstruyendo.RAW.Nombre;
 
 			armSeleccionada.Visible = false;
 
@@ -200,7 +211,7 @@ namespace Gtk
 		NodeStore stTrabajo = new NodeStore (typeof (TrabajoListEntry));
 		NodeStore stEdifs = new NodeStore (typeof (EdifConstrEntry));
 
-		public FrmCiudad (ICiudad ciudad, FrmCiv main)
+		public FrmCiudad (Ciudad ciudad, FrmCiv main)
 			: base (WindowType.Toplevel)
 		{
 			MainWindow = main;
