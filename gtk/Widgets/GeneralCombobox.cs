@@ -49,14 +49,26 @@ namespace Gtk
 			}
 		}
 
+		/// <summary>
+		/// Devuelve o establece el texto del control.
+		/// </summary>
+		public string Texto
+		{
+			get
+			{
+				return combobox.ActiveText;
+			}
+			set
+			{
+				combobox.ActiveText = value;
+			}
+		}
+
 		public event EventHandler OnSelectionChanged;
 
 		protected void OnComboBoxChanged (object sender, EventArgs e)
 		{
-			if (OnSelectionChanged != null)
-			{
-				OnSelectionChanged.Invoke (sender, e);
-			}
+			OnSelectionChanged?.Invoke (sender, e);
 		}
 
 		public void LlenarCon (System.Collections.IEnumerable list)
