@@ -150,7 +150,7 @@ P</property>
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">2</property>
+            <property name="CurrentPage">0</property>
             <signal name="SwitchPage" handler="OnNotebook1SwitchPage" />
             <child>
               <widget class="Gtk.VBox" id="vbox2">
@@ -163,8 +163,12 @@ P</property>
                     <child>
                       <widget class="Gtk.NodeView" id="nvCiudades">
                         <property name="MemberName" />
+                        <property name="CanDefault">True</property>
                         <property name="CanFocus">True</property>
+                        <property name="Events">KeyPressMask</property>
                         <property name="ShowScrollbars">True</property>
+                        <property name="Reorderable">True</property>
+                        <property name="SearchColumn">0</property>
                       </widget>
                     </child>
                   </widget>
@@ -180,11 +184,12 @@ P</property>
                     <child>
                       <widget class="Gtk.Button" id="cmdIrCiudad">
                         <property name="MemberName" />
+                        <property name="CanDefault">True</property>
+                        <property name="HasDefault">True</property>
                         <property name="CanFocus">True</property>
                         <property name="Type">TextOnly</property>
                         <property name="Label" translatable="yes">_Ir a</property>
                         <property name="UseUnderline">True</property>
-                        <signal name="Activated" handler="OnCmdIrActivated" />
                         <signal name="Clicked" handler="OnCmdIrActivated" />
                       </widget>
                       <packing>

@@ -121,7 +121,6 @@ namespace Gtk
 			stCiudad.Clear ();
 			foreach (var x in Civ.Ciudades)
 			{
-				//store.AppendValues (new CityListEntry (x));
 				stCiudad.AddNode (new CityListEntry (x));
 			}
 
@@ -217,6 +216,8 @@ namespace Gtk
 			nvAvances.Columns [0].Reorderable = true;
 			nvInvestigando.Columns [0].MaxWidth = 70;
 
+			//nvCiudades.KeyPressEvent += OnNvCiudadesKeyPressEvent;
+			//Default = cmdIrCiudad;
 		}
 
 		protected override bool OnDeleteEvent (Gdk.Event evnt)
@@ -233,6 +234,13 @@ namespace Gtk
 		/// <param name="e">E.</param>
 		protected void OnCmdIrActivated (object sender, EventArgs e)
 		{
+			Console.WriteLine (sender);
+			Console.WriteLine (e);
+			MuestraCiudad ();
+		}
+
+		protected void MuestraCiudad ()
+		{
 			NodeSelection r = nvCiudades.NodeSelection;
 			if (r.SelectedNode != null)
 			{
@@ -241,7 +249,7 @@ namespace Gtk
 				var wind = new FrmCiudad (c, this);
 				FormsActualizables.Add (wind);
 				wind.Show ();
-			}	
+			}
 		}
 
 		/// <summary>
@@ -311,5 +319,6 @@ namespace Gtk
 		{
 			ActualizarDebil ();
 		}
+
 	}
 }

@@ -99,7 +99,7 @@ namespace Gtk
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 2;
+			this.notebook1.CurrentPage = 0;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox2 = new global::Gtk.VBox ();
 			this.vbox2.Name = "vbox2";
@@ -110,16 +110,22 @@ namespace Gtk
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
 			this.nvCiudades = new global::Gtk.NodeView ();
+			this.nvCiudades.CanDefault = true;
 			this.nvCiudades.CanFocus = true;
+			this.nvCiudades.Events = ((global::Gdk.EventMask)(1024));
 			this.nvCiudades.Name = "nvCiudades";
+			this.nvCiudades.Reorderable = true;
+			this.nvCiudades.SearchColumn = 0;
 			this.GtkScrolledWindow.Add (this.nvCiudades);
 			this.vbox2.Add (this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.GtkScrolledWindow]));
 			w2.Position = 0;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbuttonbox1 = new global::Gtk.HButtonBox ();
+			this.hbuttonbox1.Name = "hbuttonbox1";
 			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
 			this.cmdIrCiudad = new global::Gtk.Button ();
+			this.cmdIrCiudad.CanDefault = true;
 			this.cmdIrCiudad.CanFocus = true;
 			this.cmdIrCiudad.Name = "cmdIrCiudad";
 			this.cmdIrCiudad.UseUnderline = true;
@@ -390,9 +396,9 @@ namespace Gtk
 			}
 			this.DefaultWidth = 1002;
 			this.DefaultHeight = 300;
+			this.cmdIrCiudad.HasDefault = true;
 			this.Show ();
 			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
-			this.cmdIrCiudad.Activated += new global::System.EventHandler (this.OnCmdIrActivated);
 			this.cmdIrCiudad.Clicked += new global::System.EventHandler (this.OnCmdIrActivated);
 			this.nvInvestigando.CursorChanged += new global::System.EventHandler (this.OnNvInvestigandoCursorChanged);
 			this.cmdIrA.Clicked += new global::System.EventHandler (this.OnCmdIrAClicked);
