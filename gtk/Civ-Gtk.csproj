@@ -89,6 +89,7 @@
     <Compile Include="gtk-gui\Gtk.GeneralCombobox.cs" />
     <Compile Include="gtk-gui\Gtk.MensView.cs" />
     <Compile Include="gtk-gui\Gtk.FrmCiv.cs" />
+    <Compile Include="CellRendererNombreCiudad.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

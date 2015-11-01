@@ -188,7 +188,11 @@ namespace Gtk
 			nvInvestigando.NodeStore = stCienciasAbtas;
 			nvInvestDetalle.NodeStore = stCienciaDetail;
 
-			nvCiudades.AppendColumn ("Nombre", new CellRendererText (), "text", 0);
+			nvCiudades.AppendColumn (
+				"Nombre",
+				new CellRendererNombreCiudad (stCiudad),
+				"text",
+				0);
 			nvCiudades.AppendColumn ("Población", new CellRendererText (), "text", 1);
 			nvCiudades.AppendColumn (
 				"Ocupación",

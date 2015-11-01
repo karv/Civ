@@ -1,17 +1,17 @@
 ﻿namespace Gtk
 {
-	public class CellRendererNumTrab: CellRendererText
+	public class CellRendererNombreCiudad: CellRendererText
 	{
 
 		public NodeStore Store;
 
-		public CellRendererNumTrab (NodeStore store)
+		public CellRendererNombreCiudad (NodeStore store)
 			: this ()
 		{
 			Store = store;
 		}
 
-		CellRendererNumTrab ()
+		CellRendererNombreCiudad ()
 		{
 			Editable = true;
 		}
@@ -23,12 +23,8 @@
 		/// <param name="new_text">New text.</param>
 		override protected void OnEdited (string path, string new_text)
 		{
-			ulong res;
-			if (ulong.TryParse (new_text, out res))
-			{
-				var nodo = Store.GetNode (new TreePath (path)) as TrabajoListEntry;
-				nodo.Trabajadores = res;
-			}
+			var nodo = Store.GetNode (new TreePath (path)) as CityListEntry;
+			nodo.Ciudad.Nombre = new_text;
 		}
 	}
 }
