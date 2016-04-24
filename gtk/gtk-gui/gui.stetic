@@ -734,6 +734,7 @@ P</property>
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">_Renombrar</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnCmdRenombrarCiudadClicked" />
                   </widget>
                   <packing>
                     <property name="Expand">False</property>

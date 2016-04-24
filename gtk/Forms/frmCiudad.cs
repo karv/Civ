@@ -3,6 +3,7 @@ using Civ;
 using Gtk;
 using Civ.Data;
 using Global;
+using Controls.Diálogos;
 
 namespace Gtk
 {
@@ -271,7 +272,20 @@ namespace Gtk
 		// Analysis disable UnusedParameter
 		protected void OnCmdRenombrarCiudadClicked (object sender, EventArgs e)
 		{
-			throw new NotImplementedException ();
+			var ib = new InputBox ();
+			ib.Descripción = string.Format ("Renombrar ciudad {0}.", Ciudad.Nombre);
+			ib.Pregunta = "Nuevo nombre";
+			ib.Texto = Ciudad.Nombre;
+			ib.Response += delegate(object o, ResponseArgs args)
+			{
+				switch (args.ResponseId)
+				{
+					case ResponseType.Ok:
+						Ciudad.Nombre = ib.Texto;
+						Title = ib.Texto;
+						break;
+				}
+			};
 		}
 
 		protected override void OnDestroyed ()
