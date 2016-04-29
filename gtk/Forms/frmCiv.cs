@@ -1,6 +1,7 @@
 ﻿using System;
 using Civ;
 using Civ.Data;
+using Global;
 
 namespace Gtk
 {
@@ -227,6 +228,7 @@ namespace Gtk
 		protected override bool OnDeleteEvent (Gdk.Event evnt)
 		{
 			Application.Quit ();
+			Juego.State.Guardar (Juego.ArchivoState);
 			CivGTK.MainClass.EndGame = true;
 			return true;
 		}

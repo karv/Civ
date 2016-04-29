@@ -3,6 +3,7 @@ using Civ;
 using Global;
 using Gtk;
 using System.Diagnostics;
+using System.IO;
 
 namespace CivGTK
 {
@@ -19,7 +20,11 @@ namespace CivGTK
 		public static void Main ()
 		{
 			Juego.CargaData ();
-			Juego.InicializarJuego ();
+
+			if (File.Exists (Juego.ArchivoState))
+				Juego.State = GameState.Cargar (Juego.ArchivoState);
+			else
+				Juego.InicializarJuego ();
 
 			MyCiv = Juego.State.Civs [0] as Civilización;
 			//var cd = MyCiv.Ciudades [0] as Ciudad;
