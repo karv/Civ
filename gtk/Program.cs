@@ -25,8 +25,18 @@ namespace CivGTK
 				Juego.State = GameState.Cargar (Juego.ArchivoState);
 			else
 				Juego.InicializarJuego ();
+			
+			var i = 0;
+			//Store.BinarySerialization.WriteToBinaryFile ("MyCiv", Juego.State.Civs [0]);
+			foreach (var a in Juego.State.Civs[0].Ciudades)
+			{
+				Store.BinarySerialization.WriteToBinaryFile ("ciudad " + i++, a.Edificios);
+			}
 
 			MyCiv = Juego.State.Civs [0] as Civilización;
+			Juego.State.Guardar (Juego.ArchivoState);
+
+			return;
 			//var cd = MyCiv.Ciudades [0] as Ciudad;
 
 

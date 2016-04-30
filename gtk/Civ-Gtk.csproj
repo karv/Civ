@@ -56,9 +56,6 @@
       <Package>gtk-sharp-2.0</Package>
     </Reference>
     <Reference Include="Mono.Posix" />
-    <Reference Include="C5">
-      <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
-    </Reference>
     <Reference Include="Controls">
       <HintPath>..\packages\Controls.0.1\lib\Controls.dll</HintPath>
     </Reference>
@@ -67,6 +64,9 @@
     </Reference>
     <Reference Include="Grafos">
       <HintPath>..\packages\Grafos.0.1.6\lib\Grafos.dll</HintPath>
+    </Reference>
+    <Reference Include="Store">
+      <HintPath>..\packages\Store.0.2\lib\Store.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
