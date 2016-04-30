@@ -21,22 +21,14 @@ namespace CivGTK
 		{
 			Juego.CargaData ();
 
-			if (File.Exists (Juego.ArchivoState))
-				Juego.State = GameState.Cargar (Juego.ArchivoState);
+			if (File.Exists (Juego.FileName))
+				Juego.Cargar ();
 			else
-				Juego.InicializarJuego ();
+				Juego.Instancia.Inicializar ();
 			
-			var i = 0;
-			//Store.BinarySerialization.WriteToBinaryFile ("MyCiv", Juego.State.Civs [0]);
-			foreach (var a in Juego.State.Civs[0].Ciudades)
-			{
-				Store.BinarySerialization.WriteToBinaryFile ("ciudad " + i++, a.Edificios);
-			}
-
 			MyCiv = Juego.State.Civs [0] as Civilización;
-			Juego.State.Guardar (Juego.ArchivoState);
+			Juego.Guardar ();
 
-			return;
 			//var cd = MyCiv.Ciudades [0] as Ciudad;
 
 
@@ -87,7 +79,7 @@ namespace CivGTK
 			var modTiempo = new TimeSpan ((long)(tiempo.Ticks * MultiplicadorVelocidad));
 
 			// Console.WriteLine (t);
-			Juego.Tick (modTiempo);
+			Juego.Instancia.Tick (modTiempo);
 
 			if (Juego.State.Civs.Count == 0)
 				throw new Exception ("Ya se acabó el juego :3");

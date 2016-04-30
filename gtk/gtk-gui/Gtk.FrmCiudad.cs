@@ -403,6 +403,7 @@ namespace Gtk
 			this.InfoCompletaciónEdif.MnemonicWidget = this.nvEdifiosConstruidos;
 			this.Show ();
 			this.notebook1.SwitchPage += new global::Gtk.SwitchPageHandler (this.OnNotebook1SwitchPage);
+			this.cmdRenombrarCiudad.Clicked += new global::System.EventHandler (this.OnCmdRenombrarCiudadClicked);
 			this.cmdAddArmada.Clicked += new global::System.EventHandler (this.OnCmdAddArmadaClicked);
 			this.cmdAdd.Clicked += new global::System.EventHandler (this.OnCmdAddClicked);
 		}
