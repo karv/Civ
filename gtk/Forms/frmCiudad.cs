@@ -1,9 +1,11 @@
 ﻿using System;
 using Civ;
+using Civ.Almacén;
 using Gtk;
-using Civ.Data;
-using Global;
 using Controls.Diálogos;
+using Civ.ObjetosEstado;
+using Civ.RAW;
+using Civ.Global;
 
 namespace Gtk
 {

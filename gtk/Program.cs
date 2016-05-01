@@ -1,9 +1,9 @@
 ﻿using System;
-using Civ;
-using Global;
 using Gtk;
 using System.Diagnostics;
 using System.IO;
+using Civ.ObjetosEstado;
+using Civ.Global;
 
 namespace CivGTK
 {

@@ -1,4 +1,6 @@
-﻿namespace Gtk
+﻿using Civ.ObjetosEstado;
+
+namespace Gtk
 {
 
 	[System.ComponentModel.ToolboxItem (true)]
@@ -13,9 +15,9 @@
 
 		#endregion
 
-		Civ.ICiudad ciudad;
+		ICiudad ciudad;
 
-		public Civ.ICiudad Ciudad
+		public ICiudad Ciudad
 		{
 			get
 			{

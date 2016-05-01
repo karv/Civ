@@ -1,4 +1,4 @@
-﻿using Civ;
+﻿using Civ.ObjetosEstado;
 
 namespace Gtk
 {

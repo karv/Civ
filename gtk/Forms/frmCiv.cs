@@ -1,7 +1,9 @@
 ﻿using System;
-using Civ;
-using Civ.Data;
-using Global;
+using Civ.Ciencias;
+using Civ.ObjetosEstado;
+using Civ.RAW;
+using Civ.Global;
+using Civ.Topología;
 
 namespace Gtk
 {

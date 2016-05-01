@@ -5,7 +5,6 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{07DE8279-5F40-43F9-8D7D-06E7B433AFAB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Gtk</RootNamespace>
     <AssemblyName>gtk</AssemblyName>
     <StartupObject>CivGTK.MainClass</StartupObject>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -119,4 +118,13 @@
       <Name>CivLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileName" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

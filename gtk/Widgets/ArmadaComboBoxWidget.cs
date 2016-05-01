@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Civ;
 using Gtk;
+using Civ.ObjetosEstado;
 
 namespace Gtk
 {
