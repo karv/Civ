@@ -1,5 +1,5 @@
-﻿using Civ;
-using Civ.ObjetosEstado;
+﻿using Civ.ObjetosEstado;
+using Civ.RAW;
 
 namespace Gtk
 {
