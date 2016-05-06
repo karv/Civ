@@ -12,8 +12,12 @@ namespace DataBuild
 			var data = new GameData ();
 
 			#region Recursos
-			var r_Alimento = new Recurso ("Alimento");
-			r_Alimento.Valor = 2;
+			var r_Alimento = new Recurso
+			{
+				Nombre = "Alimento",
+				Valor = 2,
+				Img = "Comida.jpg"
+			};
 			data.Recursos.Add (r_Alimento);
 			data.RecursoAlimento = r_Alimento;
 
