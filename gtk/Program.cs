@@ -19,7 +19,6 @@ namespace CivGTK
 
 		public static void Main ()
 		{
-			Juego.CargaData ();
 
 			if (File.Exists (Juego.FileName))
 				Juego.Cargar ();
