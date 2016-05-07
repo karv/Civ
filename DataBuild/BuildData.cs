@@ -12,6 +12,8 @@ namespace DataBuild
 			var data = new GameData ();
 
 			#region Recursos
+
+			#region Comunes
 			var r_Alimento = new Recurso
 			{
 				Nombre = "Alimento",
@@ -48,6 +50,8 @@ namespace DataBuild
 				EsEcológico = true
 			};
 
+			#endregion
+
 			#region Construcción
 			var r_Martillo = new Recurso
 			{
@@ -72,8 +76,22 @@ namespace DataBuild
 			};
 			data.Recursos.Add (r_c_Ciencia);
 
+			var r_c_Cacería = new Recurso ("Ciencia: cacería")
+			{
+				Desaparece = true,
+				EsCientifico = true,
+				EsGlobal = true
+			};
+			data.Recursos.Add (r_c_Cacería);
 			#endregion
 
+			#region Militar
+			var r_m_Palos = new Recurso
+			{
+				Nombre = "Palos de madera"
+			};
+			data.Recursos.Add (r_m_Palos);
+			#endregion
 			#endregion
 
 			#region Ciencia
@@ -90,6 +108,9 @@ namespace DataBuild
 			c_Agricultura.Reqs.Ciencias.Add (c_Recolección);
 			data.Ciencias.Add (c_Agricultura);
 
+			var c_FabricarPalos = new Ciencia { Nombre = "Fabricación de palos" };
+			c_FabricarPalos.Reqs.Recursos.Add (r_c_Cacería, 5);
+			data.Ciencias.Add (c_FabricarPalos);
 			#endregion
 
 			#region Propiedades
@@ -215,6 +236,7 @@ namespace DataBuild
 			};
 			b_ReuniónCacería.ReqRecursos.Add (r_Piedra, 10);
 			b_ReuniónCacería.ReqRecursos.Add (r_Madera, 5);
+			b_ReuniónCacería.ReqRecursos.Add (r_Martillo, 3);
 			b_ReuniónCacería.Requiere.Ciencias.Add (c_Caza);
 			data.Edificios.Add (b_ReuniónCacería);
 
@@ -229,11 +251,22 @@ namespace DataBuild
 			var b_RecolFrutas = new EdificioRAW
 			{
 				MaxWorkers = 10,
-				Nombre = "Recolección de frutas",
+				Nombre = "Recolección de frutas"
 			};
 			b_RecolFrutas.ReqRecursos.Add (r_Piedra, 2);
 			b_RecolFrutas.ReqRecursos.Add (r_Madera, 1);
+			b_RecolFrutas.ReqRecursos.Add (r_Martillo, 0.5f);
 			data.Edificios.Add (b_RecolFrutas);
+
+			var b_FábricaArmasI = new EdificioRAW
+			{
+				MaxWorkers = 50,
+				Nombre = "Fábrica de armas primitivo"
+			};
+			b_FábricaArmasI.ReqRecursos.Add (r_Piedra, 10);
+			b_FábricaArmasI.ReqRecursos.Add (r_Madera, 8);
+			b_FábricaArmasI.ReqRecursos.Add (r_Martillo, 3);
+			data.Edificios.Add (b_FábricaArmasI);
 			#endregion
 
 			#region Trabajos
@@ -270,6 +303,7 @@ namespace DataBuild
 			};
 			t_Cazar.EntradaBase.Add (r_Bestias, 1);
 			t_Cazar.SalidaBase.Add (r_Alimento, 1.2f);
+			t_Cazar.SalidaBase.Add (r_c_Cacería, 1);
 			data.Trabajos.Add (t_Cazar);
 
 			var t_RecolectarMadera = new TrabajoRAW
@@ -296,6 +330,16 @@ namespace DataBuild
 			};
 			t_RecolectarFruta.SalidaBase.Add (r_Alimento, 2);
 			t_RecolectarFruta.EntradaBase.Add (r_Frutas, 2);
+			data.Trabajos.Add (t_RecolectarFruta);
+
+			var t_FabricarPalos = new TrabajoRAW
+			{
+				Nombre = "Construir palos",
+				Edificio = b_FábricaArmasI
+			};
+			t_FabricarPalos.EntradaBase.Add (r_Madera, 0.1f);
+			t_FabricarPalos.SalidaBase.Add (r_m_Palos, 0.2f);
+			data.Trabajos.Add (t_FabricarPalos);
 			#endregion
 
 			#region Unidades
@@ -315,6 +359,23 @@ namespace DataBuild
 			u_LanzaPiedras.Flags.Add ("Rango");
 			u_LanzaPiedras.Reqs [r_Piedra] = 3.5f;
 			data.Unidades.Add (u_LanzaPiedras);
+
+			var u_GuerreroPalo = new UnidadRAWCombate
+			{
+				Velocidad = 1,
+				Peso = 1,
+				MaxCarga = 0.2f,
+				Defensa = 1.5f,
+				CostePoblación = 1,
+				Dispersión = 0,
+				Nombre = "Guerrero con palo",
+				Ataque = 1.5f
+			};
+			u_GuerreroPalo.Flags.Add ("Pie");
+			u_GuerreroPalo.Flags.Add ("Humano");
+			u_GuerreroPalo.Flags.Add ("Melee");
+			u_GuerreroPalo.Reqs [r_m_Palos] = 1;
+			data.Unidades.Add (u_GuerreroPalo);
 			#endregion
 
 			Store.BinarySerialization.WriteToBinaryFile (@"../../../gtk/Data.bin", data);
