@@ -128,6 +128,15 @@ namespace DataBuild
 				Max = 200
 			});
 			data.Propiedades.Add (p_Arboleda);
+
+			var p_boscoso = new Propiedad{ Nombre = "Bosque" };
+			p_boscoso.Salida.Add (new TasaProdExp
+			{
+				Recurso = r_Árbol,
+				CrecimientoBase = 2,
+				Max = 2500
+			});
+			data.Propiedades.Add (p_boscoso);
 			#endregion
 
 			#region Ecosistemas
@@ -156,6 +165,24 @@ namespace DataBuild
 			e_Desierto.PropPropiedad.Add (p_Bestias, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Arboleda, 0.3f);
 			data.Ecosistemas.Add (e_Desierto);
+
+			var e_bosque = new Ecosistema { Nombre = "Bosque" };
+			e_bosque.Nombres.Add ("Amazonas");
+			e_bosque.PropPropiedad.Add (p_Alimento, 0.3f);
+			e_bosque.PropPropiedad.Add (p_Bestias, 0.85f);
+			e_bosque.PropPropiedad.Add (p_Arboleda, 1f);
+			e_bosque.PropPropiedad.Add (p_Frutas, 0.4f);
+			e_bosque.PropPropiedad.Add (p_boscoso, 0.8f);
+			data.Ecosistemas.Add (e_bosque);
+
+			var e_selva = new Ecosistema { Nombre = "Selva" };
+			e_selva.Nombres.Add ("Selva (?)");
+			e_selva.PropPropiedad.Add (p_Alimento, 0.5f);
+			e_selva.PropPropiedad.Add (p_Bestias, 0.6f);
+			e_selva.PropPropiedad.Add (p_Arboleda, 0.7f);
+			e_selva.PropPropiedad.Add (p_Frutas, 0.6f);
+			e_selva.PropPropiedad.Add (p_boscoso, 0.15f);
+			data.Ecosistemas.Add (e_selva);
 			#endregion
 
 			#region Edificios
