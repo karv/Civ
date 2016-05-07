@@ -42,6 +42,12 @@ namespace DataBuild
 			};
 			data.Recursos.Add (r_Frutas);
 
+			var r_Árbol = new Recurso
+			{
+				Nombre = "Árboles",
+				EsEcológico = true
+			};
+
 			#region Construcción
 			var r_Martillo = new Recurso
 			{
@@ -94,6 +100,7 @@ namespace DataBuild
 				Crecimiento = 1,
 				Max = 1000
 			});
+			data.Propiedades.Add (p_Alimento);
 
 			var p_Bestias = new Propiedad { Nombre = "Bestias de caza" };
 			p_Bestias.Salida.Add (new TasaProdExp
@@ -102,6 +109,7 @@ namespace DataBuild
 				CrecimientoBase = 3,
 				Max = 5000
 			});
+			data.Propiedades.Add (p_Bestias);
 
 			var p_Frutas = new Propiedad{ Nombre = "Frutas" };
 			p_Frutas.Salida.Add (new TasaProdExp
@@ -110,6 +118,16 @@ namespace DataBuild
 				CrecimientoBase = 1.4f,
 				Max = 4500
 			});
+			data.Propiedades.Add (p_Frutas);
+
+			var p_Arboleda = new Propiedad{ Nombre = "Arboleda" };
+			p_Arboleda.Salida.Add (new TasaProdConstante
+			{
+				Recurso = r_Árbol,
+				Crecimiento = 4,
+				Max = 200
+			});
+			data.Propiedades.Add (p_Arboleda);
 			#endregion
 
 			#region Ecosistemas
@@ -118,6 +136,7 @@ namespace DataBuild
 			e_Llanura.PropPropiedad.Add (p_Alimento, 0.8f);
 			e_Llanura.PropPropiedad.Add (p_Bestias, 0.7f);
 			e_Llanura.PropPropiedad.Add (p_Frutas, 0.85f);
+			e_Llanura.PropPropiedad.Add (p_Arboleda, 0.7f);
 			data.Ecosistemas.Add (e_Llanura);
 
 			var e_Montañoso = new Ecosistema { Nombre = "Montaña" };
@@ -127,6 +146,7 @@ namespace DataBuild
 			e_Montañoso.PropPropiedad.Add (p_Alimento, 0.3f);
 			e_Montañoso.PropPropiedad.Add (p_Bestias, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Frutas, 0.4f);
+			e_Montañoso.PropPropiedad.Add (p_Arboleda, 0.6f);
 			data.Ecosistemas.Add (e_Montañoso);
 
 			var e_Desierto = new Ecosistema { Nombre = "Desierto" };
@@ -134,6 +154,7 @@ namespace DataBuild
 			e_Desierto.Nombres.Add ("Sahuaro");
 			e_Desierto.PropPropiedad.Add (p_Alimento, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Bestias, 0.2f);
+			e_Desierto.PropPropiedad.Add (p_Arboleda, 0.3f);
 			data.Ecosistemas.Add (e_Desierto);
 			#endregion
 
@@ -230,6 +251,7 @@ namespace DataBuild
 				Edificio = b_RecolRecursos
 			};
 			t_RecolectarMadera.SalidaBase.Add (r_Madera, 2);
+			t_RecolectarMadera.EntradaBase.Add (r_Árbol, 1);
 			data.Trabajos.Add (t_RecolectarMadera);
 
 			var t_RecolectarPiedra = new TrabajoRAW
@@ -237,7 +259,7 @@ namespace DataBuild
 				Nombre = "Recolectar piedra",
 				Edificio = b_RecolRecursos
 			};
-			t_RecolectarMadera.SalidaBase.Add (r_Piedra, 1.5f);
+			t_RecolectarPiedra.SalidaBase.Add (r_Piedra, 1.5f);
 			data.Trabajos.Add (t_RecolectarPiedra);
 
 			var t_RecolectarFruta = new TrabajoRAW
