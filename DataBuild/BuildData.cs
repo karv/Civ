@@ -21,11 +21,24 @@ namespace DataBuild
 			data.Recursos.Add (r_Alimento);
 			data.RecursoAlimento = r_Alimento;
 
+			var r_Semilla = new Recurso
+			{
+				Nombre = "Semillas",
+				EsEcológico = true
+			};
+			data.Recursos.Add (r_Semilla);
 			#region Construcción
+			var r_Martillo = new Recurso
+			{
+				Nombre = "Martillos",
+				Desaparece = true
+			};
+			data.Recursos.Add (r_Martillo);
+
 			var r_Piedra = new Recurso ("Piedra");
 			data.Recursos.Add (r_Piedra);
 
-			var r_Madera = new Recurso ("MAdera");
+			var r_Madera = new Recurso ("Madera");
 			data.Recursos.Add (r_Madera);
 			#endregion
 
@@ -86,7 +99,17 @@ namespace DataBuild
 			};
 			b_Palacio.ReqRecursos.Add (r_Madera, 50);
 			b_Palacio.ReqRecursos.Add (r_Piedra, 30);
+			b_Palacio.ReqRecursos.Add (r_Martillo, 15);
+			b_Palacio.Salida.Add (r_Martillo, 1);
 			data.Edificios.Add (b_Palacio);
+
+			var b_Granja = new EdificioRAW
+			{
+				MaxWorkers = 20,
+				Nombre = "Granaja"
+			};
+			b_Granja.ReqRecursos.Add (r_Martillo, 5);
+			b_Granja.Requiere.Ciencias.Add (c_Agricultura);
 			#endregion
 
 			#region Trabajos
@@ -98,6 +121,22 @@ namespace DataBuild
 			t_CienciaPalacio.SalidaBase [r_c_Ciencia] = 1;
 			data.Trabajos.Add (t_CienciaPalacio);
 
+			var t_AlimentoGranja = new TrabajoRAW
+			{
+				Nombre = "Producir alimento",
+				Edificio = b_Granja
+			};
+			t_AlimentoGranja.EntradaBase.Add (r_Semilla, 1);
+			t_AlimentoGranja.SalidaBase.Add (r_Alimento, 1.4f);
+			data.Trabajos.Add (t_AlimentoGranja);
+
+			var t_SemillasGranja = new TrabajoRAW
+			{
+				Nombre = "Producir semillas",
+				Edificio = b_Granja
+			};
+			t_SemillasGranja.EntradaBase.Add (r_Alimento, 0.1f);
+			t_SemillasGranja.SalidaBase.Add (r_Semilla, 0.5f);
 			#endregion
 
 			#region Unidades
