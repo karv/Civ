@@ -110,6 +110,7 @@ namespace DataBuild
 
 			var c_FabricarPalos = new Ciencia { Nombre = "Fabricación de palos" };
 			c_FabricarPalos.Reqs.Recursos.Add (r_c_Cacería, 5);
+			c_FabricarPalos.Reqs.Ciencias.Add (c_Caza);
 			data.Ciencias.Add (c_FabricarPalos);
 			#endregion
 
@@ -379,7 +380,6 @@ namespace DataBuild
 			#endregion
 
 			Store.BinarySerialization.WriteToBinaryFile (@"../../../gtk/Data.bin", data);
-
 		}
 	}
 }
