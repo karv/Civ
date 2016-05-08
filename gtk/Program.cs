@@ -11,7 +11,7 @@ namespace CivGTK
 	public static class MainClass
 	{
 		static DateTime timer = DateTime.Now;
-		const float MultiplicadorVelocidad = 360;
+		const float MultiplicadorVelocidad = 600;
 		public static Civilización MyCiv;
 
 		static FrmCiv win;
@@ -20,21 +20,13 @@ namespace CivGTK
 		public static void Main ()
 		{
 
-			if (File.Exists (Juego.FileName))
+			if (File.Exists (Juego.ArchivoState))
 				Juego.Cargar ();
 			else
 				Juego.Instancia.Inicializar ();
 			
 			MyCiv = Juego.State.Civs [0] as Civilización;
 			Juego.Guardar ();
-
-			//var cd = MyCiv.Ciudades [0] as Ciudad;
-
-
-			//EdificioRAW eraw = Juego.Data.Trabajos[0].Edificio;
-			//cd.AgregaEdificio(eraw);
-
-			//new Trabajo(Juego.Data.Trabajos[0], cd);
 
 			MyCiv.AlNuevoMensaje += MuestraMensajes;
 
@@ -58,7 +50,7 @@ namespace CivGTK
 		{
 			while (MyCiv.ExisteMensaje)
 			{
-				IU.Mensaje m = MyCiv.SiguienteMensaje ();
+				Civ.IU.Mensaje m = MyCiv.SiguienteMensaje ();
 				if (m != null)
 				{
 					Debug.WriteLine (m.ToString ());
