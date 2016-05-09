@@ -122,7 +122,6 @@ namespace DataBuild
 				Crecimiento = 1,
 				Max = 1000
 			});
-			data.Propiedades.Add (p_Alimento);
 
 			var p_Bestias = new Propiedad { Nombre = "Bestias de caza" };
 			p_Bestias.Salida.Add (new TasaProdExp
@@ -132,7 +131,6 @@ namespace DataBuild
 				Max = 5000
 			});
 			p_Bestias.Iniciales.Add (r_Bestias, 10);
-			data.Propiedades.Add (p_Bestias);
 
 			var p_Frutas = new Propiedad{ Nombre = "Frutas" };
 			p_Frutas.Salida.Add (new TasaProdExp
@@ -142,7 +140,6 @@ namespace DataBuild
 				Max = 4500
 			});
 			p_Frutas.Iniciales.Add (r_Frutas, 20);
-			data.Propiedades.Add (p_Frutas);
 
 			var p_Arboleda = new Propiedad{ Nombre = "Arboleda" };
 			p_Arboleda.Salida.Add (new TasaProdConstante
@@ -151,7 +148,6 @@ namespace DataBuild
 				Crecimiento = 4,
 				Max = 200
 			});
-			data.Propiedades.Add (p_Arboleda);
 
 			var p_Boscoso = new Propiedad{ Nombre = "Bosque" };
 			p_Boscoso.Salida.Add (new TasaProdExp
@@ -161,7 +157,6 @@ namespace DataBuild
 				Max = 2500
 			});
 			p_Boscoso.Iniciales.Add (r_Árbol, 1000);
-			data.Propiedades.Add (p_Boscoso);
 			#endregion
 
 			#region Ecosistemas
