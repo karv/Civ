@@ -157,6 +157,14 @@ namespace DataBuild
 				Max = 2500
 			});
 			p_Boscoso.Iniciales.Add (r_Árbol, 1000);
+
+			var p_minArbol = new Propiedad { Nombre = "Árboles dispersos" };
+			p_minArbol.Salida.Add (new TasaProdConstante
+			{
+				Recurso = r_Árbol,
+				Crecimiento = 10,
+				Max = 200
+			});
 			#endregion
 
 			#region Ecosistemas
@@ -166,6 +174,7 @@ namespace DataBuild
 			e_Llanura.PropPropiedad.Add (p_Bestias, 0.7f);
 			e_Llanura.PropPropiedad.Add (p_Frutas, 0.85f);
 			e_Llanura.PropPropiedad.Add (p_Arboleda, 0.7f);
+			e_Llanura.PropPropiedad.Add (p_minArbol, 1);
 			data.Ecosistemas.Add (e_Llanura);
 
 			var e_Montañoso = new Ecosistema { Nombre = "Montaña" };
@@ -176,6 +185,7 @@ namespace DataBuild
 			e_Montañoso.PropPropiedad.Add (p_Bestias, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Frutas, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Arboleda, 0.6f);
+			e_Montañoso.PropPropiedad.Add (p_minArbol, 1);
 			data.Ecosistemas.Add (e_Montañoso);
 
 			var e_Desierto = new Ecosistema { Nombre = "Desierto" };
@@ -184,6 +194,7 @@ namespace DataBuild
 			e_Desierto.PropPropiedad.Add (p_Alimento, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Bestias, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Arboleda, 0.3f);
+			e_Desierto.PropPropiedad.Add (p_minArbol, 1);
 			data.Ecosistemas.Add (e_Desierto);
 
 			var e_bosque = new Ecosistema { Nombre = "Bosque" };
@@ -193,6 +204,7 @@ namespace DataBuild
 			e_bosque.PropPropiedad.Add (p_Arboleda, 1f);
 			e_bosque.PropPropiedad.Add (p_Frutas, 0.4f);
 			e_bosque.PropPropiedad.Add (p_Boscoso, 0.8f);
+			e_bosque.PropPropiedad.Add (p_minArbol, 1);
 			data.Ecosistemas.Add (e_bosque);
 
 			var e_selva = new Ecosistema { Nombre = "Selva" };
@@ -202,6 +214,7 @@ namespace DataBuild
 			e_selva.PropPropiedad.Add (p_Arboleda, 0.7f);
 			e_selva.PropPropiedad.Add (p_Frutas, 0.6f);
 			e_selva.PropPropiedad.Add (p_Boscoso, 0.15f);
+			e_selva.PropPropiedad.Add (p_minArbol, 1);
 			data.Ecosistemas.Add (e_selva);
 			#endregion
 
