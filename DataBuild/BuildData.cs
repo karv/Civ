@@ -391,6 +391,24 @@ namespace DataBuild
 			#endregion
 
 			Store.BinarySerialization.WriteToBinaryFile (@"../../../gtk/Data.bin", data);
+			Store.BinarySerialization.WriteToBinaryFile ("test.bin", data);
+
+			// Probar
+			var r = Store.BinarySerialization.ReadFromBinaryFile<GameData> ("test.bin");
+			if (data.Recursos.Count != r.Recursos.Count)
+				System.Console.WriteLine ("Error");
+			if (data.Ciencias.Count != r.Ciencias.Count)
+				System.Console.WriteLine ("Error");
+			if (data.Ecosistemas.Count != r.Ecosistemas.Count)
+				System.Console.WriteLine ("Error");
+			if (data.Edificios.Count != r.Edificios.Count)
+				System.Console.WriteLine ("Error");
+			if (data.Trabajos.Count != r.Trabajos.Count)
+				System.Console.WriteLine ("Error");
+			if (data.Unidades.Count != r.Unidades.Count)
+				System.Console.WriteLine ("Error");
+			if (data.RecursoAlimento.Nombre != r.RecursoAlimento.Nombre)
+				System.Console.WriteLine ("Error");
 		}
 	}
 }
