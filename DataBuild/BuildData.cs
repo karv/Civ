@@ -288,7 +288,6 @@ namespace DataBuild
 				Nombre = "Ciencia"
 			};
 			t_CienciaPalacio.SalidaBase [r_c_Ciencia] = 1;
-			data.Trabajos.Add (t_CienciaPalacio);
 
 			var t_AlimentoGranja = new TrabajoRAW
 			{
@@ -297,7 +296,6 @@ namespace DataBuild
 			};
 			t_AlimentoGranja.EntradaBase.Add (r_Semilla, 1);
 			t_AlimentoGranja.SalidaBase.Add (r_Alimento, 1.4f);
-			data.Trabajos.Add (t_AlimentoGranja);
 
 			var t_SemillasGranja = new TrabajoRAW
 			{
@@ -306,7 +304,6 @@ namespace DataBuild
 			};
 			t_SemillasGranja.EntradaBase.Add (r_Alimento, 0.1f);
 			t_SemillasGranja.SalidaBase.Add (r_Semilla, 0.5f);
-			data.Trabajos.Add (t_SemillasGranja);
 
 			var t_Cazar = new TrabajoRAW
 			{
@@ -316,7 +313,6 @@ namespace DataBuild
 			t_Cazar.EntradaBase.Add (r_Bestias, 1);
 			t_Cazar.SalidaBase.Add (r_Alimento, 1.2f);
 			t_Cazar.SalidaBase.Add (r_c_Cacería, 1);
-			data.Trabajos.Add (t_Cazar);
 
 			var t_RecolectarMadera = new TrabajoRAW
 			{
@@ -325,7 +321,6 @@ namespace DataBuild
 			};
 			t_RecolectarMadera.SalidaBase.Add (r_Madera, 2);
 			t_RecolectarMadera.EntradaBase.Add (r_Árbol, 1);
-			data.Trabajos.Add (t_RecolectarMadera);
 
 			var t_RecolectarPiedra = new TrabajoRAW
 			{
@@ -333,7 +328,6 @@ namespace DataBuild
 				Edificio = b_RecolRecursos
 			};
 			t_RecolectarPiedra.SalidaBase.Add (r_Piedra, 1.5f);
-			data.Trabajos.Add (t_RecolectarPiedra);
 
 			var t_RecolectarFruta = new TrabajoRAW
 			{
@@ -342,7 +336,6 @@ namespace DataBuild
 			};
 			t_RecolectarFruta.SalidaBase.Add (r_Alimento, 2);
 			t_RecolectarFruta.EntradaBase.Add (r_Frutas, 2);
-			data.Trabajos.Add (t_RecolectarFruta);
 
 			var t_FabricarPalos = new TrabajoRAW
 			{
@@ -351,7 +344,6 @@ namespace DataBuild
 			};
 			t_FabricarPalos.EntradaBase.Add (r_Madera, 0.1f);
 			t_FabricarPalos.SalidaBase.Add (r_m_Palos, 0.2f);
-			data.Trabajos.Add (t_FabricarPalos);
 			#endregion
 
 			#region Unidades
@@ -402,8 +394,6 @@ namespace DataBuild
 			if (data.Ecosistemas.Count != r.Ecosistemas.Count)
 				System.Console.WriteLine ("Error");
 			if (data.Edificios.Count != r.Edificios.Count)
-				System.Console.WriteLine ("Error");
-			if (data.Trabajos.Count != r.Trabajos.Count)
 				System.Console.WriteLine ("Error");
 			if (data.Unidades.Count != r.Unidades.Count)
 				System.Console.WriteLine ("Error");

@@ -308,7 +308,6 @@ namespace Gtk
 		protected void OnCmdColonizarClicked (object sender, EventArgs e)
 		{
 			Armada selArmada = ArmadaSelector.Selected;
-			// FIXME: Si no pondo = null, tira error de compilación en .Colonizar (Use of unassigned variable Colonizador
 			Stack Colonizador = null;
 			if (selArmada?.PuedeColonizar (out Colonizador) ?? false)
 			{

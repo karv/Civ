@@ -116,7 +116,6 @@ namespace Gtk
 			Clear ();
 			foreach (var x in list)
 			{
-				//TODO Forzar que no se repitan
 				string s = stringSelector (x);
 				int i = 0;
 				while (model.ContainsKey (s))
