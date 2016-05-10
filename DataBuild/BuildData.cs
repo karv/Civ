@@ -241,7 +241,7 @@ namespace DataBuild
 			b_Granja.Requiere.Ciencias.Add (c_Agricultura);
 			data.Edificios.Add (b_Granja);
 
-			var b_ReuniónCacería = new EdificioRAW ()
+			var b_ReuniónCacería = new EdificioRAW
 			{
 				MaxWorkers = 20,
 				Nombre = "Casa de cacería"
@@ -382,10 +382,14 @@ namespace DataBuild
 			data.Unidades.Add (u_GuerreroPalo);
 			#endregion
 
+			// Pasar el bin al proyecto principal
 			Store.BinarySerialization.WriteToBinaryFile (@"../../../gtk/Data.bin", data);
-			Store.BinarySerialization.WriteToBinaryFile ("test.bin", data);
 
 			// Probar
+
+			// Dejar un bin para probar su lectura
+			Store.BinarySerialization.WriteToBinaryFile ("test.bin", data);
+
 			var r = Store.BinarySerialization.ReadFromBinaryFile<GameData> ("test.bin");
 			if (data.Recursos.Count != r.Recursos.Count)
 				System.Console.WriteLine ("Error");
