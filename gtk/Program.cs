@@ -1,9 +1,9 @@
 ﻿using System;
 using Gtk;
-using System.Diagnostics;
 using System.IO;
 using Civ.ObjetosEstado;
 using Civ.Global;
+using Civ.IU;
 
 namespace CivGTK
 {
@@ -11,7 +11,7 @@ namespace CivGTK
 	public static class MainClass
 	{
 		static DateTime timer = DateTime.Now;
-		const float MultiplicadorVelocidad = 600;
+		const float MultiplicadorVelocidad = 30;
 		public static Civilización MyCiv;
 
 		static FrmCiv win;
@@ -28,13 +28,14 @@ namespace CivGTK
 			MyCiv = Juego.State.Civs [0] as Civilización;
 			Juego.Guardar ();
 
-			MyCiv.AlNuevoMensaje += MuestraMensajes;
-
 			Application.Init ();
 			win = new FrmCiv (MyCiv);
 			win.Show ();
 			timer = DateTime.Now;
 
+			MyCiv.AgregaMensaje (new Mensaje ("Saludos1", new RepetidorEntero (1)));
+			MyCiv.AgregaMensaje (new Mensaje ("Saludos2", new RepetidorEntero (2)));
+			MyCiv.AgregaMensaje (new Mensaje ("Saludos3", new RepetidorEntero (3)));
 			// Ciclo principal
 			while (!EndGame)
 			{
@@ -44,20 +45,6 @@ namespace CivGTK
 			}
 			//Application.Run();
 
-		}
-
-		static void MuestraMensajes ()
-		{
-			while (MyCiv.ExisteMensaje)
-			{
-				Civ.IU.Mensaje m = MyCiv.SiguienteMensaje ();
-				if (m != null)
-				{
-					Debug.WriteLine (m.ToString ());
-					win.AddMens (m.ToString ());
-					win.Actualizar ();
-				}
-			}
 		}
 
 		/// <summary>

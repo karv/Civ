@@ -1,13 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
+using Civ.IU;
 
 namespace Gtk
 {
 	[System.ComponentModel.ToolboxItem (true)]
 	public partial class MensView : Bin
 	{
-		LinkedList<string> _data = new LinkedList<string> ();
-		LinkedListNode<string> _current;
+		ManejadorMensajes _data;
+
+		public ManejadorMensajes Manejador
+		{
+			set
+			{
+				_data = value;
+				_data.AlAgregar += x => UpdateAll ();
+				UpdateLabel ();
+			}
+		}
+
+		public void UpdateAll ()
+		{
+			UpdateControls ();
+			UpdateLabel ();
+		}
 
 		/// <summary>
 		/// Devuelve o establece el texto que aparece
@@ -17,22 +32,13 @@ namespace Gtk
 		{
 			get
 			{
-				return _current.Value;
+				return _data [0].ToString ();
 			}
 		}
 
 		public int Count
 		{
 			get{ return _data.Count; }
-		}
-
-		public void Add (string data)
-		{
-			_data.AddLast (data);
-			if (Count == 1)
-				_current = _data.First;
-			UpdateLabel ();
-			UpdateControls ();
 		}
 
 		void UpdateLabel ()
@@ -50,31 +56,28 @@ namespace Gtk
 
 		public void MoveNext ()
 		{
-			_current = _current.Next ?? _data.First;
+			_data.Move (1);
 			UpdateLabel ();
 		}
 
 		public void MovePrev ()
 		{
-			_current = _current.Previous ?? _data.Last;
+			_data.Move (-1);
 			UpdateLabel ();
 		}
 
 		public void RemoveCurrent ()
 		{
-			LinkedListNode<string> del = _current;
-			MoveNext ();
-			_data.Remove (del);
+			_data.RemoveAt (0);
 			UpdateLabel ();
 			UpdateControls ();
 		}
 
 		public MensView ()
 		{
-			_current = _data.First;
 			Build ();
-			UpdateLabel ();
 		}
+
 
 		protected void OnCmdBorrarClicked (object sender, EventArgs e)
 		{
