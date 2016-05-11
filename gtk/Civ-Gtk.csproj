@@ -65,7 +65,7 @@
       <HintPath>..\packages\Controls.0.1\lib\Controls.dll</HintPath>
     </Reference>
     <Reference Include="ListaExtras">
-      <HintPath>..\packages\ListaExtras.0.3.0.3\lib\ListaExtras.dll</HintPath>
+      <HintPath>..\packages\ListaExtras.0.3.0.4\lib\ListaExtras.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

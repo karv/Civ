@@ -117,8 +117,6 @@ namespace Gtk
 			string IconName = recurso.Img;
 			if (IconName == null)
 			{
-				System.Diagnostics.Debug.WriteLine (string.Format ("Recurso {0} con enlace a icono roto. Usando icono genérico.", 
-					Nombre));
 				return new Gdk.Pixbuf (iconDir + nullIconFile, iconSize_x, iconSize_y);
 			}
 			return new Gdk.Pixbuf (iconDir + IconName, iconSize_x, iconSize_y);
