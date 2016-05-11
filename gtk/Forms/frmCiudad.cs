@@ -161,7 +161,7 @@ namespace Gtk
 		{
 			// Construir recStore
 			stRecurso.Clear ();
-			foreach (var x in Ciudad.Almacén.Recursos)
+			foreach (var x in Ciudad.RecursosVisibles())
 			{
 				stRecurso.AddNode (new RecursoListEntry (Ciudad.Almacén, x));
 			}
