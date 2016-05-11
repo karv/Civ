@@ -334,8 +334,8 @@ namespace DataBuild
 				Nombre = "Recolectar fruta",
 				Edificio = b_RecolFrutas
 			};
-			t_RecolectarFruta.SalidaBase.Add (r_Alimento, 2);
-			t_RecolectarFruta.EntradaBase.Add (r_Frutas, 2);
+			t_RecolectarFruta.SalidaBase.Add (r_Alimento, 3);
+			t_RecolectarFruta.EntradaBase.Add (r_Frutas, 3);
 
 			var t_FabricarPalos = new TrabajoRAW
 			{
