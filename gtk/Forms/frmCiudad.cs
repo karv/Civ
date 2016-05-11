@@ -115,11 +115,15 @@ namespace Gtk
 		Gdk.Pixbuf buildIcon ()
 		{
 			string IconName = recurso.Img;
-			if (IconName == null)
-			{
-				return new Gdk.Pixbuf (iconDir + nullIconFile, iconSize_x, iconSize_y);
-			}
-			return new Gdk.Pixbuf (iconDir + IconName, iconSize_x, iconSize_y);
+			return string.IsNullOrEmpty (IconName) ? 
+				new Gdk.Pixbuf (
+				iconDir + nullIconFile,
+				iconSize_x,
+				iconSize_y) : 
+				new Gdk.Pixbuf (
+				iconDir + IconName,
+				iconSize_x,
+				iconSize_y);
 		}
 
 		[Gtk.TreeNodeValue (Column = 1)]
