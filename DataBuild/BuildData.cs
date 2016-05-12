@@ -121,7 +121,7 @@ namespace DataBuild
 			data.Ciencias.Add (c_Caza);
 
 			var c_Recolección = new Ciencia { Nombre = "Recolección" };
-			c_Caza.Reqs.Recursos.Add (r_c_Ciencia, 5);
+			c_Recolección.Reqs.Recursos.Add (r_c_Ciencia, 5);
 			data.Ciencias.Add (c_Recolección);
 
 			var c_Agricultura = new Ciencia  { Nombre = "Agricultura" };
@@ -449,7 +449,7 @@ namespace DataBuild
 				Velocidad = 1.6f,
 				Peso = 0.7f,
 				MaxCarga = 0,
-				Defensa = 0.6,
+				Defensa = 0.6f,
 				CostePoblación = 0,
 				Dispersión = 0.2f,
 				Nombre = "Perro de guerra",
