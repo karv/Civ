@@ -227,6 +227,7 @@ namespace Gtk
 			#if DEBUG
 			// Hacer tab de propiedad
 			var data = ciudad.Propiedades.Aggregate ("", (x, y) => x + y.Nombre + "\n");
+			data += Ciudad.Terr.Nombre;
 			var lbText = new Label (data);
 			var lbTitle = new Label ("Propiedades");
 
