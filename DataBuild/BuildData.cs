@@ -148,14 +148,6 @@ namespace DataBuild
 			#endregion
 
 			#region Propiedades
-			var p_Alimento = new Propiedad { Nombre = "Alimento" };
-			p_Alimento.Salida.Add (new TasaProdConstante
-			{
-				Recurso = r_Alimento,
-				Crecimiento = 1,
-				Max = 1000
-			});
-
 			var p_Bestias = new Propiedad { Nombre = "Bestias de caza" };
 			p_Bestias.Salida.Add (new TasaProdExp
 			{
@@ -211,7 +203,6 @@ namespace DataBuild
 			#region Ecosistemas
 			var e_Llanura = new Ecosistema { Nombre = "Llanura" };
 			e_Llanura.Nombres.Add ("Planicie");
-			e_Llanura.PropPropiedad.Add (p_Alimento, 0.8f);
 			e_Llanura.PropPropiedad.Add (p_Bestias, 0.7f);
 			e_Llanura.PropPropiedad.Add (p_Frutas, 0.85f);
 			e_Llanura.PropPropiedad.Add (p_Arboleda, 0.7f);
@@ -222,7 +213,6 @@ namespace DataBuild
 			e_Montañoso.Nombres.Add ("Montaña");
 			e_Montañoso.Nombres.Add ("Monte");
 			e_Montañoso.Nombres.Add ("Incario");
-			e_Montañoso.PropPropiedad.Add (p_Alimento, 0.3f);
 			e_Montañoso.PropPropiedad.Add (p_Bestias, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Frutas, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Arboleda, 0.6f);
@@ -232,7 +222,6 @@ namespace DataBuild
 			var e_Desierto = new Ecosistema { Nombre = "Desierto" };
 			e_Desierto.Nombres.Add ("Sahara");
 			e_Desierto.Nombres.Add ("Sahuaro");
-			e_Desierto.PropPropiedad.Add (p_Alimento, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Bestias, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Arboleda, 0.3f);
 			e_Desierto.PropPropiedad.Add (p_minArbol, 1);
@@ -240,7 +229,6 @@ namespace DataBuild
 
 			var e_bosque = new Ecosistema { Nombre = "Bosque" };
 			e_bosque.Nombres.Add ("Amazonas");
-			e_bosque.PropPropiedad.Add (p_Alimento, 0.3f);
 			e_bosque.PropPropiedad.Add (p_Bestias, 0.85f);
 			e_bosque.PropPropiedad.Add (p_Arboleda, 1f);
 			e_bosque.PropPropiedad.Add (p_Frutas, 0.4f);
@@ -250,7 +238,6 @@ namespace DataBuild
 
 			var e_selva = new Ecosistema { Nombre = "Selva" };
 			e_selva.Nombres.Add ("Selva (?)");
-			e_selva.PropPropiedad.Add (p_Alimento, 0.5f);
 			e_selva.PropPropiedad.Add (p_Bestias, 0.6f);
 			e_selva.PropPropiedad.Add (p_Arboleda, 0.7f);
 			e_selva.PropPropiedad.Add (p_Frutas, 0.6f);
