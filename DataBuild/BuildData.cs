@@ -104,7 +104,7 @@ namespace DataBuild
 			data.Ciencias.Add (c_Recolección);
 
 			var c_Agricultura = new Ciencia  { Nombre = "Agricultura" };
-			c_Agricultura.Reqs.Recursos [r_c_Ciencia] = 10;
+			c_Agricultura.Reqs.Recursos.Add (r_c_Ciencia, 10);
 			c_Agricultura.Reqs.Ciencias.Add (c_Recolección);
 			data.Ciencias.Add (c_Agricultura);
 
@@ -112,6 +112,10 @@ namespace DataBuild
 			c_FabricarPalos.Reqs.Recursos.Add (r_c_Cacería, 5);
 			c_FabricarPalos.Reqs.Ciencias.Add (c_Caza);
 			data.Ciencias.Add (c_FabricarPalos);
+
+			var c_Lenguaje = new Ciencia { Nombre = "Lenguaje" };
+			c_Lenguaje.Reqs.Ciencias.Add (c_Recolección);
+			c_Lenguaje.Reqs.Recursos.Add (r_c_Ciencia, 15);
 			#endregion
 
 			#region Propiedades
