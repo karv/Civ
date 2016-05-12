@@ -33,9 +33,6 @@ namespace CivGTK
 			win.Show ();
 			timer = DateTime.Now;
 
-			MyCiv.AgregaMensaje (new Mensaje ("Saludos1", new RepetidorEntero (1)));
-			MyCiv.AgregaMensaje (new Mensaje ("Saludos2", new RepetidorEntero (2)));
-			MyCiv.AgregaMensaje (new Mensaje ("Saludos3", new RepetidorEntero (3)));
 			// Ciclo principal
 			while (!EndGame)
 			{
