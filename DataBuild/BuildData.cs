@@ -408,6 +408,9 @@ namespace DataBuild
 				System.Console.WriteLine ("Error");
 			if (data.RecursoAlimento.Nombre != r.RecursoAlimento.Nombre)
 				System.Console.WriteLine ("Error");
+
+			// Eliminar el archivo de pruebas
+			System.IO.File.Delete ("test.bin");
 		}
 	}
 }
