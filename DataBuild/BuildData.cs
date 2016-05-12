@@ -17,7 +17,6 @@ namespace DataBuild
 			{
 				Nombre = "Semillas",
 				EsEcológico = true,
-				Valor = 0.1f
 			};
 			data.Recursos.Add (r_Semilla);
 
@@ -97,6 +96,7 @@ namespace DataBuild
 				Desaparece = true,
 				EsCientifico = true,
 				EsGlobal = true,
+				Valor = 0.3f
 			};
 			data.Recursos.Add (r_c_Ciencia);
 
@@ -104,7 +104,8 @@ namespace DataBuild
 			{
 				Desaparece = true,
 				EsCientifico = true,
-				EsGlobal = true
+				EsGlobal = true,
+				Valor = 0.2f
 			};
 			data.Recursos.Add (r_c_Cacería);
 			#endregion
