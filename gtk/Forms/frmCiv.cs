@@ -67,7 +67,7 @@ namespace Gtk
 		public string NombreTerreno { get { return Ciudad.Posición ().A.ToString (); } }
 
 		[Gtk.TreeNodeValue (Column = 4)]
-		public float Puntuación { get { return ((IPuntuado)Ciudad).Puntuación; } }
+		public float Puntuación { get { return Ciudad.Puntuación; } }
 
 		public CityListEntry (ICiudad ciudad)
 		{
@@ -120,11 +120,21 @@ namespace Gtk
 			}
 		}
 
+		public void ActualizarMuyDebil ()
+		{
+			lbScore.Text = ((IPuntuado)Civ).Puntuación.ToString ();
+			nvAvances.QueueDraw ();
+			nvCiudades.QueueDraw ();
+			nvInvestDetalle.QueueDraw ();
+			nvInvestigando.QueueDraw ();
+		}
+
 		/// <summary>
 		/// Actualiza esta form
 		/// </summary>
 		public void ActualizarDebil ()
 		{
+			ActualizarMuyDebil ();
 			stCiudad.Clear ();
 			foreach (var x in Civ.Ciudades)
 			{
@@ -151,7 +161,7 @@ namespace Gtk
 				if (!x.EsDefensa)
 					ArmadaSelector.Add (x);
 			}
-			lbScore.Text = ((IPuntuado)Civ).Puntuación.ToString ();
+
 		}
 
 		/// <summary>
@@ -184,6 +194,15 @@ namespace Gtk
 			: base (WindowType.Toplevel)
 		{
 			Civ = civ;
+
+			var actualizador = new Cronómetro (TimeSpan.FromMilliseconds (5000))
+			{
+				Habilitado = true,
+				Recurrente = true
+			};
+
+			Juego.Instancia.Cronómetros.Add (actualizador);
+			actualizador.AlLlamar += ActualizarMuyDebil;
 
 			Build ();
 
