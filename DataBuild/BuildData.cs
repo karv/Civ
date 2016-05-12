@@ -116,6 +116,7 @@ namespace DataBuild
 			var c_Lenguaje = new Ciencia { Nombre = "Lenguaje" };
 			c_Lenguaje.Reqs.Ciencias.Add (c_Recolección);
 			c_Lenguaje.Reqs.Recursos.Add (r_c_Ciencia, 15);
+			data.Ciencias.Add (c_Lenguaje);
 			#endregion
 
 			#region Propiedades
@@ -283,6 +284,16 @@ namespace DataBuild
 			b_FábricaArmasI.ReqRecursos.Add (r_Madera, 8);
 			b_FábricaArmasI.ReqRecursos.Add (r_Martillo, 3);
 			data.Edificios.Add (b_FábricaArmasI);
+
+			var b_e_ComunicaciónI = new EdificioRAW
+			{
+				MaxWorkers = 0,
+				Nombre = "Comunicación social I",
+				EsAutoConstruible = true
+			};
+			b_e_ComunicaciónI.Salida.Add (r_c_Ciencia, 0.3f);
+			b_e_ComunicaciónI.Requiere.Ciencias.Add (c_Lenguaje);
+			data.Edificios.Add (b_e_ComunicaciónI);
 			#endregion
 
 			#region Trabajos
