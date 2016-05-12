@@ -12,17 +12,7 @@ namespace DataBuild
 			var data = new GameData ();
 
 			#region Recursos
-
-			#region Comunes
-			var r_Alimento = new Recurso
-			{
-				Nombre = "Alimento",
-				Valor = 2,
-				Img = "Comida.jpg"
-			};
-			data.Recursos.Add (r_Alimento);
-			data.RecursoAlimento = r_Alimento;
-
+			#region Ecológicos
 			var r_Semilla = new Recurso
 			{
 				Nombre = "Semillas",
@@ -49,6 +39,31 @@ namespace DataBuild
 				Nombre = "Árboles",
 				EsEcológico = true
 			};
+			data.Recursos.Add (r_Árbol);
+
+			var r_PerroSalvage = new Recurso
+			{
+				Nombre = "Perro salvage",
+				EsEcológico = true
+			};
+			data.Recursos.Add (r_PerroSalvage);
+
+			#endregion
+			#region Comunes
+			var r_Alimento = new Recurso
+			{
+				Nombre = "Alimento",
+				Valor = 2,
+				Img = "Comida.jpg"
+			};
+			data.Recursos.Add (r_Alimento);
+			data.RecursoAlimento = r_Alimento;
+
+			var r_PerroDomesticado = new Recurso
+			{
+				Nombre = "Perro",
+			};
+			data.Recursos.Add (r_PerroDomesticado);
 
 			#endregion
 
@@ -91,6 +106,12 @@ namespace DataBuild
 				Nombre = "Palos de madera"
 			};
 			data.Recursos.Add (r_m_Palos);
+
+			var r_m_PerroGuerra = new Recurso
+			{
+				Nombre = "Perro de guerra"
+			};
+			data.Recursos.Add (r_m_PerroGuerra);
 			#endregion
 			#endregion
 
@@ -100,7 +121,7 @@ namespace DataBuild
 			data.Ciencias.Add (c_Caza);
 
 			var c_Recolección = new Ciencia { Nombre = "Recolección" };
-			c_Caza.Reqs.Recursos.Add (r_c_Ciencia, 5);
+			c_Recolección.Reqs.Recursos.Add (r_c_Ciencia, 5);
 			data.Ciencias.Add (c_Recolección);
 
 			var c_Agricultura = new Ciencia  { Nombre = "Agricultura" };
@@ -117,17 +138,16 @@ namespace DataBuild
 			c_Lenguaje.Reqs.Ciencias.Add (c_Recolección);
 			c_Lenguaje.Reqs.Recursos.Add (r_c_Ciencia, 15);
 			data.Ciencias.Add (c_Lenguaje);
+
+			var c_DomesticaciónPerro = new Ciencia { Nombre = "Domesticación del perro" };
+			c_DomesticaciónPerro.Reqs.Ciencias.Add (c_Lenguaje);
+			c_DomesticaciónPerro.Reqs.Ciencias.Add (c_Caza);
+			c_DomesticaciónPerro.Reqs.Recursos.Add (r_c_Ciencia, 5);
+			c_DomesticaciónPerro.Reqs.Recursos.Add (r_c_Cacería, 7);
+			data.Ciencias.Add (c_DomesticaciónPerro);
 			#endregion
 
 			#region Propiedades
-			var p_Alimento = new Propiedad { Nombre = "Alimento" };
-			p_Alimento.Salida.Add (new TasaProdConstante
-			{
-				Recurso = r_Alimento,
-				Crecimiento = 1,
-				Max = 1000
-			});
-
 			var p_Bestias = new Propiedad { Nombre = "Bestias de caza" };
 			p_Bestias.Salida.Add (new TasaProdExp
 			{
@@ -170,33 +190,40 @@ namespace DataBuild
 				Crecimiento = 10,
 				Max = 200
 			});
+
+			var p_Perros = new Propiedad { Nombre = "Perros" };
+			p_Perros.Salida.Add (new TasaProdConstante
+			{
+				Recurso = r_PerroSalvage,
+				Crecimiento = 3,
+				Max = 1000
+			});
 			#endregion
 
 			#region Ecosistemas
 			var e_Llanura = new Ecosistema { Nombre = "Llanura" };
 			e_Llanura.Nombres.Add ("Planicie");
-			e_Llanura.PropPropiedad.Add (p_Alimento, 0.8f);
 			e_Llanura.PropPropiedad.Add (p_Bestias, 0.7f);
 			e_Llanura.PropPropiedad.Add (p_Frutas, 0.85f);
 			e_Llanura.PropPropiedad.Add (p_Arboleda, 0.7f);
 			e_Llanura.PropPropiedad.Add (p_minArbol, 1);
+			e_Llanura.PropPropiedad.Add (p_Perros, 0.9f);
 			data.Ecosistemas.Add (e_Llanura);
 
 			var e_Montañoso = new Ecosistema { Nombre = "Montaña" };
 			e_Montañoso.Nombres.Add ("Montaña");
 			e_Montañoso.Nombres.Add ("Monte");
 			e_Montañoso.Nombres.Add ("Incario");
-			e_Montañoso.PropPropiedad.Add (p_Alimento, 0.3f);
 			e_Montañoso.PropPropiedad.Add (p_Bestias, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Frutas, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Arboleda, 0.6f);
 			e_Montañoso.PropPropiedad.Add (p_minArbol, 1);
+			e_Montañoso.PropPropiedad.Add (p_Perros, 0.3f);
 			data.Ecosistemas.Add (e_Montañoso);
 
 			var e_Desierto = new Ecosistema { Nombre = "Desierto" };
 			e_Desierto.Nombres.Add ("Sahara");
 			e_Desierto.Nombres.Add ("Sahuaro");
-			e_Desierto.PropPropiedad.Add (p_Alimento, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Bestias, 0.2f);
 			e_Desierto.PropPropiedad.Add (p_Arboleda, 0.3f);
 			e_Desierto.PropPropiedad.Add (p_minArbol, 1);
@@ -204,17 +231,16 @@ namespace DataBuild
 
 			var e_bosque = new Ecosistema { Nombre = "Bosque" };
 			e_bosque.Nombres.Add ("Amazonas");
-			e_bosque.PropPropiedad.Add (p_Alimento, 0.3f);
 			e_bosque.PropPropiedad.Add (p_Bestias, 0.85f);
 			e_bosque.PropPropiedad.Add (p_Arboleda, 1f);
 			e_bosque.PropPropiedad.Add (p_Frutas, 0.4f);
 			e_bosque.PropPropiedad.Add (p_Boscoso, 0.8f);
 			e_bosque.PropPropiedad.Add (p_minArbol, 1);
+			e_bosque.PropPropiedad.Add (p_Perros, 0.4f);
 			data.Ecosistemas.Add (e_bosque);
 
 			var e_selva = new Ecosistema { Nombre = "Selva" };
 			e_selva.Nombres.Add ("Selva (?)");
-			e_selva.PropPropiedad.Add (p_Alimento, 0.5f);
 			e_selva.PropPropiedad.Add (p_Bestias, 0.6f);
 			e_selva.PropPropiedad.Add (p_Arboleda, 0.7f);
 			e_selva.PropPropiedad.Add (p_Frutas, 0.6f);
@@ -294,6 +320,17 @@ namespace DataBuild
 			b_e_ComunicaciónI.Salida.Add (r_c_Ciencia, 0.3f);
 			b_e_ComunicaciónI.Requiere.Ciencias.Add (c_Lenguaje);
 			data.Edificios.Add (b_e_ComunicaciónI);
+
+			var b_EntrenaPerros = new EdificioRAW
+			{
+				MaxWorkers = 10,
+				Nombre = "Casa de domesticación de perros"
+			};
+			b_EntrenaPerros.Requiere.Ciencias.Add (c_DomesticaciónPerro);
+			b_EntrenaPerros.ReqRecursos.Add (r_Piedra, 5);
+			b_EntrenaPerros.ReqRecursos.Add (r_Madera, 5);
+			b_EntrenaPerros.ReqRecursos.Add (r_Martillo, 3);
+			data.Edificios.Add (b_EntrenaPerros);
 			#endregion
 
 			#region Trabajos
@@ -302,7 +339,7 @@ namespace DataBuild
 				Edificio = b_Palacio,
 				Nombre = "Ciencia"
 			};
-			t_CienciaPalacio.SalidaBase [r_c_Ciencia] = 1;
+			t_CienciaPalacio.SalidaBase.Add (r_c_Ciencia, 1);
 
 			var t_AlimentoGranja = new TrabajoRAW
 			{
@@ -394,8 +431,27 @@ namespace DataBuild
 			u_GuerreroPalo.Flags.Add ("Pie");
 			u_GuerreroPalo.Flags.Add ("Humano");
 			u_GuerreroPalo.Flags.Add ("Melee");
-			u_GuerreroPalo.Reqs [r_m_Palos] = 1;
+			u_GuerreroPalo.Reqs.Add (r_m_Palos, 1);
 			data.Unidades.Add (u_GuerreroPalo);
+
+			var u_perro = new UnidadRAWCombate
+			{
+				Velocidad = 1.6f,
+				Peso = 0.7f,
+				MaxCarga = 0,
+				Defensa = 0.6f,
+				CostePoblación = 0,
+				Dispersión = 0.2f,
+				Nombre = "Perro de guerra",
+				Ataque = 1.4f
+			};
+			u_perro.Flags.Add ("Pie");
+			u_perro.Flags.Add ("Animal");
+			u_perro.Flags.Add ("Melee");
+			u_perro.Mods.Add ("Humano", 1.1f);
+			u_perro.Reqs.Add (r_m_PerroGuerra, 1);
+			u_perro.ReqCiencia = c_DomesticaciónPerro;
+			data.Unidades.Add (u_perro);
 			#endregion
 
 			// Pasar el bin al proyecto principal
