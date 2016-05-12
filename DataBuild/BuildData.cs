@@ -133,10 +133,10 @@ namespace DataBuild
 			p_Bestias.Iniciales.Add (r_Bestias, 10);
 
 			var p_Frutas = new Propiedad{ Nombre = "Frutas" };
-			p_Frutas.Salida.Add (new TasaProdExp
+			p_Frutas.Salida.Add (new TasaProdConstante
 			{
 				Recurso = r_Frutas,
-				CrecimientoBase = 1.4f,
+				Crecimiento = 50,
 				Max = 4500
 			});
 			p_Frutas.Iniciales.Add (r_Frutas, 20);
