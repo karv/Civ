@@ -25,14 +25,12 @@ namespace DataBuild
 			{
 				Nombre = "Bestias de casa",
 				EsEcológico = true,
-				Valor = 0.01f
 			};
 			data.Recursos.Add (r_Bestias);
 
 			var r_Frutas = new Recurso
 			{
 				Nombre = "Frutas",
-				Valor = 0.01f,
 				EsEcológico = true
 			};
 			data.Recursos.Add (r_Frutas);
@@ -57,7 +55,7 @@ namespace DataBuild
 			var r_Alimento = new Recurso
 			{
 				Nombre = "Alimento",
-				Valor = 2,
+				Valor = 0.01f,
 				Img = "Comida.jpg"
 			};
 			data.Recursos.Add (r_Alimento);
@@ -65,7 +63,7 @@ namespace DataBuild
 
 			var r_PerroDomesticado = new Recurso
 			{
-				Valor = 1.3f,
+				Valor = 0.1f,
 				Nombre = "Perro"
 			};
 			data.Recursos.Add (r_PerroDomesticado);
@@ -82,13 +80,13 @@ namespace DataBuild
 
 			var r_Piedra = new Recurso ("Piedra")
 			{
-				Valor = 1.1f
+				Valor = 0.03f
 			};
 			data.Recursos.Add (r_Piedra);
 
 			var r_Madera = new Recurso ("Madera")
 			{
-				Valor = 1
+				Valor = 0.025f
 			};
 			data.Recursos.Add (r_Madera);
 			#endregion
