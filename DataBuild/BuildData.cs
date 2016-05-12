@@ -12,17 +12,7 @@ namespace DataBuild
 			var data = new GameData ();
 
 			#region Recursos
-
-			#region Comunes
-			var r_Alimento = new Recurso
-			{
-				Nombre = "Alimento",
-				Valor = 2,
-				Img = "Comida.jpg"
-			};
-			data.Recursos.Add (r_Alimento);
-			data.RecursoAlimento = r_Alimento;
-
+			#region Ecológicos
 			var r_Semilla = new Recurso
 			{
 				Nombre = "Semillas",
@@ -49,6 +39,31 @@ namespace DataBuild
 				Nombre = "Árboles",
 				EsEcológico = true
 			};
+			data.Recursos.Add (r_Árbol);
+
+			var r_PerroSalvage = new Recurso
+			{
+				Nombre = "Perro salvage",
+				EsEcológico = true
+			};
+			data.Recursos.Add (r_PerroSalvage);
+
+			#endregion
+			#region Comunes
+			var r_Alimento = new Recurso
+			{
+				Nombre = "Alimento",
+				Valor = 2,
+				Img = "Comida.jpg"
+			};
+			data.Recursos.Add (r_Alimento);
+			data.RecursoAlimento = r_Alimento;
+
+			var r_PerroDomesticado = new Recurso
+			{
+				Nombre = "Perro",
+			};
+			data.Recursos.Add (r_PerroDomesticado);
 
 			#endregion
 
@@ -91,6 +106,12 @@ namespace DataBuild
 				Nombre = "Palos de madera"
 			};
 			data.Recursos.Add (r_m_Palos);
+
+			var r_m_PerroGuerra = new Recurso
+			{
+				Nombre = "Perro de guerra"
+			};
+			data.Recursos.Add (r_m_PerroGuerra);
 			#endregion
 			#endregion
 
@@ -176,6 +197,14 @@ namespace DataBuild
 				Recurso = r_Árbol,
 				Crecimiento = 10,
 				Max = 200
+			});
+
+			var p_Perros = new Propiedad { Nombre = "Perros" };
+			p_Perros.Salida.Add (new TasaProdConstante
+			{
+				Recurso = r_PerroSalvage,
+				Crecimiento = 3,
+				Max = 1000
 			});
 			#endregion
 
@@ -301,6 +330,17 @@ namespace DataBuild
 			b_e_ComunicaciónI.Salida.Add (r_c_Ciencia, 0.3f);
 			b_e_ComunicaciónI.Requiere.Ciencias.Add (c_Lenguaje);
 			data.Edificios.Add (b_e_ComunicaciónI);
+
+			var b_EntrenaPerros = new EdificioRAW
+			{
+				MaxWorkers = 10,
+				Nombre = "Casa de domesticación de perros"
+			};
+			b_EntrenaPerros.Requiere.Ciencias.Add (c_DomesticaciónPerro);
+			b_EntrenaPerros.ReqRecursos.Add (r_Piedra, 5);
+			b_EntrenaPerros.ReqRecursos.Add (r_Madera, 5);
+			b_EntrenaPerros.ReqRecursos.Add (r_Martillo, 3);
+			data.Edificios.Add (b_EntrenaPerros);
 			#endregion
 
 			#region Trabajos
@@ -309,7 +349,7 @@ namespace DataBuild
 				Edificio = b_Palacio,
 				Nombre = "Ciencia"
 			};
-			t_CienciaPalacio.SalidaBase [r_c_Ciencia] = 1;
+			t_CienciaPalacio.SalidaBase.Add (r_c_Ciencia, 1);
 
 			var t_AlimentoGranja = new TrabajoRAW
 			{
