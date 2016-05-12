@@ -6,6 +6,7 @@ using Controls.Diálogos;
 using Civ.ObjetosEstado;
 using Civ.RAW;
 using Civ.Global;
+using System.Linq;
 
 namespace Gtk
 {
@@ -222,6 +223,15 @@ namespace Gtk
 			MainWindow = main;
 			Ciudad = ciudad;
 			Build ();
+
+			#if DEBUG
+			// Hacer tab de propiedad
+			var data = ciudad.Propiedades.Aggregate ("", (x, y) => x + y.Nombre + "\n");
+			var lbText = new Label (data);
+			var lbTitle = new Label ("Propiedades");
+
+			notebook1.AppendPage (lbText, lbTitle);
+			#endif
 
 			//ArmadaCombobox.Add(ciudad.Defensa, "Defensa");
 
