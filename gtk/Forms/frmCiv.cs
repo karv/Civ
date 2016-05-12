@@ -4,6 +4,7 @@ using Civ.ObjetosEstado;
 using Civ.RAW;
 using Civ.Global;
 using Civ.Topología;
+using Civ;
 
 namespace Gtk
 {
@@ -64,6 +65,9 @@ namespace Gtk
 
 		[Gtk.TreeNodeValue (Column = 3)]
 		public string NombreTerreno { get { return Ciudad.Posición ().A.ToString (); } }
+
+		[Gtk.TreeNodeValue (Column = 4)]
+		public float Puntuación { get { return ((IPuntuado)Ciudad).Puntuación; } }
 
 		public CityListEntry (ICiudad ciudad)
 		{
@@ -147,6 +151,7 @@ namespace Gtk
 				if (!x.EsDefensa)
 					ArmadaSelector.Add (x);
 			}
+			lbScore.Text = ((IPuntuado)Civ).Puntuación.ToString ();
 		}
 
 		/// <summary>
@@ -204,6 +209,7 @@ namespace Gtk
 				"value",
 				2);
 			nvCiudades.AppendColumn ("Terreno", new CellRendererText (), "text", 3);
+			nvCiudades.AppendColumn ("Puntuación", new CellRendererText (), "text", 4);
 
 			nvAvances.AppendColumn ("Avance", new CellRendererText (), "text", 0);
 

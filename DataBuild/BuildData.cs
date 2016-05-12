@@ -73,7 +73,8 @@ namespace DataBuild
 			var r_Martillo = new Recurso
 			{
 				Nombre = "Martillos",
-				Desaparece = true
+				Desaparece = true,
+				Valor = 0.15f
 			};
 			data.Recursos.Add (r_Martillo);
 
