@@ -243,8 +243,6 @@ namespace Gtk
 		/// <param name="e">E.</param>
 		protected void OnCmdIrActivated (object sender, EventArgs e)
 		{
-			Console.WriteLine (sender);
-			Console.WriteLine (e);
 			MuestraCiudad ();
 		}
 
