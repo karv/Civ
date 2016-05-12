@@ -117,6 +117,13 @@ namespace DataBuild
 			c_Lenguaje.Reqs.Ciencias.Add (c_Recolección);
 			c_Lenguaje.Reqs.Recursos.Add (r_c_Ciencia, 15);
 			data.Ciencias.Add (c_Lenguaje);
+
+			var c_DomesticaciónPerro = new Ciencia { Nombre = "Domesticación del perro" };
+			c_DomesticaciónPerro.Reqs.Ciencias.Add (c_Lenguaje);
+			c_DomesticaciónPerro.Reqs.Ciencias.Add (c_Caza);
+			c_DomesticaciónPerro.Reqs.Recursos.Add (r_c_Ciencia, 5);
+			c_DomesticaciónPerro.Reqs.Recursos.Add (r_c_Cacería, 7);
+			data.Ciencias.Add (c_DomesticaciónPerro);
 			#endregion
 
 			#region Propiedades
