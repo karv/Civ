@@ -3,7 +3,6 @@ using Gtk;
 using System.IO;
 using Civ.ObjetosEstado;
 using Civ.Global;
-using Civ.IU;
 
 namespace CivGTK
 {
