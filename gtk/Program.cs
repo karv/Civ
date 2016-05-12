@@ -3,7 +3,7 @@ using Gtk;
 using System.IO;
 using Civ.ObjetosEstado;
 using Civ.Global;
-using Civ.IU;
+using Civ;
 
 namespace CivGTK
 {
@@ -24,8 +24,9 @@ namespace CivGTK
 				Juego.Cargar ();
 			else
 				Juego.Instancia.Inicializar ();
-			
+
 			MyCiv = Juego.State.Civs [0] as Civilización;
+			Console.WriteLine (((IPuntuado)MyCiv).Puntuación);
 			Juego.Guardar ();
 
 			Application.Init ();

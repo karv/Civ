@@ -80,6 +80,8 @@ namespace Gtk
 		
 		private global::Gtk.Statusbar statusbar;
 		
+		private global::Gtk.Label lbScore;
+		
 		private global::Gtk.MensView Mens;
 		
 		private global::Gtk.Button cmdActualiza;
@@ -365,14 +367,22 @@ namespace Gtk
 			this.statusbar.Name = "statusbar";
 			this.statusbar.Spacing = 6;
 			// Container child statusbar.Gtk.Box+BoxChild
+			this.lbScore = new global::Gtk.Label ();
+			this.lbScore.Name = "lbScore";
+			this.statusbar.Add (this.lbScore);
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.lbScore]));
+			w31.Position = 0;
+			w31.Expand = false;
+			w31.Fill = false;
+			// Container child statusbar.Gtk.Box+BoxChild
 			this.Mens = new global::Gtk.MensView ();
 			this.Mens.Events = ((global::Gdk.EventMask)(256));
 			this.Mens.Name = "Mens";
 			this.statusbar.Add (this.Mens);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.Mens]));
-			w31.Position = 1;
-			w31.Expand = false;
-			w31.Fill = false;
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.Mens]));
+			w32.Position = 2;
+			w32.Expand = false;
+			w32.Fill = false;
 			// Container child statusbar.Gtk.Box+BoxChild
 			this.cmdActualiza = new global::Gtk.Button ();
 			this.cmdActualiza.CanFocus = true;
@@ -380,16 +390,16 @@ namespace Gtk
 			this.cmdActualiza.UseUnderline = true;
 			this.cmdActualiza.Label = global::Mono.Unix.Catalog.GetString ("Actualiza");
 			this.statusbar.Add (this.cmdActualiza);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.cmdActualiza]));
-			w32.PackType = ((global::Gtk.PackType)(1));
-			w32.Position = 2;
-			w32.Expand = false;
-			w32.Fill = false;
-			this.vbox1.Add (this.statusbar);
-			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.statusbar]));
-			w33.Position = 1;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.statusbar [this.cmdActualiza]));
+			w33.PackType = ((global::Gtk.PackType)(1));
+			w33.Position = 3;
 			w33.Expand = false;
 			w33.Fill = false;
+			this.vbox1.Add (this.statusbar);
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.statusbar]));
+			w34.Position = 1;
+			w34.Expand = false;
+			w34.Fill = false;
 			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

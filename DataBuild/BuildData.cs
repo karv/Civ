@@ -16,14 +16,14 @@ namespace DataBuild
 			var r_Semilla = new Recurso
 			{
 				Nombre = "Semillas",
-				EsEcológico = true
+				EsEcológico = true,
 			};
 			data.Recursos.Add (r_Semilla);
 
 			var r_Bestias = new Recurso
 			{
 				Nombre = "Bestias de casa",
-				EsEcológico = true
+				EsEcológico = true,
 			};
 			data.Recursos.Add (r_Bestias);
 
@@ -49,11 +49,12 @@ namespace DataBuild
 			data.Recursos.Add (r_PerroSalvage);
 
 			#endregion
+		
 			#region Comunes
 			var r_Alimento = new Recurso
 			{
 				Nombre = "Alimento",
-				Valor = 2,
+				Valor = 0.01f,
 				Img = "Comida.jpg"
 			};
 			data.Recursos.Add (r_Alimento);
@@ -61,7 +62,8 @@ namespace DataBuild
 
 			var r_PerroDomesticado = new Recurso
 			{
-				Nombre = "Perro",
+				Valor = 0.1f,
+				Nombre = "Perro"
 			};
 			data.Recursos.Add (r_PerroDomesticado);
 
@@ -71,14 +73,21 @@ namespace DataBuild
 			var r_Martillo = new Recurso
 			{
 				Nombre = "Martillos",
-				Desaparece = true
+				Desaparece = true,
+				Valor = 0.15f
 			};
 			data.Recursos.Add (r_Martillo);
 
-			var r_Piedra = new Recurso ("Piedra");
+			var r_Piedra = new Recurso ("Piedra")
+			{
+				Valor = 0.03f
+			};
 			data.Recursos.Add (r_Piedra);
 
-			var r_Madera = new Recurso ("Madera");
+			var r_Madera = new Recurso ("Madera")
+			{
+				Valor = 0.025f
+			};
 			data.Recursos.Add (r_Madera);
 			#endregion
 
@@ -87,7 +96,8 @@ namespace DataBuild
 			{
 				Desaparece = true,
 				EsCientifico = true,
-				EsGlobal = true
+				EsGlobal = true,
+				Valor = 0.3f
 			};
 			data.Recursos.Add (r_c_Ciencia);
 
@@ -95,7 +105,8 @@ namespace DataBuild
 			{
 				Desaparece = true,
 				EsCientifico = true,
-				EsGlobal = true
+				EsGlobal = true,
+				Valor = 0.2f
 			};
 			data.Recursos.Add (r_c_Cacería);
 			#endregion
@@ -103,13 +114,15 @@ namespace DataBuild
 			#region Militar
 			var r_m_Palos = new Recurso
 			{
-				Nombre = "Palos de madera"
+				Nombre = "Palos de madera",
+				Valor = 5
 			};
 			data.Recursos.Add (r_m_Palos);
 
 			var r_m_PerroGuerra = new Recurso
 			{
-				Nombre = "Perro de guerra"
+				Nombre = "Perro de guerra",
+				Valor = 4.1f
 			};
 			data.Recursos.Add (r_m_PerroGuerra);
 			#endregion
@@ -409,7 +422,8 @@ namespace DataBuild
 				CostePoblación = 1,
 				Dispersión = 0,
 				Nombre = "Lanza piedras",
-				Ataque = 1
+				Ataque = 1,
+				Puntuación = 30
 			};
 			u_LanzaPiedras.Flags.Add ("Pie");
 			u_LanzaPiedras.Flags.Add ("Humano");
@@ -426,7 +440,8 @@ namespace DataBuild
 				CostePoblación = 1,
 				Dispersión = 0,
 				Nombre = "Guerrero con palo",
-				Ataque = 1.5f
+				Ataque = 1.5f,
+				Puntuación = 40
 			};
 			u_GuerreroPalo.Flags.Add ("Pie");
 			u_GuerreroPalo.Flags.Add ("Humano");
@@ -443,7 +458,8 @@ namespace DataBuild
 				CostePoblación = 0,
 				Dispersión = 0.2f,
 				Nombre = "Perro de guerra",
-				Ataque = 1.4f
+				Ataque = 1.4f,
+				Puntuación = 37
 			};
 			u_perro.Flags.Add ("Pie");
 			u_perro.Flags.Add ("Animal");

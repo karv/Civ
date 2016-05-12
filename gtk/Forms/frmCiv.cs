@@ -4,6 +4,7 @@ using Civ.ObjetosEstado;
 using Civ.RAW;
 using Civ.Global;
 using Civ.Topología;
+using Civ;
 
 namespace Gtk
 {
@@ -65,6 +66,9 @@ namespace Gtk
 		[Gtk.TreeNodeValue (Column = 3)]
 		public string NombreTerreno { get { return Ciudad.Posición ().A.ToString (); } }
 
+		[Gtk.TreeNodeValue (Column = 4)]
+		public float Puntuación { get { return Ciudad.Puntuación; } }
+
 		public CityListEntry (ICiudad ciudad)
 		{
 			Ciudad = ciudad;
@@ -116,11 +120,21 @@ namespace Gtk
 			}
 		}
 
+		public void ActualizarMuyDebil ()
+		{
+			lbScore.Text = ((IPuntuado)Civ).Puntuación.ToString ();
+			nvAvances.QueueDraw ();
+			nvCiudades.QueueDraw ();
+			nvInvestDetalle.QueueDraw ();
+			nvInvestigando.QueueDraw ();
+		}
+
 		/// <summary>
 		/// Actualiza esta form
 		/// </summary>
 		public void ActualizarDebil ()
 		{
+			ActualizarMuyDebil ();
 			stCiudad.Clear ();
 			foreach (var x in Civ.Ciudades)
 			{
@@ -147,6 +161,7 @@ namespace Gtk
 				if (!x.EsDefensa)
 					ArmadaSelector.Add (x);
 			}
+
 		}
 
 		/// <summary>
@@ -180,6 +195,15 @@ namespace Gtk
 		{
 			Civ = civ;
 
+			var actualizador = new Cronómetro (TimeSpan.FromMilliseconds (5000))
+			{
+				Habilitado = true,
+				Recurrente = true
+			};
+
+			Juego.Instancia.Cronómetros.Add (actualizador);
+			actualizador.AlLlamar += ActualizarMuyDebil;
+
 			Build ();
 
 			Mens.Manejador = civ.Mensajes;
@@ -204,6 +228,7 @@ namespace Gtk
 				"value",
 				2);
 			nvCiudades.AppendColumn ("Terreno", new CellRendererText (), "text", 3);
+			nvCiudades.AppendColumn ("Puntuación", new CellRendererText (), "text", 4);
 
 			nvAvances.AppendColumn ("Avance", new CellRendererText (), "text", 0);
 
