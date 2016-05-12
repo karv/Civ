@@ -441,8 +441,27 @@ namespace DataBuild
 			u_GuerreroPalo.Flags.Add ("Pie");
 			u_GuerreroPalo.Flags.Add ("Humano");
 			u_GuerreroPalo.Flags.Add ("Melee");
-			u_GuerreroPalo.Reqs [r_m_Palos] = 1;
+			u_GuerreroPalo.Reqs.Add (r_m_Palos, 1);
 			data.Unidades.Add (u_GuerreroPalo);
+
+			var u_perro = new UnidadRAWCombate
+			{
+				Velocidad = 1.6f,
+				Peso = 0.7f,
+				MaxCarga = 0,
+				Defensa = 0.6,
+				CostePoblación = 0,
+				Dispersión = 0.2f,
+				Nombre = "Perro de guerra",
+				Ataque = 1.4f
+			};
+			u_perro.Flags.Add ("Pie");
+			u_perro.Flags.Add ("Animal");
+			u_perro.Flags.Add ("Melee");
+			u_perro.Mods.Add ("Humano", 1.1f);
+			u_perro.Reqs.Add (r_m_PerroGuerra, 1);
+			u_perro.ReqCiencia = c_DomesticaciónPerro;
+			data.Unidades.Add (u_perro);
 			#endregion
 
 			// Pasar el bin al proyecto principal
