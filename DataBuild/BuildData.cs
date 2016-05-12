@@ -207,6 +207,7 @@ namespace DataBuild
 			e_Llanura.PropPropiedad.Add (p_Frutas, 0.85f);
 			e_Llanura.PropPropiedad.Add (p_Arboleda, 0.7f);
 			e_Llanura.PropPropiedad.Add (p_minArbol, 1);
+			e_Llanura.PropPropiedad.Add (p_Perros, 0.9f);
 			data.Ecosistemas.Add (e_Llanura);
 
 			var e_Montañoso = new Ecosistema { Nombre = "Montaña" };
@@ -217,6 +218,7 @@ namespace DataBuild
 			e_Montañoso.PropPropiedad.Add (p_Frutas, 0.4f);
 			e_Montañoso.PropPropiedad.Add (p_Arboleda, 0.6f);
 			e_Montañoso.PropPropiedad.Add (p_minArbol, 1);
+			e_Montañoso.PropPropiedad.Add (p_Perros, 0.3f);
 			data.Ecosistemas.Add (e_Montañoso);
 
 			var e_Desierto = new Ecosistema { Nombre = "Desierto" };
@@ -234,6 +236,7 @@ namespace DataBuild
 			e_bosque.PropPropiedad.Add (p_Frutas, 0.4f);
 			e_bosque.PropPropiedad.Add (p_Boscoso, 0.8f);
 			e_bosque.PropPropiedad.Add (p_minArbol, 1);
+			e_bosque.PropPropiedad.Add (p_Perros, 0.4f);
 			data.Ecosistemas.Add (e_bosque);
 
 			var e_selva = new Ecosistema { Nombre = "Selva" };
