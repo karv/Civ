@@ -58,14 +58,14 @@
     <Reference Include="Store">
       <HintPath>..\packages\Store.0.2\lib\Store.dll</HintPath>
     </Reference>
-    <Reference Include="Controls">
-      <HintPath>..\packages\Controls.0.1\lib\Controls.dll</HintPath>
-    </Reference>
     <Reference Include="ListaExtras">
-      <HintPath>..\packages\ListaExtras.0.3.0.5\lib\ListaExtras.dll</HintPath>
+      <HintPath>..\packages\ListaExtras.0.3.0.7\lib\ListaExtras.dll</HintPath>
+    </Reference>
+    <Reference Include="Controls">
+      <HintPath>..\packages\Controls_gtk_personal.0.2\lib\Controls.dll</HintPath>
     </Reference>
     <Reference Include="Grafos">
-      <HintPath>..\packages\Grafos.0.1.6.5\lib\Grafos.dll</HintPath>
+      <HintPath>..\packages\Grafos.0.2.0.3\lib\Grafos.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

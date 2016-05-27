@@ -11,7 +11,7 @@ namespace CivGTK
 	public static class MainClass
 	{
 		static DateTime timer = DateTime.Now;
-		const float MultiplicadorVelocidad = 30;
+		const float MultiplicadorVelocidad = 120;
 		public static Civilización MyCiv;
 
 		static FrmCiv win;
@@ -19,13 +19,15 @@ namespace CivGTK
 
 		public static void Main ()
 		{
-
 			if (File.Exists (Juego.ArchivoState))
 				Juego.Cargar ();
 			else
 				Juego.Instancia.Inicializar ();
 
 			MyCiv = Juego.State.Civs [0] as Civilización;
+			foreach (var x in Juego.Data.Unidades)
+				MyCiv.Ciudades [0].Defensa.AgregaUnidad (x, 3);
+
 			Console.WriteLine (((IPuntuado)MyCiv).Puntuación);
 			Juego.Guardar ();
 
