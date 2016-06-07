@@ -194,6 +194,7 @@ namespace Gtk
 			: base (WindowType.Toplevel)
 		{
 			Civ = civ;
+			Mens = new MensView ();
 
 			var actualizador = new Cronómetro (TimeSpan.FromMilliseconds (5000))
 			{

@@ -106,9 +106,7 @@ namespace Gtk
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.popdisplay1 = new global::Gtk.PopDisplay ();
-			this.popdisplay1.Events = ((global::Gdk.EventMask)(256));
-			this.popdisplay1.Name = "popdisplay1";
+			this.popdisplay1 = null;
 			this.hbox1.Add (this.popdisplay1);
 			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.popdisplay1]));
 			w1.Position = 0;
@@ -181,9 +179,7 @@ namespace Gtk
 			this.hbox4.Name = "hbox4";
 			this.hbox4.Spacing = 6;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.armDefensa = new global::Gtk.ArmadaWidget ();
-			this.armDefensa.Events = ((global::Gdk.EventMask)(256));
-			this.armDefensa.Name = "armDefensa";
+			this.armDefensa = null;
 			this.hbox4.Add (this.armDefensa);
 			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.armDefensa]));
 			w10.Position = 0;
@@ -196,9 +192,7 @@ namespace Gtk
 			this.hbox5.Name = "hbox5";
 			this.hbox5.Spacing = 6;
 			// Container child hbox5.Gtk.Box+BoxChild
-			this.ArmadaCombobox = new global::Gtk.ArmadaComboBoxWidget ();
-			this.ArmadaCombobox.Events = ((global::Gdk.EventMask)(256));
-			this.ArmadaCombobox.Name = "ArmadaCombobox";
+			this.ArmadaCombobox = null;
 			this.hbox5.Add (this.ArmadaCombobox);
 			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.ArmadaCombobox]));
 			w11.Position = 0;
@@ -234,9 +228,7 @@ namespace Gtk
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.armSeleccionada = new global::Gtk.ArmadaWidget ();
-			this.armSeleccionada.Events = ((global::Gdk.EventMask)(256));
-			this.armSeleccionada.Name = "armSeleccionada";
+			this.armSeleccionada = null;
 			this.vbox4.Add (this.armSeleccionada);
 			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.armSeleccionada]));
 			w15.Position = 0;
@@ -286,9 +278,7 @@ namespace Gtk
 			this.GtkAlignment3.Name = "GtkAlignment3";
 			this.GtkAlignment3.LeftPadding = ((uint)(12));
 			// Container child GtkAlignment3.Gtk.Container+ContainerChild
-			this.rcReclutar = new global::Gtk.ReclutarWidget ();
-			this.rcReclutar.Events = ((global::Gdk.EventMask)(256));
-			this.rcReclutar.Name = "rcReclutar";
+			this.rcReclutar = null;
 			this.GtkAlignment3.Add (this.rcReclutar);
 			this.frame2.Add (this.GtkAlignment3);
 			this.GtkLabel4 = new global::Gtk.Label ();
@@ -361,9 +351,7 @@ namespace Gtk
 			w31.Expand = false;
 			w31.Fill = false;
 			// Container child vbox6.Gtk.Box+BoxChild
-			this.EdifConstruyendoCB = new global::Gtk.GeneralCombobox ();
-			this.EdifConstruyendoCB.Events = ((global::Gdk.EventMask)(256));
-			this.EdifConstruyendoCB.Name = "EdifConstruyendoCB";
+			this.EdifConstruyendoCB = null;
 			this.vbox6.Add (this.EdifConstruyendoCB);
 			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.EdifConstruyendoCB]));
 			w32.Position = 1;
