@@ -5,6 +5,9 @@ using Civ.RAW;
 using Civ.Global;
 using Civ.Topología;
 using Civ;
+using System.Collections.Generic;
+using Controls;
+using Gdk;
 
 namespace Gtk
 {
@@ -36,6 +39,26 @@ namespace Gtk
 
 		[Gtk.TreeNodeValue (Column = 0)]
 		public float Pct { get { return Ciencia.ObtPct () * 100; } }
+
+		[Gtk.TreeNodeValue (Column = 2)]
+		public List<CellRendererBars.Entrada> Entradas
+		{
+			get
+			{
+				var ret = new List<CellRendererBars.Entrada> ();
+				foreach (var x in Ciencia)
+				{
+					ret.Add (new CellRendererBars.Entrada (
+						x.Value,
+						Ciencia.Ciencia.Reqs.Recursos [x.Key],
+						new Color (
+							255,
+							127,
+							127)));
+				}
+				return ret;
+			}
+		}
 	}
 
 	class CityListEntry : TreeNode
@@ -235,6 +258,7 @@ namespace Gtk
 
 			nvInvestigando.AppendColumn ("%", new CellRendererProgress (), "text", 0);
 			nvInvestigando.AppendColumn ("Avance", new CellRendererText (), "text", 1);
+			nvInvestigando.AppendColumn ("Partes", new CellRendererBars (), "values", 2);
 
 			nvInvestDetalle.AppendColumn ("Recurso", new CellRendererText (), "text", 0);
 			nvInvestDetalle.AppendColumn (

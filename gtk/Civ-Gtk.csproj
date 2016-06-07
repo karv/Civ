@@ -68,6 +68,10 @@
     <Reference Include="Grafos">
       <HintPath>..\packages\Grafos.0.2.0.4\lib\Grafos.dll</HintPath>
     </Reference>
+    <Reference Include="cairo-sharp, Version=1.10.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <Package>gtk-sharp-3.0</Package>
+    </Reference>
+    <Reference Include="Mono.Cairo" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
