@@ -282,7 +282,7 @@ namespace Gtk
 		{
 			Application.Quit ();
 			Juego.Guardar ();
-			CivGTK.MainClass.EndGame = true;
+			Juego.Instancia.Terminar = true;
 			return true;
 		}
 

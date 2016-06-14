@@ -65,13 +65,13 @@
     <Reference Include="Controls">
       <HintPath>..\packages\Controls_gtk_personal.0.2\lib\Controls.dll</HintPath>
     </Reference>
-    <Reference Include="Grafos">
-      <HintPath>..\packages\Grafos.0.2.0.4\lib\Grafos.dll</HintPath>
-    </Reference>
     <Reference Include="cairo-sharp, Version=1.10.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
       <Package>gtk-sharp-3.0</Package>
     </Reference>
     <Reference Include="Mono.Cairo" />
+    <Reference Include="Grafos">
+      <HintPath>..\packages\Grafos.0.2.1.1\lib\Grafos.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

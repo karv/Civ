@@ -10,12 +10,10 @@ namespace CivGTK
 	
 	public static class MainClass
 	{
-		static DateTime timer = DateTime.Now;
 		const float MultiplicadorVelocidad = 120;
 		public static Civilización MyCiv;
 
 		static FrmCiv win;
-		public static bool EndGame;
 
 		public static void Main ()
 		{
@@ -34,33 +32,17 @@ namespace CivGTK
 			Application.Init ();
 			win = new FrmCiv (MyCiv);
 			win.Show ();
-			timer = DateTime.Now;
 
-			// Ciclo principal
-			while (!EndGame)
+			Juego.Instancia.Autoguardado = TimeSpan.FromSeconds (10);
+
+			Juego.Instancia.EntreCiclos += delegate
 			{
-				Tick ();
 				while (Application.EventsPending ())
 					Application.RunIteration ();
-			}
-			//Application.Run();
+			};
 
-		}
-
-		/// <summary>
-		/// Da un sólo tick global
-		/// </summary>
-		static void Tick ()
-		{
-			TimeSpan tiempo = DateTime.Now - timer;
-			timer = DateTime.Now;
-			var modTiempo = new TimeSpan ((long)(tiempo.Ticks * MultiplicadorVelocidad));
-
-			// Console.WriteLine (t);
-			Juego.Instancia.Tick (modTiempo);
-
-			if (Juego.State.Civs.Count == 0)
-				throw new Exception ("Ya se acabó el juego :3");
+			// Ciclo principal
+			Juego.Instancia.Ejecutar ();
 		}
 	}
 }
